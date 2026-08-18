@@ -146,6 +146,72 @@ def summarize_trades(trades: list[Trade], starting_equity: float = 10_000.0) -> 
     )
 
 
+def _event_indices(frame: pd.DataFrame, strategies: dict[str, Any]) -> list[int]:
+    """Return causal bars that can possibly emit an enabled strategy candidate."""
+    masks: list[pd.Series] = []
+    close = frame["close"]
+    open_ = frame["open"]
+    high = frame["high"]
+    low = frame["low"]
+    atr = frame["atr"]
+    volume_ratio = frame["volume_ratio"]
+    if strategies.get("trend_pullback", {}).get("enabled", False):
+        cfg = strategies["trend_pullback"]
+        tol = float(cfg.get("pullback_tolerance_atr", 0.75))
+        up = (close > frame["ema_slow"]) & (frame["ema_fast"] > frame["ema_slow"]) & ((close - frame["ema_fast"]).abs() <= tol * atr) & (close > open_)
+        down = (close < frame["ema_slow"]) & (frame["ema_fast"] < frame["ema_slow"]) & ((close - frame["ema_fast"]).abs() <= tol * atr) & (close < open_)
+        masks.append(up | down)
+    if strategies.get("volatility_breakout", {}).get("enabled", False):
+        cfg = strategies["volatility_breakout"]
+        lookback = int(cfg.get("lookback", 20))
+        buffer = float(cfg.get("breakout_buffer_atr", 0.10)) * atr
+        prior_high = high.shift(1).rolling(lookback, min_periods=lookback).max()
+        prior_low = low.shift(1).rolling(lookback, min_periods=lookback).min()
+        masks.append(((close > prior_high + buffer) | (close < prior_low - buffer)) & (volume_ratio >= 1.2))
+    if strategies.get("range_mean_reversion", {}).get("enabled", False):
+        cfg = strategies["range_mean_reversion"]
+        lookback = int(cfg.get("lookback", 40))
+        window_high = high.rolling(lookback, min_periods=lookback).max()
+        window_low = low.rolling(lookback, min_periods=lookback).min()
+        width = window_high - window_low
+        position = (close - window_low) / width
+        boundary = float(cfg.get("boundary_percentile", 0.15))
+        masks.append((width > 0) & (width <= 8 * atr) & (((position <= boundary) & (close > open_)) | ((position >= 1 - boundary) & (close < open_))))
+    if strategies.get("liquidity_sweep_reclaim", {}).get("enabled", False):
+        cfg = strategies["liquidity_sweep_reclaim"]
+        displacement_min = float(cfg.get("minimum_displacement_atr", 0.50))
+        volume_min = float(cfg.get("minimum_volume_ratio", 1.0))
+        prior = frame.shift(1)
+        prior_low = frame["prior_swing_low"].shift(1)
+        prior_high = frame["prior_swing_high"].shift(1)
+        bull = prior["bullish_liquidity_sweep"] & (frame["structure_bias"] >= 0) & (frame["displacement"] >= displacement_min) & (close > open_) & (close > frame["close"].shift(1)) & (close > prior_low) & (volume_ratio >= volume_min)
+        bear = prior["bearish_liquidity_sweep"] & (frame["structure_bias"] <= 0) & (frame["displacement"] >= displacement_min) & (close < open_) & (close < frame["close"].shift(1)) & (close < prior_high) & (volume_ratio >= volume_min)
+        masks.append(bull | bear)
+    if strategies.get("bos_retest_continuation", {}).get("enabled", False):
+        cfg = strategies["bos_retest_continuation"]
+        lookback = int(cfg.get("structure_lookback", 20))
+        displacement_min = float(cfg.get("minimum_displacement_atr", 0.65))
+        volume_min = float(cfg.get("minimum_volume_ratio", 1.1))
+        prior_high = high.shift(2).rolling(lookback, min_periods=lookback).max()
+        prior_low = low.shift(2).rolling(lookback, min_periods=lookback).min()
+        prior_bull_bos = (close.shift(1) > prior_high) & (frame["displacement"].shift(1) >= displacement_min)
+        prior_bear_bos = (close.shift(1) < prior_low) & (frame["displacement"].shift(1) >= displacement_min)
+        tol = float(cfg.get("retest_tolerance_atr", 0.25)) * atr
+        bull = prior_bull_bos & (low <= close.shift(1) + tol) & (close > close.shift(1)) & (close > open_) & (frame["structure_bias"] >= 0) & (volume_ratio >= volume_min)
+        bear = prior_bear_bos & (high >= close.shift(1) - tol) & (close < close.shift(1)) & (close < open_) & (frame["structure_bias"] <= 0) & (volume_ratio >= volume_min)
+        masks.append(bull | bear)
+    if strategies.get("momentum_continuation", {}).get("enabled", False):
+        cfg = strategies["momentum_continuation"]
+        minimum_return = float(cfg.get("minimum_return", 0.01))
+        masks.append((frame["return_n"].abs() >= minimum_return) & (volume_ratio >= 1.3))
+    if not masks:
+        return []
+    combined = masks[0].fillna(False)
+    for mask in masks[1:]:
+        combined = combined | mask.fillna(False)
+    return [int(index) for index in combined[combined].index if int(index) >= 80]
+
+
 def run_backtest(candles: list[Candle], config: dict[str, Any]) -> tuple[list[Trade], BacktestSummary]:
     frame = add_features(pd.DataFrame([c.to_dict() for c in candles]))
     historical_config = deepcopy(config)
@@ -155,8 +221,15 @@ def run_backtest(candles: list[Candle], config: dict[str, Any]) -> tuple[list[Tr
     trades: list[Trade] = []
     latency = int(config["backtest"].get("latency_bars", 1))
     expiry_bars = int(config.get("signal", {}).get("expiry_bars", 8))
-    for index in range(80, len(frame) - latency - 1):
-        history = frame.iloc[: index + 1]
+    # Features are precomputed on the full closed-bar frame. Strategy modules only
+    # require a bounded causal window; limiting the slice avoids O(n^2) dataframe
+    # copying during year-long research runs without exposing future rows.
+    history_bars = int(config.get("backtest", {}).get("strategy_history_bars", 160))
+    event_indices = _event_indices(frame, config["strategies"])
+    for index in event_indices:
+        if index >= len(frame) - latency - 1:
+            continue
+        history = frame.iloc[max(0, index + 1 - history_bars) : index + 1]
         candidates = generate_candidates(candles[0].symbol, history, config["strategies"])
         risk_state = build_risk_state(historical_config)
         for candidate in candidates:

@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
-source = Path("artifacts/historical-backtest-2025-15m-validated.json")
-target = Path("artifacts/historical-backtest-2025-15m-summary.json")
+source = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("artifacts/historical-backtest-2025-15m-validated.json")
+target = Path(sys.argv[2]) if len(sys.argv) > 2 else source.with_name(source.stem + "-summary.json")
 data = json.loads(source.read_text(encoding="utf-8"))
 summary = {"year": data["year"], "timeframe": data["timeframe"], "source": data["source"], "symbols": {}}
 for symbol, payload in data["symbols"].items():

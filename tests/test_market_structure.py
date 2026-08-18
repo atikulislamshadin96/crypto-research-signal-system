@@ -3,7 +3,7 @@ from __future__ import annotations
 import pandas as pd
 
 from crypto_signal_system.features import add_features, frame_is_ready
-from crypto_signal_system.strategies import generate_candidates
+from crypto_signal_system.strategies import bos_retest_continuation, generate_candidates, liquidity_sweep_reclaim
 
 
 def _frame(rows: int = 80) -> pd.DataFrame:
@@ -44,9 +44,12 @@ def test_structure_features_make_frame_ready_and_strategy_is_registered() -> Non
             "trend_pullback": {"enabled": False},
             "volatility_breakout": {"enabled": False},
             "range_mean_reversion": {"enabled": False},
-            "liquidity_sweep_reclaim": {"enabled": True, "minimum_displacement_atr": 0.5},
+            "liquidity_sweep_reclaim": {"enabled": True, "minimum_displacement_atr": 0.5, "minimum_volume_ratio": 1.0},
+            "bos_retest_continuation": {"enabled": True, "minimum_displacement_atr": 0.5, "minimum_volume_ratio": 1.0},
             "momentum_continuation": {"enabled": False},
         }
     }
-    candidates = generate_candidates("TESTUSDT", frame, config)
+    candidates = generate_candidates("TESTUSDT", frame, config["strategies"])
     assert isinstance(candidates, list)
+    assert liquidity_sweep_reclaim("TESTUSDT", frame, config["strategies"]["liquidity_sweep_reclaim"]) is None
+    assert bos_retest_continuation("TESTUSDT", frame, config["strategies"]["bos_retest_continuation"]) is None

@@ -63,18 +63,18 @@ signal:
 
 strategies:
   trend_pullback:
-    enabled: true
+    enabled: false
     ema_fast: 20
     ema_slow: 50
     atr_period: 14
     pullback_tolerance_atr: 0.75
   volatility_breakout:
-    enabled: true
+    enabled: false
     lookback: 20
     atr_period: 14
     breakout_buffer_atr: 0.10
   range_mean_reversion:
-    enabled: true
+    enabled: false
     lookback: 40
     atr_period: 14
     boundary_percentile: 0.15
@@ -93,7 +93,7 @@ strategies:
     stop_atr: 1.25
     target_atr: 3.00
   momentum_continuation:
-    enabled: true
+    enabled: false
     lookback: 12
     volume_window: 20
     atr_period: 14

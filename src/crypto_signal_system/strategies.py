@@ -16,7 +16,7 @@ def _last(frame: pd.DataFrame) -> pd.Series:
     return frame.iloc[-1]
 
 
-def _candidate_base(symbol: str, strategy: str, direction: str, frame: pd.DataFrame, thesis: str, regime: str, structure: str, trigger: str, assumptions: list[str]) -> Candidate:
+def _candidate_base(symbol: str, strategy: str, direction: str, frame: pd.DataFrame, thesis: str, regime: str, structure: str, trigger: str, assumptions: list[str], stop_atr: float = 1.5, target_atr: float = 2.25) -> Candidate:
     row = _last(frame)
     generated_at = row["close_time"]
     if hasattr(generated_at, "to_pydatetime"):
@@ -24,11 +24,11 @@ def _candidate_base(symbol: str, strategy: str, direction: str, frame: pd.DataFr
     atr = float(row["atr"])
     close = float(row["close"])
     if direction == "LONG":
-        stop = close - 1.5 * atr
-        targets = [close + 2.25 * atr, close + 3.0 * atr]
+        stop = close - stop_atr * atr
+        targets = [close + target_atr * atr, close + (target_atr + 0.75) * atr]
     else:
-        stop = close + 1.5 * atr
-        targets = [close - 2.25 * atr, close - 3.0 * atr]
+        stop = close + stop_atr * atr
+        targets = [close - target_atr * atr, close - (target_atr + 0.75) * atr]
     return Candidate(
         symbol=symbol,
         direction=direction,
@@ -125,24 +125,93 @@ def range_mean_reversion(symbol: str, frame: pd.DataFrame, config: dict[str, Any
 
 
 def liquidity_sweep_reclaim(symbol: str, frame: pd.DataFrame, config: dict[str, Any]) -> Candidate | None:
-    if len(frame) < 60:
+    """Enter only after a prior-bar liquidity sweep is followed by a confirmed reclaim."""
+    if len(frame) < 65:
         return None
     row = _last(frame)
+    prior = frame.iloc[-2]
     atr = float(row["atr"])
-    if pd.isna(row["structure_bias"]) or pd.isna(row["displacement"]):
+    if pd.isna(row["structure_bias"]) or pd.isna(row["displacement"]) or pd.isna(prior["prior_swing_high"]) or pd.isna(prior["prior_swing_low"]):
         return None
     displacement_min = float(config.get("minimum_displacement_atr", 0.50))
+    volume_min = float(config.get("minimum_volume_ratio", 1.0))
+    bullish_sweep = bool(prior["bullish_liquidity_sweep"])
+    bearish_sweep = bool(prior["bearish_liquidity_sweep"])
+    bullish_reclaim = float(row["close"]) > float(row["open"]) and float(row["close"]) > float(prior["close"]) and float(row["close"]) > float(prior["prior_swing_low"])
+    bearish_reclaim = float(row["close"]) < float(row["open"]) and float(row["close"]) < float(prior["close"]) and float(row["close"]) < float(prior["prior_swing_high"])
+    volume_ok = pd.notna(row["volume_ratio"]) and float(row["volume_ratio"]) >= volume_min
     direction: str | None = None
-    if bool(row["bullish_liquidity_sweep"]) and int(row["structure_bias"]) >= 0 and float(row["displacement"]) >= displacement_min and float(row["close"]) > float(row["open"]):
+    if bullish_sweep and bullish_reclaim and int(row["structure_bias"]) >= 0 and float(row["displacement"]) >= displacement_min and volume_ok:
         direction = "LONG"
-    elif bool(row["bearish_liquidity_sweep"]) and int(row["structure_bias"]) <= 0 and float(row["displacement"]) >= displacement_min and float(row["close"]) < float(row["open"]):
+    elif bearish_sweep and bearish_reclaim and int(row["structure_bias"]) <= 0 and float(row["displacement"]) >= displacement_min and volume_ok:
         direction = "SHORT"
     if direction is None:
         return None
-    candidate = _candidate_base(symbol, "liquidity_sweep_reclaim", direction, frame, "The closed candle swept a prior liquidity boundary and reclaimed it with directional displacement.", "structure", "prior liquidity sweep with structure bias", "closed-bar sweep reclaim", ["Sweep and displacement thresholds are research defaults and require out-of-sample validation."])
+    candidate = _candidate_base(
+        symbol,
+        "liquidity_sweep_reclaim",
+        direction,
+        frame,
+        "A prior closed candle swept a liquidity boundary and the current closed candle confirmed a directional reclaim with displacement and volume.",
+        "structure",
+        "prior sweep -> reclaim close -> structure-aligned confirmation",
+        "two-bar sweep-reclaim sequence",
+        ["Sweep, displacement, and volume thresholds are research defaults and require untouched out-of-sample validation."],
+        stop_atr=float(config.get("stop_atr", 1.25)),
+        target_atr=float(config.get("target_atr", 3.0)),
+    )
     candidate.evidence.extend([
-        Evidence("structure", "Prior liquidity boundary was swept and reclaimed", True, "computed:liquidity_sweep", row["close_time"], "inferred"),
-        Evidence("momentum", "Displacement exceeds the configured ATR threshold", float(row["displacement"]), "computed:displacement_atr", row["close_time"], "inferred"),
+        Evidence("structure", "Prior liquidity boundary was swept and current bar reclaimed it", True, "computed:prior_liquidity_sweep", row["close_time"], "inferred"),
+        Evidence("momentum", "Current closed candle displacement exceeds threshold", float(row["displacement"]), "computed:displacement_atr", row["close_time"], "inferred"),
+        Evidence("volume", "Current closed candle volume exceeds configured threshold", float(row["volume_ratio"]), "computed:volume_ratio", row["close_time"], "inferred"),
+    ])
+    return candidate
+
+
+def bos_retest_continuation(symbol: str, frame: pd.DataFrame, config: dict[str, Any]) -> Candidate | None:
+    """Enter the first confirmed retest after a causal break of structure."""
+    if len(frame) < 65:
+        return None
+    row = _last(frame)
+    prior = frame.iloc[-2]
+    atr = float(row["atr"])
+    if any(pd.isna(row.get(col)) for col in ("atr", "structure_bias", "displacement", "volume_ratio")):
+        return None
+    lookback = int(config.get("structure_lookback", 20))
+    displacement_min = float(config.get("minimum_displacement_atr", 0.65))
+    volume_min = float(config.get("minimum_volume_ratio", 1.1))
+    prior_high = float(frame["high"].iloc[-lookback-2:-2].max())
+    prior_low = float(frame["low"].iloc[-lookback-2:-2].min())
+    bullish_bos = float(prior["close"]) > prior_high and float(prior["displacement"]) >= displacement_min
+    bearish_bos = float(prior["close"]) < prior_low and float(prior["displacement"]) >= displacement_min
+    tol = float(config.get("retest_tolerance_atr", 0.25)) * atr
+    bullish_retest = float(row["low"]) <= float(prior["close"]) + tol and float(row["close"]) > float(prior["close"]) and float(row["close"]) > float(row["open"])
+    bearish_retest = float(row["high"]) >= float(prior["close"]) - tol and float(row["close"]) < float(prior["close"]) and float(row["close"]) < float(row["open"])
+    volume_ok = float(row["volume_ratio"]) >= volume_min
+    direction: str | None = None
+    if bullish_bos and bullish_retest and int(row["structure_bias"]) >= 0 and volume_ok:
+        direction = "LONG"
+    elif bearish_bos and bearish_retest and int(row["structure_bias"]) <= 0 and volume_ok:
+        direction = "SHORT"
+    if direction is None:
+        return None
+    candidate = _candidate_base(
+        symbol,
+        "bos_retest_continuation",
+        direction,
+        frame,
+        "A prior closed candle displaced through a prior swing and the current candle confirmed the first retest in the same structural direction.",
+        "structure",
+        "break of structure -> first retest -> directional close",
+        "closed-bar BOS retest",
+        ["BOS/retest thresholds are causal research defaults and require untouched out-of-sample validation."],
+        stop_atr=float(config.get("stop_atr", 1.25)),
+        target_atr=float(config.get("target_atr", 3.0)),
+    )
+    candidate.evidence.extend([
+        Evidence("structure", "Prior candle broke a prior swing and current candle retested it", True, "computed:bos_retest", row["close_time"], "inferred"),
+        Evidence("momentum", "Prior displacement and current directional close confirm continuation", float(prior["displacement"]), "computed:prior_displacement_atr", row["close_time"], "inferred"),
+        Evidence("volume", "Retest candle volume exceeds configured threshold", float(row["volume_ratio"]), "computed:volume_ratio", row["close_time"], "inferred"),
     ])
     return candidate
 
@@ -172,6 +241,7 @@ def generate_candidates(symbol: str, frame: pd.DataFrame, strategy_config: dict[
         ("volatility_breakout", volatility_breakout),
         ("range_mean_reversion", range_mean_reversion),
         ("liquidity_sweep_reclaim", liquidity_sweep_reclaim),
+        ("bos_retest_continuation", bos_retest_continuation),
         ("momentum_continuation", momentum_continuation),
     ]
     for name, module in modules:
