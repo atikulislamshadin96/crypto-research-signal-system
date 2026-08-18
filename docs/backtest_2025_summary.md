@@ -12,21 +12,21 @@ Historical derivatives snapshots were **not fabricated**. The backtest explicitl
 
 | Symbol | Full-year trades | Full-year wins | Full-year win rate | Full-year expectancy (R) | Full-year profit factor | Full-year max drawdown |
 |---|---:|---:|---:|---:|---:|---:|
-| BTCUSDT | 112 | 37 | 33.04% | -0.3734R | 0.5351 | 11.22% |
-| ETHUSDT | 248 | 86 | 34.68% | -0.3085R | 0.5996 | 17.78% |
+| BTCUSDT | 233 | 78 | 33.48% | -0.5296R | 0.4205 | 26.80% |
+| ETHUSDT | 281 | 98 | 34.88% | -0.3298R | 0.5800 | 20.79% |
 
 The untouched out-of-sample window is the final 25% of the chronological series, approximately 1 October through 31 December 2025. It is the most important evidence for current credibility.
 
 | Symbol | OOS trades | OOS wins | OOS win rate | OOS expectancy (R) | OOS profit factor | OOS max drawdown | Review status |
 |---|---:|---:|---:|---:|---:|---:|---|
-| BTCUSDT | 43 | 15 | 34.88% | -0.3320R | 0.5747 | 4.85% | Rejected: negative OOS expectancy |
-| ETHUSDT | 67 | 23 | 34.33% | -0.2929R | 0.6158 | 6.10% | Rejected: negative OOS expectancy |
+| BTCUSDT | 64 | 23 | 35.94% | -0.4304R | 0.4985 | 7.78% | Rejected: negative OOS expectancy |
+| ETHUSDT | 80 | 26 | 32.50% | -0.3878R | 0.5274 | 8.44% | Rejected: negative OOS expectancy |
 
 BTCUSDT’s middle validation partition contained only 11 trades, below the configured 30-trade review threshold. ETHUSDT’s middle validation partition contained 59 trades. Both symbols nevertheless fail the primary acceptance criterion because untouched OOS average R is negative.
 
 ## Interpretation
 
-The current research result is **negative**. The observed win rate is roughly 33–35%, but that percentage is not a calibrated probability of profit and does not rescue the strategy because the cost-adjusted expectancy is negative and profit factor is below 1.0 on both symbols. The system should therefore remain `NO TRADE` for any deployment decision based on this backtest.
+The current research result is **negative**. The observed win rate is roughly 32.5–35.9%, but that percentage is not a calibrated probability of profit and does not rescue the strategy because the cost-adjusted expectancy is negative and profit factor is below 1.0 on both symbols. The system should therefore remain `NO TRADE` for any deployment decision based on this backtest.
 
 The result is useful because it falsifies the current configuration under this cost model. It shows that the initial strategy bundle, even after causal market-structure enrichment and confirmed-signal gating, does not yet demonstrate positive edge. Further optimization must be performed only on the research partition, followed by a fresh untouched test; tuning directly on the OOS window would invalidate this evidence.
 

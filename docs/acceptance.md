@@ -5,12 +5,12 @@
 | Acceptance item | Result | Evidence |
 |---|---|---|
 | Clean local installation | Pass | `pyproject.toml`; package imports and CLI run locally. |
-| Automated unit tests | Pass | 18 tests passed locally. |
+| Automated unit tests | Pass | 19 tests passed locally. |
 | OKX public live-data fallback | Pass | OKX candles and derivatives endpoints returned live public data in the sandbox. |
 | OKX pagination and completeness | Pass | Configured 300-candle histories were retrieved without the prior 100-row shortfall. |
 | Provider separation | Pass | Live scan uses OKX by default; historical research uses explicitly labeled Binance archive files. |
 | Public-data dry run | Pass | OKX-first scan completed analysis-only; current market context was evaluated and weak setups were rejected. |
-| Scheduled workflow | Previously verified | GitHub Actions run `32137522650` completed successfully; workflow source now defaults to the configured provider. |
+| Scheduled workflow | Pass | GitHub Actions run `32148216523` completed successfully on the public repository; workflow source defaults to OKX through configuration. |
 | Manual dispatch | Pass | Workflow supports `workflow_dispatch`. |
 | Least privilege | Pass | Workflow uses `contents: read`; no trading secrets are requested. |
 | Live execution disabled | Pass | Configuration validator rejects `enable_live_execution=true`; no order client exists. |
@@ -26,10 +26,10 @@
 
 | Symbol | Full-year trades | Full-year win rate | Full-year expectancy | OOS trades | OOS win rate | OOS expectancy | Status |
 |---|---:|---:|---:|---:|---:|---:|---|
-| BTCUSDT | 112 | 33.04% | -0.3734R | 43 | 34.88% | -0.3320R | Rejected |
-| ETHUSDT | 248 | 34.68% | -0.3085R | 67 | 34.33% | -0.2929R | Rejected |
+| BTCUSDT | 233 | 33.48% | -0.5296R | 64 | 35.94% | -0.4304R | Rejected |
+| ETHUSDT | 281 | 34.88% | -0.3298R | 80 | 32.50% | -0.3878R | Rejected |
 
-The result is a valid negative research finding, not a failure of the pipeline. It means the current strategy bundle does not demonstrate positive cost-adjusted edge on this dataset and configuration. The win-rate field is descriptive and is not a calibrated probability of profit.
+The result is a valid negative research finding, not a failure of the pipeline. It means the current strategy bundle does not demonstrate positive cost-adjusted edge on this dataset and configuration. The win-rate field is descriptive and is not a calibrated probability of profit. The final report counts only confirmed candidates that pass the live evidence, reward-to-risk, and risk-state gate; sizing caps are retained as warnings rather than falsely rejecting otherwise valid signals.
 
 ## Explicit research limitations
 

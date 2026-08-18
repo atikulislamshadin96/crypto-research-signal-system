@@ -54,7 +54,7 @@ python -m crypto_signal_system.cli --config config/default.yaml \
   --output artifacts/backtest.json
 ```
 
-Backtest output is a research artifact, not a forecast. The repository has now run a real 2025 15-minute study from official Binance Futures archive files for BTCUSDT and ETHUSDT. After confirmed-signal gating, BTCUSDT produced 112 full-year trades with a 33.04% win rate and -0.3734R expectancy; its untouched OOS window produced 43 trades with a 34.88% win rate and -0.3320R expectancy. ETHUSDT produced 248 full-year trades with a 34.68% win rate and -0.3085R expectancy; its untouched OOS window produced 67 trades with a 34.33% win rate and -0.2929R expectancy. Both results are rejected because OOS expectancy is negative. See `docs/backtest_2025_summary.md`; these are not calibrated probabilities or profitability claims.
+Backtest output is a research artifact, not a forecast. The repository has now run a real 2025 15-minute study from official Binance Futures archive files for BTCUSDT and ETHUSDT. Using the current confirmed-signal gate, BTCUSDT produced 233 full-year trades with a 33.48% win rate and -0.5296R expectancy; its untouched OOS window produced 64 trades with a 35.94% win rate and -0.4304R expectancy. ETHUSDT produced 281 full-year trades with a 34.88% win rate and -0.3298R expectancy; its untouched OOS window produced 80 trades with a 32.50% win rate and -0.3878R expectancy. Both results are rejected because OOS expectancy is negative and profit factor remains below 1.0. See `docs/backtest_2025_summary.md`; these are not calibrated probabilities or profitability claims.
 
 ## Scheduled analysis
 
@@ -92,7 +92,7 @@ When a mandatory condition fails, the system records a `NO TRADE` rejection with
 
 ## Known limitations and next safety gates
 
-The system does not yet provide a calibrated probability model, a validated news pipeline, multi-exchange reconciliation, survivorship-bias controls for a changing universe, liquidation/mark-price simulation, partial-fill modeling, historical derivatives replay, or live execution. The 2025 confirmed-signal study currently rejects both BTCUSDT and ETHUSDT because untouched OOS expectancy is negative. These omissions and negative findings are explicit; they should be addressed through research and paper-trading milestones rather than hidden behind a higher confidence label.
+The system does not yet provide a calibrated probability model, a validated news pipeline, multi-exchange reconciliation, survivorship-bias controls for a changing universe, liquidation/mark-price simulation, partial-fill modeling, historical derivatives replay, or live execution. The 2025 confirmed-signal study currently rejects both BTCUSDT and ETHUSDT because untouched OOS expectancy is negative. These omissions and negative findings are explicit; they should be addressed through research and paper-trading milestones rather than hidden behind a higher confidence label. The latest OKX-first scan does produce analysis-only confirmed candidates when evidence and cost-aware gates pass, but this is not evidence of profitability.
 
 Before any future execution work, require an independent design review, point-in-time data audit, out-of-sample and walk-forward evidence, paper-trading logs, notification failure tests, exact account-rule mapping, and a separate manual confirmation. The feature flag `enable_live_execution` is rejected by the current configuration validator, so merely editing YAML cannot enable it.
 
