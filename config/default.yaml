@@ -1,0 +1,95 @@
+system:
+  version: "0.1.0"
+  timezone: "UTC"
+  market_type: "paper_perpetual"
+  analysis_only: true
+  enable_live_execution: false
+  kill_switch: false
+  output_dir: "artifacts"
+
+data:
+  provider: "binance_public"
+  spot_base_url: "https://data-api.binance.vision"
+  futures_base_url: "https://fapi.binance.com"
+  symbols: ["BTCUSDT", "ETHUSDT"]
+  timeframes:
+    regime: ["1d", "4h"]
+    structure: "1h"
+    entry: "15m"
+  candle_limit: 300
+  request_timeout_seconds: 15
+  max_retries: 3
+  stale_after_seconds:
+    candles: 1800
+    derivatives: 1800
+    news: 7200
+  require_closed_candles: true
+  derivatives_enabled: true
+  news_enabled: false
+  news_provider: null
+
+risk:
+  account_equity: 10000.0
+  risk_per_trade_percent: 0.25
+  max_simultaneous_positions: 2
+  max_correlated_risk_percent: 0.50
+  max_notional_usd: 5000.0
+  max_leverage: 2.0
+  max_daily_trades: 3
+  max_consecutive_losses: 3
+  soft_daily_loss_percent: 3.0
+  hard_daily_loss_percent: 5.0
+  hard_total_drawdown_percent: 10.0
+  reference_equity: 10000.0
+  daily_reset_timezone: "UTC"
+  loss_streak_cooldown_minutes: 720
+  extreme_volatility_atr_percent: 8.0
+  estimated_fee_rate_round_trip: 0.0008
+  estimated_slippage_rate_round_trip: 0.0006
+  estimated_funding_rate_per_8h: 0.0001
+  minimum_reward_risk: 1.5
+
+signal:
+  minimum_evidence_score: 70.0
+  minimum_data_completeness: 1.0
+  expiry_bars: 8
+  duplicate_window_minutes: 240
+  confidence_labels:
+    high: 85.0
+    medium: 75.0
+    low: 70.0
+
+strategies:
+  trend_pullback:
+    enabled: true
+    ema_fast: 20
+    ema_slow: 50
+    atr_period: 14
+    pullback_tolerance_atr: 0.75
+  volatility_breakout:
+    enabled: true
+    lookback: 20
+    atr_period: 14
+    breakout_buffer_atr: 0.10
+  range_mean_reversion:
+    enabled: true
+    lookback: 40
+    atr_period: 14
+    boundary_percentile: 0.15
+  momentum_continuation:
+    enabled: true
+    lookback: 12
+    volume_window: 20
+    atr_period: 14
+
+backtest:
+  maker_fee_rate: 0.0002
+  taker_fee_rate: 0.0004
+  slippage_rate: 0.0003
+  funding_rate_per_8h: 0.0001
+  latency_bars: 1
+  ambiguity_policy: "conservative_stop_first"
+  minimum_trades_for_review: 30
+  train_fraction: 0.50
+  validation_fraction: 0.25
+  test_fraction: 0.25

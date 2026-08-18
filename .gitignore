@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.env
+.env.*
+artifacts/*
+!artifacts/.gitkeep
+*.log
+.DS_Store
+
+*.egg-info/
