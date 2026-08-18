@@ -16,6 +16,9 @@ _CATEGORY_WEIGHTS = {
     "derivatives": 10.0,
     "liquidity": 5.0,
     "news": 10.0,
+    "microstructure": 10.0,
+    "microstructure_observation": 0.0,
+    "execution": 0.0,
 }
 
 
@@ -38,6 +41,10 @@ def score_candidate(candidate: Candidate, risk_state: RiskState, config: dict[st
         failures.append("missing objective structure evidence")
     if not derivatives_fresh and config["data"].get("derivatives_enabled", True):
         failures.append("derivatives data stale or unavailable")
+    micro_cfg = config["data"].get("microstructure", {})
+    if micro_cfg.get("use_for_confirmation", False):
+        if "microstructure" not in seen_categories:
+            failures.append("fresh confirming microstructure evidence unavailable")
     rr = reward_risk(candidate)
     if rr is None:
         failures.append("reward-to-risk cannot be computed")

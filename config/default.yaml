@@ -29,6 +29,15 @@ data:
   derivatives_enabled: true
   news_enabled: false
   news_provider: null
+  microstructure:
+    enabled: true
+    use_for_confirmation: false
+    order_book_depth_levels: 10
+    recent_trade_limit: 100
+    stale_after_seconds: 300
+    require_fresh: true
+    collect_cross_venue: false
+    cross_venue_providers: []
 
 risk:
   account_equity: 10000.0
@@ -106,6 +115,13 @@ backtest:
   latency_bars: 1
   ambiguity_policy: "conservative_stop_first"
   strategy_history_bars: 160
+  order_flow_confirmation:
+    enabled: false
+    long_min_taker_buy_ratio: 0.60
+    short_max_taker_buy_ratio: 0.40
+    long_min_signed_imbalance: 0.15
+    short_min_abs_signed_imbalance: 0.15
+    max_abs_price_impact_bps: null
   minimum_trades_for_review: 30
   train_fraction: 0.50
   validation_fraction: 0.25

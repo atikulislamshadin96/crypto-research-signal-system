@@ -8,7 +8,7 @@ from typing import Any
 
 import pandas as pd
 
-from crypto_signal_system.features import add_features
+from crypto_signal_system.features import add_features, add_trade_flow_features
 from crypto_signal_system.context import attach_context, infer_frame_regime
 from crypto_signal_system.models import Candle
 from crypto_signal_system.strategies import generate_candidates
@@ -212,8 +212,43 @@ def _event_indices(frame: pd.DataFrame, strategies: dict[str, Any]) -> list[int]
     return [int(index) for index in combined[combined].index if int(index) >= 80]
 
 
-def run_backtest(candles: list[Candle], config: dict[str, Any]) -> tuple[list[Trade], BacktestSummary]:
+def _passes_order_flow_confirmation(candidate: Any, history: pd.DataFrame, config: dict[str, Any]) -> bool:
+    flow_config = config.get("backtest", {}).get("order_flow_confirmation", {})
+    if not flow_config.get("enabled", False):
+        return True
+    if history.empty:
+        return False
+    row = history.iloc[-1]
+    ratio = row.get("flow_taker_buy_ratio_prior")
+    imbalance = row.get("flow_imbalance_prior")
+    impact = row.get("flow_price_impact_bps_prior")
+    if pd.isna(ratio) or pd.isna(imbalance):
+        return False
+    ratio = float(ratio)
+    imbalance = float(imbalance)
+    if candidate.direction == "LONG":
+        if ratio < float(flow_config.get("long_min_taker_buy_ratio", 0.60)):
+            return False
+        if imbalance < float(flow_config.get("long_min_signed_imbalance", 0.15)):
+            return False
+    elif candidate.direction == "SHORT":
+        if ratio > float(flow_config.get("short_max_taker_buy_ratio", 0.40)):
+            return False
+        if imbalance > -float(flow_config.get("short_min_abs_signed_imbalance", 0.15)):
+            return False
+    else:
+        return False
+    max_abs_impact = flow_config.get("max_abs_price_impact_bps")
+    if max_abs_impact is not None:
+        if pd.isna(impact) or abs(float(impact)) > float(max_abs_impact):
+            return False
+    return True
+
+
+def run_backtest(candles: list[Candle], config: dict[str, Any], flow_frame: pd.DataFrame | None = None) -> tuple[list[Trade], BacktestSummary]:
     frame = add_features(pd.DataFrame([c.to_dict() for c in candles]))
+    if flow_frame is not None:
+        frame = add_trade_flow_features(frame, flow_frame)
     historical_config = deepcopy(config)
     historical_config.setdefault("data", {})["derivatives_enabled"] = False
     frame["open_time"] = pd.to_datetime(frame["open_time"], utc=True)
@@ -233,6 +268,8 @@ def run_backtest(candles: list[Candle], config: dict[str, Any]) -> tuple[list[Tr
         candidates = generate_candidates(candles[0].symbol, history, config["strategies"])
         risk_state = build_risk_state(historical_config)
         for candidate in candidates:
+            if not _passes_order_flow_confirmation(candidate, history, historical_config):
+                continue
             attach_context(candidate, history, infer_frame_regime(history), None)
             signal = build_signal(candidate, risk_state, historical_config, derivatives_fresh=True)
             if signal.status != "CONFIRMED":

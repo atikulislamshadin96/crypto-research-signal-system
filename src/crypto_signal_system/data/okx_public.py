@@ -7,6 +7,7 @@ from typing import Any
 import requests
 
 from crypto_signal_system.models import Candle, DerivativesSnapshot
+from crypto_signal_system.microstructure import OrderBookSnapshot, TradeFlowSnapshot, parse_order_book, parse_trade_flow
 
 
 class ProviderError(RuntimeError):
@@ -126,6 +127,37 @@ class OKXPublicClient:
                 raise ProviderError(f"Malformed OKX candle values: {exc}") from exc
         candles.sort(key=lambda candle: candle.open_time)
         return candles[-limit:]
+
+    def get_order_book_snapshot(self, symbol: str, now: datetime | None = None, depth: int = 20) -> OrderBookSnapshot:
+        now = now or datetime.now(timezone.utc)
+        inst_id = self._inst_id(symbol)
+        payload = self._get("/api/v5/market/books", {"instId": inst_id, "sz": min(max(int(depth), 1), 400)})
+        return parse_order_book(
+            symbol=symbol,
+            payload=payload,
+            source=f"{self.source_name}:api/v5/market/books",
+            now=now,
+            freshness_seconds=120,
+            depth_levels=min(max(int(depth), 1), 20),
+        )
+
+    def get_recent_trade_flow(self, symbol: str, now: datetime | None = None, limit: int = 100) -> TradeFlowSnapshot:
+        now = now or datetime.now(timezone.utc)
+        inst_id = self._inst_id(symbol)
+        payload = self._get("/api/v5/market/trades", {"instId": inst_id, "limit": min(max(int(limit), 1), 500)})
+        rows = payload.get("data")
+        if not isinstance(rows, list):
+            raise ProviderError("Malformed OKX public-trades response")
+        try:
+            return parse_trade_flow(
+                symbol=symbol,
+                rows=rows,
+                source=f"{self.source_name}:api/v5/market/trades",
+                now=now,
+                freshness_seconds=300,
+            )
+        except ValueError as exc:
+            raise ProviderError(str(exc)) from exc
 
     def get_derivatives_snapshot(self, symbol: str, now: datetime | None = None) -> DerivativesSnapshot:
         now = now or datetime.now(timezone.utc)

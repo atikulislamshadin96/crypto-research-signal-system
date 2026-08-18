@@ -41,5 +41,20 @@ def test_okx_derivatives_shape_is_parsed():
     assert snapshot.fresh is True
 
 
+def test_okx_microstructure_snapshots_are_parsed():
+    client = OKXPublicClient(config())
+    client._get = lambda path, params: {
+        "/api/v5/market/books": {"code": "0", "data": [{"ts": "1735689600000", "bids": [["100", "5"]], "asks": [["101", "1"]]}]},
+        "/api/v5/market/trades": {"code": "0", "data": [{"ts": "1735689600000", "side": "buy", "sz": "2"}, {"ts": "1735689500000", "side": "sell", "sz": "1"}]},
+    }[path]
+    now = datetime(2025, 1, 1, 0, 1, tzinfo=timezone.utc)
+    order_book = client.get_order_book_snapshot("BTCUSDT", now, depth=10)
+    flow = client.get_recent_trade_flow("BTCUSDT", now, limit=100)
+    assert order_book.depth_imbalance > 0
+    assert order_book.fresh is True
+    assert flow.signed_volume_imbalance > 0
+    assert flow.fresh is True
+
+
 def test_provider_factory_selects_okx():
     assert isinstance(build_public_client(config()), OKXPublicClient)

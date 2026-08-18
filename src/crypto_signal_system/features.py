@@ -64,3 +64,33 @@ def add_features(frame: pd.DataFrame, ema_fast: int = 20, ema_slow: int = 50, at
 def frame_is_ready(frame: pd.DataFrame) -> bool:
     required = {"ema_fast", "ema_slow", "atr", "atr_percent", "volume_ratio", "rolling_high", "rolling_low", "prior_swing_high", "prior_swing_low", "structure_bias"}
     return not frame.empty and required.issubset(frame.columns) and not frame.iloc[-1][list(required)].isna().any()
+
+
+def add_trade_flow_features(frame: pd.DataFrame, flow_frame: pd.DataFrame) -> pd.DataFrame:
+    """Join completed aggregate-trade buckets and expose only prior-bar information.
+
+    Raw flow columns are retained for auditability, while all columns ending in
+    ``_prior`` are shifted by one bar and are the only columns intended for
+    strategy confirmation. Missing buckets remain missing rather than being
+    filled with fabricated zero-flow observations.
+    """
+    if frame.empty:
+        return frame.copy()
+    required = {"open_time"}
+    if flow_frame.empty or not required.issubset(flow_frame.columns):
+        raise ValueError("flow frame must contain open_time and at least one aggregate-trade feature")
+    result = frame.copy()
+    result["open_time"] = pd.to_datetime(result["open_time"], utc=True)
+    flow = flow_frame.copy()
+    flow["open_time"] = pd.to_datetime(flow["open_time"], utc=True)
+    flow = flow.sort_values("open_time").drop_duplicates("open_time", keep="last")
+    flow_columns = [
+        column for column in flow.columns
+        if column.startswith("flow_")
+    ]
+    if not flow_columns:
+        raise ValueError("flow frame contains no flow_* columns")
+    result = result.merge(flow[["open_time", *flow_columns]], on="open_time", how="left", suffixes=("", "_flow"))
+    for column in flow_columns:
+        result[f"{column}_prior"] = result[column].shift(1)
+    return result

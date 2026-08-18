@@ -41,10 +41,10 @@ class ValidationReport:
         }
 
 
-def _window(name: str, candles: list[Candle], config: dict[str, Any], minimum_trades: int) -> ValidationWindow:
+def _window(name: str, candles: list[Candle], config: dict[str, Any], minimum_trades: int, flow_frame: pd.DataFrame | None = None) -> ValidationWindow:
     if not candles:
         return ValidationWindow(name, None, None, BacktestSummary(0, 0, None, None, None, None, None, 0, 0, 0, 0, None, None, ("No data in window.",)).to_dict(), ("empty window",))
-    _, summary = run_backtest(candles, config)
+    _, summary = run_backtest(candles, config, flow_frame=flow_frame)
     warnings = list(summary.notes)
     if summary.trades < minimum_trades:
         warnings.append(f"trade count {summary.trades} below minimum review threshold {minimum_trades}")
@@ -59,24 +59,24 @@ def split_candles(candles: list[Candle], train_fraction: float, validation_fract
     return ordered[:train_end], ordered[train_end:validation_end], ordered[validation_end:]
 
 
-def run_validation(candles: list[Candle], config: dict[str, Any]) -> ValidationReport:
+def run_validation(candles: list[Candle], config: dict[str, Any], flow_frame: pd.DataFrame | None = None) -> ValidationReport:
     train, validation, test = split_candles(candles, float(config["backtest"]["train_fraction"]), float(config["backtest"]["validation_fraction"]))
     minimum = int(config["backtest"]["minimum_trades_for_review"])
     splits = (
-        _window("research_train", train, config, minimum),
-        _window("validation", validation, config, minimum),
-        _window("untouched_out_of_sample_test", test, config, minimum),
+        _window("research_train", train, config, minimum, flow_frame),
+        _window("validation", validation, config, minimum, flow_frame),
+        _window("untouched_out_of_sample_test", test, config, minimum, flow_frame),
     )
     walk_forward: list[ValidationWindow] = []
     if len(candles) >= 200:
         window = max(100, len(candles) // 4)
         for index, start in enumerate(range(0, len(candles) - window + 1, window // 2)):
-            walk_forward.append(_window(f"walk_forward_{index + 1}", candles[start : start + window], config, minimum))
+            walk_forward.append(_window(f"walk_forward_{index + 1}", candles[start : start + window], config, minimum, flow_frame))
     sensitivity: list[dict[str, Any]] = []
     baseline = config["strategies"]["trend_pullback"].get("pullback_tolerance_atr", 0.75)
     for tolerance in (max(0.25, baseline - 0.25), baseline, baseline + 0.25):
         altered = {**config, "strategies": {**config["strategies"], "trend_pullback": {**config["strategies"]["trend_pullback"], "pullback_tolerance_atr": tolerance}}}
-        _, summary = run_backtest(test, altered)
+        _, summary = run_backtest(test, altered, flow_frame=flow_frame)
         sensitivity.append({"parameter": "trend_pullback.pullback_tolerance_atr", "value": tolerance, "out_of_sample_summary": summary.to_dict()})
     rejection_reasons: list[str] = []
     oos = splits[-1].summary

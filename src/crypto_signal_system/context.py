@@ -5,6 +5,7 @@ from typing import Any
 import pandas as pd
 
 from crypto_signal_system.models import Candidate, Evidence
+from crypto_signal_system.microstructure import OrderBookSnapshot, TradeFlowSnapshot
 
 
 def infer_frame_regime(frame: pd.DataFrame) -> str:
@@ -21,6 +22,39 @@ def infer_frame_regime(frame: pd.DataFrame) -> str:
     if float(row["close"]) < float(row["ema_slow"]) and float(row["ema_fast"]) < float(row["ema_slow"]):
         return "bearish"
     return "range"
+
+
+def attach_microstructure(
+    candidate: Candidate,
+    order_book: OrderBookSnapshot | None,
+    trade_flow: TradeFlowSnapshot | None,
+    use_for_confirmation: bool = False,
+) -> None:
+    """Attach public microstructure evidence; never infer missing values."""
+    quality = "confirmed" if use_for_confirmation else "inferred"
+    evidence_category = "microstructure" if use_for_confirmation else "microstructure_observation"
+    if order_book is not None:
+        if not order_book.fresh:
+            candidate.conflicts.append("order-book snapshot stale")
+        elif order_book.depth_imbalance is not None:
+            direction_agrees = (candidate.direction == "LONG" and order_book.depth_imbalance > 0) or (candidate.direction == "SHORT" and order_book.depth_imbalance < 0)
+            statement = "Fresh top-of-book depth imbalance agrees with candidate direction" if direction_agrees else "Fresh top-of-book depth imbalance conflicts with candidate direction"
+            if direction_agrees:
+                candidate.evidence.append(Evidence(evidence_category, statement, order_book.depth_imbalance, order_book.source, order_book.observed_at, quality))
+            else:
+                candidate.conflicts.append(statement)
+        if order_book.spread_bps is not None:
+            candidate.evidence.append(Evidence("execution", "Observed top-of-book spread is available for cost audit", order_book.spread_bps, order_book.source, order_book.observed_at, quality))
+    if trade_flow is not None:
+        if not trade_flow.fresh:
+            candidate.conflicts.append("recent trade flow stale")
+        elif trade_flow.signed_volume_imbalance is not None:
+            direction_agrees = (candidate.direction == "LONG" and trade_flow.signed_volume_imbalance > 0) or (candidate.direction == "SHORT" and trade_flow.signed_volume_imbalance < 0)
+            statement = "Fresh signed public-trade flow agrees with candidate direction" if direction_agrees else "Fresh signed public-trade flow conflicts with candidate direction"
+            if direction_agrees:
+                candidate.evidence.append(Evidence(evidence_category, statement, trade_flow.signed_volume_imbalance, trade_flow.source, trade_flow.observed_at, quality))
+            else:
+                candidate.conflicts.append(statement)
 
 
 def attach_context(candidate: Candidate, frame: pd.DataFrame, market_regime: str | None = None, derivatives: Any | None = None) -> None:

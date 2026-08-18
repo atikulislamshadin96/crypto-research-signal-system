@@ -4,10 +4,13 @@ import argparse
 import json
 from pathlib import Path
 
+import pandas as pd
+
 from crypto_signal_system.backtest import load_ohlcv_csv, run_backtest
 from crypto_signal_system.config import load_config
 from crypto_signal_system.engine import run_and_write
 from crypto_signal_system.historical import download_binance_monthly, merge_csvs
+from crypto_signal_system.microstructure_collector import run_collector
 from crypto_signal_system.validation import run_validation
 
 
@@ -22,11 +25,16 @@ def build_parser() -> argparse.ArgumentParser:
     backtest.add_argument("--symbol", default="BTCUSDT")
     backtest.add_argument("--timeframe", default="15m")
     backtest.add_argument("--output", default="artifacts/backtest.json")
+    backtest.add_argument("--flow-csv", default=None, help="Optional reduced Binance aggregate-trade CSV")
     historical = subparsers.add_parser("historical-backtest", help="Download official historical archive data and run an analysis-only yearly backtest")
     historical.add_argument("--year", type=int, default=2025)
     historical.add_argument("--timeframe", default="15m")
     historical.add_argument("--data-dir", default="data/historical")
     historical.add_argument("--output", default="artifacts/historical-backtest.json")
+    historical.add_argument("--with-aggtrades", action="store_true", help="Download official monthly aggTrades and apply the opt-in flow filter")
+    collector = subparsers.add_parser("collect-microstructure", help="Archive public OKX/Bybit order-book and trade events; never emits orders")
+    collector.add_argument("--symbols", nargs="+", default=["BTCUSDT", "ETHUSDT"])
+    collector.add_argument("--archive-dir", default="artifacts/microstructure_events")
     return parser
 
 
@@ -37,9 +45,13 @@ def main() -> int:
         result, paths = run_and_write(config)
         print(json.dumps({"run_id": result.run_id, "signals": len(result.signals), "artifacts": [str(p) for p in paths]}, indent=2))
         return 0
+    if args.command == "collect-microstructure":
+        run_collector(args.symbols, args.archive_dir)
+        return 0
     if args.command == "backtest":
         candles = load_ohlcv_csv(args.csv, args.symbol, args.timeframe)
-        trades, summary = run_backtest(candles, config)
+        flow_frame = pd.read_csv(args.flow_csv) if args.flow_csv else None
+        trades, summary = run_backtest(candles, config, flow_frame=flow_frame)
         output_path = Path(args.output)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(json.dumps({"summary": summary.to_dict(), "trades": [trade.__dict__ for trade in trades]}, indent=2), encoding="utf-8")
@@ -55,9 +67,17 @@ def main() -> int:
         merged = symbol_dir / f"{symbol}-{args.timeframe}-{args.year}.csv"
         merge_csvs([item.path for item in files], merged)
         candles = load_ohlcv_csv(merged, symbol, args.timeframe, source="binance_archive")
-        trades, summary = run_backtest(candles, config)
-        validation = run_validation(candles, config)
-        report["symbols"][symbol] = {"manifest": manifest, "csv": str(merged), "summary": summary.to_dict(), "validation": validation.to_dict(), "trades": [trade.__dict__ for trade in trades]}
+        flow_frame = None
+        flow_manifest = None
+        if args.with_aggtrades:
+            from crypto_signal_system.historical import download_binance_aggtrades_monthly
+            flow_files, flow_manifest = download_binance_aggtrades_monthly([symbol], args.timeframe, months, symbol_dir)
+            flow_merged = symbol_dir / f"{symbol}-aggTrades-{args.timeframe}-{args.year}.csv"
+            merge_csvs([item.path for item in flow_files], flow_merged)
+            flow_frame = pd.read_csv(flow_merged)
+        trades, summary = run_backtest(candles, config, flow_frame=flow_frame)
+        validation = run_validation(candles, config, flow_frame=flow_frame)
+        report["symbols"][symbol] = {"manifest": manifest, "flow_manifest": flow_manifest, "csv": str(merged), "flow_csv": str(flow_merged) if flow_frame is not None else None, "summary": summary.to_dict(), "validation": validation.to_dict(), "trades": [trade.__dict__ for trade in trades]}
     output_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(json.dumps({"year": args.year, "timeframe": args.timeframe, "symbols": list(report["symbols"].keys()), "output": str(output_path)}, indent=2))
     return 0

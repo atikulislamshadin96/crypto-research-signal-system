@@ -9,7 +9,7 @@ from crypto_signal_system.data.providers import build_public_client
 from crypto_signal_system.data.validation import validate_candles
 from crypto_signal_system.features import add_features, candles_to_frame, frame_is_ready
 from crypto_signal_system.models import RunResult
-from crypto_signal_system.context import attach_context, infer_frame_regime
+from crypto_signal_system.context import attach_context, attach_microstructure, infer_frame_regime
 from crypto_signal_system.reporting import write_artifacts
 from crypto_signal_system.risk import build_risk_state
 from crypto_signal_system.scoring import build_signal, score_candidate
@@ -57,6 +57,22 @@ def run_scan(config: dict[str, Any], now: datetime | None = None) -> RunResult:
             warnings.extend(symbol_errors)
             rejected.append({"symbol": symbol, "strategy": None, "direction": None, "evidence_score": None, "reasons": symbol_errors})
             continue
+        order_book = None
+        trade_flow = None
+        micro_cfg = config["data"].get("microstructure", {})
+        if micro_cfg.get("enabled", False) and hasattr(client, "get_order_book_snapshot"):
+            try:
+                order_book = client.get_order_book_snapshot(symbol, now, int(micro_cfg.get("order_book_depth_levels", 10)))
+                provider_status.append({"symbol": symbol, "data_type": "order_book", "valid": order_book.fresh, "source": order_book.source, "observed_at": order_book.observed_at.isoformat(), "warnings": list(order_book.warnings)})
+            except ProviderError as exc:
+                warnings.append(f"{symbol}: order book unavailable: {exc}")
+                provider_status.append({"symbol": symbol, "data_type": "order_book", "valid": False, "source": provider_name, "errors": [str(exc)]})
+            try:
+                trade_flow = client.get_recent_trade_flow(symbol, now, int(micro_cfg.get("recent_trade_limit", 100)))
+                provider_status.append({"symbol": symbol, "data_type": "trade_flow", "valid": trade_flow.fresh, "source": trade_flow.source, "observed_at": trade_flow.observed_at.isoformat(), "warnings": list(trade_flow.warnings)})
+            except ProviderError as exc:
+                warnings.append(f"{symbol}: recent trade flow unavailable: {exc}")
+                provider_status.append({"symbol": symbol, "data_type": "trade_flow", "valid": False, "source": provider_name, "errors": [str(exc)]})
         try:
             derivatives = client.get_derivatives_snapshot(symbol, now)
         except ProviderError as exc:
@@ -68,6 +84,12 @@ def run_scan(config: dict[str, Any], now: datetime | None = None) -> RunResult:
         candidates = generate_candidates(symbol, frame, config["strategies"])
         for candidate in candidates:
             attach_context(candidate, frame, infer_frame_regime(regime_frames[0] if regime_frames else frame), derivatives)
+            attach_microstructure(
+                candidate,
+                order_book,
+                trade_flow,
+                use_for_confirmation=bool(micro_cfg.get("use_for_confirmation", False)),
+            )
             score, failures = score_candidate(candidate, risk_state, config, derivatives.fresh)
             signal = build_signal(candidate, risk_state, config, derivatives.fresh)
             signal.evidence_score = score
