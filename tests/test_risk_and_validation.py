@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta, timezone
 
 from crypto_signal_system.data.validation import validate_candles
-from crypto_signal_system.models import Candle, Candidate
+from crypto_signal_system.models import Candle, Candidate, Evidence
 from crypto_signal_system.risk import build_risk_state, calculate_position_size, reward_risk
-from crypto_signal_system.scoring import score_candidate
+from crypto_signal_system.scoring import build_signal, score_candidate
 
 
 def candle(index: int, close: float = 100.0, timeframe: str = "15m") -> Candle:
@@ -71,3 +71,19 @@ def test_signal_score_fails_closed_without_structure_and_regime():
     assert score == 0.0
     assert "missing higher-timeframe regime evidence" in failures
     assert "missing objective structure evidence" in failures
+
+
+def test_position_clipping_is_warning_not_confirmation_failure():
+    observed = datetime.now(timezone.utc)
+    candidate = Candidate("BTCUSDT", "LONG", "test", observed, 100, 100, 99.9, [100.2], "close below 99.9", observed, "test", "bullish", "structure", "trigger")
+    candidate.evidence.extend([
+        Evidence("regime", "trend agrees", True, "fixture", observed, "confirmed"),
+        Evidence("structure", "structure agrees", True, "fixture", observed, "confirmed"),
+        Evidence("momentum", "momentum agrees", True, "fixture", observed, "confirmed"),
+        Evidence("volume", "volume agrees", True, "fixture", observed, "confirmed"),
+        Evidence("volatility", "volatility available", True, "fixture", observed, "confirmed"),
+        Evidence("liquidity", "liquidity available", True, "fixture", observed, "confirmed"),
+    ])
+    signal = build_signal(candidate, build_risk_state(config()), config(), derivatives_fresh=True)
+    assert signal.status == "CONFIRMED"
+    assert "position clipped to maximum notional" in signal.risk_controls["sizing_warnings"]

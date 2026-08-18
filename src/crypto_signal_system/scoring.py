@@ -68,7 +68,7 @@ def build_signal(candidate: Candidate, risk_state: RiskState, config: dict[str, 
     label = confidence_label(score, config)
     position, risk_values, size_warnings = calculate_position_size(candidate, config)
     costs = candidate_costs(candidate, config)
-    failures.extend(size_warnings)
+    candidate.warnings.extend(size_warnings)
     status = "CONFIRMED" if not failures and label else "NO TRADE"
     all_assumptions = list(candidate.assumptions)
     all_assumptions.append("Confidence is an evidence score, not a calibrated probability of profit.")
@@ -105,6 +105,7 @@ def build_signal(candidate: Candidate, risk_state: RiskState, config: dict[str, 
             "total_drawdown_percent": risk_state.total_drawdown_percent,
             "total_correlated_exposure_percent": risk_state.correlated_risk_percent,
             "derivatives_fresh": derivatives_fresh,
+            "sizing_warnings": list(size_warnings),
             "news_risk_status": "not configured" if not config["data"].get("news_enabled", False) else "configured",
         },
     )

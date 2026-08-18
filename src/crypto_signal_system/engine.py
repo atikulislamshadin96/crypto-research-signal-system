@@ -71,11 +71,11 @@ def run_scan(config: dict[str, Any], now: datetime | None = None) -> RunResult:
             score, failures = score_candidate(candidate, risk_state, config, derivatives.fresh)
             signal = build_signal(candidate, risk_state, config, derivatives.fresh)
             signal.evidence_score = score
-            signal.failure_reasons = failures
+            signal.failure_reasons = sorted(set(signal.failure_reasons))
             if signal.status == "CONFIRMED":
                 all_signals.append(signal)
             else:
-                rejected.append({"symbol": symbol, "strategy": candidate.strategy, "direction": candidate.direction, "evidence_score": score, "reasons": failures})
+                rejected.append({"symbol": symbol, "strategy": candidate.strategy, "direction": candidate.direction, "evidence_score": score, "reasons": signal.failure_reasons})
     deduped = []
     seen: set[str] = set()
     for signal in all_signals:
