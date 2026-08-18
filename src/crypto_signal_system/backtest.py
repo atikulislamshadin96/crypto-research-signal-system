@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -8,9 +9,11 @@ from typing import Any
 import pandas as pd
 
 from crypto_signal_system.features import add_features
+from crypto_signal_system.context import attach_context, infer_frame_regime
 from crypto_signal_system.models import Candle
 from crypto_signal_system.strategies import generate_candidates
-from crypto_signal_system.risk import reward_risk
+from crypto_signal_system.risk import build_risk_state, reward_risk
+from crypto_signal_system.scoring import build_signal
 
 
 @dataclass(frozen=True)
@@ -145,15 +148,24 @@ def summarize_trades(trades: list[Trade], starting_equity: float = 10_000.0) -> 
 
 def run_backtest(candles: list[Candle], config: dict[str, Any]) -> tuple[list[Trade], BacktestSummary]:
     frame = add_features(pd.DataFrame([c.to_dict() for c in candles]))
+    historical_config = deepcopy(config)
+    historical_config.setdefault("data", {})["derivatives_enabled"] = False
     frame["open_time"] = pd.to_datetime(frame["open_time"], utc=True)
     frame["close_time"] = pd.to_datetime(frame["close_time"], utc=True)
     trades: list[Trade] = []
     latency = int(config["backtest"].get("latency_bars", 1))
+    expiry_bars = int(config.get("signal", {}).get("expiry_bars", 8))
     for index in range(80, len(frame) - latency - 1):
-        history = frame.iloc[: index + 1].copy()
+        history = frame.iloc[: index + 1]
         candidates = generate_candidates(candles[0].symbol, history, config["strategies"])
-        for candidate in candidates[:1]:
-            future = frame.iloc[index + latency + 1 :]
+        risk_state = build_risk_state(historical_config)
+        for candidate in candidates:
+            attach_context(candidate, history, infer_frame_regime(history), None)
+            signal = build_signal(candidate, risk_state, historical_config, derivatives_fresh=True)
+            if signal.status != "CONFIRMED":
+                continue
+            future_start = index + latency + 1
+            future = frame.iloc[future_start : future_start + expiry_bars]
             trade = _simulate_candidate(candidate, future, config)
             if trade:
                 trades.append(trade)

@@ -18,6 +18,9 @@ def _last(frame: pd.DataFrame) -> pd.Series:
 
 def _candidate_base(symbol: str, strategy: str, direction: str, frame: pd.DataFrame, thesis: str, regime: str, structure: str, trigger: str, assumptions: list[str]) -> Candidate:
     row = _last(frame)
+    generated_at = row["close_time"]
+    if hasattr(generated_at, "to_pydatetime"):
+        generated_at = generated_at.to_pydatetime()
     atr = float(row["atr"])
     close = float(row["close"])
     if direction == "LONG":
@@ -30,13 +33,13 @@ def _candidate_base(symbol: str, strategy: str, direction: str, frame: pd.DataFr
         symbol=symbol,
         direction=direction,
         strategy=strategy,
-        generated_at=_now(),
+        generated_at=generated_at,
         entry_low=close - 0.10 * atr,
         entry_high=close + 0.10 * atr,
         stop_loss=stop,
         take_profit=targets,
         invalidation=f"A closed candle beyond the {1.5:.1f} ATR protective stop invalidates the setup.",
-        expiry=datetime.now(timezone.utc) + timedelta(hours=12),
+        expiry=generated_at + timedelta(hours=12),
         thesis=thesis,
         regime=regime,
         structure=structure,
@@ -121,6 +124,29 @@ def range_mean_reversion(symbol: str, frame: pd.DataFrame, config: dict[str, Any
     return candidate
 
 
+def liquidity_sweep_reclaim(symbol: str, frame: pd.DataFrame, config: dict[str, Any]) -> Candidate | None:
+    if len(frame) < 60:
+        return None
+    row = _last(frame)
+    atr = float(row["atr"])
+    if pd.isna(row["structure_bias"]) or pd.isna(row["displacement"]):
+        return None
+    displacement_min = float(config.get("minimum_displacement_atr", 0.50))
+    direction: str | None = None
+    if bool(row["bullish_liquidity_sweep"]) and int(row["structure_bias"]) >= 0 and float(row["displacement"]) >= displacement_min and float(row["close"]) > float(row["open"]):
+        direction = "LONG"
+    elif bool(row["bearish_liquidity_sweep"]) and int(row["structure_bias"]) <= 0 and float(row["displacement"]) >= displacement_min and float(row["close"]) < float(row["open"]):
+        direction = "SHORT"
+    if direction is None:
+        return None
+    candidate = _candidate_base(symbol, "liquidity_sweep_reclaim", direction, frame, "The closed candle swept a prior liquidity boundary and reclaimed it with directional displacement.", "structure", "prior liquidity sweep with structure bias", "closed-bar sweep reclaim", ["Sweep and displacement thresholds are research defaults and require out-of-sample validation."])
+    candidate.evidence.extend([
+        Evidence("structure", "Prior liquidity boundary was swept and reclaimed", True, "computed:liquidity_sweep", row["close_time"], "inferred"),
+        Evidence("momentum", "Displacement exceeds the configured ATR threshold", float(row["displacement"]), "computed:displacement_atr", row["close_time"], "inferred"),
+    ])
+    return candidate
+
+
 def momentum_continuation(symbol: str, frame: pd.DataFrame, config: dict[str, Any]) -> Candidate | None:
     lookback = int(config.get("lookback", 12))
     if len(frame) < lookback + 20:
@@ -145,6 +171,7 @@ def generate_candidates(symbol: str, frame: pd.DataFrame, strategy_config: dict[
         ("trend_pullback", trend_pullback),
         ("volatility_breakout", volatility_breakout),
         ("range_mean_reversion", range_mean_reversion),
+        ("liquidity_sweep_reclaim", liquidity_sweep_reclaim),
         ("momentum_continuation", momentum_continuation),
     ]
     for name, module in modules:

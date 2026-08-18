@@ -46,9 +46,21 @@ def add_features(frame: pd.DataFrame, ema_fast: int = 20, ema_slow: int = 50, at
     result["rolling_high"] = high.rolling(20, min_periods=20).max()
     result["rolling_low"] = low.rolling(20, min_periods=20).min()
     result["range_position"] = (close - result["rolling_low"]) / (result["rolling_high"] - result["rolling_low"])
+    structure_lookback = 20
+    result["prior_swing_high"] = high.shift(1).rolling(structure_lookback, min_periods=structure_lookback).max()
+    result["prior_swing_low"] = low.shift(1).rolling(structure_lookback, min_periods=structure_lookback).min()
+    result["bos_up"] = close > result["prior_swing_high"]
+    result["bos_down"] = close < result["prior_swing_low"]
+    result["bullish_liquidity_sweep"] = (low < result["prior_swing_low"]) & (close > result["prior_swing_low"])
+    result["bearish_liquidity_sweep"] = (high > result["prior_swing_high"]) & (close < result["prior_swing_high"])
+    result["displacement"] = (close - result["open"]).abs() / result["atr"]
+    result["structure_bias"] = 0
+    result.loc[result["bos_up"], "structure_bias"] = 1
+    result.loc[result["bos_down"], "structure_bias"] = -1
+    result["structure_bias"] = result["structure_bias"].mask(result["structure_bias"] == 0).ffill().fillna(0).astype(int)
     return result
 
 
 def frame_is_ready(frame: pd.DataFrame) -> bool:
-    required = {"ema_fast", "ema_slow", "atr", "atr_percent", "volume_ratio", "rolling_high", "rolling_low"}
+    required = {"ema_fast", "ema_slow", "atr", "atr_percent", "volume_ratio", "rolling_high", "rolling_low", "prior_swing_high", "prior_swing_low", "structure_bias"}
     return not frame.empty and required.issubset(frame.columns) and not frame.iloc[-1][list(required)].isna().any()

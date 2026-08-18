@@ -6,7 +6,7 @@ This repository implements an **analysis-only and notification-ready** crypto ma
 
 ## What is implemented
 
-The first release contains a configuration-driven Python package with a public Binance market-data adapter, closed-candle enforcement, OHLCV integrity and freshness checks, deterministic features, four initial strategy modules, derivatives metadata, cost-aware position sizing, daily-loss and drawdown guardrails, evidence scoring, duplicate suppression, Markdown/JSON/log artifacts, a CSV replay backtester, and a scheduled GitHub Actions workflow. Binance documents futures kline rows by open time and exposes public futures market-data endpoints such as continuous klines, open interest, funding, and basis data.[^1] GitHub Actions workflows are YAML files stored under `.github/workflows`, and scheduled or manual triggers are supported by the workflow syntax.[^2]
+The current research release contains a configuration-driven Python package with an OKX-first public market-data adapter, explicit Binance fallback/archive support, closed-candle enforcement, OHLCV integrity and freshness checks, deterministic EMA/ATR/volume/range features, causal market-structure mapping, five strategy modules including liquidity-sweep reclaim, derivatives metadata, cost-aware position sizing, daily-loss and drawdown guardrails, evidence scoring, duplicate suppression, Markdown/JSON/log artifacts, a CSV replay backtester, chronological validation, walk-forward windows, sensitivity analysis, and a scheduled GitHub Actions workflow. OKX documents public market-data endpoints and Binance publishes official historical archive files.[^1] [^2] GitHub Actions workflows are YAML files stored under `.github/workflows`, and scheduled or manual triggers are supported by the workflow syntax.[^3]
 
 The system intentionally keeps news ingestion disabled by default. This is safer than inventing a news feed or silently treating an unverified headline as confirmed evidence. A future news adapter must preserve publication timestamps, source identity, event category, cross-source corroboration, and a clear separation between fact, reported claim, inference, and speculation.
 
@@ -46,7 +46,7 @@ The scan uses public endpoints and does not require API keys. The command is sti
 
 ## Historical replay
 
-The backtester accepts user-supplied OHLCV CSV data. Required columns are `open_time`, `close_time`, `open`, `high`, `low`, `close`, and `volume`; optional columns are `quote_volume` and `trades`. Timestamps must be parseable as UTC. The backtester uses only closed bars, applies a configurable latency, includes taker fees, slippage, funding, and resolves a same-bar stop/target ambiguity conservatively as stop-first.
+The backtester accepts user-supplied OHLCV CSV data. Required columns are `open_time`, `close_time`, `open`, `high`, `low`, `close`, and `volume`; optional columns are `quote_volume` and `trades`. Timestamps must be parseable as UTC. The backtester uses only closed bars, applies a configurable latency, counts only candidates that pass the confirmed-signal gate, includes taker fees, slippage, funding, and resolves a same-bar stop/target ambiguity conservatively as stop-first.
 
 ```bash
 python -m crypto_signal_system.cli --config config/default.yaml \
@@ -54,7 +54,7 @@ python -m crypto_signal_system.cli --config config/default.yaml \
   --output artifacts/backtest.json
 ```
 
-Backtest output is a research artifact, not a forecast. The release does not claim a valid out-of-sample result without a user-supplied, timestamped dataset and a reviewed split specification. It is therefore correct for a fresh installation to report zero trades or insufficient data.
+Backtest output is a research artifact, not a forecast. The repository has now run a real 2025 15-minute study from official Binance Futures archive files for BTCUSDT and ETHUSDT. After confirmed-signal gating, BTCUSDT produced 112 full-year trades with a 33.04% win rate and -0.3734R expectancy; its untouched OOS window produced 43 trades with a 34.88% win rate and -0.3320R expectancy. ETHUSDT produced 248 full-year trades with a 34.68% win rate and -0.3085R expectancy; its untouched OOS window produced 67 trades with a 34.33% win rate and -0.2929R expectancy. Both results are rejected because OOS expectancy is negative. See `docs/backtest_2025_summary.md`; these are not calibrated probabilities or profitability claims.
 
 ## Scheduled analysis
 
@@ -73,25 +73,32 @@ When a mandatory condition fails, the system records a `NO TRADE` rejection with
 | Path | Purpose |
 |---|---|
 | `config/default.yaml` | Versioned safe defaults and cost/risk assumptions. |
-| `src/crypto_signal_system/data/binance_public.py` | Bounded-retry public futures data adapter. |
+| `src/crypto_signal_system/data/okx_public.py` | OKX-first bounded-retry public candles and derivatives adapter with pagination. |
+| `src/crypto_signal_system/data/providers.py` | Explicit provider selection; no silent cross-exchange candle mixing. |
+| `src/crypto_signal_system/data/binance_public.py` | Bounded-retry Binance public futures data adapter. |
+| `src/crypto_signal_system/historical.py` | Resumable official Binance archive downloader, normalization, manifests, and checksums. |
 | `src/crypto_signal_system/data/validation.py` | Closed-candle integrity, continuity, freshness, and completeness checks. |
-| `src/crypto_signal_system/features.py` | Deterministic EMA, ATR, volume, range, and return features. |
-| `src/crypto_signal_system/strategies.py` | Initial trend, breakout, range, and momentum candidates. |
+| `src/crypto_signal_system/features.py` | Deterministic EMA, ATR, volume, range, return, and causal structure features. |
+| `src/crypto_signal_system/context.py` | Shared regime, momentum, volatility, volume, and derivatives evidence enrichment. |
+| `src/crypto_signal_system/strategies.py` | Trend, breakout, range, liquidity-sweep, and momentum candidates. |
 | `src/crypto_signal_system/risk.py` | Position sizing, cost estimates, daily-loss, drawdown, and exposure controls. |
 | `src/crypto_signal_system/scoring.py` | Evidence score, reward-to-risk gate, confidence label, and signal construction. |
-| `src/crypto_signal_system/backtest.py` | CSV replay with fees, funding, slippage, latency, and conservative ambiguity handling. |
+| `src/crypto_signal_system/backtest.py` | Confirmed-signal CSV replay with fees, funding, slippage, latency, and conservative ambiguity handling. |
+| `src/crypto_signal_system/validation.py` | Chronological train/validation/OOS splits, walk-forward windows, sensitivity, and rejection gates. |
+| `docs/backtest_2025_summary.md` | Exact 2025 confirmed-signal results and interpretation. |
 | `src/crypto_signal_system/reporting.py` | Human-readable and machine-readable audit artifacts. |
 | `.github/workflows/crypto-scan.yml` | Periodic analysis, test gate, and artifact upload. |
 | `tests/` | Unit tests for validation, risk, sizing, and scoring. |
 
 ## Known limitations and next safety gates
 
-The system does not yet provide a calibrated probability model, a validated news pipeline, multi-exchange reconciliation, a full walk-forward report generator, survivorship-bias controls for a changing universe, liquidation/mark-price simulation, partial-fill modeling, or live execution. Those omissions are explicit. They should be addressed through research and paper-trading milestones rather than hidden behind a higher confidence label.
+The system does not yet provide a calibrated probability model, a validated news pipeline, multi-exchange reconciliation, survivorship-bias controls for a changing universe, liquidation/mark-price simulation, partial-fill modeling, historical derivatives replay, or live execution. The 2025 confirmed-signal study currently rejects both BTCUSDT and ETHUSDT because untouched OOS expectancy is negative. These omissions and negative findings are explicit; they should be addressed through research and paper-trading milestones rather than hidden behind a higher confidence label.
 
 Before any future execution work, require an independent design review, point-in-time data audit, out-of-sample and walk-forward evidence, paper-trading logs, notification failure tests, exact account-rule mapping, and a separate manual confirmation. The feature flag `enable_live_execution` is rejected by the current configuration validator, so merely editing YAML cannot enable it.
 
 ## References
 
-[^1]: [Binance Futures USDⓈ-M REST API market data documentation](https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/rest-api/market-data)
-[^2]: [GitHub Actions workflow syntax](https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions)
-[^3]: [Using secrets in GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
+[^1]: [OKX API v5 documentation](https://www.okx.com/docs-v5/en/)
+[^2]: [Binance Futures historical data archive](https://data.binance.vision/)
+[^3]: [GitHub Actions workflow syntax](https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions)
+[^4]: [Using secrets in GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)

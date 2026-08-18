@@ -8,7 +8,9 @@ system:
   output_dir: "artifacts"
 
 data:
-  provider: "binance_public"
+  provider: "okx_public"
+  okx_base_url: "https://www.okx.com"
+  okx_instrument_template: "{symbol}-SWAP"
   spot_base_url: "https://data-api.binance.vision"
   futures_base_url: "https://fapi.binance.com"
   symbols: ["BTCUSDT", "ETHUSDT"]
@@ -76,6 +78,9 @@ strategies:
     lookback: 40
     atr_period: 14
     boundary_percentile: 0.15
+  liquidity_sweep_reclaim:
+    enabled: true
+    minimum_displacement_atr: 0.50
   momentum_continuation:
     enabled: true
     lookback: 12

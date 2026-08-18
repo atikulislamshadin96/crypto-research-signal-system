@@ -6,6 +6,9 @@ __pycache__/
 .env.*
 artifacts/*
 !artifacts/.gitkeep
+data/raw/*
+data/historical/*
+!data/.gitkeep
 *.log
 .DS_Store
 

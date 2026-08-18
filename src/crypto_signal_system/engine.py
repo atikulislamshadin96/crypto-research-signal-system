@@ -4,10 +4,12 @@ import hashlib
 from datetime import datetime, timezone
 from typing import Any
 
-from crypto_signal_system.data.binance_public import BinancePublicClient, ProviderError
+from crypto_signal_system.data.binance_public import ProviderError
+from crypto_signal_system.data.providers import build_public_client
 from crypto_signal_system.data.validation import validate_candles
 from crypto_signal_system.features import add_features, candles_to_frame, frame_is_ready
-from crypto_signal_system.models import Evidence, RunResult
+from crypto_signal_system.models import RunResult
+from crypto_signal_system.context import attach_context, infer_frame_regime
 from crypto_signal_system.reporting import write_artifacts
 from crypto_signal_system.risk import build_risk_state
 from crypto_signal_system.scoring import build_signal, score_candidate
@@ -18,38 +20,12 @@ def _run_id(now: datetime) -> str:
     return now.strftime("%Y%m%dT%H%M%SZ")
 
 
-def _market_regime(frames: dict[str, Any]) -> str:
-    daily = frames.get("1d")
-    if daily is None or daily.empty or not frame_is_ready(daily):
-        return "indeterminate"
-    row = daily.iloc[-1]
-    close = float(row["close"])
-    fast = float(row["ema_fast"])
-    slow = float(row["ema_slow"])
-    atr_percent = float(row["atr_percent"])
-    if atr_percent >= 8:
-        return "transition"
-    if close > slow and fast > slow:
-        return "bullish"
-    if close < slow and fast < slow:
-        return "bearish"
-    return "range"
-
-
-def _attach_context(candidate: Any, frame: Any, derivatives: Any) -> None:
-    row = frame.iloc[-1]
-    candidate.evidence.append(Evidence("volatility", "ATR percentage is available from closed candles", float(row["atr_percent"]), "computed:ATR", row["close_time"], "inferred"))
-    if not derivatives.fresh:
-        candidate.conflicts.append("derivatives snapshot stale")
-    else:
-        candidate.evidence.append(Evidence("derivatives", "Funding and open interest snapshot is fresh", True, derivatives.source, derivatives.observed_at, "confirmed"))
-        if derivatives.funding_rate is not None:
-            candidate.evidence.append(Evidence("liquidity", "Funding rate is recorded for audit", derivatives.funding_rate, derivatives.source, derivatives.observed_at, "confirmed"))
 
 
 def run_scan(config: dict[str, Any], now: datetime | None = None) -> RunResult:
     now = now or datetime.now(timezone.utc)
-    client = BinancePublicClient(config)
+    client = build_public_client(config)
+    provider_name = str(config["data"].get("provider", "unknown"))
     warnings: list[str] = []
     provider_status: list[dict[str, Any]] = []
     all_signals = []
@@ -64,7 +40,7 @@ def run_scan(config: dict[str, Any], now: datetime | None = None) -> RunResult:
             try:
                 candles = client.get_closed_candles(symbol, timeframe, int(config["data"]["candle_limit"]), now)
                 validation = validate_candles(candles, int(config["data"]["candle_limit"]), int(config["data"]["stale_after_seconds"]["candles"]), now)
-                provider_status.append({"symbol": symbol, "timeframe": timeframe, "valid": validation.valid, "completeness": validation.completeness, "warnings": list(validation.warnings), "errors": list(validation.errors), "source": candles[-1].source if candles else "binance_public"})
+                provider_status.append({"symbol": symbol, "timeframe": timeframe, "valid": validation.valid, "completeness": validation.completeness, "warnings": list(validation.warnings), "errors": list(validation.errors), "source": candles[-1].source if candles else provider_name})
                 if not validation.valid:
                     symbol_errors.extend(validation.errors)
                     continue
@@ -76,7 +52,7 @@ def run_scan(config: dict[str, Any], now: datetime | None = None) -> RunResult:
                 freshest.append(candles[-1].close_time)
             except ProviderError as exc:
                 symbol_errors.append(f"{symbol} {timeframe}: provider failure: {exc}")
-                provider_status.append({"symbol": symbol, "timeframe": timeframe, "valid": False, "errors": [str(exc)], "source": "binance_public"})
+                provider_status.append({"symbol": symbol, "timeframe": timeframe, "valid": False, "errors": [str(exc)], "source": provider_name})
         if symbol_errors:
             warnings.extend(symbol_errors)
             rejected.append({"symbol": symbol, "strategy": None, "direction": None, "evidence_score": None, "reasons": symbol_errors})
@@ -91,7 +67,7 @@ def run_scan(config: dict[str, Any], now: datetime | None = None) -> RunResult:
             regime_frames.append(frames[config["data"]["timeframes"]["regime"][0]])
         candidates = generate_candidates(symbol, frame, config["strategies"])
         for candidate in candidates:
-            _attach_context(candidate, frame, derivatives)
+            attach_context(candidate, frame, infer_frame_regime(regime_frames[0] if regime_frames else frame), derivatives)
             score, failures = score_candidate(candidate, risk_state, config, derivatives.fresh)
             signal = build_signal(candidate, risk_state, config, derivatives.fresh)
             signal.evidence_score = score
@@ -114,7 +90,7 @@ def run_scan(config: dict[str, Any], now: datetime | None = None) -> RunResult:
         generated_at=now,
         data_as_of=min(freshest) if freshest else None,
         system_version=config["system"]["version"],
-        market_regime=_market_regime({"1d": regime_frames[0] if regime_frames else None}),
+        market_regime=infer_frame_regime(regime_frames[0] if regime_frames else None) if regime_frames else "indeterminate",
         signals=deduped,
         rejected_candidates=rejected,
         risk_state=risk_state,
