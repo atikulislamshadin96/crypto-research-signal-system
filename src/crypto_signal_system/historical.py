@@ -221,13 +221,14 @@ def download_binance_monthly(
                 writer = csv.DictWriter(handle, fieldnames=list(rows[0].keys()))
                 writer.writeheader()
                 writer.writerows(rows)
-            files.append(ArchiveFile(symbol, timeframe, month, url, str(path), _sha256(raw), len(raw), len(rows), "klines"))
+            files.append(ArchiveFile(symbol, timeframe, month, url, str(path), _sha256_file(path), path.stat().st_size, len(rows), "klines"))
     manifest = {
         "source": "Binance Data Collection official archive",
         "source_url": "https://data.binance.vision/",
         "retrieved_at": datetime.now(timezone.utc).isoformat(),
         "timeframe": timeframe,
         "dataset": "klines",
+        "checksum_scope": "normalized_csv_file_bytes",
         "files": [asdict(file) for file in files],
     }
     manifest_path = output / f"manifest-{timeframe}.json"
