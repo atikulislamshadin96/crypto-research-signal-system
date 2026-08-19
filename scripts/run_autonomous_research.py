@@ -26,10 +26,32 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run bounded analysis-only autonomous research")
     parser.add_argument("--registry", default="artifacts/research_engine/registry.sqlite3")
     parser.add_argument("--output-dir", default="artifacts/research_engine/cycles")
+    parser.add_argument("--queue", default="config/research_queue.json")
     parser.add_argument("--data-path", action="append", dest="data_paths", default=[], help="Required data file; repeat for multiple files")
     parser.add_argument("--max-candidates", type=int, default=12)
     parser.add_argument("--stale-after-hours", type=float, default=36.0)
     return parser.parse_args()
+
+
+def load_priority_candidates(queue_path: str | Path) -> tuple[list[object], str | None]:
+    """Load only immutable queue entries; fall back to the full frozen grid if absent."""
+    path = Path(queue_path)
+    if not path.is_absolute():
+        path = ROOT / path
+    all_candidates = frozen_candidate_grid()
+    if not path.exists():
+        return all_candidates, None
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    by_id = {candidate.hypothesis_id: candidate for candidate in all_candidates}
+    ordered: list[object] = []
+    for row in sorted(payload.get("candidates", []), key=lambda item: int(item.get("priority", 9999))):
+        hypothesis_id = row.get("hypothesis_id")
+        candidate = by_id.get(hypothesis_id)
+        if candidate is not None:
+            ordered.append(candidate)
+    if not ordered:
+        return all_candidates, str(path)
+    return ordered, str(path)
 
 
 def main() -> int:
@@ -54,7 +76,8 @@ def main() -> int:
 
     registry = HypothesisRegistry(args.registry)
     evaluator = ResearchEvaluator(registry)
-    candidates = frozen_candidate_grid()[: max(0, args.max_candidates)]
+    candidates, queue_path = load_priority_candidates(args.queue)
+    candidates = candidates[: max(0, args.max_candidates)]
     cycle_rows: list[dict[str, object]] = []
     registered = 0
     skipped = 0
@@ -77,6 +100,8 @@ def main() -> int:
             "cycle_id": cycle_id,
             "engine_version": "0.1.0",
             "protocol_version": "research-ladder-v1",
+            "queue_path": queue_path,
+            "queue_priority_order": [spec.hypothesis_id for spec in candidates],
             "analysis_only": True,
             "live_execution_enabled": False,
             "dataset_hash": data_hash,

@@ -1,0 +1,101 @@
+{
+  "queue_version": "2026-08-19-reaudit-v1",
+  "analysis_only": true,
+  "live_execution_enabled": false,
+  "paper_trading_enabled": false,
+  "promotion_requires_human_gate": true,
+  "source_documents": [
+    {
+      "source_id": "uploaded-source-a",
+      "path": "/home/ubuntu/upload/pasted_content.txt",
+      "sha256": "bd7d001000c43c9e7031c5ae97f736e9f7f4f8403bf21f74a1fb65c0efcb9d2e",
+      "bytes": 5373,
+      "lines": 298,
+      "role": "focused L2 liquidity-state transition protocol"
+    },
+    {
+      "source_id": "uploaded-source-b",
+      "path": "/home/ubuntu/upload/pasted_content_2.txt",
+      "sha256": "19b56a5ff693211855c3521ff9792efd7ac96bf175025e9855fea1a0448f645d",
+      "bytes": 9827,
+      "lines": 538,
+      "role": "autonomous architecture and four-candidate research queue"
+    }
+  ],
+  "candidates": [
+    {
+      "priority": 1,
+      "hypothesis_id": "liquidity-state-transition-eth-btc-v1",
+      "family": "liquidity_state_transition",
+      "version": "v1",
+      "hypothesis": "Pre-event relative spread, top-20 depth and top-20 imbalance define a frozen liquidity state; test post-event state transitions and incremental signed-flow information.",
+      "exact_measurable_definition": "Use only pre-event features; construct frozen state bins before forward outcomes; compare L2-only, flow-only, L2-plus-flow and matched controls with event clustering.",
+      "source_claims": ["uploaded-source-a:11-15", "uploaded-source-a:82-158", "uploaded-source-a:162-197", "uploaded-source-b:19-37"],
+      "required_data": ["historical top-20 L2", "source timestamps", "sequence/gap metadata", "public trades", "spread", "signed flow", "BTCUSDT", "ETHUSDT"],
+      "why_different": "Primary state-transition mechanism; not an SMC chart-label strategy.",
+      "evidence_grade": "B- / mechanism-supported, not validated",
+      "testable_with_current_data": false,
+      "status": "BLOCKED_DATA",
+      "next_research_stage": "Acquire and validate timestamp-safe BTC/ETH historical L2, then run event study before directional modeling.",
+      "protocol_version": "research-ladder-v1"
+    },
+    {
+      "priority": 2,
+      "hypothesis_id": "liquidity-depletion-replenishment-displacement-v1",
+      "family": "liquidity_depletion_replenishment",
+      "version": "v1",
+      "hypothesis": "Causal liquidity depletion followed by replenishment may change subsequent displacement and execution cost.",
+      "exact_measurable_definition": "Fixed-window normalized depth/spread deterioration, fixed-window recovery, then signed mid-price displacement, adverse/favorable excursion and execution-cost outcomes versus matched controls.",
+      "source_claims": ["uploaded-source-b:41-63"],
+      "required_data": ["historical L2", "synchronized trades", "spread", "depth", "source timestamps", "BTCUSDT", "ETHUSDT"],
+      "why_different": "Sequence is depletion-to-recovery-to-outcome; no assumption of continuation or reversal and no SMC labels.",
+      "evidence_grade": "C+ / plausible and testable, no independent validation",
+      "testable_with_current_data": false,
+      "status": "QUEUED_BLOCKED_DATA",
+      "next_research_stage": "Run after Priority 1 data audit using the same immutable L2 manifest.",
+      "protocol_version": "research-ladder-v1"
+    },
+    {
+      "priority": 3,
+      "hypothesis_id": "liquidation-crowding-exhaustion-risk-v1",
+      "family": "liquidation_crowding_exhaustion",
+      "version": "v1",
+      "hypothesis": "Joint crowding, forced-flow and L2 deterioration may classify stressed or exhausted liquidity states.",
+      "exact_measurable_definition": "Combine pre-registered crowding proxy, liquidation/forced-flow activity, low depth or high spread, and subsequent replenishment; evaluate event-level risk-state labels, not directional returns alone.",
+      "source_claims": ["uploaded-source-b:65-82"],
+      "required_data": ["historical liquidations", "open interest", "funding", "historical L2", "signed flow", "spread", "depth", "independent cascade episodes"],
+      "why_different": "Initial target is capital-preservation regime state rather than entry direction.",
+      "evidence_grade": "C+ / risk mechanism supported, event-heterogeneous",
+      "testable_with_current_data": false,
+      "status": "QUEUED_BLOCKED_DATA",
+      "next_research_stage": "Build cascade event dataset; apply leave-one-event-out, placebo windows and news-shock stratification.",
+      "protocol_version": "research-ladder-v1"
+    },
+    {
+      "priority": 4,
+      "hypothesis_id": "cross-venue-price-discovery-migration-v1",
+      "family": "cross_venue_price_discovery",
+      "version": "v1",
+      "hypothesis": "A synchronized liquidity or signed-flow change on one venue may precede a measurable response on another venue.",
+      "exact_measurable_definition": "Estimate venue ordering only in development; measure lead-lag, response latency, basis, spread/depth response and transaction-cost-adjusted predictability under a fixed timestamp tolerance.",
+      "source_claims": ["uploaded-source-b:84-105", "uploaded-source-b:143-193"],
+      "required_data": ["synchronized Binance/OKX/Bybit trades", "venue L2", "source timestamps", "receive timestamps", "sequence/gap status", "venue fees", "basis"],
+      "why_different": "Cross-venue information migration, not a single-venue chart pattern or assumed leader.",
+      "evidence_grade": "C+ / research-supported, data-intensive",
+      "testable_with_current_data": false,
+      "status": "QUEUED_BLOCKED_DATA",
+      "next_research_stage": "Complete forward OKX/Bybit collection and obtain a long synchronized venue archive before lead-lag estimation.",
+      "protocol_version": "research-ladder-v1"
+    }
+  ],
+  "new_candidates_added": [],
+  "duplicate_candidates_removed": [],
+  "unsupported_claims_rejected": [
+    "Any implied profitability or directional edge from the four candidates",
+    "Any assumption that order flow must add incremental information",
+    "Any assumed venue leadership",
+    "Any automatic liquidation reversal or continuation signal",
+    "Any prop-firm readiness implication from risk-simulation thresholds"
+  ],
+  "final_status": "NO_NEW_VALIDATED_HYPOTHESIS_FOUND"
+}
