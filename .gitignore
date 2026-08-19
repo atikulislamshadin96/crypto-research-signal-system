@@ -9,6 +9,7 @@ artifacts/*
 data/raw/*
 data/historical/*
 data/focused_ohlcv/*
+data/focused_ohlcv_phase1/*
 data/microstructure_snapshots/*
 !data/.gitkeep
 *.log

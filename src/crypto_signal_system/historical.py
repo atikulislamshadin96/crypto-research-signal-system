@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+from itertools import chain
 import io
 import json
 import tempfile
@@ -30,6 +31,7 @@ class ArchiveFile:
 
 
 _BINANCE_ARCHIVE = "https://data.binance.vision/data/futures/um/monthly/klines/{symbol}/{timeframe}/{symbol}-{timeframe}-{month}.zip"
+_BINANCE_DAILY_ARCHIVE = "https://data.binance.vision/data/futures/um/daily/klines/{symbol}/{timeframe}/{symbol}-{timeframe}-{day}.zip"
 _BINANCE_AGGTRADES_ARCHIVE = "https://data.binance.vision/data/futures/um/monthly/aggTrades/{symbol}/{symbol}-aggTrades-{month}.zip"
 
 
@@ -60,12 +62,27 @@ def _normalize_rows(raw: bytes, symbol: str, timeframe: str) -> list[dict[str, A
             raise ValueError("Archive contains no CSV")
         with archive.open(csv_names[0]) as handle:
             text = io.TextIOWrapper(handle, encoding="utf-8", newline="")
-            reader = csv.DictReader(text)
+            reader = csv.reader(text)
+            first = next(reader, None)
+            if first is None:
+                raise ValueError("Archive CSV is empty")
             required = {"open_time", "open", "high", "low", "close", "volume", "close_time", "quote_volume", "count"}
-            if not required.issubset(reader.fieldnames or set()):
-                raise ValueError(f"Unexpected archive schema: {reader.fieldnames}")
+            if required.issubset(set(first)):
+                header = first
+                rows_iter = (dict(zip(header, row)) for row in reader)
+            elif len(first) >= 9 and first[0].isdigit():
+                # Binance Vision has published some historical kline archives
+                # without a header. Use the documented 12-column positional
+                # schema; do not infer or fabricate any market values.
+                rows_iter = (
+                    {"open_time": row[0], "open": row[1], "high": row[2], "low": row[3], "close": row[4],
+                     "volume": row[5], "close_time": row[6], "quote_volume": row[7], "count": row[8]}
+                    for row in chain([first], reader)
+                )
+            else:
+                raise ValueError(f"Unexpected archive schema: {first}")
             rows: list[dict[str, Any]] = []
-            for row in reader:
+            for row in rows_iter:
                 open_ms = int(row["open_time"])
                 close_ms = int(row["close_time"])
                 rows.append(
@@ -232,6 +249,56 @@ def download_binance_monthly(
         "files": [asdict(file) for file in files],
     }
     manifest_path = output / f"manifest-{timeframe}.json"
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    return files, manifest
+
+
+def download_binance_daily(
+    symbols: list[str],
+    timeframe: str,
+    days: list[str],
+    output_dir: str | Path,
+    timeout_seconds: int = 120,
+) -> tuple[list[ArchiveFile], dict[str, Any]]:
+    """Download and normalize official Binance daily kline archives.
+
+    This is intended for an incomplete current-month tail when the monthly
+    archive does not yet exist. Checksums always cover the normalized CSV.
+    """
+    output = Path(output_dir)
+    output.mkdir(parents=True, exist_ok=True)
+    session = requests.Session()
+    files: list[ArchiveFile] = []
+    for symbol in symbols:
+        for day in days:
+            if len(day) != 10 or day[4] != "-" or day[7] != "-":
+                raise ValueError(f"Day must be YYYY-MM-DD, got {day!r}")
+            url = _BINANCE_DAILY_ARCHIVE.format(symbol=symbol, timeframe=timeframe, day=day)
+            path = output / f"{symbol}-{timeframe}-{day}.csv"
+            if path.exists() and path.stat().st_size > 0:
+                with path.open(encoding="utf-8") as handle:
+                    rows = list(csv.DictReader(handle))
+                files.append(ArchiveFile(symbol, timeframe, day, url, str(path), _sha256_file(path), path.stat().st_size, len(rows), "klines"))
+                continue
+            response = session.get(url, timeout=timeout_seconds)
+            response.raise_for_status()
+            rows = _normalize_rows(response.content, symbol, timeframe)
+            with path.open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.DictWriter(handle, fieldnames=list(rows[0].keys()))
+                writer.writeheader()
+                writer.writerows(rows)
+            files.append(ArchiveFile(symbol, timeframe, day, url, str(path), _sha256_file(path), path.stat().st_size, len(rows), "klines"))
+    manifest = {
+        "source": "Binance Data Collection official archive",
+        "source_url": "https://data.binance.vision/",
+        "retrieved_at": datetime.now(timezone.utc).isoformat(),
+        "timeframe": timeframe,
+        "dataset": "klines",
+        "frequency": "daily_archive",
+        "checksum_scope": "normalized_csv_file_bytes",
+        "files": [asdict(file) for file in files],
+    }
+    manifest_path = output / f"manifest-{timeframe}-daily.json"
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     return files, manifest
 
