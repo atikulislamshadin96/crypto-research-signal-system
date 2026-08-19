@@ -30,3 +30,18 @@ The collector tracks venue-specific update identifiers. A previous-sequence mism
 ## Research gate
 
 A prospective dataset is not evidence of a profitable strategy. Before any claim, the replay pipeline must perform timestamp alignment, exclude gap-affected intervals, define event-to-bar aggregation without look-ahead, freeze thresholds using training observations only, model fees/slippage/funding and latency, and score a separate untouched evaluation period. The current project remains analysis-only throughout.
+
+## Bounded five-minute snapshot workflow
+
+For a lower-cost prospective sampling path, the repository also exposes a bounded command:
+
+```bash
+crypto-signal --config config/default.yaml collect-microstructure-snapshot \
+  --symbols BTCUSDT ETHUSDT SOLUSDT \
+  --duration-seconds 45 \
+  --output artifacts/microstructure_snapshots/snapshot.parquet
+```
+
+The dedicated workflow `.github/workflows/microstructure-snapshot.yml` requests this command on a best-effort `*/5` schedule and uploads one Parquet artifact per run with 90-day retention. Each row is a venue-symbol snapshot containing best bid/ask, spread, configured depth totals, trade count, signed trade volume, and data-quality status. It is a bounded sample, not a lossless order-book event archive: GitHub Actions may delay or queue schedules, jobs can fail, and snapshots cannot reconstruct intervals between runs. The workflow therefore must not be used as proof of continuous coverage or historical edge.
+
+For timestamp-safe microstructure replay, the persistent JSONL collector remains the authoritative prospective recorder. The five-minute workflow is only a supplementary snapshot stream intended to measure coverage and develop data-quality diagnostics. Parquet artifacts must be downloaded and merged with their GitHub run timestamps, retaining missing-run and invalid-row metadata rather than silently forward-filling observations.

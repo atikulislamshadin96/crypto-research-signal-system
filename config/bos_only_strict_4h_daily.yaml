@@ -5,50 +5,36 @@ system:
   analysis_only: true
   enable_live_execution: false
   kill_switch: false
-  output_dir: "artifacts"
+  output_dir: "artifacts/bos-4h-daily"
 
 data:
-  provider: "okx_public"
-  okx_base_url: "https://www.okx.com"
-  okx_instrument_template: "{symbol}-SWAP"
-  spot_base_url: "https://data-api.binance.vision"
-  futures_base_url: "https://fapi.binance.com"
-  symbols: ["BTCUSDT", "ETHUSDT"]
+  provider: "binance_archive"
+  symbols: ["BTCUSDT", "ETHUSDT", "SOLUSDT"]
   timeframes:
-    regime: ["1d", "4h"]
-    structure: "1h"
-    entry: "15m"
-  candle_limit: 300
-  request_timeout_seconds: 15
-  max_retries: 3
-  stale_after_seconds:
-    candles: 1800
-    derivatives: 1800
-    news: 7200
+    research: ["4h", "1d"]
   require_closed_candles: true
   derivatives_enabled: false
   news_enabled: false
-  news_provider: null
 
 risk:
   account_equity: 10000.0
   risk_per_trade_percent: 0.25
-  max_simultaneous_positions: 2
-  max_correlated_risk_percent: 0.50
-  max_notional_usd: 5000.0
-  max_leverage: 2.0
+  reference_equity: 10000.0
+  max_simultaneous_positions: 1
+  max_correlated_risk_percent: 0.25
   max_daily_trades: 3
   max_consecutive_losses: 3
   soft_daily_loss_percent: 3.0
   hard_daily_loss_percent: 5.0
   hard_total_drawdown_percent: 10.0
-  reference_equity: 10000.0
   daily_reset_timezone: "UTC"
   loss_streak_cooldown_minutes: 720
   extreme_volatility_atr_percent: 8.0
   estimated_fee_rate_round_trip: 0.0008
   estimated_slippage_rate_round_trip: 0.0006
   estimated_funding_rate_per_8h: 0.0001
+  max_notional_usd: 5000.0
+  max_leverage: 2.0
   minimum_reward_risk: 1.5
 
 signal:
@@ -64,26 +50,12 @@ signal:
 strategies:
   trend_pullback:
     enabled: false
-    ema_fast: 20
-    ema_slow: 50
-    atr_period: 14
-    pullback_tolerance_atr: 0.75
   volatility_breakout:
     enabled: false
-    lookback: 20
-    atr_period: 14
-    breakout_buffer_atr: 0.10
   range_mean_reversion:
     enabled: false
-    lookback: 40
-    atr_period: 14
-    boundary_percentile: 0.15
   liquidity_sweep_reclaim:
     enabled: false
-    minimum_displacement_atr: 1.25
-    minimum_volume_ratio: 1.25
-    stop_atr: 1.25
-    target_atr: 3.00
   bos_retest_continuation:
     enabled: true
     structure_lookback: 20
@@ -94,9 +66,6 @@ strategies:
     target_atr: 3.00
   momentum_continuation:
     enabled: false
-    lookback: 12
-    volume_window: 20
-    atr_period: 14
 
 backtest:
   maker_fee_rate: 0.0002
@@ -107,14 +76,31 @@ backtest:
   ambiguity_policy: "conservative_stop_first"
   strategy_history_bars: 160
   order_flow_confirmation:
-    # Frozen rejected hypothesis; never enabled in the BOS baseline.
     enabled: false
-    long_min_taker_buy_ratio: 0.60
-    short_max_taker_buy_ratio: 0.40
-    long_min_signed_imbalance: 0.15
-    short_min_abs_signed_imbalance: 0.15
-    max_abs_price_impact_bps: 15.0
   minimum_trades_for_review: 30
   train_fraction: 0.50
   validation_fraction: 0.25
   test_fraction: 0.25
+  validation_protocol:
+    oos_windows: 8
+    purge_bars: 8
+    embargo_bars: 1
+    cpcv_groups: 8
+    cpcv_test_groups: 2
+    minimum_cpcv_paths: 20
+    perturbation_mode: "pre_registered_only"
+    perturbations:
+      structure_lookback: [18, 20, 22]
+      minimum_displacement_atr: [1.125, 1.25, 1.375]
+      minimum_volume_ratio: [1.125, 1.25, 1.375]
+      retest_tolerance_atr: [0.08, 0.10, 0.12]
+      stop_atr: [1.125, 1.25, 1.375]
+      target_atr: [2.70, 3.00, 3.30]
+    costs_bps: [5, 10, 15]
+    prop_firm:
+      starting_equity: 100000.0
+      daily_loss_limit_percent: 5.0
+      total_drawdown_limit_percent: 10.0
+      risk_per_trade_percent: 0.25
+      max_daily_trades: 3
+      max_consecutive_losses: 3

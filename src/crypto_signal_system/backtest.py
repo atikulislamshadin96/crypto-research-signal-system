@@ -96,8 +96,13 @@ def _simulate_candidate(candidate: Any, future: pd.DataFrame, config: dict[str, 
         direction_sign = 1 if candidate.direction == "LONG" else -1
         gross = direction_sign * (exit_price - entry)
         notional = entry
-        fee = notional * float(config["backtest"]["taker_fee_rate"]) * 2
-        slippage = notional * float(config["backtest"]["slippage_rate"])
+        explicit_cost_bps = config["backtest"].get("execution_cost_bps")
+        if explicit_cost_bps is not None:
+            fee = 0.0
+            slippage = notional * float(explicit_cost_bps) / 10_000.0
+        else:
+            fee = notional * float(config["backtest"]["taker_fee_rate"]) * 2
+            slippage = notional * float(config["backtest"]["slippage_rate"])
         bar_close_time = pd.Timestamp(bar["close_time"]).to_pydatetime()
         holding_hours = max(0.0, (bar_close_time - candidate.generated_at).total_seconds() / 3600)
         funding = notional * float(config["backtest"]["funding_rate_per_8h"]) * (holding_hours / 8)
@@ -245,7 +250,12 @@ def _passes_order_flow_confirmation(candidate: Any, history: pd.DataFrame, confi
     return True
 
 
-def run_backtest(candles: list[Candle], config: dict[str, Any], flow_frame: pd.DataFrame | None = None) -> tuple[list[Trade], BacktestSummary]:
+def run_backtest(
+    candles: list[Candle],
+    config: dict[str, Any],
+    flow_frame: pd.DataFrame | None = None,
+    evaluation_windows: list[tuple[int, int]] | None = None,
+) -> tuple[list[Trade], BacktestSummary]:
     frame = add_features(pd.DataFrame([c.to_dict() for c in candles]))
     if flow_frame is not None:
         frame = add_trade_flow_features(frame, flow_frame)
@@ -264,6 +274,12 @@ def run_backtest(candles: list[Candle], config: dict[str, Any], flow_frame: pd.D
     for index in event_indices:
         if index >= len(frame) - latency - 1:
             continue
+        active_window_end = len(frame)
+        if evaluation_windows is not None:
+            matching_windows = [end for start, end in evaluation_windows if start <= index < end]
+            if not matching_windows:
+                continue
+            active_window_end = min(matching_windows)
         history = frame.iloc[max(0, index + 1 - history_bars) : index + 1]
         candidates = generate_candidates(candles[0].symbol, history, config["strategies"])
         risk_state = build_risk_state(historical_config)
@@ -275,7 +291,7 @@ def run_backtest(candles: list[Candle], config: dict[str, Any], flow_frame: pd.D
             if signal.status != "CONFIRMED":
                 continue
             future_start = index + latency + 1
-            future = frame.iloc[future_start : future_start + expiry_bars]
+            future = frame.iloc[future_start : min(active_window_end, future_start + expiry_bars)]
             trade = _simulate_candidate(candidate, future, config)
             if trade:
                 trades.append(trade)

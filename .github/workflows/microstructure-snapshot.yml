@@ -1,0 +1,51 @@
+name: microstructure-snapshot
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Best-effort five-minute cadence; GitHub Actions can queue or delay scheduled jobs.
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: microstructure-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5.6.0
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install .
+
+      - name: Collect bounded public snapshot
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: >-
+          python -m crypto_signal_system.cli
+          --config config/default.yaml
+          collect-microstructure-snapshot
+          --symbols BTCUSDT ETHUSDT SOLUSDT
+          --duration-seconds 45
+          --output artifacts/microstructure_snapshots/snapshot-${{ github.run_id }}.parquet
+
+      - name: Upload Parquet snapshot and run metadata
+        if: always()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: microstructure-snapshot-${{ github.run_id }}
+          path: artifacts/microstructure_snapshots/
+          if-no-files-found: error
+          retention-days: 90

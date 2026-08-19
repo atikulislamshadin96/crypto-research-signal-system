@@ -8,6 +8,8 @@ artifacts/*
 !artifacts/.gitkeep
 data/raw/*
 data/historical/*
+data/focused_ohlcv/*
+data/microstructure_snapshots/*
 !data/.gitkeep
 *.log
 .DS_Store

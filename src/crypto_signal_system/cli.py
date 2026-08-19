@@ -11,6 +11,7 @@ from crypto_signal_system.config import load_config
 from crypto_signal_system.engine import run_and_write
 from crypto_signal_system.historical import download_binance_monthly, merge_csvs
 from crypto_signal_system.microstructure_collector import run_collector
+from crypto_signal_system.microstructure_snapshot import collect_snapshot
 from crypto_signal_system.validation import run_validation
 
 
@@ -35,6 +36,10 @@ def build_parser() -> argparse.ArgumentParser:
     collector = subparsers.add_parser("collect-microstructure", help="Archive public OKX/Bybit order-book and trade events; never emits orders")
     collector.add_argument("--symbols", nargs="+", default=["BTCUSDT", "ETHUSDT"])
     collector.add_argument("--archive-dir", default="artifacts/microstructure_events")
+    snapshot = subparsers.add_parser("collect-microstructure-snapshot", help="Collect a bounded public OKX/Bybit snapshot to Parquet; never emits orders")
+    snapshot.add_argument("--symbols", nargs="+", default=["BTCUSDT", "ETHUSDT", "SOLUSDT"])
+    snapshot.add_argument("--duration-seconds", type=int, default=45)
+    snapshot.add_argument("--output", default="artifacts/microstructure_snapshots/snapshot.parquet")
     return parser
 
 
@@ -47,6 +52,10 @@ def main() -> int:
         return 0
     if args.command == "collect-microstructure":
         run_collector(args.symbols, args.archive_dir)
+        return 0
+    if args.command == "collect-microstructure-snapshot":
+        output = collect_snapshot(args.symbols, args.output, args.duration_seconds)
+        print(json.dumps({"output": str(output), "symbols": args.symbols, "duration_seconds": args.duration_seconds, "analysis_only": True}, indent=2))
         return 0
     if args.command == "backtest":
         candles = load_ohlcv_csv(args.csv, args.symbol, args.timeframe)
