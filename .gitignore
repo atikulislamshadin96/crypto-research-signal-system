@@ -18,6 +18,11 @@ data/focused_ohlcv_phase1/*
 data/focused_ohlcv_phase2/*
 data/focused_ohlcv_advanced/*
 data/microstructure_snapshots/*
+data/l2/raw/*
+data/l2/normalized/*
+data/l2/archives/*
+!data/l2/manifests/
+!data/l2/manifests/**
 !data/.gitkeep
 *.log
 .DS_Store

@@ -16,6 +16,7 @@ from crypto_signal_system.validation import run_validation
 from crypto_signal_system.research_engine import HypothesisRegistry, dataset_manifest_hash, frozen_candidate_grid, make_fingerprint
 from crypto_signal_system.research_evaluation import ResearchEvaluator
 from crypto_signal_system.funding_event_study import run_funding_divergence_event_study
+from crypto_signal_system.historical_l2 import download_verified_file, normalize_l2_jsonl, run_forward_collection, write_manifest
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -53,6 +54,23 @@ def build_parser() -> argparse.ArgumentParser:
     funding_study.add_argument("--funding-csv", required=True)
     funding_study.add_argument("--prices-csv", required=True)
     funding_study.add_argument("--output", default="artifacts/funding-divergence-event-study.json")
+    l2_collect = subparsers.add_parser("collect-historical-l2", help="Collect bounded public OKX/Bybit L2 events and validate them; never emits orders")
+    l2_collect.add_argument("--symbols", nargs="+", default=["BTCUSDT", "ETHUSDT", "SOLUSDT"])
+    l2_collect.add_argument("--duration-seconds", type=int, default=240)
+    l2_collect.add_argument("--archive-dir", default="data/l2/raw")
+    l2_collect.add_argument("--normalized-output", default="data/l2/normalized/latest.jsonl")
+    l2_collect.add_argument("--manifest", default="data/l2/manifests/latest.json")
+    l2_collect.add_argument("--stale-threshold-seconds", type=float, default=60.0)
+    l2_validate = subparsers.add_parser("validate-historical-l2", help="Normalize and validate existing L2 JSONL files; fail closed on integrity defects")
+    l2_validate.add_argument("--input", action="append", required=True, help="Raw JSONL/JSONL.GZ file; repeat for multiple files")
+    l2_validate.add_argument("--symbols", nargs="+", default=[])
+    l2_validate.add_argument("--normalized-output", default="data/l2/normalized/validated.jsonl")
+    l2_validate.add_argument("--manifest", default="data/l2/manifests/validated.json")
+    l2_validate.add_argument("--stale-threshold-seconds", type=float, default=60.0)
+    l2_download = subparsers.add_parser("download-verified-l2", help="Download an explicitly supplied public L2 archive URL and verify its checksum")
+    l2_download.add_argument("--url", required=True)
+    l2_download.add_argument("--output", required=True)
+    l2_download.add_argument("--sha256", default=None)
     return parser
 
 
@@ -69,6 +87,21 @@ def main() -> int:
     if args.command == "collect-microstructure-snapshot":
         output = collect_snapshot(args.symbols, args.output, args.duration_seconds)
         print(json.dumps({"output": str(output), "symbols": args.symbols, "duration_seconds": args.duration_seconds, "analysis_only": True}, indent=2))
+        return 0
+    if args.command == "collect-historical-l2":
+        raw_paths = run_forward_collection(args.symbols, args.archive_dir, args.duration_seconds)
+        result = normalize_l2_jsonl(raw_paths, args.normalized_output, args.symbols, args.stale_threshold_seconds)
+        manifest = write_manifest(result, args.manifest)
+        print(json.dumps({"raw_files": [str(path) for path in raw_paths], "manifest": str(manifest), "status": result.status, "research_usable": result.research_usable, "analysis_only": True, "live_execution_enabled": False}, indent=2))
+        return 0 if result.research_usable else 2
+    if args.command == "validate-historical-l2":
+        result = normalize_l2_jsonl(args.input, args.normalized_output, args.symbols, args.stale_threshold_seconds)
+        manifest = write_manifest(result, args.manifest)
+        print(json.dumps({"manifest": str(manifest), "status": result.status, "research_usable": result.research_usable, "analysis_only": True, "live_execution_enabled": False}, indent=2))
+        return 0 if result.research_usable else 2
+    if args.command == "download-verified-l2":
+        record = download_verified_file(args.url, args.output, args.sha256)
+        print(json.dumps({"download": record.__dict__, "analysis_only": True, "live_execution_enabled": False}, indent=2))
         return 0
     if args.command == "funding-event-study":
         output = Path(args.output)
