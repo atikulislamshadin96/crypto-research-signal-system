@@ -13,6 +13,9 @@ from crypto_signal_system.historical import download_binance_monthly, merge_csvs
 from crypto_signal_system.microstructure_collector import run_collector
 from crypto_signal_system.microstructure_snapshot import collect_snapshot
 from crypto_signal_system.validation import run_validation
+from crypto_signal_system.research_engine import HypothesisRegistry, dataset_manifest_hash, frozen_candidate_grid, make_fingerprint
+from crypto_signal_system.research_evaluation import ResearchEvaluator
+from crypto_signal_system.funding_event_study import run_funding_divergence_event_study
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -40,6 +43,16 @@ def build_parser() -> argparse.ArgumentParser:
     snapshot.add_argument("--symbols", nargs="+", default=["BTCUSDT", "ETHUSDT", "SOLUSDT"])
     snapshot.add_argument("--duration-seconds", type=int, default=45)
     snapshot.add_argument("--output", default="artifacts/microstructure_snapshots/snapshot.parquet")
+    research = subparsers.add_parser("research-cycle", help="Generate and evaluate bounded analysis-only hypotheses")
+    research.add_argument("--registry", default="artifacts/research_engine/registry.sqlite3")
+    research.add_argument("--output-dir", default="artifacts/research_engine/cycles")
+    research.add_argument("--data-path", action="append", default=[], help="Required dataset file; repeat for multiple files")
+    research.add_argument("--max-candidates", type=int, default=12)
+    research.add_argument("--stale-after-hours", type=float, default=36.0)
+    funding_study = subparsers.add_parser("funding-event-study", help="Run the frozen HL/dYdX funding-divergence event study")
+    funding_study.add_argument("--funding-csv", required=True)
+    funding_study.add_argument("--prices-csv", required=True)
+    funding_study.add_argument("--output", default="artifacts/funding-divergence-event-study.json")
     return parser
 
 
@@ -56,6 +69,41 @@ def main() -> int:
     if args.command == "collect-microstructure-snapshot":
         output = collect_snapshot(args.symbols, args.output, args.duration_seconds)
         print(json.dumps({"output": str(output), "symbols": args.symbols, "duration_seconds": args.duration_seconds, "analysis_only": True}, indent=2))
+        return 0
+    if args.command == "funding-event-study":
+        output = Path(args.output)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        result = run_funding_divergence_event_study(pd.read_csv(args.funding_csv), pd.read_csv(args.prices_csv))
+        output.write_text(json.dumps(result, indent=2, sort_keys=True), encoding="utf-8")
+        print(json.dumps({"output": str(output), "analysis_only": True, "strategy_constructed": False}, indent=2))
+        return 0
+    if args.command == "research-cycle":
+        from datetime import datetime, timezone
+        paths = [Path(item) for item in args.data_path]
+        data_hash = dataset_manifest_hash(paths or [Path(args.output_dir) / "<required-data-not-supplied>"])
+        available = bool(paths) and all(path.exists() and path.is_file() for path in paths)
+        fresh = False
+        if available:
+            newest = max(path.stat().st_mtime for path in paths)
+            fresh = (datetime.now(timezone.utc).timestamp() - newest) <= args.stale_after_hours * 3600
+        registry = HypothesisRegistry(args.registry)
+        evaluator = ResearchEvaluator(registry)
+        rows = []
+        try:
+            for spec in frozen_candidate_grid()[: max(0, args.max_candidates)]:
+                identity = make_fingerprint(spec, data_hash)
+                if not registry.register(spec, identity):
+                    rows.append({"hypothesis_id": spec.hypothesis_id, "fingerprint": identity.fingerprint, "status": "duplicate_skipped"})
+                    continue
+                rows.append(evaluator.evaluate(spec, identity, available, fresh).to_dict())
+            output_dir = Path(args.output_dir)
+            output_dir.mkdir(parents=True, exist_ok=True)
+            output = output_dir / "latest.json"
+            output.write_text(json.dumps({"analysis_only": True, "live_execution_enabled": False, "dataset_hash": data_hash, "dataset_available": available, "dataset_fresh": fresh, "results": rows}, indent=2), encoding="utf-8")
+            registry.export_json(output_dir / "registry.json")
+            print(json.dumps({"output": str(output), "registered_or_skipped": len(rows), "analysis_only": True, "live_execution_enabled": False}, indent=2))
+        finally:
+            registry.close()
         return 0
     if args.command == "backtest":
         candles = load_ohlcv_csv(args.csv, args.symbol, args.timeframe)

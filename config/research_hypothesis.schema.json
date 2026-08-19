@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/atikulislamshadin96/crypto-research-signal-system/blob/main/config/research_hypothesis.schema.json",
+  "title": "Analysis-only crypto research hypothesis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "hypothesis_id",
+    "family",
+    "title",
+    "objective",
+    "universe",
+    "timeframes",
+    "features",
+    "parameters",
+    "outcome",
+    "analysis_only"
+  ],
+  "properties": {
+    "hypothesis_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+    "family": {
+      "type": "string",
+      "enum": [
+        "funding_divergence",
+        "spot_perp_flow_divergence",
+        "depth_normalized_ofi",
+        "liquidity_adverse_selection_gate",
+        "liquidation_regime_event",
+        "liquidity_sweep_event"
+      ]
+    },
+    "title": {"type": "string", "minLength": 5, "maxLength": 200},
+    "objective": {"type": "string", "minLength": 20, "maxLength": 1000},
+    "universe": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "timeframes": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "features": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "parameters": {"type": "object", "additionalProperties": true},
+    "outcome": {"type": "object", "required": ["type"], "properties": {"type": {"enum": ["event_study", "risk_gate", "diagnostic"]}}, "additionalProperties": true},
+    "parent_id": {"type": ["string", "null"]},
+    "source_refs": {"type": "array", "items": {"type": "string", "format": "uri"}},
+    "analysis_only": {"const": true},
+    "version": {"type": "string"}
+  }
+}

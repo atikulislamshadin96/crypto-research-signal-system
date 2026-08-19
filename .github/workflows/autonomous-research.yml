@@ -1,0 +1,67 @@
+name: autonomous-research-engine
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 01 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autonomous-research-engine
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5.6.0
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install project
+        run: python -m pip install --upgrade pip && python -m pip install . pytest==8.3.4
+
+      - name: Run autonomous research cycle
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: >-
+          python -m crypto_signal_system.cli research-cycle
+          --registry research_registry/registry.sqlite3
+          --output-dir docs/generated_research
+          --max-candidates 12
+
+      - name: Run tests
+        run: python -m pytest
+
+      - name: Commit registry and reports
+        run: |
+          git config user.name "crypto-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research_registry docs/generated_research
+          if git diff --cached --quiet; then
+            echo "No new research state to commit."
+          else
+            git commit -m "research: record autonomous hypothesis cycle"
+            git push
+          fi
+
+      - name: Upload cycle logs
+        if: always()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: autonomous-research-${{ github.run_id }}
+          path: |
+            docs/generated_research/
+            research_registry/
+          if-no-files-found: warn
+          retention-days: 30

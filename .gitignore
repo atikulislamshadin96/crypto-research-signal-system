@@ -6,6 +6,11 @@ __pycache__/
 .env.*
 artifacts/*
 !artifacts/.gitkeep
+# Autonomous research registry and reviewed report artifacts are intentionally tracked.
+!research_registry/
+!research_registry/**
+!docs/generated_research/
+!docs/generated_research/**
 data/raw/*
 data/historical/*
 data/focused_ohlcv/*
