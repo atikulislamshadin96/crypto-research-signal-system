@@ -1,7 +1,9 @@
+import io
 import json
+import tarfile
 from pathlib import Path
 
-from crypto_signal_system.historical_l2 import normalize_l2_jsonl, okx_l2_stream, write_manifest
+from crypto_signal_system.historical_l2 import normalize_l2_jsonl, normalize_okx_historical_archive, okx_l2_stream, write_manifest
 
 
 def _okx_row(action: str, seq: int, prev: int | None, ts: int, received: int) -> dict:
@@ -119,3 +121,35 @@ def test_reconnect_snapshot_resets_sequence_continuity(tmp_path: Path) -> None:
     result = normalize_l2_jsonl([source], output)
     assert result.status == "PASS"
     assert result.sequence_gap_count == 0
+
+
+def test_official_okx_archive_without_sequences_blocks_research_use(tmp_path: Path) -> None:
+    archive_path = tmp_path / "BTC-USDT-L2orderbook-400lv-2026-08-16.tar.gz"
+    member_name = "BTC-USDT-L2orderbook-400lv-2026-08-16.data"
+    rows = [
+        {"instId": "BTC-USDT", "action": "snapshot", "ts": "1786838400000", "asks": [["100.5", "2", "1"]], "bids": [["100.0", "3", "1"]]},
+        {"instId": "BTC-USDT", "action": "update", "ts": "1786838400020", "asks": [["100.5", "0", "0"]], "bids": []},
+    ]
+    payload = ("\n".join(json.dumps(row) for row in rows) + "\n").encode("utf-8")
+    with tarfile.open(archive_path, "w:gz") as archive:
+        info = tarfile.TarInfo(member_name)
+        info.size = len(payload)
+        archive.addfile(info, io.BytesIO(payload))
+    result = normalize_okx_historical_archive(
+        archive_path,
+        tmp_path / "normalized.jsonl",
+        source_url="https://www.okx.com/en-us/historical-data",
+        retrieved_at="2026-08-19T00:00:00Z",
+        usage_terms_note="Official public archive; subject to OKX terms.",
+        symbol="BTC-USDT",
+        date_start="2026-08-16",
+        date_end="2026-08-16",
+        depth_levels=400,
+    )
+    assert result.status == "BLOCKED_INTEGRITY"
+    assert result.research_usable is False
+    assert result.event_count == 2
+    assert result.snapshot_count == 1
+    assert result.missing_sequence_count == 2
+    assert any(item.startswith("missing_sequence_fields:") for item in result.errors)
+    assert result.metadata["archive_format"] == "tar.gz containing NDJSON .data"

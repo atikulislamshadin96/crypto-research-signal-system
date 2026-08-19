@@ -16,7 +16,7 @@ from crypto_signal_system.validation import run_validation
 from crypto_signal_system.research_engine import HypothesisRegistry, dataset_manifest_hash, frozen_candidate_grid, make_fingerprint
 from crypto_signal_system.research_evaluation import ResearchEvaluator
 from crypto_signal_system.funding_event_study import run_funding_divergence_event_study
-from crypto_signal_system.historical_l2 import download_verified_file, normalize_l2_jsonl, run_forward_collection, write_manifest
+from crypto_signal_system.historical_l2 import download_verified_file, normalize_l2_jsonl, normalize_okx_historical_archive, run_forward_collection, write_manifest
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -71,6 +71,18 @@ def build_parser() -> argparse.ArgumentParser:
     l2_download.add_argument("--url", required=True)
     l2_download.add_argument("--output", required=True)
     l2_download.add_argument("--sha256", default=None)
+    l2_archive = subparsers.add_parser("validate-okx-historical-l2", help="Normalize and validate one explicitly downloaded official OKX historical L2 archive")
+    l2_archive.add_argument("--archive", required=True)
+    l2_archive.add_argument("--source-url", required=True)
+    l2_archive.add_argument("--retrieved-at", required=True)
+    l2_archive.add_argument("--usage-terms-note", required=True)
+    l2_archive.add_argument("--symbol", required=True)
+    l2_archive.add_argument("--date-start", required=True)
+    l2_archive.add_argument("--date-end", required=True)
+    l2_archive.add_argument("--depth-levels", type=int, required=True)
+    l2_archive.add_argument("--normalized-output", required=True)
+    l2_archive.add_argument("--manifest", required=True)
+    l2_archive.add_argument("--stale-threshold-seconds", type=float, default=60.0)
     return parser
 
 
@@ -103,6 +115,22 @@ def main() -> int:
         record = download_verified_file(args.url, args.output, args.sha256)
         print(json.dumps({"download": record.__dict__, "analysis_only": True, "live_execution_enabled": False}, indent=2))
         return 0
+    if args.command == "validate-okx-historical-l2":
+        result = normalize_okx_historical_archive(
+            args.archive,
+            args.normalized_output,
+            source_url=args.source_url,
+            retrieved_at=args.retrieved_at,
+            usage_terms_note=args.usage_terms_note,
+            symbol=args.symbol,
+            date_start=args.date_start,
+            date_end=args.date_end,
+            depth_levels=args.depth_levels,
+            stale_threshold_seconds=args.stale_threshold_seconds,
+        )
+        manifest = write_manifest(result, args.manifest)
+        print(json.dumps({"manifest": str(manifest), "status": result.status, "research_usable": result.research_usable, "analysis_only": True, "live_execution_enabled": False}, indent=2))
+        return 0 if result.research_usable else 2
     if args.command == "funding-event-study":
         output = Path(args.output)
         output.parent.mkdir(parents=True, exist_ok=True)

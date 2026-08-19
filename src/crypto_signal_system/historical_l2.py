@@ -4,9 +4,11 @@ import asyncio
 import gzip
 import hashlib
 import json
+import io
+import tarfile
 import time
 import uuid
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable, Iterator
@@ -89,6 +91,8 @@ class L2Validation:
     max_source_receive_lag_ms: int | None
     errors: list[str]
     warnings: list[str]
+    missing_sequence_count: int = 0
+    metadata: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -220,6 +224,35 @@ def _iter_json_records(path: Path) -> Iterator[dict[str, Any]]:
                         yield item
 
 
+def _iter_okx_archive_records(path: Path) -> Iterator[dict[str, Any]]:
+    """Yield direct OKX historical `.data` JSON records from an official tar.gz archive."""
+    if path.name.endswith(".tar.gz") or path.suffix == ".tgz":
+        with tarfile.open(path, "r:gz") as archive:
+            members = [member for member in archive.getmembers() if member.isfile()]
+            if len(members) != 1:
+                raise ValueError(f"expected_one_archive_member:{path}:found={len(members)}")
+            member = members[0]
+            if not member.name.endswith(".data"):
+                raise ValueError(f"unexpected_okx_member:{member.name}")
+            stream = archive.extractfile(member)
+            if stream is None:
+                raise ValueError(f"cannot_extract_okx_member:{member.name}")
+            with io.TextIOWrapper(stream, encoding="utf-8") as handle:
+                for line_number, line in enumerate(handle, start=1):
+                    text = line.strip()
+                    if not text:
+                        continue
+                    try:
+                        record = json.loads(text)
+                    except json.JSONDecodeError as exc:
+                        raise ValueError(f"invalid_archive_json:{path}:{line_number}:{exc}") from exc
+                    if not isinstance(record, dict):
+                        raise ValueError(f"non_object_archive_record:{path}:{line_number}")
+                    yield record
+        return
+    yield from _iter_json_records(path)
+
+
 def _file_record(path: Path) -> dict[str, Any]:
     digest, byte_count = sha256_file(path)
     return {"path": str(path), "sha256": digest, "byte_count": byte_count}
@@ -230,6 +263,8 @@ def normalize_l2_jsonl(
     output_path: str | Path,
     symbols: Iterable[str] | None = None,
     stale_threshold_seconds: float = 60.0,
+    archive_mode: str | None = None,
+    metadata: dict[str, Any] | None = None,
 ) -> L2Validation:
     """Normalize provider JSONL messages and fail closed on causal/integrity defects."""
     paths = [Path(item) for item in input_paths]
@@ -247,6 +282,7 @@ def normalize_l2_jsonl(
     duplicate_count = 0
     missing_source = 0
     missing_receive = 0
+    missing_sequence = 0
     sequence_gaps = 0
     out_of_order = 0
     stale_count = 0
@@ -264,8 +300,14 @@ def normalize_l2_jsonl(
                 errors.append(f"missing_input:{path}")
                 continue
             try:
-                records = _iter_json_records(path)
+                records = _iter_okx_archive_records(path) if archive_mode == "okx_historical" else _iter_json_records(path)
                 for record in records:
+                    if archive_mode == "okx_historical":
+                        record = {
+                            "venue": "okx",
+                            "connection_id": "official_archive",
+                            "message": {"data": record},
+                        }
                     if record.get("collector_error"):
                         errors.append(f"collector_error:{path}:{record.get('collector_error')}")
                         continue
@@ -287,6 +329,8 @@ def normalize_l2_jsonl(
                         update_count += 1
                         if key not in snapshots:
                             pre_snapshot_update_count += 1
+                    if event.sequence is None:
+                        missing_sequence += 1
                     if event.source_ts_ms is None:
                         missing_source += 1
                     else:
@@ -328,10 +372,13 @@ def normalize_l2_jsonl(
         warnings.append(f"missing_receive_timestamps:{missing_receive}")
     if max_lag is not None and max_lag > stale_threshold_seconds * 1000:
         warnings.append(f"source_receive_lag_exceeded:{max_lag}ms")
+    if missing_sequence:
+        errors.append(f"missing_sequence_fields:{missing_sequence}")
     required_ok = (
         event_count > 0
         and not errors
         and not missing_source
+        and not missing_sequence
         and not pre_snapshot_update_count
         and not sequence_gaps
         and not out_of_order
@@ -371,6 +418,50 @@ def normalize_l2_jsonl(
         max_source_receive_lag_ms=max_lag,
         errors=errors,
         warnings=warnings,
+        missing_sequence_count=missing_sequence,
+        metadata=metadata or {},
+    )
+
+
+def normalize_okx_historical_archive(
+    archive_path: str | Path,
+    output_path: str | Path,
+    *,
+    source_url: str,
+    retrieved_at: str,
+    usage_terms_note: str,
+    symbol: str,
+    date_start: str,
+    date_end: str,
+    depth_levels: int,
+    stale_threshold_seconds: float = 60.0,
+) -> L2Validation:
+    """Normalize one official OKX historical L2 archive without reconstructing missing fields."""
+    archive = Path(archive_path)
+    archive_sha256, archive_bytes = sha256_file(archive) if archive.exists() else (None, None)
+    metadata = {
+        "source_url": source_url,
+        "retrieved_at": retrieved_at,
+        "usage_terms_note": usage_terms_note,
+        "venue": "okx",
+        "symbol": symbol,
+        "date_start": date_start,
+        "date_end": date_end,
+        "depth_levels": depth_levels,
+        "archive_format": "tar.gz containing NDJSON .data",
+        "archive_sha256": archive_sha256,
+        "archive_byte_count": archive_bytes,
+        "receive_timestamp_available": False,
+        "sequence_fields_expected": True,
+        "normalization_mode": "official_okx_archive_direct_records",
+    }
+    return normalize_l2_jsonl(
+        [archive],
+        output_path,
+        symbols=[symbol],
+        stale_threshold_seconds=stale_threshold_seconds,
+        archive_mode="okx_historical",
+        metadata=metadata,
     )
 
 
