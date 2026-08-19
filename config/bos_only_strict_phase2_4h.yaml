@@ -1,0 +1,112 @@
+system:
+  version: "0.2.0"
+  timezone: "UTC"
+  market_type: "paper_perpetual"
+  analysis_only: true
+  enable_live_execution: false
+  kill_switch: false
+  output_dir: "artifacts/bos-phase2-4h"
+
+data:
+  provider: "binance_archive"
+  symbols: ["BNBUSDT", "XRPUSDT", "ADAUSDT"]
+  timeframes:
+    research: ["4h"]
+  require_closed_candles: true
+  derivatives_enabled: false
+  news_enabled: false
+
+risk:
+  account_equity: 10000.0
+  risk_per_trade_percent: 0.25
+  reference_equity: 10000.0
+  max_simultaneous_positions: 1
+  max_correlated_risk_percent: 0.25
+  max_daily_trades: 3
+  max_consecutive_losses: 3
+  soft_daily_loss_percent: 3.0
+  hard_daily_loss_percent: 5.0
+  hard_total_drawdown_percent: 10.0
+  daily_reset_timezone: "UTC"
+  loss_streak_cooldown_minutes: 720
+  extreme_volatility_atr_percent: 8.0
+  estimated_fee_rate_round_trip: 0.0008
+  estimated_slippage_rate_round_trip: 0.0006
+  estimated_funding_rate_per_8h: 0.0001
+  max_notional_usd: 5000.0
+  max_leverage: 2.0
+  minimum_reward_risk: 1.5
+
+signal:
+  minimum_evidence_score: 70.0
+  minimum_data_completeness: 1.0
+  expiry_bars: 8
+  duplicate_window_minutes: 240
+  confidence_labels:
+    high: 85.0
+    medium: 75.0
+    low: 70.0
+
+strategies:
+  trend_pullback:
+    enabled: false
+  volatility_breakout:
+    enabled: false
+  range_mean_reversion:
+    enabled: false
+  liquidity_sweep_reclaim:
+    enabled: false
+  bos_retest_continuation:
+    enabled: true
+    structure_lookback: 20
+    minimum_displacement_atr: 1.25
+    minimum_volume_ratio: 1.25
+    retest_tolerance_atr: 0.10
+    stop_atr: 1.25
+    target_atr: 3.00
+  momentum_continuation:
+    enabled: false
+
+backtest:
+  maker_fee_rate: 0.0002
+  taker_fee_rate: 0.0004
+  slippage_rate: 0.0003
+  funding_rate_per_8h: 0.0001
+  latency_bars: 1
+  ambiguity_policy: "conservative_stop_first"
+  strategy_history_bars: 160
+  order_flow_confirmation:
+    enabled: false
+  minimum_trades_for_review: 50
+  train_fraction: 0.50
+  validation_fraction: 0.25
+  test_fraction: 0.25
+  validation_protocol:
+    oos_windows: 8
+    purge_bars: 8
+    embargo_bars: 1
+    cpcv_groups: 8
+    cpcv_test_groups: 2
+    minimum_cpcv_paths: 20
+    perturbation_mode: "pre_registered_only"
+    perturbations:
+      structure_lookback: [18, 20, 22]
+      minimum_displacement_atr: [1.125, 1.25, 1.375]
+      minimum_volume_ratio: [1.125, 1.25, 1.375]
+      retest_tolerance_atr: [0.08, 0.10, 0.12]
+      stop_atr: [1.125, 1.25, 1.375]
+      target_atr: [2.70, 3.00, 3.30]
+    costs_bps: [5, 10, 15]
+    multiple_testing:
+      family: "phase2_new_assets"
+      hypotheses: 3
+      familywise_alpha: 0.05
+      bonferroni_alpha: 0.0166666667
+      method: "Bonferroni"
+    prop_firm:
+      starting_equity: 100000.0
+      daily_loss_limit_percent: 5.0
+      total_drawdown_limit_percent: 10.0
+      risk_per_trade_percent: 0.25
+      max_daily_trades: 3
+      max_consecutive_losses: 3
