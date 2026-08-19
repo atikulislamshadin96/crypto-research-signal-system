@@ -14,9 +14,10 @@ from crypto_signal_system.research_evaluation import ResearchEvaluator
 def test_candidate_grid_is_bounded_and_analysis_only() -> None:
     candidates = frozen_candidate_grid()
     assert candidates
-    assert len(candidates) == 17
+    assert len(candidates) == 21
     assert all(candidate.analysis_only for candidate in candidates)
     assert all(not candidate.validate() for candidate in candidates)
+    assert {"liquidity_state_transition", "liquidity_depletion_replenishment", "liquidation_crowding_exhaustion", "cross_venue_price_discovery"}.issubset({candidate.family for candidate in candidates})
 
 
 def test_forbidden_retail_terms_are_rejected() -> None:

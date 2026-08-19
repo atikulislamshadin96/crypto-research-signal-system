@@ -85,3 +85,36 @@ URL: https://www.mdpi.com/2227-7390/14/2/346
 Accessed: 2026-08-19
 
 This 2026 open-access study constructs 35.7 million one-minute funding observations across 26 exchanges and 749 symbols over eight consecutive days. It reports that centralized venues dominate price discovery, while 17% of observations show spreads of at least 20 bps; only 40% of top opportunities remain profitable after transaction costs and spread reversals, with forced exits in 95% of opportunities. The key implication is not that funding arbitrage is easy, but that persistence/duration and execution risk determine whether an apparent spread is tradable. This strongly supports a pre-registered HL↔dYdX event study with time-to-reversal, net-cost, forced-exit, and venue-risk fields, while rejecting naive “highest funding wins” logic.
+
+
+## Follow-up research: uploaded strategy claims and state-dependent L2 evidence
+
+### Uploaded document claims audited
+- Document 1 claims a 2,600-trade SMC backtest with 61.2% win rate and PF 2.17, plus 55–65% win rates for liquidity sweep, kill zones, order blocks, and a 4H BTC/ETH model. The pasted material does not provide an accessible primary URL, trade ledger, cost model, asset/time split, OOS protocol, or uncertainty intervals; these figures are unverified practitioner claims and must not enter the engine as evidence.
+- Document 2 proposes state-dependent L2 liquidity transitions plus order flow as the strongest candidate, followed by liquidity depletion/replenishment plus displacement, liquidation/crowding plus liquidity-state exhaustion, cross-venue microstructure, and options positioning as a regime filter. It explicitly rejects pure BOS/FVG/OB/CHoCH as validated standalone strategies and warns that historical L2 data is required.
+
+### Verified recent sources
+- Jeon, arXiv:2607.09230 (2026), studies Binance BTCUSDT and ETHUSDT futures from 2023–2026 using top-20 L2 and trade flow. Its target is post-event liquidity-state transition, not price direction. A coarse pre-event state is predictive; nonlinear L2 shape adds value; order flow adds incremental value only on top of the L2 state, with the effect established for ETH and not established for BTC. This supports an event-study and risk/liquidity-state module, not a ready-made directional strategy.
+- Bieganowski and Ślepaczuk, arXiv:2602.00776 (2026), studies Binance Futures perpetual LOB/trades at 1-second frequency from 2022-01-01 to 2025-10-12 across BTC, LTC, ETC, ENJ, and ROSE. It reports stable cross-asset feature importance for OFI, spreads, depth, and VWAP-to-mid features, but the paper’s tradability claims depend on conservative taker/maker backtests and still require independent replication in this repository.
+- Anastasopoulos et al., Journal of Financial Markets 79 (2026), reports that international/world order flow predicts the cross-section of cryptocurrency returns out of sample. Data availability is stated as “on request”; it is a research lead rather than immediately reproducible public data for this repository.
+- Angerer, Gramlich, and Hanke, JRFM 18(3), 124 (2025), finds intraday crypto order-book variation and liquidity patterns that affect trading costs. This supports execution-cost and liquidity-state gating, not a standalone alpha claim.
+- Additional research leads include queue-position/fill-probability versus post-fill return trade-offs, cross-venue price discovery/lead-lag, and liquidation-cascade early-warning work. Current liquidation research is explicitly event-heterogeneous, so it should be tested as a capital-preservation/regime filter before any directional use.
+
+### Provisional classification
+1. State-dependent L2 liquidity-state transition + flow: high research priority; requires timestamped L2 snapshots/events and trades; target should be state transition or execution quality before direction.
+2. Liquidity depletion/replenishment + displacement: medium-high priority; requires depth/spread/flow transitions and a frozen causal displacement definition; no SMC labels as signal.
+3. Liquidation/crowding + liquidity exhaustion/replenishment: medium priority; requires liquidation/OI/funding/flow/depth and many independent cascade episodes; default output is risk-state classification.
+4. Cross-venue price-discovery migration: medium priority; requires synchronized venue trades/L2, lead-lag, basis, and latency controls; not simple venue-A-up/venue-B-follows.
+5. Queue-aware adverse-selection/fill-quality model: medium priority; requires full depth, queue proxy, fills or carefully bounded fill simulation; analysis-only execution-quality study.
+6. Options positioning + microstructure: context/regime filter only; options data and timestamp alignment are required; not standalone directional alpha.
+
+No uploaded performance percentage is accepted as validated until its source, raw data, timestamp rules, full trade ledger, fees/slippage, untouched OOS, and uncertainty are independently reproduced.
+
+### Additional sources checked on 2026-08-19
+- Jeon, “When Does Order Flow Matter? State-Dependent L2 Liquidity-State Transitions in Crypto Futures,” https://arxiv.org/html/2607.09230v1. The paper’s staged OOS results support state-first modeling: coarse pre-event state and nonlinear L2 shape matter; order flow adds only as an overlay, with ETH clearing the overlay null and BTC not established.
+- Bieganowski and Ślepaczuk, “Explainable Patterns in Cryptocurrency Microstructure,” https://arxiv.org/html/2602.00776v1. The study reports portable feature families but its model/trading results require independent replication with repository data and strict leakage controls.
+- Anastasopoulos et al., “Order flow and cryptocurrency returns,” https://www.sciencedirect.com/science/article/pii/S1386418126000029. The article reports out-of-sample information in international order flow, but its data are available on request, so it is not immediately reproducible here.
+- Angerer, Gramlich, and Hanke, “Order Book Liquidity on Crypto Exchanges,” https://www.mdpi.com/1911-8074/18/3/124. The study supports liquidity-aware execution timing and cost modeling, not an automatic directional signal.
+
+### Updated decision
+The uploaded documents strengthen the case for a **state-first microstructure research program**, not for adding a 4H SMC bundle with claimed 55–65% win rates. The first implementation candidates should be: (A) L2 liquidity-state transition event study with flow overlay, (B) liquidity depletion/replenishment and displacement event study, (C) liquidation/crowding-to-liquidity-exhaustion risk-state study, and (D) cross-venue price-discovery migration study. Queue-aware adverse-selection and options-positioning modules remain later context/execution research. All remain unvalidated until timestamp-safe data, costs, chronological OOS, uncertainty, and independent replication are complete.

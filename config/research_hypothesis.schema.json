@@ -26,7 +26,11 @@
         "depth_normalized_ofi",
         "liquidity_adverse_selection_gate",
         "liquidation_regime_event",
-        "liquidity_sweep_event"
+        "liquidity_sweep_event",
+        "liquidity_state_transition",
+        "liquidity_depletion_replenishment",
+        "liquidation_crowding_exhaustion",
+        "cross_venue_price_discovery"
       ]
     },
     "title": {"type": "string", "minLength": 5, "maxLength": 200},

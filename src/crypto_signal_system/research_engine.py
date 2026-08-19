@@ -25,6 +25,10 @@ ALLOWED_FAMILIES = {
     "liquidity_adverse_selection_gate",
     "liquidation_regime_event",
     "liquidity_sweep_event",
+    "liquidity_state_transition",
+    "liquidity_depletion_replenishment",
+    "liquidation_crowding_exhaustion",
+    "cross_venue_price_discovery",
 }
 
 
@@ -320,6 +324,42 @@ def frozen_candidate_grid() -> list[HypothesisSpec]:
             ("spread", "available_depth", "order_flow_variance", "realized_volatility"),
             {"type": "risk_gate", "directional_claim": False, "net_of_costs": True},
         ))
+    candidates.append(_spec(
+        "liquidity-state-transition-eth-btc-v1",
+        "liquidity_state_transition",
+        "State-dependent L2 liquidity transition with flow overlay",
+        "Test whether pre-event L2 state predicts post-event liquidity transitions and whether signed flow adds incremental value without making a directional claim.",
+        {"depth_levels": 20, "state_bins": 3, "event_horizon_minutes": 5, "flow_overlay": True},
+        ("relative_spread", "top_n_depth", "top_n_imbalance", "signed_flow", "event_cluster"),
+        {"type": "event_study", "target": "liquidity_state_transition", "assets": ["ETHUSDT", "BTCUSDT"], "horizons_minutes": [1, 5], "net_of_costs": False},
+    ))
+    candidates.append(_spec(
+        "liquidity-depletion-replenishment-displacement-v1",
+        "liquidity_depletion_replenishment",
+        "Liquidity depletion and replenishment before displacement",
+        "Measure whether causal depth or spread deterioration followed by replenishment changes post-event mid-price displacement and execution cost.",
+        {"depth_levels": 10, "depletion_window_minutes": 5, "replenishment_window_minutes": 5, "displacement_horizon_minutes": 15},
+        ("relative_spread", "available_depth", "depth_change", "signed_flow", "mid_return"),
+        {"type": "event_study", "target": "displacement_and_execution_cost", "horizons_minutes": [1, 5, 15], "matched_controls": True, "net_of_costs": True},
+    ))
+    candidates.append(_spec(
+        "liquidation-crowding-exhaustion-risk-v1",
+        "liquidation_crowding_exhaustion",
+        "Crowding and liquidation pressure to liquidity-exhaustion state",
+        "Classify whether joint crowding, forced-flow and L2 depletion precede stressed or exhausted liquidity without issuing an automatic directional signal.",
+        {"crowding_quantile": 0.9, "liquidation_window_minutes": 5, "depth_quantile": 0.1, "replenishment_window_minutes": 15},
+        ("open_interest", "funding_rate", "liquidation_flow", "signed_flow_variance", "relative_spread", "available_depth"),
+        {"type": "risk_gate", "target": "liquidity_exhaustion_state", "leave_one_event_out": True, "directional_claim": False, "net_of_costs": True},
+    ))
+    candidates.append(_spec(
+        "cross-venue-price-discovery-migration-v1",
+        "cross_venue_price_discovery",
+        "Cross-venue liquidity and flow price-discovery migration",
+        "Test whether a synchronized change in venue-A liquidity or flow precedes a venue-B response after latency, spread and cost controls.",
+        {"venues": ["OKX", "Bybit"], "timestamp_tolerance_ms": 250, "flow_window_seconds": 30, "lead_lag_horizons_seconds": [1, 5, 30]},
+        ("venue_a_signed_flow", "venue_b_signed_flow", "venue_a_depth", "venue_b_depth", "basis", "timestamp_quality"),
+        {"type": "event_study", "target": "lead_lag_and_price_discovery", "horizons_seconds": [1, 5, 30], "net_of_costs": True, "missing_sync_blocks": True},
+    ))
     candidates.append(_spec(
         "liquidity-sweep-event-fixed-v1",
         "liquidity_sweep_event",
