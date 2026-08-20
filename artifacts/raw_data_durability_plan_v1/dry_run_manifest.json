@@ -1,0 +1,13 @@
+{
+  "dry_run_id": "RAW_DATA_DURABILITY_PLAN_V1_GIT_LFS_DUMMY",
+  "provider": "GitHub Git LFS",
+  "real_bybit_data": false,
+  "dummy_object": "artifacts/raw_data_durability_plan_v1/dry_run/bybit-placeholder-archive.bin",
+  "size_bytes": 1048576,
+  "sha256_before_upload": "415b8b86d6f375a63fa41c1c1614a8ba9ef614ab6ab6c1fa62fef5d34e38a325",
+  "expected_round_trip_sha256": "415b8b86d6f375a63fa41c1c1614a8ba9ef614ab6ab6c1fa62fef5d34e38a325",
+  "source_url": null,
+  "sensitive": false,
+  "purpose": "Validate deterministic placeholder upload, GitHub commit/push, fresh clone, LFS hydration, size check, and SHA-256 restore check before real Bybit acquisition.",
+  "status": "PENDING_UPLOAD"
+}
