@@ -1,0 +1,116 @@
+{
+  "protocol_id": "phase4_flow_construction",
+  "protocol_version": "v1",
+  "protocol_fingerprint_sha256": "86a8608328a77a9d60cfc95570ac05cf178207995f9243906f7c081d38f47cfd",
+  "fingerprint_definition": "SHA-256 of canonical UTF-8 JSON for this object with protocol_fingerprint_sha256 omitted; keys sorted; separators=(',', ':'); no trailing newline.",
+  "scope": "Frozen signed order-flow construction for Phase 4 candidate liquidity-state-transition-eth-btc-v1; definition only, not a trading rule.",
+  "venue": "Bybit",
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT"
+  ],
+  "source_archive_template": "https://public.bybit.com/spot/{SYMBOL}/{SYMBOL}_{DATE}.csv.gz",
+  "source_schema": [
+    "id",
+    "timestamp",
+    "price",
+    "volume",
+    "side",
+    "rpi"
+  ],
+  "source_timestamp": {
+    "field": "timestamp",
+    "unit": "milliseconds since Unix epoch",
+    "clock": "Bybit exchange/source timestamp",
+    "receive_timestamp_used": false,
+    "lookahead_allowed": false
+  },
+  "microstructure_rationale": {
+    "aggregation_window": "One second is the shortest forward horizon in the frozen Phase 3 protocol and is a conventional immediate order-arrival interval for event-time microstructure measurement. The choice is made from the frozen horizon structure and microstructure reasoning only; it was not selected or tested against forward returns, L2 outcomes, or Phase 4 statistics.",
+    "unit_choice": "Quote/notional volume expresses the economic amount of aggressive trading and is directly available as price multiplied by executed base volume. Per-asset analyses remain independent, so no cross-asset normalization is introduced.",
+    "measure_choice": "Raw signed notional preserves both aggressor direction and activity magnitude. No denominator is introduced, avoiding an additional liquidity or participation normalization that was not frozen in the existing protocol.",
+    "alignment_choice": "The flow interval ends strictly before each L2 source timestamp so the feature uses only trades observable before the L2 event; the event timestamp itself and all later trades are excluded."
+  },
+  "flow_measure": {
+    "aggregation_window_ms": 1000,
+    "interval_for_l2_timestamp_T": "[T - 1000 milliseconds, T)",
+    "measure_type": "raw_signed_volume",
+    "units": "quote/notional volume in USDT",
+    "side_sign": {
+      "buy": 1,
+      "sell": -1
+    },
+    "trade_notional_formula": "notional_i = price_i * volume_i",
+    "signed_flow_formula": "SF(T) = sum over trades i with T-1000 <= timestamp_i < T of side_sign_i * price_i * volume_i",
+    "buy_notional_formula": "B(T) = sum(price_i * volume_i) over buy trades in [T-1000,T)",
+    "sell_notional_formula": "S(T) = sum(price_i * volume_i) over sell trades in [T-1000,T)",
+    "identity": "SF(T) = B(T) - S(T)",
+    "normalization": "none",
+    "rpi_field": "ignored for the signed-flow value; side is the sole aggressor-side field used"
+  },
+  "timestamp_alignment": {
+    "anchor": "each frozen L2 event's source timestamp field",
+    "l2_timestamp_unit": "milliseconds since Unix epoch",
+    "rule": "For an L2 event at integer source timestamp T, use only Bybit trades satisfying T-1000 <= trade_timestamp < T.",
+    "causality": "strictly causal; trades at timestamp T are excluded even when timestamps are equal; trades after T are excluded.",
+    "cross_midnight": "The required archive set is treated as one ordered timestamp stream. A one-second window may use the immediately preceding daily archive when it crosses a UTC day boundary, provided the complete interval lies within the accepted overall coverage window.",
+    "coverage_boundary": "A flow value is valid only when [T-1000,T) is fully contained in the accepted overall Bybit archive coverage [2025-05-01T00:00:00.000Z, 2025-07-30T00:00:00.000Z).",
+    "receive_time": "No receive timestamp is fabricated or substituted; alignment uses exchange/source timestamps only."
+  },
+  "boundary_handling": {
+    "left_boundary": "Include a trade exactly at T-1000 milliseconds.",
+    "right_boundary": "Exclude a trade exactly at T.",
+    "daily_archive_boundary": "Include records from either adjacent accepted daily archive according to the same half-open timestamp rule; do not reset or double-count at midnight.",
+    "overall_window_start": "L2 events whose one-second causal interval begins before 2025-05-01T00:00:00.000Z are not flow-valid.",
+    "overall_window_end": "L2 events with T greater than 2025-07-30T00:00:00.000Z are not flow-valid because their causal interval would require trades outside the accepted archive window. T exactly equal to the end boundary is allowed."
+  },
+  "missing_and_empty_windows": {
+    "empty_window": "If no accepted trade exists in [T-1000,T), output flow_status=EMPTY and signed_flow_usdt=null; do not replace the empty value with zero.",
+    "missing_archive_or_invalid_day": "If any required archive or accepted manifest is unavailable/invalid, output flow_status=UNAVAILABLE and signed_flow_usdt=null for affected alignments and fail the protocol validation gate.",
+    "missing_trade_fields": "A trade with missing/invalid timestamp, price, volume, or side is not used; the existing daily archive acceptance gate must reject the archive before protocol generation.",
+    "phase4_eligibility": "Future flow-only and L2-plus-flow comparisons may use only flow_status=VALID observations. EMPTY and UNAVAILABLE observations are not imputed and are excluded from flow-dependent inference; the L2-only arm does not receive a fabricated flow value."
+  },
+  "duplicate_and_order_rules": {
+    "duplicate_trade_ids": "Use the accepted Bybit daily integrity manifests. Any duplicate trade ID is an archive validation failure; records are never silently deduplicated.",
+    "trade_id_gaps": "Use the accepted daily trade-ID continuity gate. Any gap is an archive validation failure.",
+    "timestamp_order": "Use the accepted nondecreasing source-timestamp gate. Out-of-order records are an archive validation failure."
+  },
+  "determinism": {
+    "record_order": "Process trades ordered by (timestamp, numeric trade ID); the accepted archives already pass the nondecreasing timestamp and unique/continuous ID gates.",
+    "arithmetic": "Parse price and volume as base-10 Decimal values and compute notional and sums with a fixed Decimal precision of 50 and ROUND_HALF_EVEN; do not use binary floating-point for the protocol value.",
+    "output": "Emit the signed flow as a canonical decimal string in USDT, plus buy_notional_usdt, sell_notional_usdt, trade_count, window_start_ms, window_end_ms_exclusive, and flow_status.",
+    "identical_input": "The same accepted archive bytes and the same L2 timestamp bytes produce byte-identical canonical flow records and the same protocol fingerprint."
+  },
+  "validation_only": {
+    "required_checks": [
+      "protocol fingerprint recomputes exactly",
+      "all required Bybit daily manifests remain PASS",
+      "all required archive hashes match manifests",
+      "flow records can be generated deterministically from accepted archives",
+      "flow records align to frozen L2 source timestamps using the half-open causal interval",
+      "re-running the same validation produces identical counts and fingerprints"
+    ],
+    "forbidden_checks": [
+      "A/B/C/D Phase 4 outcome analysis",
+      "forward-return comparison",
+      "bootstrap",
+      "FDR",
+      "Bonferroni",
+      "directional testing",
+      "threshold optimization",
+      "WFO/OOS",
+      "paper trading",
+      "Telegram alerts",
+      "live execution",
+      "deployment"
+    ]
+  },
+  "frozen_dependencies": {
+    "phase3_candidate": "liquidity-state-transition-eth-btc-v1",
+    "phase3_result_sha256": "8422da7dda4ec49faed61d72c4331fae5bdc7626c1e76930783a66995fcb8377",
+    "phase3_protocol_sha256": "58e1c4ff0bf5188858f050d2e83157a37ba7eaaf4c15015fd7dc39d16dd381ba",
+    "l2_state_grammar": "unchanged; imported from frozen Phase 3 protocol",
+    "l2_event_selection": "unchanged; imported from frozen Phase 3 protocol",
+    "l2_matching": "unchanged; imported from frozen Phase 3 protocol"
+  }
+}
