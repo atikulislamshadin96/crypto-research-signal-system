@@ -1,0 +1,839 @@
+{
+  "file_count": 12,
+  "files": [
+    {
+      "data_type": "l2_orderbook_400lv",
+      "date": "2025-05-01",
+      "drive_file_id": "1PImEFgV2KXMxDy1pss9XgV0N-x1AhprO",
+      "drive_metadata": {
+        "id": "1PImEFgV2KXMxDy1pss9XgV0N-x1AhprO",
+        "md5Checksum": "cfda47e874e1c006c3ba3b96a2a0d846",
+        "mimeType": "application/x-gzip",
+        "name": "BTC-USDT-L2orderbook-400lv-2025-05-01.tar.gz",
+        "parents": [
+          "1PtiR5xZIwRY_cNIAx43DLT5lemB_M0zT"
+        ],
+        "size": "267420964",
+        "trashed": false
+      },
+      "drive_parent_id": "1PtiR5xZIwRY_cNIAx43DLT5lemB_M0zT",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "l2_orderbook_400lv",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1cG0NPJ49bRUAPFL15G5CmF5QcEPyptim",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "BTC-USDT",
+          "parents": [
+            "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE"
+          ]
+        },
+        {
+          "id": "1PtiR5xZIwRY_cNIAx43DLT5lemB_M0zT",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-01",
+          "parents": [
+            "1cG0NPJ49bRUAPFL15G5CmF5QcEPyptim"
+          ]
+        }
+      ],
+      "local_bytes": 267420964,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/l2_400lv/BTC-USDT/BTC-USDT-L2orderbook-400lv-2025-05-01.tar.gz",
+      "local_sha256": "ef12acc92c6ca84680495bd1e7a6fbf607d8d849b77b783574bca448dda60ea3",
+      "name": "BTC-USDT-L2orderbook-400lv-2025-05-01.tar.gz",
+      "symbol": "BTC-USDT"
+    },
+    {
+      "data_type": "l2_orderbook_400lv",
+      "date": "2025-05-02",
+      "drive_file_id": "1r4Luw1GcKU63PEC-dvTrfooW9jhx_qfu",
+      "drive_metadata": {
+        "id": "1r4Luw1GcKU63PEC-dvTrfooW9jhx_qfu",
+        "md5Checksum": "5a5ec1fcf6cc5c0e3d0ee6d399e4832b",
+        "mimeType": "application/x-gzip",
+        "name": "BTC-USDT-L2orderbook-400lv-2025-05-02.tar.gz",
+        "parents": [
+          "1q7CXPkag777CzDhoUf6BkHpAKCiyEEnU"
+        ],
+        "size": "264273012",
+        "trashed": false
+      },
+      "drive_parent_id": "1q7CXPkag777CzDhoUf6BkHpAKCiyEEnU",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "l2_orderbook_400lv",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1cG0NPJ49bRUAPFL15G5CmF5QcEPyptim",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "BTC-USDT",
+          "parents": [
+            "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE"
+          ]
+        },
+        {
+          "id": "1q7CXPkag777CzDhoUf6BkHpAKCiyEEnU",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-02"
+        }
+      ],
+      "local_bytes": 264273012,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/l2_400lv/BTC-USDT/BTC-USDT-L2orderbook-400lv-2025-05-02.tar.gz",
+      "local_sha256": "40798c8fdbd4447a4886ed49681fabb24b397d3c08dad088697a6fd60be1a47e",
+      "name": "BTC-USDT-L2orderbook-400lv-2025-05-02.tar.gz",
+      "symbol": "BTC-USDT"
+    },
+    {
+      "data_type": "l2_orderbook_400lv",
+      "date": "2025-05-03",
+      "drive_file_id": "17YWJFjPqFY7U5OYYtz0pIUrTmacj5FeK",
+      "drive_metadata": {
+        "id": "17YWJFjPqFY7U5OYYtz0pIUrTmacj5FeK",
+        "md5Checksum": "ad740f9c654d6cd683c5710d7362108c",
+        "mimeType": "application/x-gzip",
+        "name": "BTC-USDT-L2orderbook-400lv-2025-05-03.tar.gz",
+        "parents": [
+          "1QjbcX99hVxM1h5GwqmOhv04YEZW7BzVA"
+        ],
+        "size": "147086496",
+        "trashed": false
+      },
+      "drive_parent_id": "1QjbcX99hVxM1h5GwqmOhv04YEZW7BzVA",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "l2_orderbook_400lv",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1cG0NPJ49bRUAPFL15G5CmF5QcEPyptim",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "BTC-USDT",
+          "parents": [
+            "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE"
+          ]
+        },
+        {
+          "id": "1QjbcX99hVxM1h5GwqmOhv04YEZW7BzVA",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-03"
+        }
+      ],
+      "local_bytes": 147086496,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/l2_400lv/BTC-USDT/BTC-USDT-L2orderbook-400lv-2025-05-03.tar.gz",
+      "local_sha256": "d5fdbde0dd2ff0b1ed2a28db8342e1952843b3591b5dead8d675aba09b388db7",
+      "name": "BTC-USDT-L2orderbook-400lv-2025-05-03.tar.gz",
+      "symbol": "BTC-USDT"
+    },
+    {
+      "data_type": "l2_orderbook_400lv",
+      "date": "2025-05-01",
+      "drive_file_id": "1tSlDelGjm46WOIJ1-SruPTLUrdEQalN0",
+      "drive_metadata": {
+        "id": "1tSlDelGjm46WOIJ1-SruPTLUrdEQalN0",
+        "md5Checksum": "d7a332bbe70baa703e9ddc28f9d51852",
+        "mimeType": "application/x-gzip",
+        "name": "ETH-USDT-L2orderbook-400lv-2025-05-01.tar.gz",
+        "parents": [
+          "1XK8FxDDrdZSl_6RSduToFEhMhIfuButc"
+        ],
+        "size": "232765426",
+        "trashed": false
+      },
+      "drive_parent_id": "1XK8FxDDrdZSl_6RSduToFEhMhIfuButc",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "l2_orderbook_400lv",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1Xb50m1Rt6Lu9JZ7Y9c4EwIVnAc5DRUoy",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "ETH-USDT"
+        },
+        {
+          "id": "1XK8FxDDrdZSl_6RSduToFEhMhIfuButc",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-01"
+        }
+      ],
+      "local_bytes": 232765426,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/l2_400lv/ETH-USDT/ETH-USDT-L2orderbook-400lv-2025-05-01.tar.gz",
+      "local_sha256": "460e11da4352254d6ca5ea03b7cc7a0f6b00626b1cf1dceeffd959fe74d1c974",
+      "name": "ETH-USDT-L2orderbook-400lv-2025-05-01.tar.gz",
+      "symbol": "ETH-USDT"
+    },
+    {
+      "data_type": "l2_orderbook_400lv",
+      "date": "2025-05-02",
+      "drive_file_id": "1d2yUOWWzYmrFWvRMf3Dn4ZwRNuuzFUKZ",
+      "drive_metadata": {
+        "id": "1d2yUOWWzYmrFWvRMf3Dn4ZwRNuuzFUKZ",
+        "md5Checksum": "0f3aee488a44e1bc6ba98ab3144f4c4a",
+        "mimeType": "application/x-gzip",
+        "name": "ETH-USDT-L2orderbook-400lv-2025-05-02.tar.gz",
+        "parents": [
+          "1z3MyEkl4T2G18AvFmfUX0N3OFZzOZ73G"
+        ],
+        "size": "215881632",
+        "trashed": false
+      },
+      "drive_parent_id": "1z3MyEkl4T2G18AvFmfUX0N3OFZzOZ73G",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "l2_orderbook_400lv",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1Xb50m1Rt6Lu9JZ7Y9c4EwIVnAc5DRUoy",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "ETH-USDT",
+          "parents": [
+            "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE"
+          ]
+        },
+        {
+          "id": "1z3MyEkl4T2G18AvFmfUX0N3OFZzOZ73G",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-02"
+        }
+      ],
+      "local_bytes": 215881632,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/l2_400lv/ETH-USDT/ETH-USDT-L2orderbook-400lv-2025-05-02.tar.gz",
+      "local_sha256": "7067cddd7d049236bad85dd82cb3cff556aac77b5ec6d2a725e95789e15dced2",
+      "name": "ETH-USDT-L2orderbook-400lv-2025-05-02.tar.gz",
+      "symbol": "ETH-USDT"
+    },
+    {
+      "data_type": "l2_orderbook_400lv",
+      "date": "2025-05-03",
+      "drive_file_id": "1l5V0l9GVmulZMfmPzLCq8DA0owepJrP9",
+      "drive_metadata": {
+        "id": "1l5V0l9GVmulZMfmPzLCq8DA0owepJrP9",
+        "md5Checksum": "29d8e8af2d7d6665d65a03db4760b00a",
+        "mimeType": "application/x-gzip",
+        "name": "ETH-USDT-L2orderbook-400lv-2025-05-03.tar.gz",
+        "parents": [
+          "1iVwTrV44OZLIniLdi3KkdCm6-GikWpb0"
+        ],
+        "size": "134027748",
+        "trashed": false
+      },
+      "drive_parent_id": "1iVwTrV44OZLIniLdi3KkdCm6-GikWpb0",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "l2_orderbook_400lv",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1Xb50m1Rt6Lu9JZ7Y9c4EwIVnAc5DRUoy",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "ETH-USDT",
+          "parents": [
+            "1nrvVXEQinUVQWx-0QI_N5fKUD4SttPYE"
+          ]
+        },
+        {
+          "id": "1iVwTrV44OZLIniLdi3KkdCm6-GikWpb0",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-03"
+        }
+      ],
+      "local_bytes": 134027748,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/l2_400lv/ETH-USDT/ETH-USDT-L2orderbook-400lv-2025-05-03.tar.gz",
+      "local_sha256": "d992211adfc8e48fc62895f0a6722f8d2f95200197243305648f1188d0296013",
+      "name": "ETH-USDT-L2orderbook-400lv-2025-05-03.tar.gz",
+      "symbol": "ETH-USDT"
+    },
+    {
+      "data_type": "trades",
+      "date": "2025-05-01",
+      "drive_file_id": "1Gd997Ll7tdpAzbxtpTH7vvj5ylVV7svR",
+      "drive_metadata": {
+        "id": "1Gd997Ll7tdpAzbxtpTH7vvj5ylVV7svR",
+        "md5Checksum": "0acc6f304fd3c26bdcb7f93ad48fefc4",
+        "mimeType": "application/zip",
+        "name": "BTC-USDT-trades-2025-05-01.zip",
+        "parents": [
+          "1isXfWWHCGXOF7omP9VzwxRIgOe6jFgts"
+        ],
+        "size": "5215968",
+        "trashed": false
+      },
+      "drive_parent_id": "1isXfWWHCGXOF7omP9VzwxRIgOe6jFgts",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "trades"
+        },
+        {
+          "id": "1eA2xx1bfpi_wQL8FtcUgikYPHZzi2R9e",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "BTC-USDT"
+        },
+        {
+          "id": "1isXfWWHCGXOF7omP9VzwxRIgOe6jFgts",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-01"
+        }
+      ],
+      "local_bytes": 5215968,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/trades/BTC-USDT/BTC-USDT-trades-2025-05-01.zip",
+      "local_sha256": "2021f93cd0be09c642a27c65fd00bfd9b6afd11f1da048cf1678f487f10fdf9e",
+      "name": "BTC-USDT-trades-2025-05-01.zip",
+      "symbol": "BTC-USDT"
+    },
+    {
+      "data_type": "trades",
+      "date": "2025-05-02",
+      "drive_file_id": "1KzFS8R5um3rfTCzST47EHETXXqslmyhX",
+      "drive_metadata": {
+        "id": "1KzFS8R5um3rfTCzST47EHETXXqslmyhX",
+        "md5Checksum": "f58ac496d9c8b1d618f567b673bb805e",
+        "mimeType": "application/zip",
+        "name": "BTC-USDT-trades-2025-05-02.zip",
+        "parents": [
+          "1ZUiL7iEI4TqbniMi7N65LUUjkS-rarw5"
+        ],
+        "size": "4868514",
+        "trashed": false
+      },
+      "drive_parent_id": "1ZUiL7iEI4TqbniMi7N65LUUjkS-rarw5",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "trades",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1eA2xx1bfpi_wQL8FtcUgikYPHZzi2R9e",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "BTC-USDT",
+          "parents": [
+            "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj"
+          ]
+        },
+        {
+          "id": "1ZUiL7iEI4TqbniMi7N65LUUjkS-rarw5",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-02"
+        }
+      ],
+      "local_bytes": 4868514,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/trades/BTC-USDT/BTC-USDT-trades-2025-05-02.zip",
+      "local_sha256": "9d3b78631bd4ab00b1264450ee4d0dc794f5d4b46c12a5841717aa671950c309",
+      "name": "BTC-USDT-trades-2025-05-02.zip",
+      "symbol": "BTC-USDT"
+    },
+    {
+      "data_type": "trades",
+      "date": "2025-05-03",
+      "drive_file_id": "1t8HcrI84n5H7PQjTEPeoWARUKm_8K5FQ",
+      "drive_metadata": {
+        "id": "1t8HcrI84n5H7PQjTEPeoWARUKm_8K5FQ",
+        "md5Checksum": "704819fbb9cc2c7bd5a1af02aeae53d8",
+        "mimeType": "application/zip",
+        "name": "BTC-USDT-trades-2025-05-03.zip",
+        "parents": [
+          "1G7PumlDu44DogBofRfEXauJH3uDeDP_h"
+        ],
+        "size": "2952104",
+        "trashed": false
+      },
+      "drive_parent_id": "1G7PumlDu44DogBofRfEXauJH3uDeDP_h",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "trades",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1eA2xx1bfpi_wQL8FtcUgikYPHZzi2R9e",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "BTC-USDT",
+          "parents": [
+            "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj"
+          ]
+        },
+        {
+          "id": "1G7PumlDu44DogBofRfEXauJH3uDeDP_h",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-03"
+        }
+      ],
+      "local_bytes": 2952104,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/trades/BTC-USDT/BTC-USDT-trades-2025-05-03.zip",
+      "local_sha256": "32a90a25bfad0c3bb6570e870b38d381a7164a59848e1a48c83fc386e9b17162",
+      "name": "BTC-USDT-trades-2025-05-03.zip",
+      "symbol": "BTC-USDT"
+    },
+    {
+      "data_type": "trades",
+      "date": "2025-05-01",
+      "drive_file_id": "12UWldWWMtFhdUJRRAu796BXfwi-Wddnh",
+      "drive_metadata": {
+        "id": "12UWldWWMtFhdUJRRAu796BXfwi-Wddnh",
+        "md5Checksum": "fe6d3ad804201c876ee33ed3c2654f4c",
+        "mimeType": "application/zip",
+        "name": "ETH-USDT-trades-2025-05-01.zip",
+        "parents": [
+          "1LSK1m3MKfznlHeZ09dXdShBHmHlJ4nq8"
+        ],
+        "size": "4773651",
+        "trashed": false
+      },
+      "drive_parent_id": "1LSK1m3MKfznlHeZ09dXdShBHmHlJ4nq8",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "trades",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1S2j_E2ZU0ZC46Ld__3_X-KBDHE3whCvV",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "ETH-USDT"
+        },
+        {
+          "id": "1LSK1m3MKfznlHeZ09dXdShBHmHlJ4nq8",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-01"
+        }
+      ],
+      "local_bytes": 4773651,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/trades/ETH-USDT/ETH-USDT-trades-2025-05-01.zip",
+      "local_sha256": "a59878de7c61f86031812a51db524c82fec57322806277854e711a559eac58d2",
+      "name": "ETH-USDT-trades-2025-05-01.zip",
+      "symbol": "ETH-USDT"
+    },
+    {
+      "data_type": "trades",
+      "date": "2025-05-02",
+      "drive_file_id": "1WcIEIW8nAoAsEfLGaSLO-inAHxX-st4d",
+      "drive_metadata": {
+        "id": "1WcIEIW8nAoAsEfLGaSLO-inAHxX-st4d",
+        "md5Checksum": "9919e8b1fbb47d478b68c97d15c5e770",
+        "mimeType": "application/zip",
+        "name": "ETH-USDT-trades-2025-05-02.zip",
+        "parents": [
+          "1DSjAIrPZGoc-_5FRmu03e0R6oOxB-JA4"
+        ],
+        "size": "3455640",
+        "trashed": false
+      },
+      "drive_parent_id": "1DSjAIrPZGoc-_5FRmu03e0R6oOxB-JA4",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "trades",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1S2j_E2ZU0ZC46Ld__3_X-KBDHE3whCvV",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "ETH-USDT",
+          "parents": [
+            "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj"
+          ]
+        },
+        {
+          "id": "1DSjAIrPZGoc-_5FRmu03e0R6oOxB-JA4",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-02"
+        }
+      ],
+      "local_bytes": 3455640,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/trades/ETH-USDT/ETH-USDT-trades-2025-05-02.zip",
+      "local_sha256": "f8acb39f251e0949c93099f6fce20bdcd683e7eb4e00d4925598c6101de063bd",
+      "name": "ETH-USDT-trades-2025-05-02.zip",
+      "symbol": "ETH-USDT"
+    },
+    {
+      "data_type": "trades",
+      "date": "2025-05-03",
+      "drive_file_id": "16tkm7ZlxFNShQ_F3wCydiVfXJiVKSHSk",
+      "drive_metadata": {
+        "id": "16tkm7ZlxFNShQ_F3wCydiVfXJiVKSHSk",
+        "md5Checksum": "398ff041f27d7ad7e7baa99f87756f23",
+        "mimeType": "application/zip",
+        "name": "ETH-USDT-trades-2025-05-03.zip",
+        "parents": [
+          "1Gi1UAVxQSwzlRTe3Nyjx-EUGL5ztwRrI"
+        ],
+        "size": "2441024",
+        "trashed": false
+      },
+      "drive_parent_id": "1Gi1UAVxQSwzlRTe3Nyjx-EUGL5ztwRrI",
+      "folder_chain": [
+        {
+          "id": "1xWMkJqqflvMk7WvGhtte7cInLzra15BR",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "okx",
+          "parents": [
+            "0APEYgw9wC3H_Uk9PVA"
+          ]
+        },
+        {
+          "id": "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "raw",
+          "parents": [
+            "1xWMkJqqflvMk7WvGhtte7cInLzra15BR"
+          ]
+        },
+        {
+          "id": "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "v1",
+          "parents": [
+            "1_h2cUIdUlw7tqdfzuxXt-HlUn8non24V"
+          ]
+        },
+        {
+          "id": "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "trades",
+          "parents": [
+            "1teRMXAaJ7MKCiLe0ZUbPAGBhH8c1s7W2"
+          ]
+        },
+        {
+          "id": "1S2j_E2ZU0ZC46Ld__3_X-KBDHE3whCvV",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "ETH-USDT",
+          "parents": [
+            "1JYe1j_oEpp5zvs1_FGJj6j9qVylU03Hj"
+          ]
+        },
+        {
+          "id": "1Gi1UAVxQSwzlRTe3Nyjx-EUGL5ztwRrI",
+          "kind": "drive#file",
+          "mimeType": "application/vnd.google-apps.folder",
+          "name": "2025-05-03"
+        }
+      ],
+      "local_bytes": 2441024,
+      "local_path": "/tmp/okx_pilot_2025-05-01_2025-05-03/raw/trades/ETH-USDT/ETH-USDT-trades-2025-05-03.zip",
+      "local_sha256": "cc4cd71b5f1ef87c351540ed47f1f032d7d2626c0dabdcf681fd530b6337d8ca",
+      "name": "ETH-USDT-trades-2025-05-03.zip",
+      "symbol": "ETH-USDT"
+    }
+  ]
+}

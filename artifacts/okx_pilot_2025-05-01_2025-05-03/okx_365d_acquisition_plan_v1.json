@@ -1,0 +1,126 @@
+{
+  "integrity_gate": {
+    "archive_sample_prior_result": "BLOCKED_MISSING_HISTORICAL_L2",
+    "existing_validator": "src/crypto_signal_system/historical_l2.py::normalize_okx_historical_archive",
+    "expected_l2_pilot_status_if_schema_matches_prior_sample": "BLOCKED_INTEGRITY",
+    "receive_timestamps_must_not_be_fabricated": true,
+    "sequence_fields_required": true,
+    "trade_schema_must_be_recorded_from_actual_archive": true
+  },
+  "metadata_audit": {
+    "archive_body_downloaded": false,
+    "coverage": {
+      "BTC-USDT_l2_400lv": {
+        "dates": 365,
+        "files": 365,
+        "metadata_size_mb": 78062.28,
+        "missing_dates": 0
+      },
+      "BTC-USDT_trades": {
+        "dates": 365,
+        "files": 365,
+        "metadata_size_mb": 2138.76,
+        "missing_dates": 0
+      },
+      "ETH-USDT_l2_400lv": {
+        "dates": 365,
+        "files": 365,
+        "metadata_size_mb": 78213.07,
+        "missing_dates": 0
+      },
+      "ETH-USDT_trades": {
+        "dates": 365,
+        "files": 365,
+        "metadata_size_mb": 1990.4,
+        "missing_dates": 0
+      }
+    },
+    "l2_api_successes": 53,
+    "l2_module": "4",
+    "l2_requests": 53,
+    "metadata_rate_limit_observation": "Concurrent metadata requests returned HTTP 429; sequential 7-day requests with pacing and retry completed with API code 0 for all 106 requests.",
+    "trade_api_successes": 53,
+    "trade_module": "1",
+    "trade_requests": 53
+  },
+  "pilot": {
+    "allowed_actions": [
+      "download_official_archive",
+      "sha256",
+      "byte_count",
+      "schema_check",
+      "duplicate_check",
+      "gap_check",
+      "instrument_check",
+      "drive_upload",
+      "fresh_restore",
+      "fresh_clone_manifest_verification"
+    ],
+    "calendar_days": 3,
+    "end_date_inclusive": "2025-05-03",
+    "expected_by_group": {
+      "BTC-USDT_l2_400lv": 3,
+      "BTC-USDT_trades": 3,
+      "ETH-USDT_l2_400lv": 3,
+      "ETH-USDT_trades": 3
+    },
+    "expected_files": 12,
+    "forbidden_actions": [
+      "research_phase_execution",
+      "state_or_event_study",
+      "forward_returns",
+      "order_flow_overlay",
+      "signals",
+      "paper_trading",
+      "live_trading",
+      "alerts",
+      "deployment",
+      "sequence_reconstruction",
+      "receive_timestamp_fabrication",
+      "protocol_relaxation"
+    ],
+    "start_date_inclusive": "2025-05-01"
+  },
+  "plan_version": "okx_365d_acquisition_plan_v1",
+  "scope": {
+    "calendar_days": 365,
+    "data_types": [
+      "trades",
+      "l2_orderbook_400lv"
+    ],
+    "end_date_inclusive": "2026-04-30",
+    "expected_archive_count": 1460,
+    "start_date_inclusive": "2025-05-01",
+    "symbols": [
+      "BTC-USDT",
+      "ETH-USDT"
+    ]
+  },
+  "source": {
+    "historical_data_page": "https://www.okx.com/en-us/historical-data",
+    "metadata_endpoint": "https://www.okx.com/priapi/v5/broker/public/trade-data/download-link",
+    "official_static_archive_hosts": [
+      "https://static.okx.com"
+    ],
+    "venue": "OKX"
+  },
+  "status": "PILOT_AUTHORIZED_FULL_ARCHIVE_NOT_AUTHORIZED",
+  "stop_conditions": [
+    "Any pilot archive is unavailable or hash/byte verification fails",
+    "Any L2 archive fails the existing sequence/timestamp integrity gate",
+    "Any unexpected instrument, schema, duplicate, gap, or out-of-order defect occurs",
+    "Drive upload/restore exact-byte verification fails",
+    "Full 365-day acquisition requires a separate explicit authorization after the pilot report"
+  ],
+  "storage": {
+    "control_plane": "GitHub",
+    "drive_metadata_verification": true,
+    "fresh_clone_manifest_verification": true,
+    "fresh_session_restore_sha256": true,
+    "no_credentials_in_git": true,
+    "object_key_pattern": "okx/raw/v1/{data_type}/{symbol}/{date}/{filename}",
+    "per_file_manifest": true,
+    "raw_byte_plane": "Google Drive",
+    "sha256_before_upload": true
+  }
+}

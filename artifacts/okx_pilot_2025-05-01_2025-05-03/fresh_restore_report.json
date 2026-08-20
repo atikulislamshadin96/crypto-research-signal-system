@@ -1,0 +1,56 @@
+{
+  "all_exact_match": true,
+  "files": [
+    {
+      "data_type": "l2_orderbook_400lv",
+      "date": "2025-05-01",
+      "drive_file_id": "1PImEFgV2KXMxDy1pss9XgV0N-x1AhprO",
+      "exact_match": true,
+      "expected_bytes": 267420964,
+      "expected_sha256": "ef12acc92c6ca84680495bd1e7a6fbf607d8d849b77b783574bca448dda60ea3",
+      "name": "BTC-USDT-L2orderbook-400lv-2025-05-01.tar.gz",
+      "restored_bytes": 267420964,
+      "restored_sha256": "ef12acc92c6ca84680495bd1e7a6fbf607d8d849b77b783574bca448dda60ea3",
+      "symbol": "BTC-USDT"
+    },
+    {
+      "data_type": "l2_orderbook_400lv",
+      "date": "2025-05-01",
+      "drive_file_id": "1tSlDelGjm46WOIJ1-SruPTLUrdEQalN0",
+      "exact_match": true,
+      "expected_bytes": 232765426,
+      "expected_sha256": "460e11da4352254d6ca5ea03b7cc7a0f6b00626b1cf1dceeffd959fe74d1c974",
+      "name": "ETH-USDT-L2orderbook-400lv-2025-05-01.tar.gz",
+      "restored_bytes": 232765426,
+      "restored_sha256": "460e11da4352254d6ca5ea03b7cc7a0f6b00626b1cf1dceeffd959fe74d1c974",
+      "symbol": "ETH-USDT"
+    },
+    {
+      "data_type": "trades",
+      "date": "2025-05-01",
+      "drive_file_id": "1Gd997Ll7tdpAzbxtpTH7vvj5ylVV7svR",
+      "exact_match": true,
+      "expected_bytes": 5215968,
+      "expected_sha256": "2021f93cd0be09c642a27c65fd00bfd9b6afd11f1da048cf1678f487f10fdf9e",
+      "name": "BTC-USDT-trades-2025-05-01.zip",
+      "restored_bytes": 5215968,
+      "restored_sha256": "2021f93cd0be09c642a27c65fd00bfd9b6afd11f1da048cf1678f487f10fdf9e",
+      "symbol": "BTC-USDT"
+    },
+    {
+      "data_type": "trades",
+      "date": "2025-05-01",
+      "drive_file_id": "12UWldWWMtFhdUJRRAu796BXfwi-Wddnh",
+      "exact_match": true,
+      "expected_bytes": 4773651,
+      "expected_sha256": "a59878de7c61f86031812a51db524c82fec57322806277854e711a559eac58d2",
+      "name": "ETH-USDT-trades-2025-05-01.zip",
+      "restored_bytes": 4773651,
+      "restored_sha256": "a59878de7c61f86031812a51db524c82fec57322806277854e711a559eac58d2",
+      "symbol": "ETH-USDT"
+    }
+  ],
+  "fresh_config": "/tmp/okx_fresh_restore_config",
+  "fresh_home": "/tmp/okx_fresh_restore_home",
+  "selected_count": 4
+}
