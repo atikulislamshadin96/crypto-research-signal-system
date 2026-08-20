@@ -9,5 +9,20 @@
   "source_url": null,
   "sensitive": false,
   "purpose": "Validate deterministic placeholder upload, GitHub commit/push, fresh clone, LFS hydration, size check, and SHA-256 restore check before real Bybit acquisition.",
-  "status": "PENDING_UPLOAD"
+  "upload": {
+    "commit": "0ef5ec6211503c6a738d51d069cc5380a451fa90",
+    "lfs_upload": "PASS",
+    "remote_branch": "main"
+  },
+  "fresh_clone": {
+    "clone_head": "0ef5ec6211503c6a738d51d069cc5380a451fa90",
+    "restored_size_bytes": 1048576,
+    "restored_sha256": "415b8b86d6f375a63fa41c1c1614a8ba9ef614ab6ab6c1fa62fef5d34e38a325",
+    "size_match": true,
+    "hash_match": true,
+    "git_lfs_fsck": "PASS"
+  },
+  "status": "PASS",
+  "real_data_acquisition_allowed": false,
+  "note": "This dry-run validates the GitHub/Git LFS control sequence only. It does not activate Backblaze B2, upload real Bybit archives, or establish byte identity with the lost historical dataset."
 }
