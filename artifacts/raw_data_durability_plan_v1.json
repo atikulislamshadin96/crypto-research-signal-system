@@ -1,0 +1,118 @@
+{
+  "artifact_id": "RAW_DATA_DURABILITY_PLAN_V1",
+  "version": "v1",
+  "created_utc": "2026-08-20T00:00:00Z",
+  "status": "PLAN_ONLY_NO_REAL_DATA_TOUCHED",
+  "scope": {
+    "exchange": "Bybit",
+    "symbols": ["BTCUSDT", "ETHUSDT"],
+    "data_types": ["historical_l2", "signed_flow_trades"],
+    "date_start_inclusive": "2025-05-01",
+    "date_end_inclusive": "2025-07-29",
+    "calendar_days": 90,
+    "raw_archive_count": 360,
+    "substitutions_forbidden": ["Binance", "OKX", "OHLCV", "synthetic", "reconstructed"]
+  },
+  "recommended_architecture": {
+    "control_plane": "Authenticated GitHub repository",
+    "raw_byte_plane": "Private Backblaze B2 S3-compatible bucket, pending explicit user approval and account setup",
+    "why": "GitHub stores code, frozen protocols, manifests, hashes, acquisition metadata, and research commits; B2 stores the reconstructable raw bytes independently. Git LFS is retained as a tested fallback/control-plane option but is not recommended as the sole raw-byte archive for this dataset."
+  },
+  "estimated_size_and_cost": {
+    "basis": "Prior project storage observations and signed-flow archive estimates; exact size must be measured during acquisition and recorded per object.",
+    "l2_gib_estimate": "20-24",
+    "signed_flow_gib_estimate": "0.9-1.8",
+    "metadata_gib_estimate": "less_than_0.1",
+    "total_gib_estimate": "21-26",
+    "recommended_headroom_gib": "30",
+    "b2_storage_rate_reference": "$6.95/TB/month, first 10GB free per current Backblaze pricing page",
+    "b2_estimated_storage_cost_usd_per_month": "approximately $0.09-$0.15 for 21-30 GiB after the first 10GB free, excluding tax and any pricing changes",
+    "b2_upload_cost": "$0 for upload bandwidth and Class A upload calls per current pricing documentation",
+    "b2_restore_cost": "one full 21-26 GiB restore is within the stated 3x monthly-average-storage free egress allowance; additional egress is published at $0.01/GB",
+    "github_lfs_free_allowance": "10 GiB storage and 10 GiB monthly download bandwidth on Free plan",
+    "github_lfs_estimated_overage": "for 21-26 GiB, approximately 11-16 GiB storage overage at $0.07/GiB-month and one full restore overage at $0.0875/GiB, subject to GitHub billing/plan rules",
+    "github_lfs_published_addon_reference": "$5/month for 50 GB storage and bandwidth on current GitHub pricing page",
+    "cost_decision": "No paid service is activated in this task. B2 is the recommended raw-byte plane because the expected monthly cost is very low, uploads/API calls are free, and it is independent of Git history."
+  },
+  "exact_object_layout": {
+    "bucket": "private bucket name supplied only after user approval",
+    "keys": [
+      "bybit/raw/v1/l2/BTCUSDT/2025-05-01/BTCUSDT_2025-05-01_ob200.data.zip",
+      "bybit/raw/v1/l2/ETHUSDT/2025-05-01/ETHUSDT_2025-05-01_ob200.data.zip",
+      "bybit/raw/v1/signed_flow/BTCUSDT/2025-05-01/BTCUSDT_2025-05-01.csv.gz",
+      "bybit/raw/v1/signed_flow/ETHUSDT/2025-05-01/ETHUSDT_2025-05-01.csv.gz"
+    ],
+    "object_metadata": ["sha256", "source_url", "provenance_id", "content_length", "content_type", "acquired_utc", "protocol_scope"]
+  },
+  "git_layout": {
+    "manifest_path": "artifacts/raw_data_manifest_v1/manifest.jsonl",
+    "batch_metadata_path": "artifacts/raw_data_manifest_v1/batches/batch_YYYYMMDD.json",
+    "acquisition_metadata_path": "artifacts/raw_data_manifest_v1/acquisition_metadata.json",
+    "restore_instructions_path": "artifacts/raw_data_manifest_v1/RESTORE.md",
+    "raw_bytes_in_git": false,
+    "git_lfs_policy": "Do not use Git LFS as the sole raw-byte store; use only as a controlled fallback or dry-run provider unless explicitly selected."
+  },
+  "credentials": {
+    "never_commit": ["application_key_id", "application_key", "access_key_id", "secret_access_key", "tokens", "passwords"],
+    "runtime_method": "Environment variables or a user-managed secret/connector mechanism; credentials must never appear in command arguments, logs, manifests, or Git history.",
+    "current_task_state": "No B2 credentials are configured. No paid account has been created. After a sandbox reset, credentials must be re-supplied unless the user configures a durable secret mechanism; inaccessible cloud bytes are treated as unavailable."
+  },
+  "incremental_durability": {
+    "batch_max_calendar_days": 10,
+    "per_batch_sequence": [
+      "Acquire only the next batch from official Bybit URLs",
+      "Validate archive format and per-day integrity",
+      "Compute SHA-256 and compare with the newly created re-acquisition manifest",
+      "Upload raw bytes to the private object store",
+      "HEAD/metadata verify every uploaded object",
+      "Commit manifests and batch metadata to GitHub",
+      "Push the commit to authenticated GitHub remote",
+      "Fresh-clone GitHub verification",
+      "Fresh-workspace object download and SHA-256 verification",
+      "Stop immediately on any failure before the next batch"
+    ]
+  },
+  "restore": {
+    "fresh_workspace": [
+      "Clone the GitHub repository at the manifest commit",
+      "Verify the expected provenance_id and manifest commit SHA",
+      "Load object-store credentials from the approved secret mechanism",
+      "Download each object by exact manifest key",
+      "Recompute SHA-256 and compare with the committed manifest",
+      "Refuse any object with missing key, size mismatch, metadata mismatch, or hash mismatch",
+      "Only then expose raw bytes to validation code"
+    ],
+    "independent_recoverability": "GitHub must restore metadata/manifests independently; object storage must restore bytes independently. Neither side is considered sufficient alone."
+  },
+  "retention": {
+    "raw_objects": "Retain indefinitely for this research baseline; no deletion or overwrite of v1 objects.",
+    "manifests": "Retain all versions and commits; never rewrite original re-acquisition metadata.",
+    "object_versioning": "Enable versioning or immutable retention if available and approved on the selected provider.",
+    "new_baseline_rule": "Because the prior historical hashes are unrecoverable, this is a new provenance baseline and must never claim byte identity with the lost dataset."
+  },
+  "dry_run": {
+    "required_before_real_data": true,
+    "provider": "GitHub Git LFS controlled dry-run, because no B2 account or credentials are available and no paid service may be activated without approval",
+    "dummy_content": "non-sensitive placeholder only",
+    "steps": ["create dummy", "sha256", "cloud upload", "cloud-side/object verification", "GitHub metadata commit", "authenticated push", "fresh clone", "cloud download", "recompute hash", "exact match"],
+    "status": "PENDING_EXECUTION",
+    "limitation": "A provider-specific B2 dry-run remains required before selecting B2 for real data; the Git LFS dry-run validates the repository/cloud/restore control sequence without activating paid storage."
+  },
+  "safety_gates": {
+    "real_bybit_download_allowed_now": false,
+    "phase2_allowed_now": false,
+    "phase3_allowed_now": false,
+    "phase4_allowed_now": false,
+    "paid_storage_activation_allowed_now": false,
+    "required_before_real_acquisition": ["plan committed", "authenticated push verified", "dummy dry-run PASS", "storage option selected", "explicit approval for any paid storage"],
+    "frozen_artifacts_to_protect": ["Phase 3 result", "Phase 3 protocol", "Phase 4 flow construction v1", "research scope"]
+  },
+  "sources": [
+    {"url": "https://docs.github.com/repositories/working-with-files/managing-large-files/about-git-large-file-storage", "title": "About Git Large File Storage"},
+    {"url": "https://docs.github.com/billing/managing-billing-for-git-large-file-storage/about-billing-for-git-large-file-storage", "title": "Git Large File Storage billing"},
+    {"url": "https://github.com/pricing", "title": "GitHub pricing"},
+    {"url": "https://github.com/pricing/calculator", "title": "GitHub pricing calculator"},
+    {"url": "https://www.backblaze.com/cloud-storage/pricing", "title": "Backblaze B2 Cloud Storage Pricing"},
+    {"url": "https://www.backblaze.com/cloud-storage/transaction-pricing", "title": "Backblaze B2 transaction pricing"}
+  ]
+}
