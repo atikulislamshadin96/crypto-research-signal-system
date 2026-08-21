@@ -11,6 +11,9 @@ data:
   provider: "okx_public"
   okx_base_url: "https://www.okx.com"
   okx_instrument_template: "{symbol}-SWAP"
+  bybit_base_url: "https://api.bybit.com"
+  bybit_ws_url: "wss://stream.bybit.com/v5/public/linear"
+  bybit_open_interest_interval: "5min"
   spot_base_url: "https://data-api.binance.vision"
   futures_base_url: "https://fapi.binance.com"
   symbols: ["BTCUSDT", "ETHUSDT"]
