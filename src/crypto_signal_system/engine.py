@@ -30,6 +30,31 @@ def run_scan(config: dict[str, Any], now: datetime | None = None) -> RunResult:
     provider_status: list[dict[str, Any]] = []
     all_signals = []
     rejected: list[dict[str, Any]] = []
+    if provider_name == "bybit_public" and hasattr(client, "refresh_websocket_state"):
+        ws_timeframes = list(dict.fromkeys(
+            list(config["data"]["timeframes"]["regime"])
+            + [config["data"]["timeframes"]["structure"], config["data"]["timeframes"]["entry"]]
+        ))
+        try:
+            collection = client.refresh_websocket_state(
+                list(config["data"]["symbols"]),
+                ws_timeframes,
+                int(config["data"].get("bybit_ws_collect_seconds", 20)),
+            )
+            provider_status.append({
+                "data_type": "websocket_collection",
+                "valid": bool(collection.get("connection") and collection.get("subscription_ack")),
+                "source": "bybit_public:websocket",
+                "summary": collection,
+            })
+        except ProviderError as exc:
+            warnings.append(f"Bybit WebSocket collection failed: {exc}")
+            provider_status.append({
+                "data_type": "websocket_collection",
+                "valid": False,
+                "source": "bybit_public:websocket",
+                "errors": [str(exc)],
+            })
     freshest: list[datetime] = []
     regime_frames: list[Any] = []
     risk_state = build_risk_state(config)
