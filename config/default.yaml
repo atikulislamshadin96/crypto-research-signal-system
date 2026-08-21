@@ -14,7 +14,7 @@ data:
   bybit_base_url: "https://api.bybit.com"
   bybit_ws_url: "wss://stream.bybit.com/v5/public/linear"
   bybit_open_interest_interval: "5min"
-  bybit_ws_collect_seconds: 20
+  bybit_ws_collect_seconds: 180
   bybit_ws_state_path: "artifacts/live/bybit_ws_state.json"
   spot_base_url: "https://data-api.binance.vision"
   futures_base_url: "https://fapi.binance.com"
