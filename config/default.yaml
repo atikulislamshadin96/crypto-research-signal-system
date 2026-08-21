@@ -8,7 +8,7 @@ system:
   output_dir: "artifacts"
 
 data:
-  provider: "okx_public"
+  provider: "bybit_public"
   okx_base_url: "https://www.okx.com"
   okx_instrument_template: "{symbol}-SWAP"
   bybit_base_url: "https://api.bybit.com"
