@@ -153,6 +153,7 @@ class RunResult:
     risk_state: RiskState
     warnings: list[str]
     provider_status: list[dict[str, Any]]
+    analysis_status: Literal["DATA_NOT_READY", "NO_VALID_SETUP", "SIGNAL_READY"] = "NO_VALID_SETUP"
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -166,4 +167,5 @@ class RunResult:
             "risk_state": self.risk_state.to_dict(),
             "warnings": self.warnings,
             "provider_status": self.provider_status,
+            "analysis_status": self.analysis_status,
         }

@@ -68,6 +68,7 @@ class BybitWebSocketState:
         self.data: dict[str, Any] = {
             "schema_version": self.schema_version,
             "updated_at_ms": None,
+            "emitted_signal_keys": [],
             "symbols": {},
         }
         for symbol in self.symbols:
@@ -89,7 +90,15 @@ class BybitWebSocketState:
             for symbol in self.symbols:
                 if symbol in payload.get("symbols", {}):
                     self.data["symbols"][symbol] = payload["symbols"][symbol]
+                symbol_state = self.data["symbols"][symbol]
+                candles = symbol_state.setdefault("candles", {})
+                for timeframe in self.timeframes:
+                    candles.setdefault(timeframe, {})
+                symbol_state.setdefault("order_book", {"valid": False, "observed_at_ms": None, "update_id": None, "seq": None, "pu": None, "bids": {}, "asks": {}, "sequence_gaps": 0})
+                symbol_state.setdefault("trades", {})
+                symbol_state.setdefault("derivatives", {"observed_at_ms": None, "open_interest": None, "funding_rate": None})
             self.data["updated_at_ms"] = payload.get("updated_at_ms")
+            self.data["emitted_signal_keys"] = list(payload.get("emitted_signal_keys", []))[-1000:]
         except (OSError, ValueError, TypeError, KeyError) as exc:
             raise ProviderError(f"Invalid Bybit WebSocket state cache: {exc}") from exc
 
@@ -107,6 +116,16 @@ class BybitWebSocketState:
         finally:
             if os.path.exists(tmp_name):
                 os.unlink(tmp_name)
+
+    def has_emitted_signal(self, key: str) -> bool:
+        return str(key) in set(self.data.get("emitted_signal_keys", []))
+
+    def record_emitted_signal(self, key: str) -> None:
+        key = str(key)
+        keys = self.data.setdefault("emitted_signal_keys", [])
+        if key not in keys:
+            keys.append(key)
+            del keys[:-1000]
 
     def _symbol(self, symbol: str) -> dict[str, Any]:
         try:

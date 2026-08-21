@@ -20,8 +20,15 @@ data:
   futures_base_url: "https://fapi.binance.com"
   symbols: ["BTCUSDT", "ETHUSDT"]
   timeframes:
-    regime: ["1d", "4h"]
-    structure: "1h"
+    hierarchy:
+      regime: "1d"
+      structure: "4h"
+      confirmation: "1h"
+      setup: "30m"
+      entry: "15m"
+    # Legacy role aliases retained for compatibility with existing readers.
+    regime: ["1d"]
+    structure: "4h"
     entry: "15m"
   candle_limit: 300
   request_timeout_seconds: 15
