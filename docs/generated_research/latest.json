@@ -6,172 +6,64 @@
   "dataset_fresh": false,
   "results": [
     {
-      "fingerprint": "fad78a32344db4ece7a60e69af5f55ba0cc7871a3d7dfbd6b45f35465f4ec32f",
       "hypothesis_id": "funding-divergence-0.0005-2h",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "fad78a32344db4ece7a60e69af5f55ba0cc7871a3d7dfbd6b45f35465f4ec32f",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "effef7674fe9d6d346f762f1a3df246a45d110d91de50b53897ba3b7968d7ce7",
       "hypothesis_id": "funding-divergence-0.0005-4h",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "effef7674fe9d6d346f762f1a3df246a45d110d91de50b53897ba3b7968d7ce7",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "4acfccf76986d140536dc2328cf8310309cc76c1a64903d54a305288645d7616",
       "hypothesis_id": "funding-divergence-0.0010-2h",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "4acfccf76986d140536dc2328cf8310309cc76c1a64903d54a305288645d7616",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "ad507546b80b9747d1099f40f332e3495b0774d8ff9a4cdbd67e7aeb1a42a5df",
       "hypothesis_id": "funding-divergence-0.0010-4h",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "ad507546b80b9747d1099f40f332e3495b0774d8ff9a4cdbd67e7aeb1a42a5df",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "0dac0eaf1f065d97fd96fb7ef3564d9e06ee3c1ac6dc6f67bf9b10525ce12efe",
       "hypothesis_id": "funding-divergence-0.0020-2h",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "0dac0eaf1f065d97fd96fb7ef3564d9e06ee3c1ac6dc6f67bf9b10525ce12efe",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "8451d67ab8c69b3deb177fd135d6c148b73329f1bf3a63fe9cf3586005f560a2",
       "hypothesis_id": "funding-divergence-0.0020-4h",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "8451d67ab8c69b3deb177fd135d6c148b73329f1bf3a63fe9cf3586005f560a2",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "05d369dbc25be582535ff3c84d30dda23b33cee8a632a15f4398af931f32e43e",
       "hypothesis_id": "spot-perp-flow-divergence-z1.5-5m",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "05d369dbc25be582535ff3c84d30dda23b33cee8a632a15f4398af931f32e43e",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "02143a24ad45176962f30c5afa4e49e52e91b5e9f7ff0ab691e63b95b5064a48",
       "hypothesis_id": "spot-perp-flow-divergence-z1.5-15m",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "02143a24ad45176962f30c5afa4e49e52e91b5e9f7ff0ab691e63b95b5064a48",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "95b7f00cb378a1a8126a33b1e44cce126be38747e7cc55dedb85314ea0f2309f",
       "hypothesis_id": "spot-perp-flow-divergence-z2-5m",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "95b7f00cb378a1a8126a33b1e44cce126be38747e7cc55dedb85314ea0f2309f",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "204ed90b5724f31a9f8ec7d7b29875f7429342e60e5616919c3977047796579c",
       "hypothesis_id": "spot-perp-flow-divergence-z2-15m",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "204ed90b5724f31a9f8ec7d7b29875f7429342e60e5616919c3977047796579c",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "7010df11a7b6fbb7bd7d51df78675a5f8b65e35752ba7d86b0e6b5268fa1a3a4",
       "hypothesis_id": "depth-normalized-ofi-l5-z1.5",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "7010df11a7b6fbb7bd7d51df78675a5f8b65e35752ba7d86b0e6b5268fa1a3a4",
+      "status": "duplicate_skipped"
     },
     {
-      "fingerprint": "57673b7c7d3f61a85776f850bcbd13c1e4548fce0717f7087aa3c5e2f87b9a3c",
       "hypothesis_id": "depth-normalized-ofi-l5-z2",
-      "status": "blocked_missing_data",
-      "completed_stages": [
-        "schema",
-        "causality"
-      ],
-      "blocked_stage": "data_availability",
-      "rejection_reason": "required dataset manifest or files unavailable; fail closed",
-      "analysis_only": true,
-      "live_execution_enabled": false,
-      "result": null
+      "fingerprint": "57673b7c7d3f61a85776f850bcbd13c1e4548fce0717f7087aa3c5e2f87b9a3c",
+      "status": "duplicate_skipped"
     }
   ]
 }
