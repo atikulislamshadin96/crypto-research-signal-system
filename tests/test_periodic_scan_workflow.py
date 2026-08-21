@@ -10,7 +10,7 @@ def test_periodic_websocket_scan_contract_is_configured() -> None:
     workflow = WORKFLOW.read_text(encoding="utf-8")
     config = CONFIG.read_text(encoding="utf-8")
 
-    assert 'cron: "*/15 * * * *"' in workflow
+    assert 'cron: "13,28,43,58 * * * *"' in workflow
     assert "timeout-minutes: 10" in workflow
     assert "Run periodic analysis-only WebSocket scan" in workflow
     assert "python -m crypto_signal_system.cli --config config/default.yaml scan --dry-run" in workflow

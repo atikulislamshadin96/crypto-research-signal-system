@@ -3,7 +3,7 @@ name: crypto-signal-analysis
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "13,28,43,58 * * * *"
 
 permissions:
   contents: read
