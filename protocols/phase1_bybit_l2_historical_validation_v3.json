@@ -1,0 +1,93 @@
+{
+  "protocol_name": "phase1_bybit_l2_historical_validation",
+  "protocol_version": "bybit_l2_historical_integrity_v3",
+  "purpose": "Validate official Bybit linear orderbook.200 daily archives without accepting cross-day contamination, transport corruption, or undocumented sequence anomalies.",
+  "source": {
+    "archive_url_template": "https://quote-saver.bycsi.com/orderbook/linear/{SYMBOL}/{DATE}_{SYMBOL}_ob200.data.zip",
+    "exchange": "Bybit",
+    "category": "linear",
+    "topic_template": "orderbook.200.{SYMBOL}",
+    "official_references": [
+      "https://bybit-exchange.github.io/docs/v5/websocket/public/orderbook",
+      "https://bybit-exchange.github.io/docs/v5/market/orderbook"
+    ]
+  },
+  "window": {
+    "date_partition": "UTC calendar day",
+    "start_inclusive": true,
+    "end_exclusive": true,
+    "end_grace_ms": 2000
+  },
+  "archive_boundary_rule": {
+    "name": "first_snapshot_matching_engine_pre_start_cts_v1",
+    "max_pre_start_cts_ms": 2000,
+    "allowed_only_when": [
+      "the record is the first non-empty archive record",
+      "type == snapshot",
+      "ts >= target_day_start_ms",
+      "target_day_start_ms - 2000 <= cts < target_day_start_ms",
+      "every later record has ts >= target_day_start_ms and cts >= target_day_start_ms",
+      "ts and cts remain non-decreasing across the full archive",
+      "no other timestamp or boundary error exists"
+    ],
+    "rejected_when": [
+      "any non-first record has ts or cts before the target day",
+      "the first record has ts before the target day",
+      "the first record is not a snapshot",
+      "the first cts is earlier than the 2000 ms deterministic grace",
+      "any record exceeds the 2000 ms end grace",
+      "any timestamp moves backward after the first record"
+    ],
+    "rationale": "Bybit defines ts as the system-generated timestamp and cts as the matching-engine production timestamp. A first snapshot can straddle the UTC file partition by a small clock/processing interval; the exception is constrained to one first snapshot and does not permit later cross-day records."
+  },
+  "snapshot_reset_rule": {
+    "name": "bybit_documented_u1_service_restart_v2",
+    "allowed_only_when": [
+      "exactly one mid-stream record is type == snapshot and u == 1",
+      "the reset snapshot seq is strictly greater than the immediately previous seq",
+      "the immediately following record has u == 2",
+      "all seq values are strictly increasing except the existing terminal snapshot duplicate convention",
+      "all other u values are strictly increasing except the existing terminal snapshot duplicate convention"
+    ],
+    "rejected_when": [
+      "more than one u=1 mid-stream snapshot occurs",
+      "the reset is not a snapshot",
+      "the reset seq is not strictly greater than the prior seq",
+      "the next u is not 2",
+      "any unrelated u or seq ordering/duplicate failure occurs"
+    ],
+    "rationale": "Bybit documents that u=1 can indicate a service restart and that a new snapshot must replace the local order book."
+  },
+  "integrity_requirements": [
+    "ZIP opens successfully and CRC/inflate checks pass",
+    "exactly one ZIP member exists",
+    "JSONL parses for every non-empty record",
+    "topic and symbol match the requested symbol",
+    "record type is snapshot or delta",
+    "ts and cts are integer milliseconds",
+    "u and seq are integer values",
+    "bid/ask levels are two-string pairs",
+    "u and seq are strictly ordered under the documented exceptions",
+    "source archive SHA-256 is recorded before Drive upload",
+    "Drive restore is by immutable file ID",
+    "restored byte count and SHA-256 exactly match the source"
+  ],
+  "operational_instruction": [
+    "Do not modify validate_bybit_l2_archive.py in place.",
+    "Run validate_bybit_l2_archive_historical_v3.py for new archives.",
+    "If validation fails, record VALIDATION_FAILED and stop the sequential worker.",
+    "Do not invent a wider timestamp window, skip records, reconstruct data, or substitute another exchange.",
+    "Do not reprocess accepted archives unless an explicit provenance audit requires it.",
+    "Do not start Phase 2, Phase 3, Phase 4, trading, alerts, or deployment during Phase 1 acquisition."
+  ],
+  "test_fixture": {
+    "archive": "2025-09-19_BTCUSDT_ob200.data.zip",
+    "result": "PASS",
+    "pre_start_cts_boundary_count": 1,
+    "first_ts_offset_ms": 43,
+    "first_cts_offset_ms": -57,
+    "record_count": 861028,
+    "archive_sha256": "33246bfa7e9031f1ddde3f7c06debe648436ba4cf83f16d755e120ed1f9d547e"
+  },
+  "status": "VERSIONED_INSTRUCTION_READY"
+}
