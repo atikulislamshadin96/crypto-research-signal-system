@@ -1,0 +1,104 @@
+{
+  "protocol_name": "phase1_bybit_l2_historical_validation",
+  "protocol_version": "bybit_l2_historical_integrity_v5",
+  "purpose": "Validate official Bybit linear orderbook.200 daily archives with explicit, narrowly versioned first-snapshot and terminal-boundary partition rules, while remaining fail-closed on all other integrity failures.",
+  "source": {
+    "archive_url_template": "https://quote-saver.bycsi.com/orderbook/linear/{SYMBOL}/{DATE}_{SYMBOL}_ob200.data.zip",
+    "exchange": "Bybit",
+    "category": "linear",
+    "topic_template": "orderbook.200.{SYMBOL}",
+    "official_references": [
+      "https://bybit-exchange.github.io/docs/v5/websocket/public/orderbook",
+      "https://bybit-exchange.github.io/docs/v5/market/orderbook"
+    ]
+  },
+  "window": {
+    "date_partition": "UTC calendar day",
+    "start_inclusive": true,
+    "end_exclusive": true,
+    "ordinary_end_grace_ms": 2000
+  },
+  "archive_boundary_rules": {
+    "first_snapshot_partition": {
+      "name": "first_snapshot_dual_timestamp_pre_start_partition_v1",
+      "max_pre_start_timestamp_ms": 2000,
+      "allowed_only_when": [
+        "the record is the first non-empty archive record",
+        "type == snapshot",
+        "each of ts and cts is at or after target_day_start_ms or no earlier than target_day_start_ms - 2000",
+        "at least one timestamp is before target_day_start_ms when the exception is recorded",
+        "every later record has ts >= target_day_start_ms and cts >= target_day_start_ms",
+        "ts and cts remain non-decreasing across the full archive",
+        "no other timestamp or boundary error exists"
+      ]
+    },
+    "terminal_duplicate_partition": {
+      "name": "terminal_delta_snapshot_duplicate_end_partition_v1",
+      "max_overrun_ms": 2001,
+      "allowed_only_when": [
+        "the record is the final non-empty archive record",
+        "the record is type == snapshot",
+        "the record's (u, seq) pair exactly equals the immediately preceding record's pair",
+        "the immediately preceding record type is delta or snapshot",
+        "the overrun is greater than the ordinary 2000 ms grace and no greater than 2001 ms",
+        "all other records have max(ts, cts) - target_day_end_ms <= 2000 ms or are covered only by this terminal exception",
+        "all sequence, timestamp ordering, topic, symbol, level-shape, JSON, ZIP, and duplicate checks pass"
+      ],
+      "rejected_when": [
+        "the overrun is greater than 2001 ms",
+        "the overrun occurs on any non-final record",
+        "the final record is not a snapshot",
+        "the final pair is not an exact terminal duplicate",
+        "any other boundary or integrity error exists"
+      ],
+      "rationale": "The official Bybit daily archive convention can include a terminal delta-plus-snapshot duplicate whose exchange timestamps straddle the exclusive UTC-day partition by a narrowly bounded amount. The 2,001 ms cap is an explicit versioned acceptance boundary, not a general timestamp relaxation."
+    }
+  },
+  "snapshot_reset_rule": {
+    "name": "bybit_documented_u1_service_restart_v2",
+    "allowed_only_when": [
+      "exactly one mid-stream record is type == snapshot and u == 1",
+      "the reset snapshot seq is strictly greater than the immediately previous seq",
+      "the immediately following record has u == 2",
+      "all seq values are strictly increasing except the existing terminal snapshot duplicate convention",
+      "all other u values are strictly increasing except the existing terminal snapshot duplicate convention"
+    ]
+  },
+  "integrity_requirements": [
+    "ZIP opens successfully and CRC/inflate checks pass",
+    "exactly one ZIP member exists",
+    "JSONL parses for every non-empty record",
+    "topic and symbol match the requested symbol",
+    "record type is snapshot or delta",
+    "ts and cts are integer milliseconds",
+    "u and seq are integer values",
+    "bid/ask levels are two-string pairs",
+    "u and seq are strictly ordered under the documented exceptions",
+    "ordinary timestamps and boundaries are checked without broad grace expansion",
+    "source archive SHA-256 is recorded before Drive upload",
+    "Drive upload uses the symbol-specific raw folder",
+    "Drive restore is by immutable file ID",
+    "restored byte count and SHA-256 exactly match the source"
+  ],
+  "operational_instruction": [
+    "Do not modify the original validator or v2/v3/v4 validators in place.",
+    "Run validate_bybit_l2_archive_historical_v5.py for every unaccepted new archive after this rule is adopted by the checkpointed worker.",
+    "Record the exact boundary exception event in the validation result and manifest.",
+    "If validation, upload, restore, or hash verification fails, record the failure and stop the worker.",
+    "Do not invent a wider timestamp window, skip records, reconstruct data, or substitute another exchange.",
+    "Do not reprocess accepted archives unless an explicit provenance audit requires it.",
+    "Do not start Phase 2, Phase 3, Phase 4, trading, alerts, or deployment during Phase 1 acquisition."
+  ],
+  "test_fixtures": [
+    {
+      "archive": "2025-10-01_ETHUSDT_ob200.data.zip",
+      "result": "PASS",
+      "terminal_boundary_exception_count": 1,
+      "max_boundary_overrun_ms": 2001,
+      "record_count": 861527,
+      "archive_sha256": "1973baa421fa5b550cc5fffeb615ab689db1d072ef0d0261d29f440cd839bcd2",
+      "validated_under": "bybit_l2_historical_integrity_v5"
+    }
+  ],
+  "status": "VERSIONED_INSTRUCTION_READY_PENDING_WORKER_ADOPTION"
+}
