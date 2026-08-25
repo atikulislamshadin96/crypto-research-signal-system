@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/atikulislamshadin96/crypto-research-signal-system/blob/main/strategy_discovery_v1/source_registry.json",
+  "title": "Strategy discovery v1 source registry",
+  "registry_id": "strategy_discovery_source_registry_v1",
+  "version": "1.0.0",
+  "status": "policy_only_no_sources_collected",
+  "purpose": "Define the permitted source families and collection-time admissibility tests for future deterministic candidate discovery.",
+  "primary_source_policy": {
+    "allowed_only_if_full_rule_disclosure": true,
+    "source_is_discovery_lead_not_candidate": true,
+    "marketing_claims_are_not_evidence": true,
+    "source_snapshot_required": true,
+    "exact_locator_required": true,
+    "rule_extraction_must_be_reproducible": true
+  },
+  "allowed_sources": [
+    {
+      "source_id": "arxiv_qfin",
+      "source_class": "academic_preprint",
+      "publisher_or_host": "arXiv",
+      "locator": "https://arxiv.org/archive/q-fin",
+      "allowed_categories": ["q-fin.TR", "q-fin.ST", "q-fin.MF", "q-fin.RM"],
+      "admissibility": [
+        "The paper defines an operational signal or provides a complete reproducible supplement.",
+        "Feature construction, timing, entry, exit, risk, and evaluation assumptions are explicit.",
+        "Any result used for prioritization is traceable to the paper version and section/table."
+      ]
+    },
+    {
+      "source_id": "ssrn_quant_finance",
+      "source_class": "academic_preprint",
+      "publisher_or_host": "SSRN",
+      "locator": "https://www.ssrn.com/",
+      "allowed_categories": ["quantitative finance", "financial econometrics", "market microstructure"],
+      "admissibility": [
+        "The SSRN abstract record and stable paper version are retained.",
+        "A candidate is admissible only when the rule set is fully disclosed or a reproducible code/data supplement is linked.",
+        "Unverified performance claims are not imported as metrics."
+      ]
+    },
+    {
+      "source_id": "quantconnect_research",
+      "source_class": "open_quant_archive",
+      "publisher_or_host": "QuantConnect",
+      "locator": "https://www.quantconnect.com/research",
+      "admissibility": [
+        "The complete research notebook or algorithm source is available at a stable revision.",
+        "The source specifies data timing, universe, execution, exits, and costs sufficiently for deterministic normalization.",
+        "A performance chart without the underlying rule disclosure is rejected."
+      ]
+    },
+    {
+      "source_id": "quantopian_open_archive",
+      "source_class": "open_quant_archive",
+      "publisher_or_host": "Quantopian-style open strategy archives",
+      "locator": "https://www.quantopian.com/",
+      "admissibility": [
+        "Historical or mirrored material is admissible only when the full source and its revision are preserved.",
+        "Notebook prose alone is insufficient if it leaves execution, timing, or risk behavior ambiguous.",
+        "The archive is a source family, not permission to treat anonymous leaderboard results as evidence."
+      ]
+    },
+    {
+      "source_id": "aqr_public_research",
+      "source_class": "published_quant_research",
+      "publisher_or_host": "AQR Capital Management",
+      "locator": "https://www.aqr.com/Insights/Research",
+      "admissibility": [
+        "Public research is eligible as a hypothesis source only when the signal construction is sufficiently disclosed.",
+        "A broad factor narrative without deterministic entry, exit, and sizing rules remains a research reference, not a candidate."
+      ]
+    },
+    {
+      "source_id": "man_institute_research",
+      "source_class": "published_quant_research",
+      "publisher_or_host": "Man Institute",
+      "locator": "https://www.man.com/maninstitute",
+      "admissibility": [
+        "Public quantitative research may be used only when a complete rule set or reproducible method is disclosed.",
+        "Marketing material, fund commentary, and return claims without operational rules are not candidate sources."
+      ]
+    },
+    {
+      "source_id": "microstructure_research",
+      "source_class": "order_flow_microstructure",
+      "publisher_or_host": "Peer-reviewed and preprint market-microstructure research",
+      "locator": "https://arxiv.org/archive/q-fin",
+      "allowed_topics": ["limit-order books", "order-flow imbalance", "queue dynamics", "market impact", "liquidity depletion and replenishment", "trade classification", "cross-venue price discovery"],
+      "admissibility": [
+        "The observable event fields, aggregation window, clock, and missing-event behavior are specified.",
+        "The candidate's primary alpha is order-flow or microstructure-based rather than a prohibited standalone chart pattern.",
+        "Any exchange-specific assumption is recorded as a data requirement and not silently generalized."
+      ]
+    }
+  ],
+  "conditional_pointer_sources": {
+    "policy": "A retail or marketing page may be retained only as a pointer when it links to a fully disclosed, unambiguous, independently verifiable rule set in an allowed source.",
+    "examples_not_primary": [
+      "generic TradingView scripts",
+      "90% win-rate pages",
+      "anonymous signal sellers",
+      "affiliate pages",
+      "social-media performance screenshots"
+    ],
+    "required_action": "Record the pointer only as provenance context; normalize and cite the underlying allowed source, never the marketing claim."
+  },
+  "explicit_exclusions": [
+    "generic TradingView script used as the primary source",
+    "90% win-rate or similar marketing claim without full rule disclosure",
+    "retail technical-analysis blog without a complete deterministic rule set",
+    "source that requires subjective visual interpretation",
+    "source that omits timing, exits, stop-loss, take-profit, or position-sizing rules",
+    "source whose rule set cannot be represented without guessing"
+  ],
+  "required_source_record_fields_for_future_collection": [
+    "source_id",
+    "source_class",
+    "canonical_url",
+    "retrieved_at",
+    "document_title",
+    "document_version_or_revision",
+    "stable_locator_to_rule_text_or_code",
+    "source_snapshot_hash",
+    "admissibility_decision",
+    "admissibility_reason",
+    "rejection_category_if_rejected"
+  ],
+  "rejection_reporting": {
+    "granularity": "summary counts by rejection_category and source_class",
+    "annotated_excluded_candidate_list": false,
+    "minimum_categories": [
+      "lagging_indicator_primary",
+      "generic_price_pattern_primary",
+      "standalone_smc_ict_primary",
+      "retail_marketing_source",
+      "subjective_rule",
+      "incomplete_disclosure",
+      "non_deterministic",
+      "prohibited_scope"
+    ]
+  }
+}

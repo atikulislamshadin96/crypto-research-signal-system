@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/atikulislamshadin96/crypto-research-signal-system/blob/main/strategy_discovery_v1/protocols/dsr_pbo_cpcv_v1.json",
+  "title": "Frozen DSR/PBO/CPCV protocol for strategy discovery v1",
+  "protocol_id": "dsr_pbo_cpcv_v1",
+  "version": "1.0.0",
+  "status": "frozen_before_backtest",
+  "effective_scope": "strategy_discovery_v1 only",
+  "purpose": "Correct performance significance for multiple testing and non-normal returns, estimate probability of backtest overfitting, and gate future candidates before OOS and existing-ladder validation.",
+  "methodology_references": [
+    {
+      "citation": "Bailey and Lopez de Prado (2014), The Deflated Sharpe Ratio",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551",
+      "role": "DSR corrects Sharpe inference for selection bias under multiple testing and non-normal returns."
+    },
+    {
+      "citation": "Lopez de Prado (2018), Advances in Financial Machine Learning",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3104847",
+      "role": "Reference methodology for purging, embargoing, CPCV, and backtest-overfitting controls."
+    },
+    {
+      "citation": "Arian, Norouzi Mobarekeh, and Seco (2024), Backtest Overfitting in the Machine Learning Era",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4686376",
+      "role": "Supplementary comparative evidence on CPCV and PBO; not a replacement for the primary methodology."
+    }
+  ],
+  "freeze_rules": {
+    "must_be_committed_before_first_backtest": true,
+    "protocol_changes_require_new_version": true,
+    "retroactive_reinterpretation_forbidden": true,
+    "ad_hoc_multiple_testing_substitutes_forbidden": true,
+    "data_download_permitted_in_this_task": false,
+    "backtest_permitted_in_this_task": false
+  },
+  "return_definition": {
+    "unit": "one timestamped strategy-equity return after costs",
+    "annualization": "annualization_factor is fixed per market/timeframe in the future batch manifest and is not tuned per candidate",
+    "excess_return": "strategy return minus the frozen cash/funding benchmark defined by the batch manifest",
+    "missing_data": "fail closed; do not forward-fill a decision field and do not silently drop an event that changes timing",
+    "overlap_control": "label horizon and maximum holding period are recorded; overlapping labels are purged in CPCV"
+  },
+  "trial_accounting": {
+    "definition": "N is the total number of distinct strategy trials exposed to selection before the selected candidate is reported.",
+    "count_units": [
+      "every collected candidate that reaches a measured trial",
+      "every parameterization tested",
+      "every feature or rule variant tested",
+      "every execution, cost, or sizing variant tested when it can affect selection",
+      "failed, rejected, and non-surviving measured trials"
+    ],
+    "not_counted_as_new_trial": [
+      "a deterministic rerun with identical canonical rule hash, data manifest hash, and protocol versions",
+      "a report-only formatting rerun that cannot affect selection"
+    ],
+    "required_artifact": "immutable trial ledger with trial_id, candidate_id, canonical_rule_hash, data_manifest_hash, protocol_id, metrics, status, and timestamp",
+    "selection_cutoff": "N is frozen at the selection event and cannot be reduced after observing results"
+  },
+  "dsr": {
+    "name": "Deflated Sharpe Ratio",
+    "interpretation": "DSR is the probabilistic significance that the observed Sharpe exceeds the selection-adjusted benchmark Sharpe.",
+    "inputs": {
+      "sr_observed": "annualized Sharpe ratio of the selected candidate on the specified in-sample return series",
+      "sr_benchmark": "pre-specified null or benchmark Sharpe; default 0.0 only when the batch manifest declares a zero-excess-return null",
+      "n_trials": "N from the immutable trial ledger, including all measured alternatives exposed to selection",
+      "sr_std_null": "pre-specified standard deviation of Sharpe estimates under the batch null/trial distribution",
+      "t_observations": "number of timestamped return observations used in the Sharpe estimate",
+      "skewness": "sample skewness of the candidate return series, computed before annualization",
+      "kurtosis": "sample Pearson kurtosis of the candidate return series, not excess kurtosis"
+    },
+    "constants": {
+      "euler_mascheroni_gamma": 0.5772156649015329,
+      "normal_cdf": "Phi",
+      "normal_inverse_cdf": "Phi_inverse"
+    },
+    "formula_steps": [
+      "For N > 1, c_N = (1 - gamma) * Phi_inverse(1 - 1/N) + gamma * Phi_inverse(1 - 1/(N*e)).",
+      "sr_selection_benchmark = sr_benchmark + sr_std_null * c_N.",
+      "denominator = sqrt(1 - skewness * sr_observed + ((kurtosis - 1) / 4) * sr_observed^2).",
+      "z = (sr_observed - sr_selection_benchmark) * sqrt(t_observations - 1) / denominator.",
+      "DSR = Phi(z)."
+    ],
+    "edge_cases": {
+      "n_trials_equal_1": "sr_selection_benchmark = sr_benchmark; still apply the non-normal-return denominator.",
+      "t_observations_less_than_3": "invalid; fail the gate.",
+      "denominator_non_positive": "invalid; fail the gate and record numerical_error.",
+      "non_finite_input": "invalid; fail the gate and record invalid_metric.",
+      "sr_std_null_missing": "invalid; do not substitute an estimated value after selection."
+    },
+    "gate": {
+      "minimum_dsr": 0.95,
+      "comparison": ">=",
+      "meaning": "The candidate must have at least 95% probability, under the frozen DSR approximation, of exceeding the selection-adjusted benchmark. This is a research gate, not a claim of live profitability."
+    }
+  },
+  "cpcv": {
+    "name": "Combinatorial Purged Cross-Validation",
+    "purpose": "Create multiple chronological train/test paths while preventing label leakage from overlapping observations and boundary information.",
+    "partition": {
+      "n_groups": 6,
+      "test_groups_per_split": 2,
+      "selection_rule": "all combinations of 2 test groups from 6 chronological groups",
+      "split_count": 15,
+      "path_count_formula": "C(N_groups, k_test) * k_test / N_groups",
+      "path_count": 5,
+      "group_assignment": "contiguous chronological blocks with no random shuffling; each timestamp belongs to one group"
+    },
+    "purge_and_embargo": {
+      "purge_rule": "Remove every training observation whose label interval overlaps the test interval or whose information set reaches into the test interval.",
+      "embargo_rule": "After each test interval, embargo the next max_holding_period or label_horizon, whichever is longer, from training; the exact duration is recorded in the batch manifest.",
+      "minimum_gap": "At least one decision interval, with the larger of the label horizon and maximum holding period taking precedence.",
+      "fit_isolation": "All transforms, thresholds, normalizations, and parameter selections must be fit on the training portion only for each split."
+    },
+    "per_split_procedure": [
+      "Construct the chronological train/test split from the frozen group assignment.",
+      "Apply purge and embargo using the candidate's declared label horizon and maximum holding period.",
+      "Evaluate the complete pre-declared candidate set on the training data with no post-hoc rule changes.",
+      "Select the in-sample winner by the pre-declared training objective; record all training ranks and metrics.",
+      "Evaluate the selected winner on the untouched test interval; record its test metric and its rank among all candidate configurations evaluated on that test interval.",
+      "Assign the split result to a CPCV path so each timestamp is represented in an OOS path exactly once."
+    ],
+    "pbo": {
+      "name": "Probability of Backtest Overfitting",
+      "calculation": [
+        "For each CPCV path, let omega be the percentile rank of the training-selected candidate's test performance among all candidate configurations on that path, with ties assigned the mid-rank.",
+        "Compute lambda = log(omega / (1 - omega)); omega must be strictly between 0 and 1 after deterministic tie handling.",
+        "PBO = count(lambda < 0) / number_of_CPCV_paths."
+      ],
+      "interpretation": "PBO is the fraction of CPCV paths where the configuration selected in training performs below the median of the candidate set out of sample.",
+      "gate": {
+        "maximum_pbo": 0.10,
+        "comparison": "<=",
+        "minimum_paths": 5,
+        "meaning": "The candidate must not fail the below-median OOS-rank test on more than 10% of frozen CPCV paths."
+      }
+    }
+  },
+  "pre_backtest_invariants": [
+    "The source registry, rejection taxonomy, normalization schema, return definition, trial ledger, DSR parameters, CPCV partition, purge/embargo rules, and gates are committed before the first measured trial.",
+    "No candidate may be modified after seeing its in-sample result without creating a new trial_id and counting it in N.",
+    "The in-sample objective, ranking direction, tie handling, and candidate universe are declared before CPCV execution.",
+    "All timestamps, data manifests, feature versions, and code versions are immutable inputs to the trial identity.",
+    "A DSR or PBO pass authorizes only the next research gate; it does not authorize trading or deployment."
+  ],
+  "required_outputs_per_batch": [
+    "frozen batch manifest",
+    "immutable trial ledger",
+    "per-candidate return series hash",
+    "DSR inputs, formula components, DSR value, and gate result",
+    "CPCV partition, purge and embargo counts, path metrics, lambda values, PBO, and gate result",
+    "complete rejection-count summary by category",
+    "registry update with protocol_id and protocol hash"
+  ]
+}

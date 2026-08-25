@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/atikulislamshadin96/crypto-research-signal-system/blob/main/strategy_discovery_v1/schemas/candidate_registry.schema.json",
+  "title": "Extended strategy candidate registry record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_id",
+    "version",
+    "hypothesis",
+    "status",
+    "validation_status",
+    "promotion_stage",
+    "metrics",
+    "rejection_reason",
+    "discovery",
+    "analysis_only"
+  ],
+  "properties": {
+    "candidate_id": {"type": "string", "pattern": "^Candidate [0-9]+$"},
+    "version": {"type": "string", "pattern": "^v[0-9]+(?:\\.[0-9]+){0,2}$"},
+    "hypothesis": {"type": "string", "minLength": 20, "maxLength": 2000},
+    "status": {"enum": ["collected", "filter_rejected", "normalized", "normalization_rejected", "is_tested", "significance_rejected", "oos_tested", "walk_forward_tested", "stress_tested", "survivor", "ladder_admitted", "archived"]},
+    "validation_status": {"enum": ["not_started", "pending", "passed", "failed", "blocked"]},
+    "promotion_stage": {"enum": ["discovery_collection", "discovery_filter", "discovery_normalization", "discovery_is", "discovery_dsr_pbo_gate", "discovery_oos", "discovery_walk_forward", "discovery_cost_stress", "discovery_stability", "discovery_parameter_check", "survivor_set", "existing_phase_1", "existing_phase_2", "existing_phase_3", "existing_phase_4", "existing_phase_5", "existing_phase_6", "existing_phase_7", "existing_phase_8", "none"]},
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "is": {"$ref": "#/$defs/metric_set"},
+        "dsr": {"$ref": "#/$defs/dsr_metric"},
+        "pbo": {"$ref": "#/$defs/pbo_metric"},
+        "oos": {"$ref": "#/$defs/metric_set"},
+        "walk_forward": {"$ref": "#/$defs/metric_set"},
+        "cost_stress": {"$ref": "#/$defs/metric_set"},
+        "stability": {"$ref": "#/$defs/metric_set"},
+        "parameter_perturbation": {"$ref": "#/$defs/metric_set"}
+      }
+    },
+    "rejection_reason": {"type": ["string", "null"]},
+    "rejection_category": {"type": ["string", "null"], "enum": ["lagging_indicator_primary", "generic_price_pattern_primary", "standalone_smc_ict_primary", "retail_marketing_source", "subjective_rule", "incomplete_disclosure", "non_deterministic", "prohibited_scope", "dsr_gate_failed", "pbo_gate_failed", "data_integrity_failed", null]},
+    "discovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_refs", "source_snapshot", "source_class", "normalization_schema_version", "canonical_rule_hash", "protocol_id", "trial_accounting"],
+      "properties": {
+        "source_refs": {"type": "array", "items": {"type": "string", "format": "uri"}, "minItems": 1, "uniqueItems": true},
+        "source_snapshot": {"type": "string", "minLength": 1},
+        "source_class": {"enum": ["academic_preprint", "published_quant_research", "open_quant_archive", "order_flow_microstructure"]},
+        "source_locator": {"type": "string", "minLength": 1},
+        "extraction_version": {"type": "string", "minLength": 1},
+        "normalization_schema_version": {"const": "normalized_strategy_v1"},
+        "canonical_rule_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "protocol_id": {"const": "dsr_pbo_cpcv_v1"},
+        "protocol_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "batch_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+        "trial_accounting": {"$ref": "#/$defs/trial_accounting"},
+        "frozen_ladder_handoff": {"type": "boolean"}
+      }
+    },
+    "analysis_only": {"const": true}
+  },
+  "$defs": {
+    "metric_set": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "observations": {"type": "integer", "minimum": 0},
+        "sharpe": {"type": "number"},
+        "annual_return": {"type": "number"},
+        "max_drawdown": {"type": "number"},
+        "profit_factor": {"type": "number", "minimum": 0},
+        "turnover": {"type": "number", "minimum": 0},
+        "costs": {"type": "number"},
+        "data_manifest_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "result_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "dsr_metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "minimum_required", "passed", "n_trials", "observations"],
+      "properties": {
+        "value": {"type": "number", "minimum": 0, "maximum": 1},
+        "minimum_required": {"const": 0.95},
+        "passed": {"type": "boolean"},
+        "n_trials": {"type": "integer", "minimum": 1},
+        "observations": {"type": "integer", "minimum": 3},
+        "inputs_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "pbo_metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "maximum_allowed", "paths", "passed"],
+      "properties": {
+        "value": {"type": "number", "minimum": 0, "maximum": 1},
+        "maximum_allowed": {"const": 0.10},
+        "paths": {"type": "integer", "minimum": 5},
+        "passed": {"type": "boolean"},
+        "inputs_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "trial_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trial_id", "n_trials_at_selection", "trial_ledger_hash"],
+      "properties": {
+        "trial_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+        "n_trials_at_selection": {"type": "integer", "minimum": 1},
+        "trial_ledger_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/atikulislamshadin96/crypto-research-signal-system/blob/main/strategy_discovery_v1/schemas/normalized_strategy.schema.json",
+  "title": "Deterministic normalized strategy schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "strategy_id",
+    "hypothesis",
+    "universe",
+    "clock",
+    "signal",
+    "entry",
+    "exit",
+    "risk",
+    "costs",
+    "constraints",
+    "provenance",
+    "analysis_only"
+  ],
+  "properties": {
+    "schema_version": {"const": "normalized_strategy_v1"},
+    "strategy_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+    "hypothesis": {"type": "string", "minLength": 20, "maxLength": 2000},
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instruments", "venues"],
+      "properties": {
+        "instruments": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+        "venues": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+        "quote_currency": {"type": "string", "minLength": 1}
+      }
+    },
+    "clock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["timezone", "decision_frequency", "signal_timestamp_rule", "data_cutoff_rule"],
+      "properties": {
+        "timezone": {"type": "string", "minLength": 1},
+        "decision_frequency": {"type": "string", "minLength": 1},
+        "session_rule": {"type": "string", "minLength": 1},
+        "signal_timestamp_rule": {"type": "string", "minLength": 1},
+        "data_cutoff_rule": {"type": "string", "minLength": 1},
+        "annualization_factor": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "signal": {"$ref": "#/$defs/condition"},
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["direction", "trigger", "order_type", "fill_rule", "latency"],
+      "properties": {
+        "direction": {"enum": ["long", "short", "long_short"]},
+        "trigger": {"$ref": "#/$defs/condition"},
+        "order_type": {"enum": ["market", "limit", "stop", "stop_limit"]},
+        "limit_price": {"$ref": "#/$defs/expression"},
+        "stop_price": {"$ref": "#/$defs/expression"},
+        "fill_rule": {"type": "string", "minLength": 1},
+        "latency": {"type": "string", "minLength": 1},
+        "same_bar_execution": {"type": "boolean"}
+      }
+    },
+    "exit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rules", "precedence", "missing_exit_behavior"],
+      "properties": {
+        "rules": {"type": "array", "items": {"$ref": "#/$defs/exit_rule"}, "minItems": 1},
+        "precedence": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+        "missing_exit_behavior": {"type": "string", "minLength": 1}
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["position_sizing", "risk_budget", "notional_cap", "leverage_cap", "rounding_rule"],
+      "properties": {
+        "position_sizing": {"$ref": "#/$defs/expression"},
+        "risk_budget": {"$ref": "#/$defs/expression"},
+        "notional_cap": {"$ref": "#/$defs/expression"},
+        "leverage_cap": {"$ref": "#/$defs/expression"},
+        "rounding_rule": {"type": "string", "minLength": 1},
+        "insufficient_margin_behavior": {"type": "string", "minLength": 1}
+      }
+    },
+    "costs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commission", "slippage", "spread", "funding_or_borrow", "cost_source_refs"],
+      "properties": {
+        "commission": {"$ref": "#/$defs/expression"},
+        "slippage": {"$ref": "#/$defs/expression"},
+        "spread": {"$ref": "#/$defs/expression"},
+        "funding_or_borrow": {"$ref": "#/$defs/expression"},
+        "cost_source_refs": {"type": "array", "items": {"type": "string", "format": "uri"}, "minItems": 1}
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_concurrent_positions", "pyramiding", "cooldown", "missing_data_behavior", "invalid_bar_behavior"],
+      "properties": {
+        "max_concurrent_positions": {"type": "integer", "minimum": 1},
+        "pyramiding": {"type": "boolean"},
+        "cooldown": {"type": "string", "minLength": 1},
+        "missing_data_behavior": {"type": "string", "minLength": 1},
+        "invalid_bar_behavior": {"type": "string", "minLength": 1}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_refs", "source_snapshot", "normalization_version", "canonical_rule_hash"],
+      "properties": {
+        "source_refs": {"type": "array", "items": {"type": "string", "format": "uri"}, "minItems": 1, "uniqueItems": true},
+        "source_snapshot": {"type": "string", "minLength": 1},
+        "extraction_version": {"type": "string", "minLength": 1},
+        "normalization_version": {"const": "normalized_strategy_v1"},
+        "canonical_rule_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "analysis_only": {"const": true}
+  },
+  "$defs": {
+    "expression": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["op", "args"], "properties": {"op": {"enum": ["add", "sub", "mul", "div", "min", "max"]}, "args": {"type": "array", "items": {"$ref": "#/$defs/expression"}, "minItems": 2}}},
+        {"type": "object", "additionalProperties": false, "required": ["op", "field", "window", "min_periods"], "properties": {"op": {"enum": ["rolling_mean", "rolling_sum", "rolling_std", "rolling_min", "rolling_max", "rolling_quantile"]}, "field": {"type": "string", "minLength": 1}, "window": {"type": "integer", "minimum": 1}, "min_periods": {"type": "integer", "minimum": 1}, "quantile": {"type": "number", "minimum": 0, "maximum": 1}}},
+        {"type": "object", "additionalProperties": false, "required": ["op", "field", "window", "min_periods"], "properties": {"op": {"enum": ["lag", "lead"]}, "field": {"type": "string", "minLength": 1}, "window": {"type": "integer", "minimum": 1}, "min_periods": {"type": "integer", "minimum": 1}}},
+        {"type": "object", "additionalProperties": false, "required": ["op", "field", "event", "window"], "properties": {"op": {"enum": ["event_count", "event_sum", "event_mean", "book_metric"]}, "field": {"type": "string", "minLength": 1}, "event": {"type": "string", "minLength": 1}, "window": {"type": "string", "minLength": 1}}},
+        {"type": "object", "additionalProperties": false, "required": ["op", "value"], "properties": {"op": {"const": "constant"}, "value": {"type": "number"}}},
+        {"type": "object", "additionalProperties": false, "required": ["op", "field"], "properties": {"op": {"const": "field"}, "field": {"type": "string", "minLength": 1}}}
+      ]
+    },
+    "condition": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["op", "left", "right"], "properties": {"op": {"enum": ["gt", "gte", "lt", "lte", "eq", "neq"]}, "left": {"$ref": "#/$defs/expression"}, "right": {"$ref": "#/$defs/expression"}}},
+        {"type": "object", "additionalProperties": false, "required": ["op", "args"], "properties": {"op": {"enum": ["and", "or"]}, "args": {"type": "array", "items": {"$ref": "#/$defs/condition"}, "minItems": 2}}},
+        {"type": "object", "additionalProperties": false, "required": ["op", "arg"], "properties": {"op": {"const": "not"}, "arg": {"$ref": "#/$defs/condition"}}}
+      ]
+    },
+    "exit_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exit_id", "type", "trigger"],
+      "properties": {
+        "exit_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,63}$"},
+        "type": {"enum": ["signal", "stop_loss", "take_profit", "time"]},
+        "trigger": {"oneOf": [{"$ref": "#/$defs/condition"}, {"$ref": "#/$defs/expression"}]},
+        "price_rule": {"$ref": "#/$defs/expression"},
+        "max_holding_period": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
