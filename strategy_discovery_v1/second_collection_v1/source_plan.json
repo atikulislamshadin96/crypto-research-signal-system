@@ -1,0 +1,86 @@
+{
+  "collection_id": "sdv1-second-collection-20260826",
+  "version": "strategy_discovery_second_collection_v1",
+  "target_raw_records": 1050,
+  "batch_size": 150,
+  "batch_count": 7,
+  "source_families": [
+    {
+      "source_id": "microstructure_research",
+      "source_class": "order_flow_microstructure",
+      "publisher_or_host": "arXiv q-fin microstructure-related records",
+      "endpoint": "https://export.arxiv.org/api/query",
+      "query_family": "q-fin.MF and q-fin.TR market microstructure/order flow/liquidity/price discovery terms",
+      "planned_records": 300,
+      "admissibility": "Source leads only; full deterministic rule disclosure remains a separate normalization gate."
+    },
+    {
+      "source_id": "ssrn_quant_finance",
+      "source_class": "academic_preprint",
+      "publisher_or_host": "SSRN",
+      "endpoint": "https://www.ssrn.com/",
+      "query_family": "statistical arbitrage, pairs, cointegration, momentum, volatility, funding/basis and market microstructure research",
+      "planned_records": 0,
+      "availability_status": "not_collected_404_search_endpoint_unverified",
+      "admissibility": "Stable SSRN record and paper locator required; no marketing claims imported as metrics. No SSRN records are fabricated when the tested search endpoint is unavailable."
+    },
+    {
+      "source_id": "quantconnect_research",
+      "source_class": "open_quant_archive",
+      "publisher_or_host": "QuantConnect Research and LEAN repositories",
+      "endpoint": "https://github.com/QuantConnect/Research and https://github.com/QuantConnect/Lean",
+      "query_family": "stable revision notebooks and non-template algorithm/alpha code covering mean reversion, pairs, momentum, volatility, arbitrage and related systematic methods",
+      "planned_records": 600,
+      "admissibility": "Stable commit/tree/path locator and source snapshot hash required; regression harnesses and generic templates are excluded."
+    },
+    {
+      "source_id": "aqr_public_research",
+      "source_class": "published_quant_research",
+      "publisher_or_host": "AQR public research",
+      "endpoint": "https://www.aqr.com/Insights/Research",
+      "query_family": "factor, momentum, value, carry, volatility and systematic portfolio research",
+      "planned_records": 75,
+      "admissibility": "Research reference only unless operational signal, timing, exits and sizing are explicitly disclosed."
+    },
+    {
+      "source_id": "man_institute_research",
+      "source_class": "published_quant_research",
+      "publisher_or_host": "Man Institute / Man Insights",
+      "endpoint": "https://www.man.com/insights",
+      "query_family": "systematic, alternative, macro, trend, volatility and quantitative investment research",
+      "planned_records": 75,
+      "admissibility": "Research reference only unless operational signal, timing, exits and sizing are explicitly disclosed; informational/legal disclaimers are not rule evidence."
+    }
+  ],
+  "frozen_collection_taxonomy": [
+    "lagging_indicator_primary",
+    "generic_price_pattern_primary",
+    "standalone_smc_ict_primary",
+    "retail_marketing_source",
+    "subjective_rule",
+    "incomplete_disclosure",
+    "non_deterministic",
+    "prohibited_scope"
+  ],
+  "deduplication_keys": [
+    "source_id + source_revision + stable_locator",
+    "canonical_url",
+    "content_snapshot_hash"
+  ],
+  "protected_inputs": [
+    "strategy_discovery_v1/data/raw_candidates_batch_001.json through raw_candidates_batch_007.json",
+    "strategy_discovery_v1/data/filtered_candidates_batch_001.json through filtered_candidates_batch_007.json",
+    "strategy_discovery_v1/data/normalization_review.json",
+    "strategy_discovery_v1/data/global_trial_ledger.json",
+    "strategy_discovery_v1/reports/collection_normalization_report.md"
+  ],
+  "statistical_boundary": {
+    "backtests": 0,
+    "dsr": 0,
+    "pbo": 0,
+    "cpcv": 0,
+    "oos": 0,
+    "wfo": 0,
+    "trial_ledger_n_must_remain": 0
+  }
+}
