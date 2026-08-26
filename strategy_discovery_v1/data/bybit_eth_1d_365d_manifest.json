@@ -1,0 +1,43 @@
+{
+  "analysis_only": true,
+  "category": "linear",
+  "deployment": false,
+  "endpoint": "/v5/market/kline",
+  "endpoint_hosts": [
+    "https://api.bybit.com",
+    "https://api.bytick.com"
+  ],
+  "files": [
+    {
+      "category": "linear",
+      "checksum_scope": "normalized_csv_file_bytes",
+      "interval_api_value": "D",
+      "max_start_time_ms": 1787270400000,
+      "min_start_time_ms": 1755820800000,
+      "path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_1d_2025-08-22_2026-08-21.csv",
+      "rows": 365,
+      "sha256": "29e2f69e258b48a1280301cfa0cdf8d7bee9f33ca3e6dc93142e41e6c02dcd43",
+      "symbol": "ETHUSDT",
+      "timeframe": "1d"
+    }
+  ],
+  "l2_reserved_for_survivors": true,
+  "l2_used": false,
+  "manifest_id": "bybit_linear_ohlcv_365d_v1",
+  "pagination_limit": 1000,
+  "paper_trading": false,
+  "provenance_version": "strategy_discovery_bybit_ohlcv_v1",
+  "response_order_normalized": "ascending_start_time",
+  "retrieved_at": "2026-08-26T04:07:40Z",
+  "source": "Bybit V5 public market Get Kline",
+  "symbols": [
+    "ETHUSDT"
+  ],
+  "timeframes": [
+    "1d"
+  ],
+  "trading": false,
+  "window_end_exclusive": "2026-08-22T00:00:00Z",
+  "window_label": "2025-08-22_to_2026-08-21",
+  "window_start": "2025-08-22T00:00:00Z"
+}
