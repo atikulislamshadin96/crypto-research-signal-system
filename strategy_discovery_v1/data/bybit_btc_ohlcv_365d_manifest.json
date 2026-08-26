@@ -1,0 +1,95 @@
+{
+  "analysis_only": true,
+  "category": "linear",
+  "deployment": false,
+  "endpoint": "/v5/market/kline",
+  "endpoint_hosts": [
+    "https://api.bybit.com",
+    "https://api.bytick.com"
+  ],
+  "files": [
+    {
+      "category": "linear",
+      "checksum_scope": "normalized_csv_file_bytes",
+      "interval_api_value": "15",
+      "max_start_time_ms": 1787355900000,
+      "min_start_time_ms": 1755820800000,
+      "path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_15m_2025-08-22_2026-08-21.csv",
+      "rows": 35040,
+      "sha256": "b8bf0de78368bc56f4d57061d23722e461a7d2657515f2111bcd09f4c18fbab9",
+      "symbol": "BTCUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "category": "linear",
+      "checksum_scope": "normalized_csv_file_bytes",
+      "interval_api_value": "30",
+      "max_start_time_ms": 1787355000000,
+      "min_start_time_ms": 1755820800000,
+      "path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_30m_2025-08-22_2026-08-21.csv",
+      "rows": 17520,
+      "sha256": "f4a1a0898de4ee839204106afd0925c600ad50d8f5af71166d4a095b3ad1b574",
+      "symbol": "BTCUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "category": "linear",
+      "checksum_scope": "normalized_csv_file_bytes",
+      "interval_api_value": "60",
+      "max_start_time_ms": 1787353200000,
+      "min_start_time_ms": 1755820800000,
+      "path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_1h_2025-08-22_2026-08-21.csv",
+      "rows": 8760,
+      "sha256": "759c11ecdd7d4bb14437f03d9bb633fd48cab3931c277cc10cbee6a55c1b6960",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "category": "linear",
+      "checksum_scope": "normalized_csv_file_bytes",
+      "interval_api_value": "240",
+      "max_start_time_ms": 1787342400000,
+      "min_start_time_ms": 1755820800000,
+      "path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_4h_2025-08-22_2026-08-21.csv",
+      "rows": 2190,
+      "sha256": "59a4cec4e6d876e940b834b692df8ba5c019939f8db12ebf1f487c1ed22621d9",
+      "symbol": "BTCUSDT",
+      "timeframe": "4h"
+    },
+    {
+      "category": "linear",
+      "checksum_scope": "normalized_csv_file_bytes",
+      "interval_api_value": "D",
+      "max_start_time_ms": 1787270400000,
+      "min_start_time_ms": 1755820800000,
+      "path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_1d_2025-08-22_2026-08-21.csv",
+      "rows": 365,
+      "sha256": "bf3c05fea4ca2e89c89ce1d3c97767b559ac4906860b241257cbf6c13cd6f0f1",
+      "symbol": "BTCUSDT",
+      "timeframe": "1d"
+    }
+  ],
+  "l2_reserved_for_survivors": true,
+  "l2_used": false,
+  "manifest_id": "bybit_linear_ohlcv_365d_v1",
+  "pagination_limit": 1000,
+  "paper_trading": false,
+  "provenance_version": "strategy_discovery_bybit_ohlcv_v1",
+  "response_order_normalized": "ascending_start_time",
+  "retrieved_at": "2026-08-26T04:00:56Z",
+  "source": "Bybit V5 public market Get Kline",
+  "symbols": [
+    "BTCUSDT"
+  ],
+  "timeframes": [
+    "15m",
+    "30m",
+    "1h",
+    "4h",
+    "1d"
+  ],
+  "trading": false,
+  "window_end_exclusive": "2026-08-22T00:00:00Z",
+  "window_label": "2025-08-22_to_2026-08-21",
+  "window_start": "2025-08-22T00:00:00Z"
+}
