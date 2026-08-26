@@ -1,0 +1,1335 @@
+{
+  "analysis_only": true,
+  "backtest_run": false,
+  "bundles": [
+    {
+      "analysis_only": true,
+      "extraction_version": "deterministic_rule_extraction_v1_poc",
+      "field_claims": [
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=3; line=16",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "\u2022 Hypothesis 1 (H1): A LambdaRank ranker over a cross-section of delta-targeted SPXW"
+            },
+            {
+              "locator": "page=3; line=23",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "\u2022 Hypothesis 2 (H2): The strategy\u2019s return is regime-conditional, rising with the level of"
+            },
+            {
+              "locator": "page=3; line=28",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "\u2022 Hypothesis 3 (H3): Engineered multiplicative interactions of per-strategy exposures"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "hypothesis",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=1; line=16",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "to-rank to the S&P 500 weekly options (SPXW) zero-day-to-expiration surface, integrated"
+            },
+            {
+              "locator": "page=1; line=18",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "strict out-of-time integrity check. A LightGBM LambdaRank ranker scores a daily nine-"
+            },
+            {
+              "locator": "page=2; line=14",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "Weekly PutWrite Index (WPUT) capture this premium through a static short-put rule and have"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "clock",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=1; line=1",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "Harvesting the Volatility Risk Premium: A"
+            },
+            {
+              "locator": "page=1; line=36",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "Keywords: Volatility risk premium, Learning-to-rank, LambdaRank, S&P 500 index options,"
+            },
+            {
+              "locator": "page=1; line=44",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "The volatility risk premium (VRP) in S&P 500 index options is one of the most persistent"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "signal",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=1; line=28",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "buy-and-hold) by at least 3.84 in Sharpe ratio and five internal selection baselines by at"
+            },
+            {
+              "locator": "page=3; line=19",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "volatility benchmarks (CBOE PUT, CBOE WPUT, SPX buy-and-hold) and a panel of"
+            },
+            {
+              "locator": "page=4; line=37",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "that conditioning short-put entry on the level of the VIX is associated with higher absolute"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "entry",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=1; line=32",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "the gate binds, neither control comes close to the headline alone and their interaction"
+            },
+            {
+              "locator": "page=6; line=43",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "the per-day decision from which strike to sell into whether to sell at all and which one, which is"
+            },
+            {
+              "locator": "page=7; line=49",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "cost-to-close convention for a short position. At any intraday point, the position is valued at"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "exit",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=1; line=17",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "with margin-aware position sizing, an abstention rule driven by model uncertainty, and a"
+            },
+            {
+              "locator": "page=1; line=21",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "resolution. The framework is evaluated under index-option margin requirements, a tiered"
+            },
+            {
+              "locator": "page=2; line=16",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "since the position is held continuously regardless of the prevailing market regime, so capital"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "risk",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=1; line=22",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "fee schedule, and bid-to-mid execution assumptions across a four-window walk-forward"
+            },
+            {
+              "locator": "page=1; line=39",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "Funding: This research was supported by IDUB University of Warsaw [grant number 501-"
+            },
+            {
+              "locator": "page=3; line=8",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+              "source_url": "https://arxiv.org/pdf/2608.24786v1",
+              "verbatim": "are evaluated in parallel under explicit margin, fee, and execution-cost assumptions. The"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "costs",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "constraints",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.instruments",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.venues",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_refs",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_snapshot",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.normalization_version",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.canonical_rule_hash",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "analysis_only",
+          "status": "not_found"
+        }
+      ],
+      "promotion_decision": "needs_review",
+      "reconstruction_performed": false,
+      "review_reasons": [
+        "pattern evidence exists but no safe semantic/schema mapping was attempted",
+        "all normalized nested fields require explicit values and evidence",
+        "no candidate promotion is allowed by this POC"
+      ],
+      "snapshot": {
+        "adapter_id": "arxiv_pdf_v1",
+        "byte_size": 1056862,
+        "content_sha256": "7ddf3853c5757f2273c40ed3c24b10aad048b4e9cf13b51b627790e8c480bd08",
+        "content_type": "application/pdf",
+        "retrieved_at": "2026-08-26T16:35:17Z",
+        "source_snapshot_hash": "515e2e927ba1b4a6f00139cc903f5ac38193780ba4f9b03812eb4a928497fda2"
+      },
+      "source_identity": {
+        "canonical_url": "https://arxiv.org/abs/2608.24786v1",
+        "document_id": "2608.24786v1",
+        "document_version": "1",
+        "source_class": "academic_preprint",
+        "source_id": "academic_systematic_research"
+      }
+    },
+    {
+      "analysis_only": true,
+      "extraction_version": "deterministic_rule_extraction_v1_poc",
+      "field_claims": [
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=64",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+              "source_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+              "verbatim": "This paper explores how capital-efficient investments\u2014such as private equity, hedge funds, and portable alpha\u2014can help investors unlock the full benefits of diversification without relying on direct leverage. We show how these approaches can improve portfolio resilience and long-term returns, particularly for leverage-constrained investors."
+            },
+            {
+              "locator": "line=84",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+              "source_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+              "verbatim": "Common wisdom has suggested that small, simple models are best suited for market timing applications, given finance\u2019s \u201csmall data\u201d constraint and naturally low predictability. However, we show that complex models better identify true nonlinear relationships and therefore produce better market timing strategy performance. We validate this \"virtue of complexity\" result in three practical market timing applications."
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "hypothesis",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "clock",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=10",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+              "source_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+              "verbatim": "There have been recent incidents of individuals and groups falsely claiming to be associated with AQR on social media platforms. These imposters have engaged in a variety of unauthorized conduct, including soliciting customers to carry out trading activities with them, impersonating AQR using the genuine names of AQR senior executives or employees to offer investment opportunities, claiming to offer investment training courses that are supposedly provided by AQR or claiming that AQR is backing certain initial coin offerings or is otherwise engaged in crypto related trading activity. There have also been fake websites and mobile applications that claim to be AQR (or associated with AQR) when in fact they are not. These are scams and not authorized by AQR in any way."
+            },
+            {
+              "locator": "line=12",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+              "source_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+              "verbatim": "AQR and its partners, employees, directors, officers, advisors, successors, and agents are not responsible for any conduct by unauthorized parties and channels, nor are they responsible for the services or information provided by such unauthorized parties and channels. If you have any questions or wish to ascertain whether you are communicating with an authorized representative of AQR, please contact us at"
+            },
+            {
+              "locator": "line=14",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+              "source_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+              "verbatim": ". If you believe that you or someone you know has been a victim of fraud, please report the matter to your local law enforcement or other relevant authorities. For India residents, you may lodge a report at the national cybercrime reporting portal ("
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "signal",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=60",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+              "source_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+              "verbatim": "We examine the popular \u201cBuy the Dip\u201d strategy and find it consistently underperforms a simple buy-and-hold approach. Our research shows that investors seeking to time markets may find greater success following trends rather than fighting them."
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "entry",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=6",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+              "source_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+              "verbatim": "Fraudulent Schemes Impersonating AQR Capital Management, LLC and Affiliates (collectively, \"AQR\")"
+            },
+            {
+              "locator": "line=49",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+              "source_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+              "verbatim": "Strategic Asset Allocation"
+            },
+            {
+              "locator": "line=52",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+              "source_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+              "verbatim": "Total portfolio approach (TPA) is a broad philosophy for institutional portfolio management that has become increasingly popular over the last few years. We explore potential benefits and risks of TPA when compared to traditional strategic asset allocation, and offer practical demonstrations of how TPA might help investors achieve their goals."
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "risk",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "costs",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "constraints",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.instruments",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.venues",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_refs",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_snapshot",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.normalization_version",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.canonical_rule_hash",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "analysis_only",
+          "status": "not_found"
+        }
+      ],
+      "promotion_decision": "needs_review",
+      "reconstruction_performed": false,
+      "review_reasons": [
+        "pattern evidence exists but no safe semantic/schema mapping was attempted",
+        "all normalized nested fields require explicit values and evidence",
+        "no candidate promotion is allowed by this POC"
+      ],
+      "snapshot": {
+        "adapter_id": "published_html_v1",
+        "byte_size": 64703,
+        "content_sha256": "98ac1753c81f97f25344af3e27da6bdbc4ec5133ea9191c3cd3ad97e76e7dc30",
+        "content_type": "text/html",
+        "retrieved_at": "2026-08-26T16:35:24Z",
+        "source_snapshot_hash": "3a555c8cbdbd1fd67f0a601741ef35c89ad70b850921925f6e76ceaba4a1d601"
+      },
+      "source_identity": {
+        "canonical_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+        "document_id": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+        "document_version": "retrieved_page",
+        "source_class": "published_quant_research",
+        "source_id": "aqr_public_research"
+      }
+    },
+    {
+      "analysis_only": true,
+      "extraction_version": "deterministic_rule_extraction_v1_poc",
+      "field_claims": [
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "hypothesis",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "clock",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=296",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+              "source_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+              "verbatim": "If you"
+            },
+            {
+              "locator": "line=298",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+              "source_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+              "verbatim": "satisfy either of the above criteria or you are unsure if you satisfy them, press the \u201c"
+            },
+            {
+              "locator": "line=301",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+              "source_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+              "verbatim": "If you"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "signal",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "entry",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=352",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+              "source_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+              "verbatim": ", and perhaps most critically, a ceasefire does not restore safe passage. The path from one to the other is long, uncertain and without historical precedent at this scale. This \"exit problem\" is, in our view, the most underappreciated risk in energy markets today. Recent moves by Iran to selectively reopen the Strait on its own terms, while its parliament prepares legislation to formalise new transit rules, suggest the pre-war status quo will not return, even if hostilities end."
+            },
+            {
+              "locator": "line=365",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+              "source_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+              "verbatim": "faces several key challenges. It is geographically close to the conflict, it imports more than 70% of its energy and its main export destination, Europe, is also likely to face higher energy costs, raising the risk of weaker foreign shipments. We calculate that a US$25 per barrel increase from pre-conflict levels would add US$15\u201318 billion to the current account deficit, equivalent to 1.3-1.5% of gross domestic product (GDP). This is based on Turkey's"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "exit",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=359",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+              "source_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+              "verbatim": "energy-intensive sectors face margin compression and demand destruction, with the risk of stagflation rising the longer oil stays elevated"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "risk",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=397",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+              "source_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+              "verbatim": "is a net oil and coal exporter. A permanent US$100 oil price could add US$4.5 billion to the current account balance, or 1.2% of GDP. The windfall would also create much-needed fiscal space, easing some of the current funding pressures. Colombia's net gains, however, could be tempered by upcoming presidential and congressional election uncertainty."
+            },
+            {
+              "locator": "line=445",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+              "source_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+              "verbatim": "To the extent this material is distributed in Australia it is communicated by Man Investments Australia Limited ABN 47 002 747 480 AFSL 240581, which is regulated by the Australian Securities & Investments Commission ('ASIC'). This information has been prepared without taking into account anyone\u2019s objectives, financial situation or needs."
+            },
+            {
+              "locator": "line=453",
+              "locator_type": "html_dom_chars",
+              "snapshot_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+              "source_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+              "verbatim": "To the extent this material is distributed in Hong Kong SAR, this material is communicated by Man Investments (Hong Kong) Limited and has not been reviewed by the Securities and Futures Commission in Hong Kong."
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "costs",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "constraints",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.instruments",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.venues",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_refs",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_snapshot",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.normalization_version",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.canonical_rule_hash",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "analysis_only",
+          "status": "not_found"
+        }
+      ],
+      "promotion_decision": "needs_review",
+      "reconstruction_performed": false,
+      "review_reasons": [
+        "pattern evidence exists but no safe semantic/schema mapping was attempted",
+        "all normalized nested fields require explicit values and evidence",
+        "no candidate promotion is allowed by this POC"
+      ],
+      "snapshot": {
+        "adapter_id": "published_html_v1",
+        "byte_size": 155937,
+        "content_sha256": "a8ca4061477c6e61ea0480bc977a26d67a74bdc260f3067a3598ff44cfee01c4",
+        "content_type": "text/html",
+        "retrieved_at": "2026-08-26T16:35:31Z",
+        "source_snapshot_hash": "1d136a4959d564364693bd54863b012b8c6021bd9bf63683b7b812b8e6f789da"
+      },
+      "source_identity": {
+        "canonical_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+        "document_id": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+        "document_version": "retrieved_page",
+        "source_class": "published_quant_research",
+        "source_id": "man_institute_research"
+      }
+    },
+    {
+      "analysis_only": true,
+      "extraction_version": "deterministic_rule_extraction_v1_poc",
+      "field_claims": [
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=1; line=27",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "of fee flow relative to active liquidity. We show that recovering a structural latent volatility"
+            },
+            {
+              "locator": "page=3; line=44",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "2. We show that this quantity is best interpreted as a fee implied volatility proxy, or more plainly"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "hypothesis",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=12; line=32",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "same window, daily observations from January 2023 to July 2026."
+            },
+            {
+              "locator": "page=13; line=23",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "N (daily obs.)                                 1276"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "clock",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=1; line=1",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "A DEX Implied Volatility Proxy"
+            },
+            {
+              "locator": "page=1; line=11",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "This motivates a natural question: can implied volatility be extracted from Uniswap v3/v4 and"
+            },
+            {
+              "locator": "page=1; line=26",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "and interpret it as a DEX native fee implied volatility proxy: an observable, oracle free measure"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "signal",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=3; line=17",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "over price ranges rather than posted in a limit order book, options are implemented through"
+            },
+            {
+              "locator": "page=4; line=21",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "directly from limit order book dynamics [2] and the relationship between trading volume and price"
+            },
+            {
+              "locator": "page=11; line=35",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "Let \u03c3\u2217 denote the structural volatility parameter that would enter the full short option cost. Then"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "entry",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=4; line=29",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "ically close to option positions [7, 5]. Panoptic builds on this observation by treating Uniswap v3"
+            },
+            {
+              "locator": "page=7; line=52",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "with S close to K, consistent with the short dated option interpretation of narrow range liquidity."
+            },
+            {
+              "locator": "page=9; line=13",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "For a very narrow range, r is close to 1. On chain, the minimal width is imposed by the tick"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "exit",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=5; line=33",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "This provides liquidity over the entire price range (0, \u221e) but is capital inefficient because only a"
+            },
+            {
+              "locator": "page=14; line=25",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "Two caveats limit how much weight this comparison can bear. Realized volatility is backward"
+            },
+            {
+              "locator": "page=16; line=16",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "3. informing collateral or margin buffers,"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "risk",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "page=1; line=17",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "Panoptic using only on chain observables? A direct identification of theta with realized fee"
+            },
+            {
+              "locator": "page=1; line=18",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "income is too strong, since fee income captures only the compensation leg of a narrow range"
+            },
+            {
+              "locator": "page=1; line=26",
+              "locator_type": "pdf_page_chars",
+              "snapshot_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+              "source_url": "https://arxiv.org/pdf/2608.13340v1",
+              "verbatim": "and interpret it as a DEX native fee implied volatility proxy: an observable, oracle free measure"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "costs",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "constraints",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.instruments",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.venues",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_refs",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_snapshot",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.normalization_version",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.canonical_rule_hash",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "analysis_only",
+          "status": "not_found"
+        }
+      ],
+      "promotion_decision": "needs_review",
+      "reconstruction_performed": false,
+      "review_reasons": [
+        "pattern evidence exists but no safe semantic/schema mapping was attempted",
+        "all normalized nested fields require explicit values and evidence",
+        "no candidate promotion is allowed by this POC"
+      ],
+      "snapshot": {
+        "adapter_id": "arxiv_pdf_v1",
+        "byte_size": 844076,
+        "content_sha256": "dfc232c4cfd01a85cab2c3005b06fa27e79af74b1c580221092cb90ca24f469e",
+        "content_type": "application/pdf",
+        "retrieved_at": "2026-08-26T16:35:32Z",
+        "source_snapshot_hash": "0d82f381b232ff24d8464ce02f0434ecae2899416688e7bd4c288921567db6f6"
+      },
+      "source_identity": {
+        "canonical_url": "https://arxiv.org/abs/2608.13340v1",
+        "document_id": "2608.13340v1",
+        "document_version": "1",
+        "source_class": "order_flow_microstructure",
+        "source_id": "microstructure_research"
+      }
+    },
+    {
+      "analysis_only": true,
+      "extraction_version": "deterministic_rule_extraction_v1_poc",
+      "field_claims": [
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "hypothesis",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=194",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1afe9fcabb7439ea6274bd5b4dc7b4c73403784b6f501afde6dc1a9756b8de4c",
+              "source_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Algorithm.CSharp/Alphas/GasAndCrudeOilEnergyCorrelationAlpha.cs",
+              "verbatim": "var dailyHistory = algorithm.History(symbols, _historyDays + 1, Resolution.Daily);"
+            },
+            {
+              "locator": "line=197",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1afe9fcabb7439ea6274bd5b4dc7b4c73403784b6f501afde6dc1a9756b8de4c",
+              "source_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Algorithm.CSharp/Alphas/GasAndCrudeOilEnergyCorrelationAlpha.cs",
+              "verbatim": "algorithm.Debug($\"{algorithm.Time} :: No daily data\");"
+            },
+            {
+              "locator": "line=208",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1afe9fcabb7439ea6274bd5b4dc7b4c73403784b6f501afde6dc1a9756b8de4c",
+              "source_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Algorithm.CSharp/Alphas/GasAndCrudeOilEnergyCorrelationAlpha.cs",
+              "verbatim": "// Update daily rate of change indicator"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "clock",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=117",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1afe9fcabb7439ea6274bd5b4dc7b4c73403784b6f501afde6dc1a9756b8de4c",
+              "source_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Algorithm.CSharp/Alphas/GasAndCrudeOilEnergyCorrelationAlpha.cs",
+              "verbatim": "if (_nextUpdate == DateTime.MinValue || algorithm.Time > _nextUpdate)"
+            },
+            {
+              "locator": "line=125",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1afe9fcabb7439ea6274bd5b4dc7b4c73403784b6f501afde6dc1a9756b8de4c",
+              "source_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Algorithm.CSharp/Alphas/GasAndCrudeOilEnergyCorrelationAlpha.cs",
+              "verbatim": "if (_pair.Item1.Return > _differenceTrigger)"
+            },
+            {
+              "locator": "line=129",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1afe9fcabb7439ea6274bd5b4dc7b4c73403784b6f501afde6dc1a9756b8de4c",
+              "source_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Algorithm.CSharp/Alphas/GasAndCrudeOilEnergyCorrelationAlpha.cs",
+              "verbatim": "if (_pair.Item1.Return < -_differenceTrigger)"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "signal",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "pattern_hit_not_semantic_parse",
+            "value_not_mapped_to_normalized_schema"
+          ],
+          "evidence": [
+            {
+              "locator": "line=306",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1afe9fcabb7439ea6274bd5b4dc7b4c73403784b6f501afde6dc1a9756b8de4c",
+              "source_url": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Algorithm.CSharp/Alphas/GasAndCrudeOilEnergyCorrelationAlpha.cs",
+              "verbatim": "algorithm.MarketOrder(target.Symbol, quantity);"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "entry",
+          "status": "explicit_but_ambiguous"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "risk",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "costs",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_matching_explicit_text_or_code_fragment"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "constraints",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.instruments",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "universe.venues",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_refs",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.source_snapshot",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.normalization_version",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "provenance.canonical_rule_hash",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "nested_field_requires_explicit_structured_mapping"
+          ],
+          "evidence": [],
+          "extraction_method": "manual_review_required",
+          "field_path": "analysis_only",
+          "status": "not_found"
+        }
+      ],
+      "promotion_decision": "needs_review",
+      "reconstruction_performed": false,
+      "review_reasons": [
+        "pattern evidence exists but no safe semantic/schema mapping was attempted",
+        "all normalized nested fields require explicit values and evidence",
+        "no candidate promotion is allowed by this POC"
+      ],
+      "snapshot": {
+        "adapter_id": "quantconnect_code_v1",
+        "byte_size": 14279,
+        "content_sha256": "1afe9fcabb7439ea6274bd5b4dc7b4c73403784b6f501afde6dc1a9756b8de4c",
+        "content_type": "text/plain",
+        "retrieved_at": "2026-08-26T16:35:32Z",
+        "source_snapshot_hash": "0ecbd3df70b8bce7e52ab15fe2436d02fc8db40de004c87d177db559a1958148"
+      },
+      "source_identity": {
+        "canonical_url": "https://github.com/QuantConnect/Lean/blob/master/Algorithm.CSharp/Alphas/GasAndCrudeOilEnergyCorrelationAlpha.cs",
+        "document_id": "QuantConnect/Lean@660306a2fa4e4933e7c2f9e57a4ca3ef71096ca2:Algorithm.CSharp/Alphas/GasAndCrudeOilEnergyCorrelationAlpha.cs",
+        "document_version": "660306a2fa4e4933e7c2f9e57a4ca3ef71096ca2",
+        "source_class": "open_quant_archive",
+        "source_id": "quantconnect_research"
+      }
+    }
+  ],
+  "candidate_complete_count": 0,
+  "market_data_downloaded": false,
+  "needs_review_count": 5,
+  "poc_version": "deterministic_rule_extraction_v1_poc",
+  "reconstruction_performed": false,
+  "rejected_incomplete_count": 0,
+  "sample_processed": 5,
+  "sample_requested": 5,
+  "trial_ledger_n": 0
+}
