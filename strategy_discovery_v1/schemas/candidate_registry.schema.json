@@ -42,7 +42,7 @@
     "discovery": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["source_refs", "source_snapshot", "source_class", "normalization_schema_version", "canonical_rule_hash", "protocol_id", "trial_accounting"],
+      "required": ["source_refs", "source_snapshot", "source_class", "normalization_schema_version", "canonical_rule_hash", "protocol_id", "batch_id", "global_ledger_hash", "trial_accounting"],
       "properties": {
         "source_refs": {"type": "array", "items": {"type": "string", "format": "uri"}, "minItems": 1, "uniqueItems": true},
         "source_snapshot": {"type": "string", "minLength": 1},
@@ -54,6 +54,7 @@
         "protocol_id": {"const": "dsr_pbo_cpcv_v1"},
         "protocol_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
         "batch_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+        "global_ledger_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
         "trial_accounting": {"$ref": "#/$defs/trial_accounting"},
         "frozen_ladder_handoff": {"type": "boolean"}
       }
