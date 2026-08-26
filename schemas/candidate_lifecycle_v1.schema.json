@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/atikulislamshadin96/crypto-research-signal-system/blob/main/schemas/candidate_lifecycle_v1.schema.json",
+  "title": "Per-candidate research lifecycle tracking v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "candidate", "phases", "history"],
+  "properties": {
+    "schema_version": {"const": "candidate_lifecycle_v1"},
+    "candidate": {"$ref": "#/$defs/candidate"},
+    "phases": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {"$ref": "#/$defs/phase"}
+    },
+    "oos_freeze": {"anyOf": [{"$ref": "#/$defs/oosFreeze"}, {"type": "null"}]},
+    "history": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/historyEvent"}
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_id", "candidate_version", "candidate_type", "source", "market_type", "universe", "created_at", "protocol_versions", "protocol_fingerprints", "provenance_refs"],
+      "properties": {
+        "candidate_id": {"$ref": "#/$defs/nonEmptyString"},
+        "hypothesis_id": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "candidate_version": {"$ref": "#/$defs/nonEmptyString"},
+        "candidate_type": {"$ref": "#/$defs/nonEmptyString"},
+        "source": {"$ref": "#/$defs/nonEmptyString"},
+        "market_type": {"$ref": "#/$defs/nonEmptyString"},
+        "universe": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmptyString"}},
+        "created_at": {"$ref": "#/$defs/nonEmptyString"},
+        "protocol_versions": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmptyString"}},
+        "protocol_fingerprints": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmptyString"}},
+        "provenance_refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmptyString"}}
+      }
+    },
+    "phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_id", "phase_number", "status"],
+      "properties": {
+        "candidate_id": {"$ref": "#/$defs/nonEmptyString"},
+        "phase_number": {"type": "integer", "minimum": 2, "maximum": 8},
+        "status": {"enum": ["NOT_STARTED", "IN_PROGRESS", "PASSED", "FAILED", "BLOCKED"]},
+        "started_at": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "completed_at": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "protocol_version": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "protocol_fingerprint": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "input_data_manifest_hash": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "result_hash": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "commit_ref": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "reason": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]}
+      }
+    },
+    "oosFreeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_id", "protocol_version", "oos_start", "oos_end", "data_manifest_hash", "freeze_timestamp", "freeze_commit_ref"],
+      "properties": {
+        "candidate_id": {"$ref": "#/$defs/nonEmptyString"},
+        "protocol_version": {"$ref": "#/$defs/nonEmptyString"},
+        "oos_start": {"$ref": "#/$defs/nonEmptyString"},
+        "oos_end": {"$ref": "#/$defs/nonEmptyString"},
+        "data_manifest_hash": {"$ref": "#/$defs/nonEmptyString"},
+        "freeze_timestamp": {"$ref": "#/$defs/nonEmptyString"},
+        "freeze_commit_ref": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "historyEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "candidate_id", "event_type", "event_at", "payload"],
+      "properties": {
+        "event_id": {"type": "integer", "minimum": 1},
+        "candidate_id": {"$ref": "#/$defs/nonEmptyString"},
+        "phase_number": {"anyOf": [{"type": "integer", "minimum": 2, "maximum": 8}, {"type": "null"}]},
+        "event_type": {"$ref": "#/$defs/nonEmptyString"},
+        "from_status": {"anyOf": [{"enum": ["NOT_STARTED", "IN_PROGRESS", "PASSED", "FAILED", "BLOCKED"]}, {"type": "null"}]},
+        "to_status": {"anyOf": [{"enum": ["NOT_STARTED", "IN_PROGRESS", "PASSED", "FAILED", "BLOCKED"]}, {"type": "null"}]},
+        "event_at": {"$ref": "#/$defs/nonEmptyString"},
+        "protocol_version": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "protocol_fingerprint": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "input_data_manifest_hash": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "result_hash": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "commit_ref": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "reason": {"anyOf": [{"$ref": "#/$defs/nonEmptyString"}, {"type": "null"}]},
+        "payload": {"type": "object"}
+      }
+    }
+  }
+}
