@@ -1,9 +1,9 @@
 {
   "collection_id": "sdv1-second-collection-20260826",
   "version": "strategy_discovery_second_collection_v1",
-  "target_raw_records": 1050,
+  "target_raw_records": 1000,
   "batch_size": 150,
-  "batch_count": 7,
+  "batch_count": 8,
   "source_families": [
     {
       "source_id": "microstructure_research",
@@ -11,7 +11,7 @@
       "publisher_or_host": "arXiv q-fin microstructure-related records",
       "endpoint": "https://export.arxiv.org/api/query",
       "query_family": "q-fin.MF and q-fin.TR market microstructure/order flow/liquidity/price discovery terms",
-      "planned_records": 300,
+      "planned_records": 450,
       "admissibility": "Source leads only; full deterministic rule disclosure remains a separate normalization gate."
     },
     {
