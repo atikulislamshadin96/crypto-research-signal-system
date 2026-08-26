@@ -1,0 +1,437 @@
+{
+  "analysis_only": true,
+  "diagnosis": {
+    "classification": "D",
+    "evidence": [
+      "Both the first arXiv-only universe and the diversified second universe have a 0% normalization pass rate under the current implementation.",
+      "The second universe is materially broader by source class, but collection records still intentionally carry metadata/code/page locators rather than verified structured deterministic payloads.",
+      "The observed result demonstrates that the current collection-plus-normalization pipeline did not establish whether deterministic rules exist in the underlying full text or source code; it does not prove that the source universe fundamentally lacks executable strategies.",
+      "The current normalized schema requires complete clock, signal, entry, exit, risk, cost, constraint, and provenance fields, and the current normalizer fails closed before reconstructing any missing field."
+    ],
+    "future_recommendation_not_authorized": "A future authorization could add a provenance-preserving full-text/code review adapter that only populates deterministic_rule_payload when every required field is explicitly disclosed. No schema or protocol change is proposed or made by this run.",
+    "label": "combination_of_A_B_C_with_pipeline_observability_limit"
+  },
+  "diagnostic_version": "strategy_discovery_combined_normalization_diagnostic_v1",
+  "new_collection_source_distribution": {
+    "by_source_class": {
+      "academic_preprint": 276,
+      "open_quant_archive": 69,
+      "order_flow_microstructure": 292,
+      "published_quant_research": 150
+    },
+    "by_source_id": {
+      "academic_systematic_research": 276,
+      "aqr_public_research": 75,
+      "man_institute_research": 75,
+      "microstructure_research": 292,
+      "quantconnect_research": 69
+    }
+  },
+  "protected_artifacts": {
+    "candidate_1_v2_modified": false,
+    "drive_files_modified": false,
+    "first_run_inputs_reprocessed_or_overwritten": false,
+    "lifecycle_infrastructure_modified": false,
+    "phase_1_l2_modified": false,
+    "protocols_modified": false,
+    "schemas_modified": false
+  },
+  "reconciliation_checks": {
+    "A_plus_B_equals_C_total": true,
+    "C_rejections_equal_C_total": true,
+    "historical_A_unchanged": true,
+    "new_B_filtered_input_matches_review": true
+  },
+  "representative_failure_examples": {
+    "incomplete_disclosure": [
+      {
+        "candidate_or_source_identifier": "2608.13340v1",
+        "document_title": "Fee Implied Volatility on Uniswap v3: A DEX Native Proxy and Its Limits",
+        "exact_normalization_failure": "normalize_survivors.py requires rule_disclosure_status == verified_deterministic_rule and a deterministic_rule_payload. This record has no verified deterministic payload, so it is rejected as incomplete_disclosure without reconstructing rules.",
+        "relevant_disclosed_trading_rule": "No executable rule was recorded in the collection record. The source is retained as a research lead only; the record explicitly does not assert a verified deterministic rule payload.",
+        "schema_requirement_that_prevented_representation": {
+          "clock_required_fields": [
+            "timezone",
+            "decision_frequency",
+            "signal_timestamp_rule",
+            "data_cutoff_rule"
+          ],
+          "constraints_required_fields": [
+            "max_concurrent_positions",
+            "pyramiding",
+            "cooldown",
+            "missing_data_behavior",
+            "invalid_bar_behavior"
+          ],
+          "cost_required_fields": [
+            "commission",
+            "slippage",
+            "spread",
+            "funding_or_borrow",
+            "cost_source_refs"
+          ],
+          "entry_required_fields": [
+            "direction",
+            "trigger",
+            "order_type",
+            "fill_rule",
+            "latency"
+          ],
+          "exit_required_fields": [
+            "rules",
+            "precedence",
+            "missing_exit_behavior"
+          ],
+          "required_top_level_fields": [
+            "hypothesis",
+            "universe",
+            "clock",
+            "signal",
+            "entry",
+            "exit",
+            "risk",
+            "costs",
+            "constraints",
+            "provenance",
+            "analysis_only"
+          ],
+          "risk_required_fields": [
+            "position_sizing",
+            "risk_budget",
+            "notional_cap",
+            "leverage_cap",
+            "rounding_rule"
+          ]
+        },
+        "source_class": "order_flow_microstructure",
+        "source_id": "microstructure_research",
+        "source_provenance": {
+          "canonical_url": "https://arxiv.org/abs/2608.13340v1",
+          "document_version": "1",
+          "source_snapshot_hash": "0d82f381b232ff24d8464ce02f0434ecae2899416688e7bd4c288921567db6f6",
+          "stable_locator_to_rule_text_or_code": "https://arxiv.org/pdf/2608.13340v1"
+        },
+        "universe": "B_new_second_run"
+      },
+      {
+        "candidate_or_source_identifier": "QuantConnect/Lean@b36534d870db9c64655017f8de8af55b35cb1c37:Algorithm.CSharp/AddRiskManagementAlgorithm.cs",
+        "document_title": "AddRiskManagementAlgorithm",
+        "exact_normalization_failure": "normalize_survivors.py requires rule_disclosure_status == verified_deterministic_rule and a deterministic_rule_payload. This record has no verified deterministic payload, so it is rejected as incomplete_disclosure without reconstructing rules.",
+        "relevant_disclosed_trading_rule": "No executable rule was recorded in the collection record. The source is retained as a research lead only; the record explicitly does not assert a verified deterministic rule payload.",
+        "schema_requirement_that_prevented_representation": {
+          "clock_required_fields": [
+            "timezone",
+            "decision_frequency",
+            "signal_timestamp_rule",
+            "data_cutoff_rule"
+          ],
+          "constraints_required_fields": [
+            "max_concurrent_positions",
+            "pyramiding",
+            "cooldown",
+            "missing_data_behavior",
+            "invalid_bar_behavior"
+          ],
+          "cost_required_fields": [
+            "commission",
+            "slippage",
+            "spread",
+            "funding_or_borrow",
+            "cost_source_refs"
+          ],
+          "entry_required_fields": [
+            "direction",
+            "trigger",
+            "order_type",
+            "fill_rule",
+            "latency"
+          ],
+          "exit_required_fields": [
+            "rules",
+            "precedence",
+            "missing_exit_behavior"
+          ],
+          "required_top_level_fields": [
+            "hypothesis",
+            "universe",
+            "clock",
+            "signal",
+            "entry",
+            "exit",
+            "risk",
+            "costs",
+            "constraints",
+            "provenance",
+            "analysis_only"
+          ],
+          "risk_required_fields": [
+            "position_sizing",
+            "risk_budget",
+            "notional_cap",
+            "leverage_cap",
+            "rounding_rule"
+          ]
+        },
+        "source_class": "open_quant_archive",
+        "source_id": "quantconnect_research",
+        "source_provenance": {
+          "canonical_url": "https://github.com/QuantConnect/Lean/blob/master/Algorithm.CSharp/AddRiskManagementAlgorithm.cs",
+          "document_version": "b36534d870db9c64655017f8de8af55b35cb1c37",
+          "source_snapshot_hash": "17c81003686e5b1aa53da0b04d77473691471765afa7b1efa2b1c0e44ba9bf22",
+          "stable_locator_to_rule_text_or_code": "https://raw.githubusercontent.com/QuantConnect/Lean/master/Algorithm.CSharp/AddRiskManagementAlgorithm.cs"
+        },
+        "universe": "B_new_second_run"
+      },
+      {
+        "candidate_or_source_identifier": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+        "document_title": "Alternative Thinking",
+        "exact_normalization_failure": "normalize_survivors.py requires rule_disclosure_status == verified_deterministic_rule and a deterministic_rule_payload. This record has no verified deterministic payload, so it is rejected as incomplete_disclosure without reconstructing rules.",
+        "relevant_disclosed_trading_rule": "No executable rule was recorded in the collection record. The source is retained as a research lead only; the record explicitly does not assert a verified deterministic rule payload.",
+        "schema_requirement_that_prevented_representation": {
+          "clock_required_fields": [
+            "timezone",
+            "decision_frequency",
+            "signal_timestamp_rule",
+            "data_cutoff_rule"
+          ],
+          "constraints_required_fields": [
+            "max_concurrent_positions",
+            "pyramiding",
+            "cooldown",
+            "missing_data_behavior",
+            "invalid_bar_behavior"
+          ],
+          "cost_required_fields": [
+            "commission",
+            "slippage",
+            "spread",
+            "funding_or_borrow",
+            "cost_source_refs"
+          ],
+          "entry_required_fields": [
+            "direction",
+            "trigger",
+            "order_type",
+            "fill_rule",
+            "latency"
+          ],
+          "exit_required_fields": [
+            "rules",
+            "precedence",
+            "missing_exit_behavior"
+          ],
+          "required_top_level_fields": [
+            "hypothesis",
+            "universe",
+            "clock",
+            "signal",
+            "entry",
+            "exit",
+            "risk",
+            "costs",
+            "constraints",
+            "provenance",
+            "analysis_only"
+          ],
+          "risk_required_fields": [
+            "position_sizing",
+            "risk_budget",
+            "notional_cap",
+            "leverage_cap",
+            "rounding_rule"
+          ]
+        },
+        "source_class": "published_quant_research",
+        "source_id": "aqr_public_research",
+        "source_provenance": {
+          "canonical_url": "https://www.aqr.com/Insights/Research/Alternative-Thinking",
+          "document_version": "retrieved_page",
+          "source_snapshot_hash": "3a555c8cbdbd1fd67f0a601741ef35c89ad70b850921925f6e76ceaba4a1d601",
+          "stable_locator_to_rule_text_or_code": "https://www.aqr.com/Insights/Research/Alternative-Thinking"
+        },
+        "universe": "B_new_second_run"
+      },
+      {
+        "candidate_or_source_identifier": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+        "document_title": "Article 1 min Mar 2026 What Does $100 Oil Mean for Emerging Markets? The Gulf conflict has introduced a security premium into oil that could reshape the outlook for emerging markets. We identify the potential winners and losers.",
+        "exact_normalization_failure": "normalize_survivors.py requires rule_disclosure_status == verified_deterministic_rule and a deterministic_rule_payload. This record has no verified deterministic payload, so it is rejected as incomplete_disclosure without reconstructing rules.",
+        "relevant_disclosed_trading_rule": "No executable rule was recorded in the collection record. The source is retained as a research lead only; the record explicitly does not assert a verified deterministic rule payload.",
+        "schema_requirement_that_prevented_representation": {
+          "clock_required_fields": [
+            "timezone",
+            "decision_frequency",
+            "signal_timestamp_rule",
+            "data_cutoff_rule"
+          ],
+          "constraints_required_fields": [
+            "max_concurrent_positions",
+            "pyramiding",
+            "cooldown",
+            "missing_data_behavior",
+            "invalid_bar_behavior"
+          ],
+          "cost_required_fields": [
+            "commission",
+            "slippage",
+            "spread",
+            "funding_or_borrow",
+            "cost_source_refs"
+          ],
+          "entry_required_fields": [
+            "direction",
+            "trigger",
+            "order_type",
+            "fill_rule",
+            "latency"
+          ],
+          "exit_required_fields": [
+            "rules",
+            "precedence",
+            "missing_exit_behavior"
+          ],
+          "required_top_level_fields": [
+            "hypothesis",
+            "universe",
+            "clock",
+            "signal",
+            "entry",
+            "exit",
+            "risk",
+            "costs",
+            "constraints",
+            "provenance",
+            "analysis_only"
+          ],
+          "risk_required_fields": [
+            "position_sizing",
+            "risk_budget",
+            "notional_cap",
+            "leverage_cap",
+            "rounding_rule"
+          ]
+        },
+        "source_class": "published_quant_research",
+        "source_id": "man_institute_research",
+        "source_provenance": {
+          "canonical_url": "https://www.man.com/insights/100-dollar-oil-emerging-markets",
+          "document_version": "retrieved_page",
+          "source_snapshot_hash": "1d136a4959d564364693bd54863b012b8c6021bd9bf63683b7b812b8e6f789da",
+          "stable_locator_to_rule_text_or_code": "https://www.man.com/insights/100-dollar-oil-emerging-markets"
+        },
+        "universe": "B_new_second_run"
+      },
+      {
+        "candidate_or_source_identifier": "2608.24786v1",
+        "document_title": "Harvesting the Volatility Risk Premium: A Learning-to-Rank Approach",
+        "exact_normalization_failure": "normalize_survivors.py requires rule_disclosure_status == verified_deterministic_rule and a deterministic_rule_payload. This record has no verified deterministic payload, so it is rejected as incomplete_disclosure without reconstructing rules.",
+        "relevant_disclosed_trading_rule": "No executable rule was recorded in the collection record. The source is retained as a research lead only; the record explicitly does not assert a verified deterministic rule payload.",
+        "schema_requirement_that_prevented_representation": {
+          "clock_required_fields": [
+            "timezone",
+            "decision_frequency",
+            "signal_timestamp_rule",
+            "data_cutoff_rule"
+          ],
+          "constraints_required_fields": [
+            "max_concurrent_positions",
+            "pyramiding",
+            "cooldown",
+            "missing_data_behavior",
+            "invalid_bar_behavior"
+          ],
+          "cost_required_fields": [
+            "commission",
+            "slippage",
+            "spread",
+            "funding_or_borrow",
+            "cost_source_refs"
+          ],
+          "entry_required_fields": [
+            "direction",
+            "trigger",
+            "order_type",
+            "fill_rule",
+            "latency"
+          ],
+          "exit_required_fields": [
+            "rules",
+            "precedence",
+            "missing_exit_behavior"
+          ],
+          "required_top_level_fields": [
+            "hypothesis",
+            "universe",
+            "clock",
+            "signal",
+            "entry",
+            "exit",
+            "risk",
+            "costs",
+            "constraints",
+            "provenance",
+            "analysis_only"
+          ],
+          "risk_required_fields": [
+            "position_sizing",
+            "risk_budget",
+            "notional_cap",
+            "leverage_cap",
+            "rounding_rule"
+          ]
+        },
+        "source_class": "academic_preprint",
+        "source_id": "academic_systematic_research",
+        "source_provenance": {
+          "canonical_url": "https://arxiv.org/abs/2608.24786v1",
+          "document_version": "1",
+          "source_snapshot_hash": "515e2e927ba1b4a6f00139cc903f5ac38193780ba4f9b03812eb4a928497fda2",
+          "stable_locator_to_rule_text_or_code": "https://arxiv.org/pdf/2608.24786v1"
+        },
+        "universe": "B_new_second_run"
+      }
+    ]
+  },
+  "research_execution_started": false,
+  "statistical_boundary": {
+    "backtests": 0,
+    "cost_stress": 0,
+    "cpcv": 0,
+    "dsr_calculations": 0,
+    "global_trial_ledger_n": 0,
+    "oos": 0,
+    "pbo_calculations": 0,
+    "survivor_promotions": 0,
+    "trading": 0,
+    "trial_ids_created": 0,
+    "wfo": 0
+  },
+  "universes": [
+    {
+      "name": "A_existing_first_run",
+      "normalization_pass_rate": 0.0,
+      "normalized_candidates": 0,
+      "rejection_counts": {
+        "incomplete_disclosure": 893
+      },
+      "total_candidates": 893
+    },
+    {
+      "name": "B_new_second_run",
+      "normalization_pass_rate": 0.0,
+      "normalized_candidates": 0,
+      "rejection_counts": {
+        "incomplete_disclosure": 787
+      },
+      "total_candidates": 787
+    },
+    {
+      "name": "C_combined_A_plus_B",
+      "normalization_pass_rate": 0.0,
+      "normalized_candidates": 0,
+      "rejection_counts": {
+        "incomplete_disclosure": 1680
+      },
+      "total_candidates": 1680
+    }
+  ]
+}

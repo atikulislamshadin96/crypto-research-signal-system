@@ -11,7 +11,7 @@
       "publisher_or_host": "arXiv q-fin microstructure-related records",
       "endpoint": "https://export.arxiv.org/api/query",
       "query_family": "q-fin.MF and q-fin.TR market microstructure/order flow/liquidity/price discovery terms",
-      "planned_records": 450,
+      "planned_records": 434,
       "admissibility": "Source leads only; full deterministic rule disclosure remains a separate normalization gate."
     },
     {
@@ -30,7 +30,7 @@
       "publisher_or_host": "QuantConnect Research and LEAN repositories",
       "endpoint": "https://github.com/QuantConnect/Research and https://github.com/QuantConnect/Lean",
       "query_family": "stable revision notebooks and non-template algorithm/alpha code covering mean reversion, pairs, momentum, volatility, arbitrage and related systematic methods",
-      "planned_records": 300,
+      "planned_records": 70,
       "admissibility": "Stable commit/tree/path locator and source snapshot hash required; regression harnesses and generic templates are excluded."
     },
     {
@@ -39,7 +39,7 @@
       "publisher_or_host": "arXiv q-fin systematic-trading records",
       "endpoint": "https://export.arxiv.org/api/query",
       "query_family": "statistical arbitrage, pairs, cointegration, momentum, trend, volatility, carry and systematic portfolio research outside the first microstructure query",
-      "planned_records": 300,
+      "planned_records": 346,
       "admissibility": "Source leads only; complete deterministic disclosure remains a separate normalization gate and no rules are reconstructed."
     },
     {
