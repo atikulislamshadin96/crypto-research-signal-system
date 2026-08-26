@@ -39,8 +39,9 @@ def fetch_text(url: str) -> bytes:
         return response.read()
 
 
-def collect_arxiv(limit: int, start: int) -> tuple[list[dict[str, object]], dict[str, object]]:
-    query = 'cat:q-fin.MF AND (all:"market microstructure" OR all:"order flow" OR all:"limit order book" OR all:"price discovery" OR all:"liquidity")'
+def collect_arxiv(limit: int, start: int, systematic: bool = False) -> tuple[list[dict[str, object]], dict[str, object]]:
+    query = ('(cat:q-fin.ST OR cat:q-fin.TR OR cat:q-fin.RM) AND '
+             '(all:"statistical arbitrage" OR all:"pairs trading" OR all:cointegration OR all:momentum OR all:"trend following" OR all:volatility OR all:carry)') if systematic else 'cat:q-fin.MF AND (all:"market microstructure" OR all:"order flow" OR all:"limit order book" OR all:"price discovery" OR all:"liquidity")'
     params = urllib.parse.urlencode({"search_query": query, "start": start, "max_results": limit, "sortBy": "submittedDate", "sortOrder": "descending"})
     url = "https://export.arxiv.org/api/query?" + params
     raw = fetch_text(url)
@@ -201,7 +202,7 @@ def collect_web_index(source_id: str, base_url: str, limit: int, start: int, mat
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--kind", choices=("arxiv_microstructure", "quantconnect", "aqr", "man"), required=True)
+    parser.add_argument("--kind", choices=("arxiv_microstructure", "academic_systematic", "quantconnect", "published_quant", "aqr", "man"), required=True)
     parser.add_argument("--batch-id", required=True)
     parser.add_argument("--limit", type=int, required=True)
     parser.add_argument("--start", type=int, default=0)
@@ -210,9 +211,19 @@ def main() -> None:
     if not 1 <= args.limit <= 200:
         raise SystemExit("limit must be between 1 and 200")
     if args.kind == "arxiv_microstructure":
-        records, details = collect_arxiv(args.limit, args.start)
+        records, details = collect_arxiv(args.limit, args.start, systematic=False)
+    elif args.kind == "academic_systematic":
+        records, details = collect_arxiv(args.limit, args.start, systematic=True)
+        for record in records:
+            record["source_id"] = "academic_systematic_research"
+            record["source_class"] = "academic_preprint"
+            record["admissibility_reason"] = "Allowed q-fin systematic-trading source lead; deterministic rule disclosure remains a separate gate."
     elif args.kind == "quantconnect":
         records, details = collect_quantconnect(args.limit, args.start)
+    elif args.kind == "published_quant":
+        aqr, aqr_details = collect_web_index("aqr_public_research", "https://www.aqr.com/Insights/Research", args.limit // 2, args.start, r"/Insights/Research/")
+        man, man_details = collect_web_index("man_institute_research", "https://www.man.com/insights", args.limit - args.limit // 2, args.start, r"https://www\.man\.com/insights/[^?#]+$")
+        records, details = aqr + man, {"aqr": aqr_details, "man": man_details}
     elif args.kind == "aqr":
         records, details = collect_web_index("aqr_public_research", "https://www.aqr.com/Insights/Research", args.limit, args.start, r"/Insights/Research/")
     else:
