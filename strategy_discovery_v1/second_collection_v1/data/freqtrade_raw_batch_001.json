@@ -1,0 +1,1669 @@
+{
+  "adapter_id": "freqtrade_strategy_v1",
+  "analysis_only": true,
+  "backtest_run": false,
+  "batch_id": "freqtrade-strategies-001",
+  "candidates": [
+    {
+      "abstract": "Freqtrade IStrategy source file; class=AlmgrenChrissStrategy; timeframe='15m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=False; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=True; indicator_tokens=rsi,ema",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/AlmgrenChrissStrategy.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/AlmgrenChrissStrategy.py",
+      "document_title": "Freqtrade strategy: AlmgrenChrissStrategy.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 8,
+            "locator": "lines=58-65",
+            "verbatim": "dataframe.loc[\n            (dataframe[\"rsi\"] < 45) & (dataframe[\"volume\"] > 0),\n            \"enter_long\",\n        ] = 1\n\n        # Short entry\n        dataframe.loc[\n            (dataframe[\"rsi\"] > 55) & (dataframe[\"volume\"] > 0),"
+          },
+          "exit": {
+            "line_count": 3,
+            "locator": "lines=70-72",
+            "verbatim": "def populate_exit_trend(self, dataframe: pd.DataFrame, metadata: dict) -> pd.DataFrame:\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=33",
+            "verbatim": "minimal_roi = {\"0\": 0.02}"
+          },
+          "sizing": {
+            "line_count": 6,
+            "locator": "lines=154-159",
+            "verbatim": "def custom_stake_amount(self, pair: str, current_time: datetime, current_rate: float,\n                             proposed_stake: float, min_stake: float | None, max_stake: float,\n                             leverage: float, entry_tag: str | None, side: str,\n                             **kwargs) -> float:\n        first_fraction = self._ac_next_slice_fraction(self.twap_num_slices, self._get_kappa(pair))\n        return proposed_stake * first_fraction"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=32",
+            "verbatim": "stoploss = -0.10"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=31",
+            "verbatim": "timeframe = \"15m\""
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/AlmgrenChrissStrategy.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "b336a714198174b8e652a4115423b37915ee8eacbd89cc412c090b61f4043522"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/AlmgrenChrissStrategy.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/AlmgrenChrissStrategy.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 9013,
+      "source_snapshot_sha256": "b336a714198174b8e652a4115423b37915ee8eacbd89cc412c090b61f4043522"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Bandtastic; timeframe='15m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema,bollinger,mfi",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Bandtastic.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Bandtastic.py",
+      "document_title": "Freqtrade strategy: Bandtastic.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 6,
+            "locator": "lines=126-132",
+            "verbatim": "if conditions:\n            dataframe.loc[\n                reduce(lambda x, y: x & y, conditions),\n                'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=157-163",
+            "verbatim": "if conditions:\n            dataframe.loc[\n                reduce(lambda x, y: x & y, conditions),\n                'exit_long'] = 1\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=27",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=35",
+            "verbatim": "stoploss = -0.345"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=24",
+            "verbatim": "timeframe = '15m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=40",
+            "verbatim": "trailing_stop = True"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Bandtastic.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "15dcb60d49a3681241cd39645f0fe8e6dc247687bf878c2026f37bb1c5790b57"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Bandtastic.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Bandtastic.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 7310,
+      "source_snapshot_sha256": "15dcb60d49a3681241cd39645f0fe8e6dc247687bf878c2026f37bb1c5790b57"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=BreakEven; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=False; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,sma",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/BreakEven.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/BreakEven.py",
+      "document_title": "Freqtrade strategy: BreakEven.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 3,
+            "locator": "lines=60-62",
+            "verbatim": "),\n            'enter_long'] = 0\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 3,
+            "locator": "lines=67-69",
+            "verbatim": "),\n            'exit_long'] = 0\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=19",
+            "verbatim": "Here's a simple strategy with empty buy/sell signals and \"minimal_roi = { 0 : 0 }\" that"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=48",
+            "verbatim": "stoploss = -0.05"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=51",
+            "verbatim": "timeframe = '5m'"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/BreakEven.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "af632fe3b12361c9dc52e7d61ebbcb305a22e78adb580532010d88187a3e4efd"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/BreakEven.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/BreakEven.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 2249,
+      "source_snapshot_sha256": "af632fe3b12361c9dc52e7d61ebbcb305a22e78adb580532010d88187a3e4efd"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=CustomStoplossWithPSAR; timeframe='1h'; minimal_roi_explicit=False; stoploss_explicit=True; trailing_stop_explicit=False; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,sma,sar",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/CustomStoplossWithPSAR.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/CustomStoplossWithPSAR.py",
+      "document_title": "Freqtrade strategy: CustomStoplossWithPSAR.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=77-83",
+            "verbatim": "dataframe.loc[\n            (\n                (dataframe['sar'] < dataframe['sar'].shift())\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 8,
+            "locator": "lines=87-94",
+            "verbatim": "Placeholder Strategy: does nothing\n        Based on TA indicators, populates the sell signal for the given dataframe\n        :param dataframe: DataFrame\n        :return: DataFrame with buy column\n        \"\"\"\n        # Deactivated sell signal to allow the strategy to work correctly\n        dataframe.loc[:, 'exit_long'] = 0\n        return dataframe"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=28",
+            "verbatim": "stoploss = -0.2"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=27",
+            "verbatim": "timeframe = '1h'"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/CustomStoplossWithPSAR.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/CustomStoplossWithPSAR.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/CustomStoplossWithPSAR.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 3800,
+      "source_snapshot_sha256": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Diamond; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,sma",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Diamond.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Diamond.py",
+      "document_title": "Freqtrade strategy: Diamond.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 6,
+            "locator": "lines=134-140",
+            "verbatim": "if conditions:\n            dataframe.loc[\n                reduce(lambda x, y: x & y, conditions),\n                'enter_long']=1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=150-155",
+            "verbatim": ")\n        if conditions:\n            dataframe.loc[\n                reduce(lambda x, y: x & y, conditions),\n                'exit_long']=1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=77",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=85",
+            "verbatim": "stoploss = -0.271"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=93",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=88",
+            "verbatim": "trailing_stop = True"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Diamond.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Diamond.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Diamond.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 9411,
+      "source_snapshot_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=FixedRiskRewardLoss; timeframe=None; minimal_roi_explicit=False; stoploss_explicit=True; trailing_stop_explicit=False; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,sma,atr,sar",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/FixedRiskRewardLoss.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/FixedRiskRewardLoss.py",
+      "document_title": "Freqtrade strategy: FixedRiskRewardLoss.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 8,
+            "locator": "lines=101-108",
+            "verbatim": "\"\"\"\n        Placeholder Strategy: buys when SAR is smaller then candle before\n        Based on TA indicators, populates the buy signal for the given dataframe\n        :param dataframe: DataFrame\n        :return: DataFrame with buy column\n        \"\"\"\n        # Always buys\n        dataframe.loc[:, 'enter_long'] = 1"
+          },
+          "exit": {
+            "line_count": 8,
+            "locator": "lines=113-120",
+            "verbatim": "Placeholder Strategy: does nothing\n        Based on TA indicators, populates the sell signal for the given dataframe\n        :param dataframe: DataFrame\n        :return: DataFrame with buy column\n        \"\"\"\n\n        # Never sells\n        dataframe.loc[:, 'exit_long'] = 0"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=37",
+            "verbatim": "use_custom_stoploss = True"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/FixedRiskRewardLoss.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "338fc39a8f236d0ddb79c0f7e6a1f593be721bdb2a598815347e0883cc7696fc"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/FixedRiskRewardLoss.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/FixedRiskRewardLoss.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 4925,
+      "source_snapshot_sha256": "338fc39a8f236d0ddb79c0f7e6a1f593be721bdb2a598815347e0883cc7696fc"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=GodStra; timeframe='12h'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,sma,mfi",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/GodStra.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/GodStra.py",
+      "document_title": "Freqtrade strategy: GodStra.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 6,
+            "locator": "lines=132-138",
+            "verbatim": "print(conditions)\n        dataframe.loc[\n            reduce(lambda x, y: x & y, conditions),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 7,
+            "locator": "lines=172-178",
+            "verbatim": "conditions.append(DFIND < REAL)\n\n        dataframe.loc[\n            reduce(lambda x, y: x & y, conditions),\n            'exit_long'] = 1\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=61",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=69",
+            "verbatim": "stoploss = -0.34549"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=77",
+            "verbatim": "timeframe = '12h'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=72",
+            "verbatim": "trailing_stop = True"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/GodStra.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "54c9e147b5c2c08499c4f94441ea7837110bbf638f3c3c8848242c78d2c3720c"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/GodStra.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/GodStra.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 6802,
+      "source_snapshot_sha256": "54c9e147b5c2c08499c4f94441ea7837110bbf638f3c3c8848242c78d2c3720c"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Heracles; timeframe='4h'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=False; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,atr",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Heracles.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Heracles.py",
+      "document_title": "Freqtrade strategy: Heracles.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 6,
+            "locator": "lines=108-114",
+            "verbatim": "if conditions:\n            dataframe.loc[\n                reduce(lambda x, y: x & y, conditions),\n                'enter_long']=1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 5,
+            "locator": "lines=117-121",
+            "verbatim": "\"\"\"\n        Sell strategy Hyperopt will build and use.\n        \"\"\"\n        dataframe.loc[:, 'exit_long'] = 0\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=46",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=54",
+            "verbatim": "stoploss = -0.256"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=57",
+            "verbatim": "timeframe = '4h'"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Heracles.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Heracles.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Heracles.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 3867,
+      "source_snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=HourBasedStrategy; timeframe='1h'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=False; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/HourBasedStrategy.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/HourBasedStrategy.py",
+      "document_title": "Freqtrade strategy: HourBasedStrategy.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 6,
+            "locator": "lines=91-96",
+            "verbatim": "(\n                (dataframe['hour'].between(self.buy_hour_min.value, self.buy_hour_max.value))\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 5,
+            "locator": "lines=100-104",
+            "verbatim": "(\n                (dataframe['hour'].between(self.sell_hour_min.value, self.sell_hour_max.value))\n            ),\n            'exit_long'] = 1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=25",
+            "verbatim": "# minimal_roi = {\"0\": 0.18,\"171\": 0.155,\"315\": 0.075,\"1035\": 0}"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=26",
+            "verbatim": "# stoploss = -0.292"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=77",
+            "verbatim": "timeframe = '1h'"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/HourBasedStrategy.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/HourBasedStrategy.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/HourBasedStrategy.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 4270,
+      "source_snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=InformativeSample; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema,sma",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/InformativeSample.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/InformativeSample.py",
+      "document_title": "Freqtrade strategy: InformativeSample.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=111-117",
+            "verbatim": "(dataframe['ema20'] > dataframe['ema50']) &\n                # stake/USDT above sma(stake/USDT, 20)\n                (dataframe['close_15m'] > dataframe['sma20_15m'])\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=127-132",
+            "verbatim": "(dataframe['ema20'] < dataframe['ema50']) &\n                # stake/USDT below sma(stake/USDT, 20)\n                (dataframe['close_15m'] < dataframe['sma20_15m'])\n            ),\n            'exit_long'] = 1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=27",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=36",
+            "verbatim": "stoploss = -0.10"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=39",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=42",
+            "verbatim": "trailing_stop = False"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/InformativeSample.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "1a96c6ecf7f6dd2afe086a31a80fd894811a81d88a7a2d814e69c8f3bebee564"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/InformativeSample.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/InformativeSample.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 4773,
+      "source_snapshot_sha256": "1a96c6ecf7f6dd2afe086a31a80fd894811a81d88a7a2d814e69c8f3bebee564"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=MultiMa; timeframe='4h'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/MultiMa.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/MultiMa.py",
+      "document_title": "Freqtrade strategy: MultiMa.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 6,
+            "locator": "lines=81-86",
+            "verbatim": "if past_key > 1 and key in dataframe.keys() and past_key in dataframe.keys():\n                conditions.append(dataframe[key] < dataframe[past_key])\n\n        if conditions:\n            dataframe.loc[reduce(lambda x, y: x & y, conditions), \"enter_long\"] = 1\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=94-99",
+            "verbatim": "if past_key > 1 and key in dataframe.keys() and past_key in dataframe.keys():\n                conditions.append(dataframe[key] > dataframe[past_key])\n\n        if conditions:\n            dataframe.loc[reduce(lambda x, y: x | y, conditions), \"exit_long\"] = 1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=34",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=42",
+            "verbatim": "stoploss = -0.345"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=51",
+            "verbatim": "timeframe = \"4h\""
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=45",
+            "verbatim": "trailing_stop = False  # value loaded from strategy"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/MultiMa.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/MultiMa.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/MultiMa.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 3464,
+      "source_snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=PatternRecognition; timeframe='1d'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PatternRecognition.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/PatternRecognition.py",
+      "document_title": "Freqtrade strategy: PatternRecognition.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=72-78",
+            "verbatim": "(\n                (dataframe[self.buy_pr1.value]==self.buy_vol1.value)\n                # |(dataframe[self.buy_pr2.value]==self.buy_vol2.value)\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 7,
+            "locator": "lines=82-88",
+            "verbatim": "(\n            #     (dataframe[self.sell_pr1.value]==self.sell_vol1.value)|\n            #     (dataframe[self.sell_pr2.value]==self.sell_vol2.value)\n            ),\n            'exit_long'] = 1\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=38",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=46",
+            "verbatim": "stoploss = -0.288"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=55",
+            "verbatim": "timeframe = '1d'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=49",
+            "verbatim": "trailing_stop = True"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/PatternRecognition.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PatternRecognition.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/PatternRecognition.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 2674,
+      "source_snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=PowerTower; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PowerTower.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/PowerTower.py",
+      "document_title": "Freqtrade strategy: PowerTower.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=86-93",
+            "verbatim": "(\n                    (dataframe['close'].shift(0) > dataframe['close'].shift(2) ** self.buy_pow.value) &\n                    (dataframe['close'].shift(1) > dataframe['close'].shift(3) ** self.buy_pow.value) &\n                    (dataframe['close'].shift(2) > dataframe['close'].shift(4) ** self.buy_pow.value)\n\n            ),\n            'enter_long'] = 1"
+          },
+          "exit": {
+            "line_count": 8,
+            "locator": "lines=97-104",
+            "verbatim": "dataframe.loc[(\n                (dataframe['close'].shift(0) < dataframe['close'].shift(2) ** self.sell_pow.value) |\n                (dataframe['close'].shift(1) < dataframe['close'].shift(3) ** self.sell_pow.value) |\n                (dataframe['close'].shift(2) < dataframe['close'].shift(4) ** self.sell_pow.value)\n        ),\n        'exit_long'] = 1\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=58",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=66",
+            "verbatim": "stoploss = -0.288"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=31",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=69",
+            "verbatim": "trailing_stop = False  # value loaded from strategy"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/PowerTower.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PowerTower.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/PowerTower.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 4317,
+      "source_snapshot_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Strategy001; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy001.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Strategy001.py",
+      "document_title": "Freqtrade strategy: Strategy001.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=101-107",
+            "verbatim": "qtpylib.crossed_above(dataframe['ema20'], dataframe['ema50']) &\n                (dataframe['ha_close'] > dataframe['ema20']) &\n                (dataframe['ha_open'] < dataframe['ha_close'])  # green bar\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=117-122",
+            "verbatim": "qtpylib.crossed_above(dataframe['ema50'], dataframe['ema100']) &\n                (dataframe['ha_close'] < dataframe['ema20']) &\n                (dataframe['ha_open'] > dataframe['ha_close'])  # red bar\n            ),\n            'exit_long'] = 1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=26",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=35",
+            "verbatim": "stoploss = -0.10"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=38",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=41",
+            "verbatim": "trailing_stop = False"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Strategy001.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "2357996e6594458e8db45b5f757918462afa3c998de9d06e2af0c009ddc4b80d"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy001.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Strategy001.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 4103,
+      "source_snapshot_sha256": "2357996e6594458e8db45b5f757918462afa3c998de9d06e2af0c009ddc4b80d"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Strategy001_custom_exit; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy001_custom_exit.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Strategy001_custom_exit.py",
+      "document_title": "Freqtrade strategy: Strategy001_custom_exit.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=104-110",
+            "verbatim": "qtpylib.crossed_above(dataframe['ema20'], dataframe['ema50']) &\n                (dataframe['ha_close'] > dataframe['ema20']) &\n                (dataframe['ha_open'] < dataframe['ha_close'])  # green bar\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=120-125",
+            "verbatim": "qtpylib.crossed_above(dataframe['ema50'], dataframe['ema100']) &\n                (dataframe['ha_close'] < dataframe['ema20']) &\n                (dataframe['ha_open'] > dataframe['ha_close'])  # red bar\n            ),\n            'exit_long'] = 1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=27",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=36",
+            "verbatim": "stoploss = -0.10"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=39",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=42",
+            "verbatim": "trailing_stop = False"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Strategy001_custom_exit.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "d53ac16d0e81b755a19ea83c535f50a6dd0629c76087b822ae399fabeaa5e841"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy001_custom_exit.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Strategy001_custom_exit.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 4931,
+      "source_snapshot_sha256": "d53ac16d0e81b755a19ea83c535f50a6dd0629c76087b822ae399fabeaa5e841"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Strategy002; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,bollinger,sar",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy002.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Strategy002.py",
+      "document_title": "Freqtrade strategy: Strategy002.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=116-122",
+            "verbatim": "(dataframe['slowk'] < 20) &\n                (dataframe['bb_lowerband'] > dataframe['close']) &\n                (dataframe['CDLHAMMER'] == 100)\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=131-136",
+            "verbatim": "(\n                (dataframe['sar'] > dataframe['close']) &\n                (dataframe['fisher_rsi'] > 0.3)\n            ),\n            'exit_long'] = 1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=27",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=36",
+            "verbatim": "stoploss = -0.10"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=39",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=42",
+            "verbatim": "trailing_stop = False"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Strategy002.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "d1ca86a4ceb68ef828b35490ce1112330dad209cc3bb1e1b6c303c21ab3d8a90"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy002.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Strategy002.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 4363,
+      "source_snapshot_sha256": "d1ca86a4ceb68ef828b35490ce1112330dad209cc3bb1e1b6c303c21ab3d8a90"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Strategy003; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema,sma,bollinger,mfi,sar",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy003.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Strategy003.py",
+      "document_title": "Freqtrade strategy: Strategy003.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=133-139",
+            "verbatim": ") &\n                (dataframe['fastd'] > dataframe['fastk']) &\n                (dataframe['fastd'] > 0)\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=148-153",
+            "verbatim": "(\n                (dataframe['sar'] > dataframe['close']) &\n                (dataframe['fisher_rsi'] > 0.3)\n            ),\n            'exit_long'] = 1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=27",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=36",
+            "verbatim": "stoploss = -0.10"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=39",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=42",
+            "verbatim": "trailing_stop = False"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Strategy003.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "055984b4672779b36a2391f790ccbcd320e408eb0634e34718d7182acaeef9c9"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy003.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Strategy003.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 5110,
+      "source_snapshot_sha256": "055984b4672779b36a2391f790ccbcd320e408eb0634e34718d7182acaeef9c9"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Strategy004; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema,adx,cci",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy004.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Strategy004.py",
+      "document_title": "Freqtrade strategy: Strategy004.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=136-142",
+            "verbatim": "(dataframe['fastk'] > dataframe['fastd']) &\n                (dataframe['mean-volume'] > 0.75) &\n                (dataframe['close'] > 0.00000100)\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=153-158",
+            "verbatim": "((dataframe['fastk'] > 70) | (dataframe['fastd'] > 70)) &\n                (dataframe['fastk-previous'] < dataframe['fastd-previous']) &\n                (dataframe['close'] > dataframe['ema5'])\n            ),\n            'exit_long'] = 1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=26",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=35",
+            "verbatim": "stoploss = -0.10"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=38",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=41",
+            "verbatim": "trailing_stop = False"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Strategy004.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy004.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Strategy004.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 5472,
+      "source_snapshot_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Strategy005; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,sma,macd,sar",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy005.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Strategy005.py",
+      "document_title": "Freqtrade strategy: Strategy005.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=158-164",
+            "verbatim": "(dataframe['rsi'] > self.buy_rsi.value) &\n                (dataframe['fastd'] > self.buy_fastd.value) &\n                (dataframe['fisher_rsi_norma'] < self.buy_fishRsiNorma.value)\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 7,
+            "locator": "lines=179-185",
+            "verbatim": "conditions.append(dataframe['sar'] > dataframe['close'])\n            conditions.append(dataframe['fisher_rsi'] > self.sell_fishRsiNorma.value)\n\n        if conditions:\n            dataframe.loc[reduce(lambda x, y: x & y, conditions), 'exit_long'] = 1\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=27",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=37",
+            "verbatim": "stoploss = -0.10"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=40",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=43",
+            "verbatim": "trailing_stop = False"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Strategy005.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "797b293f5acd809f8c77f26b38c004c87b75d8847be4cde4d0224040cc591030"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy005.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Strategy005.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 6667,
+      "source_snapshot_sha256": "797b293f5acd809f8c77f26b38c004c87b75d8847be4cde4d0224040cc591030"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=Supertrend; timeframe='1h'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Supertrend.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Supertrend.py",
+      "document_title": "Freqtrade strategy: Supertrend.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=124-131",
+            "verbatim": "(\n               (dataframe[f'supertrend_1_buy_{self.buy_m1.value}_{self.buy_p1.value}'] == 'up') &\n               (dataframe[f'supertrend_2_buy_{self.buy_m2.value}_{self.buy_p2.value}'] == 'up') &\n               (dataframe[f'supertrend_3_buy_{self.buy_m3.value}_{self.buy_p3.value}'] == 'up') & # The three indicators are 'up' for the current candle\n               (dataframe['volume'] > 0) # There is at least some trading volume\n        ),\n            'enter_long'] = 1"
+          },
+          "exit": {
+            "line_count": 7,
+            "locator": "lines=136-143",
+            "verbatim": "(\n               (dataframe[f'supertrend_1_sell_{self.sell_m1.value}_{self.sell_p1.value}'] == 'down') &\n               (dataframe[f'supertrend_2_sell_{self.sell_m2.value}_{self.sell_p2.value}'] == 'down') &\n               (dataframe[f'supertrend_3_sell_{self.sell_m3.value}_{self.sell_p3.value}'] == 'down') & # The three indicators are 'down' for the current candle\n               (dataframe['volume'] > 0) # There is at least some trading volume\n            ),\n            'exit_long'] = 1"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=50",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=25",
+            "verbatim": "# Buy params, Sell params, ROI, Stoploss and Trailing Stop are values generated by 'freqtrade hyperopt --strategy Supertrend --hyperopt-loss ShortTradeDurHyperOptLoss --timerange=20210101- --timeframe=1h --spaces all'"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=25",
+            "verbatim": "# Buy params, Sell params, ROI, Stoploss and Trailing Stop are values generated by 'freqtrade hyperopt --strategy Supertrend --hyperopt-loss ShortTradeDurHyperOptLoss --timerange=20210101- --timeframe=1h --spaces all'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=61",
+            "verbatim": "trailing_stop = True"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Supertrend.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Supertrend.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/Supertrend.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 6442,
+      "source_snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=SwingHighToSky; timeframe='15m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=False; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema,cci",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/SwingHighToSky.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/SwingHighToSky.py",
+      "document_title": "Freqtrade strategy: SwingHighToSky.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=93-99",
+            "verbatim": "(\n                (dataframe[f'cci-{self.buy_cciTime.value}'] < self.buy_cci.value) &\n                (dataframe[f'rsi-{self.buy_rsiTime.value}'] < self.buy_rsi.value)\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 7,
+            "locator": "lines=104-110",
+            "verbatim": "(\n                (dataframe[f'cci-sell-{self.sell_cciTime.value}'] > self.sell_cci.value) &\n                (dataframe[f'rsi-sell-{self.sell_rsiTime.value}'] > self.sell_rsi.value)\n            ),\n            'exit_long'] = 1\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=43",
+            "verbatim": "minimal_roi = {\"0\": 0.27058, \"33\": 0.0853, \"64\": 0.04093, \"244\": 0}"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=41",
+            "verbatim": "stoploss = -0.34338"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=39",
+            "verbatim": "timeframe = '15m'"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/SwingHighToSky.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "3778a09f02b88c1ca257e5346d6cc97ae8b7dd80a7559d003ab3a760ab1e5518"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/SwingHighToSky.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/SwingHighToSky.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 3267,
+      "source_snapshot_sha256": "3778a09f02b88c1ca257e5346d6cc97ae8b7dd80a7559d003ab3a760ab1e5518"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=TWAPStrategy; timeframe='15m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=False; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=True; indicator_tokens=rsi,ema",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/TWAPStrategy.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/TWAPStrategy.py",
+      "document_title": "Freqtrade strategy: TWAPStrategy.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 8,
+            "locator": "lines=38-45",
+            "verbatim": "dataframe.loc[\n            (dataframe[\"rsi\"] < 45) & (dataframe[\"volume\"] > 0),\n            \"enter_long\",\n        ] = 1\n\n        # Short entry\n        dataframe.loc[\n            (dataframe[\"rsi\"] > 55) & (dataframe[\"volume\"] > 0),"
+          },
+          "exit": {
+            "line_count": 3,
+            "locator": "lines=50-52",
+            "verbatim": "def populate_exit_trend(self, dataframe: pd.DataFrame, metadata: dict) -> pd.DataFrame:\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=22",
+            "verbatim": "minimal_roi = {\"0\": 0.02}"
+          },
+          "sizing": {
+            "line_count": 6,
+            "locator": "lines=78-83",
+            "verbatim": "def custom_stake_amount(self, pair: str, current_time: datetime, current_rate: float,\n                             proposed_stake: float, min_stake: float | None, max_stake: float,\n                             leverage: float, entry_tag: str | None, side: str,\n                             **kwargs) -> float:\n\n        return proposed_stake / self.twap_num_slices"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=21",
+            "verbatim": "stoploss = -0.10"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=20",
+            "verbatim": "timeframe = \"15m\""
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/TWAPStrategy.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "cb565aef94b39b2a716994868ce069cfa169023122f0f1e9fafdb524beb9365b"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/TWAPStrategy.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/TWAPStrategy.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 5513,
+      "source_snapshot_sha256": "cb565aef94b39b2a716994868ce069cfa169023122f0f1e9fafdb524beb9365b"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=TrendRiderStrategy; timeframe='1h'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema,sma,macd,bollinger,atr,adx,obv",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/TrendRiderStrategy.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/TrendRiderStrategy.py",
+      "document_title": "Freqtrade strategy: TrendRiderStrategy.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 8,
+            "locator": "lines=392-399",
+            "verbatim": "dataframe[\"fng_value\"] <= 85,\n        ]\n        dataframe.loc[\n            reduce(lambda x, y: x & y, conditions_macd),\n            [\"enter_long\", \"enter_tag\"]\n        ] = (1, \"macd_reversal\")\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 8,
+            "locator": "lines=436-443",
+            "verbatim": "(dataframe[\"close\"] < dataframe[\"ema_200\"] * 0.995) &  # within 0.5% of breaking\n            (dataframe[rsi] > 72) &                                  # exhausted\n            (dataframe[\"macdhist\"] < dataframe[\"macdhist\"].shift(1)) & # momentum dropping\n            (dataframe[\"volume\"] > 0),\n            [\"exit_long\", \"exit_tag\"]\n        ] = (1, \"trend_early_warning\")\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=26",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=34",
+            "verbatim": "stoploss = -0.06           # 6% default (ATR-based custom stoploss overrides)"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=44",
+            "verbatim": "timeframe = \"1h\""
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=38",
+            "verbatim": "trailing_stop = True"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/TrendRiderStrategy.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "84ec4f1f00bbac46cf9a7ad6f38e1de6fe5ca83cfd9aa810c334b1a7e3c803ba"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/TrendRiderStrategy.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/TrendRiderStrategy.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 24748,
+      "source_snapshot_sha256": "84ec4f1f00bbac46cf9a7ad6f38e1de6fe5ca83cfd9aa810c334b1a7e3c803ba"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=UniversalMACD; timeframe='5m'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema,macd",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/UniversalMACD.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/UniversalMACD.py",
+      "document_title": "Freqtrade strategy: UniversalMACD.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=98-104",
+            "verbatim": "(\n                (dataframe['umacd'].between(self.buy_umacd_min.value, self.buy_umacd_max.value))\n\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+          },
+          "exit": {
+            "line_count": 6,
+            "locator": "lines=108-113",
+            "verbatim": "(\n                (dataframe['umacd'].between(self.sell_umacd_min.value, self.sell_umacd_max.value))\n            ),\n            'exit_long'] = 1\n\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=60",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=68",
+            "verbatim": "stoploss = -0.318"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=30",
+            "verbatim": "timeframe = '5m'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=71",
+            "verbatim": "trailing_stop = False  # value loaded from strategy"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/UniversalMACD.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "b3a62e0d8a26024e7ab5f3613d0964e3954373bc3735c1ffd0678d84ce1b1e32"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/UniversalMACD.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/UniversalMACD.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 4558,
+      "source_snapshot_sha256": "b3a62e0d8a26024e7ab5f3613d0964e3954373bc3735c1ffd0678d84ce1b1e32"
+    },
+    {
+      "abstract": "Freqtrade IStrategy source file; class=hlhb; timeframe='4h'; minimal_roi_explicit=True; stoploss_explicit=True; trailing_stop_explicit=True; entry_method=populate_entry_trend; exit_method=populate_exit_trend; custom_stake_method=False; indicator_tokens=rsi,ema,adx",
+      "analysis_only": true,
+      "authors": [],
+      "backtest_run": false,
+      "canonical_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/hlhb.py",
+      "categories": [
+        "open_quant_code",
+        "freqtrade"
+      ],
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/hlhb.py",
+      "document_title": "Freqtrade strategy: hlhb.py",
+      "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "evidence_bundle": {
+        "adapter_id": "freqtrade_strategy_v1",
+        "license": "GPL-3.0",
+        "snippet_policy": "short_field_supporting_excerpts_only_never_full_file",
+        "snippets": {
+          "entry": {
+            "line_count": 7,
+            "locator": "lines=108-115",
+            "verbatim": "(\n                (qtpylib.crossed_above(dataframe['rsi'], 50)) &\n                (qtpylib.crossed_above(dataframe['ema5'], dataframe['ema10'])) &\n                (dataframe['adx'] > 25) &\n                (dataframe['volume'] > 0)  # Make sure Volume is not 0\n            ),\n            'enter_long'] = 1"
+          },
+          "exit": {
+            "line_count": 8,
+            "locator": "lines=120-127",
+            "verbatim": "(\n                (qtpylib.crossed_below(dataframe['rsi'], 50)) &\n                (qtpylib.crossed_below(dataframe['ema5'], dataframe['ema10'])) &\n                (dataframe['adx'] > 25) &\n                (dataframe['volume'] > 0)  # Make sure Volume is not 0\n            ),\n            'exit_long'] = 1\n        return dataframe"
+          },
+          "minimal_roi": {
+            "line_count": 1,
+            "locator": "line=23",
+            "verbatim": "minimal_roi = {"
+          },
+          "stoploss": {
+            "line_count": 1,
+            "locator": "line=32",
+            "verbatim": "stoploss = -0.3211"
+          },
+          "timeframe": {
+            "line_count": 1,
+            "locator": "line=41",
+            "verbatim": "timeframe = '4h'"
+          },
+          "trailing_stop": {
+            "line_count": 1,
+            "locator": "line=35",
+            "verbatim": "trailing_stop = True"
+          }
+        },
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/hlhb.py",
+        "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+        "source_snapshot_sha256": "bd4523d134b686b012947896ffd7a5a299add87ac12aa0d18fac36c9e7ca3822"
+      },
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "published_at": null,
+      "retrieved_at": "2026-08-27T03:38:21Z",
+      "rule_disclosure_locator": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/hlhb.py",
+      "rule_disclosure_status": "pending_adapter_review",
+      "source_class": "open_quant_archive",
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_id": "freqtrade_strategies",
+      "source_path": "user_data/strategies/hlhb.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_snapshot_bytes": 3821,
+      "source_snapshot_sha256": "bd4523d134b686b012947896ffd7a5a299add87ac12aa0d18fac36c9e7ca3822"
+    }
+  ],
+  "evidence_policy": "short_field_supporting_excerpts_only_never_full_file",
+  "license": "GPL-3.0",
+  "market_data_downloaded": false,
+  "raw_candidate_count": 25,
+  "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+  "source_repo": "https://github.com/freqtrade/freqtrade-strategies"
+}
