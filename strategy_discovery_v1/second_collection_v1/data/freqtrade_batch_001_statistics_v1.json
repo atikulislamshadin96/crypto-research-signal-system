@@ -1,0 +1,614 @@
+{
+  "candidate_count_measured": 5,
+  "candidate_daily_metrics": {
+    "freqtrade-001-049de14e89e70ff2": {
+      "annualized_sharpe": -2.4232160600125776,
+      "dsr": 5.20894401910631e-196,
+      "observations": 365,
+      "sample_pearson_kurtosis": 9.061586915131446,
+      "sample_skewness": 0.08278377473709005,
+      "total_return": -0.1618963704040265
+    },
+    "freqtrade-001-0e9fabb81bdf9d15": {
+      "annualized_sharpe": -0.5363123755006675,
+      "dsr": 0.0,
+      "observations": 365,
+      "sample_pearson_kurtosis": 7.310528956203566,
+      "sample_skewness": 0.1537029308605943,
+      "total_return": -0.06771125522066423
+    },
+    "freqtrade-001-538cdbd0af387920": {
+      "annualized_sharpe": -0.4834509665556086,
+      "dsr": 0.0,
+      "observations": 365,
+      "sample_pearson_kurtosis": 6.4453414661439545,
+      "sample_skewness": 0.44679752222405744,
+      "total_return": -0.05312041949656099
+    },
+    "freqtrade-001-6f12cce9e8efbb1c": {
+      "annualized_sharpe": -0.8847024008332953,
+      "dsr": 0.0,
+      "observations": 365,
+      "sample_pearson_kurtosis": 8.769482524163134,
+      "sample_skewness": -0.36999144264893175,
+      "total_return": -0.11418289922486913
+    },
+    "freqtrade-001-f945d1eac652b471": {
+      "annualized_sharpe": -0.9330853564540386,
+      "dsr": 0.0,
+      "observations": 365,
+      "sample_pearson_kurtosis": 8.655724939259075,
+      "sample_skewness": 0.4009375250717519,
+      "total_return": -0.06850757309236277
+    }
+  },
+  "common_daily_observations": 365,
+  "cpcv": {
+    "path_count": 5,
+    "path_results": [
+      {
+        "path_below_median": false,
+        "path_id": 0,
+        "pooled_lambda": 2.1972245773362196,
+        "pooled_omega_midrank": 0.9,
+        "pooled_test_observations": 365,
+        "pooled_test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.4232160600125776,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.5363123755006675,
+          "freqtrade-001-538cdbd0af387920": -0.4834509665556086,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.8847024008332953,
+          "freqtrade-001-f945d1eac652b471": -0.9330853564540386
+        },
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "selection_frequency": 2,
+        "split_count": 3,
+        "split_lambdas": [
+          0.8472978603872034,
+          0.8472978603872034,
+          0.8472978603872034
+        ],
+        "split_omegas": [
+          0.7,
+          0.7,
+          0.7
+        ]
+      },
+      {
+        "path_below_median": false,
+        "path_id": 1,
+        "pooled_lambda": 2.1972245773362196,
+        "pooled_omega_midrank": 0.9,
+        "pooled_test_observations": 365,
+        "pooled_test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.4232160600125776,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.5363123755006675,
+          "freqtrade-001-538cdbd0af387920": -0.4834509665556086,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.8847024008332953,
+          "freqtrade-001-f945d1eac652b471": -0.9330853564540386
+        },
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "selection_frequency": 1,
+        "split_count": 3,
+        "split_lambdas": [
+          0.8472978603872034,
+          0.0,
+          -0.8472978603872036
+        ],
+        "split_omegas": [
+          0.7,
+          0.5,
+          0.3
+        ]
+      },
+      {
+        "path_below_median": false,
+        "path_id": 2,
+        "pooled_lambda": 2.1972245773362196,
+        "pooled_omega_midrank": 0.9,
+        "pooled_test_observations": 365,
+        "pooled_test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.4232160600125776,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.5363123755006675,
+          "freqtrade-001-538cdbd0af387920": -0.4834509665556086,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.8847024008332953,
+          "freqtrade-001-f945d1eac652b471": -0.9330853564540386
+        },
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "selection_frequency": 2,
+        "split_count": 3,
+        "split_lambdas": [
+          0.0,
+          2.1972245773362196,
+          0.8472978603872034
+        ],
+        "split_omegas": [
+          0.5,
+          0.9,
+          0.7
+        ]
+      },
+      {
+        "path_below_median": false,
+        "path_id": 3,
+        "pooled_lambda": 0.8472978603872034,
+        "pooled_omega_midrank": 0.7,
+        "pooled_test_observations": 365,
+        "pooled_test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.4232160600125776,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.5363123755006675,
+          "freqtrade-001-538cdbd0af387920": -0.4834509665556086,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.8847024008332953,
+          "freqtrade-001-f945d1eac652b471": -0.9330853564540386
+        },
+        "selected_trial_id": "freqtrade-001-0e9fabb81bdf9d15",
+        "selection_frequency": 2,
+        "split_count": 3,
+        "split_lambdas": [
+          2.1972245773362196,
+          0.8472978603872034,
+          -0.8472978603872036
+        ],
+        "split_omegas": [
+          0.9,
+          0.7,
+          0.3
+        ]
+      },
+      {
+        "path_below_median": false,
+        "path_id": 4,
+        "pooled_lambda": 2.1972245773362196,
+        "pooled_omega_midrank": 0.9,
+        "pooled_test_observations": 365,
+        "pooled_test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.4232160600125776,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.5363123755006675,
+          "freqtrade-001-538cdbd0af387920": -0.4834509665556086,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.8847024008332953,
+          "freqtrade-001-f945d1eac652b471": -0.9330853564540386
+        },
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "selection_frequency": 1,
+        "split_count": 3,
+        "split_lambdas": [
+          -0.8472978603872036,
+          0.8472978603872034,
+          0.8472978603872034
+        ],
+        "split_omegas": [
+          0.3,
+          0.7,
+          0.7
+        ]
+      }
+    ],
+    "split_results": [
+      {
+        "lambda": 0.8472978603872034,
+        "omega_midrank": 0.7,
+        "path_id": 0,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "test_groups": [
+          0,
+          1
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.991910484854702,
+          "freqtrade-001-0e9fabb81bdf9d15": -1.7269237566327382,
+          "freqtrade-001-538cdbd0af387920": -1.6866755473001611,
+          "freqtrade-001-6f12cce9e8efbb1c": -1.822654500798256,
+          "freqtrade-001-f945d1eac652b471": -1.1986413495504826
+        },
+        "train_observations": 213,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.088409688941283,
+          "freqtrade-001-0e9fabb81bdf9d15": 0.05705196092297088,
+          "freqtrade-001-538cdbd0af387920": 0.0732237023334716,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.4566595016200208,
+          "freqtrade-001-f945d1eac652b471": -0.9696282075922459
+        }
+      },
+      {
+        "lambda": 0.8472978603872034,
+        "omega_midrank": 0.7,
+        "path_id": 1,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-0e9fabb81bdf9d15",
+        "test_groups": [
+          0,
+          2
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -3.4300156717074706,
+          "freqtrade-001-0e9fabb81bdf9d15": -1.9631810964465277,
+          "freqtrade-001-538cdbd0af387920": -1.9504622282907105,
+          "freqtrade-001-6f12cce9e8efbb1c": -2.4504873273339984,
+          "freqtrade-001-f945d1eac652b471": -2.780148549355042
+        },
+        "train_observations": 152,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -0.5875228100001815,
+          "freqtrade-001-0e9fabb81bdf9d15": 1.2974327871834574,
+          "freqtrade-001-538cdbd0af387920": 1.081574980851508,
+          "freqtrade-001-6f12cce9e8efbb1c": 0.9124920628403679,
+          "freqtrade-001-f945d1eac652b471": 0.1021101477145992
+        }
+      },
+      {
+        "lambda": 0.0,
+        "omega_midrank": 0.5,
+        "path_id": 2,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-0e9fabb81bdf9d15",
+        "test_groups": [
+          0,
+          3
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -1.8314686062013084,
+          "freqtrade-001-0e9fabb81bdf9d15": 0.5178120853857925,
+          "freqtrade-001-538cdbd0af387920": 0.5335185776516165,
+          "freqtrade-001-6f12cce9e8efbb1c": 0.28585036118121027,
+          "freqtrade-001-f945d1eac652b471": 0.9363950035384063
+        },
+        "train_observations": 91,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": 1.1902371801078655,
+          "freqtrade-001-0e9fabb81bdf9d15": 1.4141182011792424,
+          "freqtrade-001-538cdbd0af387920": 1.2160288516407864,
+          "freqtrade-001-6f12cce9e8efbb1c": 0.8365129143310678,
+          "freqtrade-001-f945d1eac652b471": -0.47152022026774915
+        }
+      },
+      {
+        "lambda": 2.1972245773362196,
+        "omega_midrank": 0.9,
+        "path_id": 3,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-0e9fabb81bdf9d15",
+        "test_groups": [
+          0,
+          4
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.2733245652504883,
+          "freqtrade-001-0e9fabb81bdf9d15": -2.040951270965464,
+          "freqtrade-001-538cdbd0af387920": -2.3290180649017884,
+          "freqtrade-001-6f12cce9e8efbb1c": -2.4549808042713717,
+          "freqtrade-001-f945d1eac652b471": -2.4720067409006283
+        },
+        "train_observations": 30,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": 3.862739394879514,
+          "freqtrade-001-0e9fabb81bdf9d15": 4.90447269646075,
+          "freqtrade-001-538cdbd0af387920": 4.801754704117004,
+          "freqtrade-001-6f12cce9e8efbb1c": 4.850193388198594,
+          "freqtrade-001-f945d1eac652b471": 2.6315787307043164
+        }
+      },
+      {
+        "lambda": -0.8472978603872036,
+        "omega_midrank": 0.3,
+        "path_id": 4,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-f945d1eac652b471",
+        "test_groups": [
+          0,
+          5
+        ],
+        "test_observations": 121,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -0.2594383956811391,
+          "freqtrade-001-0e9fabb81bdf9d15": 1.3861172218768043,
+          "freqtrade-001-538cdbd0af387920": 1.5510709607480198,
+          "freqtrade-001-6f12cce9e8efbb1c": 1.1109742853365139,
+          "freqtrade-001-f945d1eac652b471": 0.7970126565818217
+        },
+        "train_observations": 0,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": 0.0,
+          "freqtrade-001-0e9fabb81bdf9d15": 0.0,
+          "freqtrade-001-538cdbd0af387920": 0.0,
+          "freqtrade-001-6f12cce9e8efbb1c": 0.0,
+          "freqtrade-001-f945d1eac652b471": 0.0
+        }
+      },
+      {
+        "lambda": 0.8472978603872034,
+        "omega_midrank": 0.7,
+        "path_id": 4,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-0e9fabb81bdf9d15",
+        "test_groups": [
+          1,
+          2
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -4.698003821571491,
+          "freqtrade-001-0e9fabb81bdf9d15": -2.5966490919447898,
+          "freqtrade-001-538cdbd0af387920": -2.5768163910711515,
+          "freqtrade-001-6f12cce9e8efbb1c": -3.002469589320862,
+          "freqtrade-001-f945d1eac652b471": -2.8871084068749373
+        },
+        "train_observations": 183,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -0.8008266486762285,
+          "freqtrade-001-0e9fabb81bdf9d15": 1.2206029945216499,
+          "freqtrade-001-538cdbd0af387920": 1.0969540084034821,
+          "freqtrade-001-6f12cce9e8efbb1c": 0.8833373590334019,
+          "freqtrade-001-f945d1eac652b471": 0.1225353073592418
+        }
+      },
+      {
+        "lambda": 0.8472978603872034,
+        "omega_midrank": 0.7,
+        "path_id": 3,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-0e9fabb81bdf9d15",
+        "test_groups": [
+          1,
+          3
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -3.0320246748514226,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.07585863381942226,
+          "freqtrade-001-538cdbd0af387920": -0.14105456043917936,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.12706795342359758,
+          "freqtrade-001-f945d1eac652b471": 0.528254185098796
+        },
+        "train_observations": 122,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": 0.6133130659187911,
+          "freqtrade-001-0e9fabb81bdf9d15": 1.2766616566305065,
+          "freqtrade-001-538cdbd0af387920": 1.2107632799625025,
+          "freqtrade-001-6f12cce9e8efbb1c": 0.8069487249421466,
+          "freqtrade-001-f945d1eac652b471": -0.36517836670343373
+        }
+      },
+      {
+        "lambda": 0.0,
+        "omega_midrank": 0.5,
+        "path_id": 1,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "test_groups": [
+          1,
+          4
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -3.7551802958493954,
+          "freqtrade-001-0e9fabb81bdf9d15": -2.840524499611761,
+          "freqtrade-001-538cdbd0af387920": -2.982487092539268,
+          "freqtrade-001-6f12cce9e8efbb1c": -3.1500566774658574,
+          "freqtrade-001-f945d1eac652b471": -2.5980451173476533
+        },
+        "train_observations": 61,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": 1.9846661290139056,
+          "freqtrade-001-0e9fabb81bdf9d15": 3.162640819131137,
+          "freqtrade-001-538cdbd0af387920": 3.553313783465577,
+          "freqtrade-001-6f12cce9e8efbb1c": 3.141558814525942,
+          "freqtrade-001-f945d1eac652b471": 1.9016359029750358
+        }
+      },
+      {
+        "lambda": 2.1972245773362196,
+        "omega_midrank": 0.9,
+        "path_id": 2,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "test_groups": [
+          1,
+          5
+        ],
+        "test_observations": 121,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -1.5615348907049638,
+          "freqtrade-001-0e9fabb81bdf9d15": 0.7812141906339238,
+          "freqtrade-001-538cdbd0af387920": 0.7883032634152578,
+          "freqtrade-001-6f12cce9e8efbb1c": 0.722417853746422,
+          "freqtrade-001-f945d1eac652b471": 0.3859758824132907
+        },
+        "train_observations": 31,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -4.7255637019041155,
+          "freqtrade-001-0e9fabb81bdf9d15": 0.7702922539772241,
+          "freqtrade-001-538cdbd0af387920": 1.6458184694627658,
+          "freqtrade-001-6f12cce9e8efbb1c": 0.7110831268677609,
+          "freqtrade-001-f945d1eac652b471": 0.5946364353702072
+        }
+      },
+      {
+        "lambda": 0.8472978603872034,
+        "omega_midrank": 0.7,
+        "path_id": 0,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-0e9fabb81bdf9d15",
+        "test_groups": [
+          2,
+          3
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -3.4827192822776287,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.4846557293779379,
+          "freqtrade-001-538cdbd0af387920": -0.32003511352362274,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.9269904120113476,
+          "freqtrade-001-f945d1eac652b471": -0.8997140685972203
+        },
+        "train_observations": 183,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -1.5453582382235131,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.6199945178798272,
+          "freqtrade-001-538cdbd0af387920": -0.7153574279833507,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.9812209248851859,
+          "freqtrade-001-f945d1eac652b471": -1.2653862192160412
+        }
+      },
+      {
+        "lambda": 0.8472978603872034,
+        "omega_midrank": 0.7,
+        "path_id": 2,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "test_groups": [
+          2,
+          4
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -4.672488596311259,
+          "freqtrade-001-0e9fabb81bdf9d15": -2.921758346353519,
+          "freqtrade-001-538cdbd0af387920": -3.3304200261072943,
+          "freqtrade-001-6f12cce9e8efbb1c": -3.6373913011886496,
+          "freqtrade-001-f945d1eac652b471": -4.141522601904205
+        },
+        "train_observations": 122,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -1.6006674702879127,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.529870193547629,
+          "freqtrade-001-538cdbd0af387920": -0.45462751285539055,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.7069997502983724,
+          "freqtrade-001-f945d1eac652b471": -0.9283555007057662
+        }
+      },
+      {
+        "lambda": -0.8472978603872036,
+        "omega_midrank": 0.3,
+        "path_id": 3,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-f945d1eac652b471",
+        "test_groups": [
+          2,
+          5
+        ],
+        "test_observations": 121,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -1.8670421860116941,
+          "freqtrade-001-0e9fabb81bdf9d15": 0.2550968414222527,
+          "freqtrade-001-538cdbd0af387920": 0.6256351536879053,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.22599196078574865,
+          "freqtrade-001-f945d1eac652b471": -1.0869533956907278
+        },
+        "train_observations": 92,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -3.659176737080502,
+          "freqtrade-001-0e9fabb81bdf9d15": -2.6723748452525875,
+          "freqtrade-001-538cdbd0af387920": -2.880551453893091,
+          "freqtrade-001-6f12cce9e8efbb1c": -2.790968275577946,
+          "freqtrade-001-f945d1eac652b471": -2.3097846715799935
+        }
+      },
+      {
+        "lambda": 0.8472978603872034,
+        "omega_midrank": 0.7,
+        "path_id": 4,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "test_groups": [
+          3,
+          4
+        ],
+        "test_observations": 122,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.3267815854735616,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.246241811085971,
+          "freqtrade-001-538cdbd0af387920": -0.469304551955843,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.6671312240439706,
+          "freqtrade-001-f945d1eac652b471": -0.5210212484845386
+        },
+        "train_observations": 183,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -1.5505266216018871,
+          "freqtrade-001-0e9fabb81bdf9d15": -0.1572405563627481,
+          "freqtrade-001-538cdbd0af387920": 0.04640198852976369,
+          "freqtrade-001-6f12cce9e8efbb1c": -0.26688571931825955,
+          "freqtrade-001-f945d1eac652b471": -0.20790238781552348
+        }
+      },
+      {
+        "lambda": -0.8472978603872036,
+        "omega_midrank": 0.3,
+        "path_id": 1,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-f945d1eac652b471",
+        "test_groups": [
+          3,
+          5
+        ],
+        "test_observations": 121,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -0.2784696831683782,
+          "freqtrade-001-0e9fabb81bdf9d15": 2.856640943402174,
+          "freqtrade-001-538cdbd0af387920": 2.6632949120982037,
+          "freqtrade-001-6f12cce9e8efbb1c": 2.7236430297267944,
+          "freqtrade-001-f945d1eac652b471": 2.3811014552364416
+        },
+        "train_observations": 153,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -2.8254144520197872,
+          "freqtrade-001-0e9fabb81bdf9d15": -1.444367439523054,
+          "freqtrade-001-538cdbd0af387920": -1.264775608917924,
+          "freqtrade-001-6f12cce9e8efbb1c": -1.516666957265863,
+          "freqtrade-001-f945d1eac652b471": -0.8334547367843026
+        }
+      },
+      {
+        "lambda": 0.8472978603872034,
+        "omega_midrank": 0.7,
+        "path_id": 0,
+        "purge_embargo_days": 30,
+        "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+        "test_groups": [
+          4,
+          5
+        ],
+        "test_observations": 121,
+        "test_scores": {
+          "freqtrade-001-049de14e89e70ff2": -0.2932009873746052,
+          "freqtrade-001-0e9fabb81bdf9d15": 0.6653084754957381,
+          "freqtrade-001-538cdbd0af387920": 0.5524143289694764,
+          "freqtrade-001-6f12cce9e8efbb1c": 0.17752740483960525,
+          "freqtrade-001-f945d1eac652b471": -0.7058058102341302
+        },
+        "train_observations": 214,
+        "training_scores": {
+          "freqtrade-001-049de14e89e70ff2": -3.42510721388139,
+          "freqtrade-001-0e9fabb81bdf9d15": -1.52157261357811,
+          "freqtrade-001-538cdbd0af387920": -1.3678449500104686,
+          "freqtrade-001-6f12cce9e8efbb1c": -1.8371332892010732,
+          "freqtrade-001-f945d1eac652b471": -1.5727998778405958
+        }
+      }
+    ]
+  },
+  "dsr": {
+    "gate": false,
+    "minimum": 0.95,
+    "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+    "value": 0.0
+  },
+  "live_or_paper_trading_allowed": false,
+  "measured_artifact_sha256": "c21b1dc348c85e581db53891bc70cdcc759ae243ca53c34add7f62f011fd9f00",
+  "pbo": {
+    "gate": true,
+    "maximum": 0.1,
+    "value": 0.0
+  },
+  "promotion_allowed": false,
+  "research_only": true,
+  "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+  "statistical_manifest_sha256": "a3f41f1d855b57a31f31efb3d47ed488b6d162f344db8e1e81fae95d605c177a",
+  "statistics_version": "freqtrade_batch_001_statistics_v1",
+  "status": "computed_research_only",
+  "trial_ledger_hash_at_selection": "3a3cff0de2a7a79ec6880ee1e6a4c7c5680679036a62c8633ea947984d101d96",
+  "trial_ledger_n_at_selection": 898
+}

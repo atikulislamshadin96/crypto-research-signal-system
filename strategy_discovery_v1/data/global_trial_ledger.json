@@ -1,11 +1,52 @@
 {
-  "analysis_only": true,
+  "analysis_only": false,
+  "backtest_run": true,
   "created_at": "2026-08-26T04:11:21Z",
   "deployment": false,
-  "global_ledger_hash": "0767031c0bed43719415ac419de4d13ce20e6e72a95f52116ad388d465940ab7",
-  "last_sequence": 893,
+  "global_ledger_hash": "2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e",
+  "last_sequence": 898,
+  "latest_measured_batch": {
+    "append_count": 5,
+    "appended_at": "2026-08-27T05:20:09Z",
+    "batch_id": "freqtrade-strategies-001-measured-v1",
+    "candidate_universe_authorized": 11,
+    "data_manifest_hash": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f",
+    "execution_manifest_hash": "041cb089d7655adabf6b67d6e62b2c0cf9e9281690719e5b5f943eb5607c2b97",
+    "harness_profile_hash": "f9322715e58dd41d5b9177abd5676a868365ea7951d3a6fd8cfc48f374a535b7",
+    "measured_backtest_artifact_sha256": "c21b1dc348c85e581db53891bc70cdcc759ae243ca53c34add7f62f011fd9f00",
+    "measured_count": 5,
+    "predeclared_exclusion_count": 6,
+    "protocol_hash": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e",
+    "statistical_gates_pending": true
+  },
+  "latest_statistics": {
+    "batch_id": "freqtrade-strategies-001-measured-v1",
+    "candidate_count_measured": 5,
+    "cpcv_path_count": 5,
+    "cpcv_split_count": 15,
+    "dsr": {
+      "gate": false,
+      "minimum": 0.95,
+      "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+      "value": 0.0
+    },
+    "live_or_paper_trading_allowed": false,
+    "pbo": {
+      "gate": true,
+      "maximum": 0.1,
+      "value": 0.0
+    },
+    "promotion_allowed": false,
+    "selected_trial_id": "freqtrade-001-538cdbd0af387920",
+    "selection_status": "research_gates_evaluated_no_promotion",
+    "statistical_manifest_sha256": "a3f41f1d855b57a31f31efb3d47ed488b6d162f344db8e1e81fae95d605c177a",
+    "statistics_artifact_sha256": "d2929f55d1bfce4458eba7d9480225a0ececc45244ffe2719fee2a9cbbe97dd6",
+    "trial_ledger_hash_at_selection": "3a3cff0de2a7a79ec6880ee1e6a4c7c5680679036a62c8633ea947984d101d96",
+    "trial_ledger_n_at_selection": 898
+  },
   "ledger_id": "strategy_discovery_global_trial_ledger_v1",
-  "n_trials": 893,
+  "market_data_downloaded": false,
+  "n_trials": 898,
   "paper_trading": false,
   "prior_global_ledger_hash": "6c62bce9cea0c47fbcbec733aff89bccbfcfb99b86203ff0f72525369fa168ec",
   "protocol_id": "dsr_pbo_cpcv_v1",
@@ -34,8 +75,9 @@
     "total_record_appearances_across_listed_rounds": 963,
     "unique_document_id_count": 893
   },
-  "status": "retroactively_corrected_distinct_measured_trials",
+  "status": "statistical_gates_evaluated_no_promotion",
   "trading": false,
+  "trial_created": true,
   "trials": [
     {
       "analysis_only": true,
@@ -39523,6 +39565,356 @@
       },
       "status": "retrospectively_counted_selection_exposure",
       "trial_id": "retrofit-0893-cc9b448aa4953501"
+    },
+    {
+      "analysis_only": false,
+      "batch_id": "freqtrade-strategies-001-measured-v1",
+      "candidate_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/CustomStoplossWithPSAR.py",
+      "canonical_rule_hash": "0e9fabb81bdf9d15ad3f728ba338f5155838e8edf28e46d4641dee1212e91b0a",
+      "counted_at": "2026-08-27T05:20:09Z",
+      "data_manifest_hash": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f",
+      "data_manifest_id": "bybit_linear_ohlcv_drive_roundtrip_v1",
+      "execution_manifest_hash": "041cb089d7655adabf6b67d6e62b2c0cf9e9281690719e5b5f943eb5607c2b97",
+      "harness_code_hash": "df40dfc096b789e2a47098117e544ec64b0cf8deebade53a875441bd6b9ef81a",
+      "harness_profile_hash": "f9322715e58dd41d5b9177abd5676a868365ea7951d3a6fd8cfc48f374a535b7",
+      "measurement": {
+        "pair_universe": [
+          "BTC/USDT:USDT",
+          "ETH/USDT:USDT"
+        ],
+        "research_contract_status": "execution_contract_complete",
+        "return_series_observations": 8760,
+        "return_series_sha256": "1b525d9af5e07d59bffdf720586ec4c6704eeb1065bf78408c50f64f4cbeeac9",
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/CustomStoplossWithPSAR.py",
+        "source_rule_status": "source_rule_complete",
+        "source_snapshot_sha256": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60",
+        "statistical_outputs": {
+          "cpcv_calculated": false,
+          "dsr_calculated": false,
+          "pbo_calculated": false,
+          "reason": "statistical_outputs_are_appended_in_a_separate_versioned_artifact"
+        },
+        "timeframe": "1h",
+        "trade_count_by_pair": {
+          "BTC/USDT:USDT": 13,
+          "ETH/USDT:USDT": 15
+        }
+      },
+      "metrics": {
+        "annualization_factor": 8760.0,
+        "annualized_sharpe": -0.5768648781710533,
+        "backtest_run": true,
+        "cpcv_calculated": false,
+        "dsr_calculated": false,
+        "max_drawdown": -0.17238592321133617,
+        "measured": true,
+        "normalized": false,
+        "observations": 8760,
+        "pbo_calculated": false,
+        "sample_pearson_kurtosis": 13.177234104964437,
+        "sample_skewness": 0.04206027773419996,
+        "selection_exposed": true,
+        "total_net_pnl_usdt": -67.7112552206669,
+        "total_return": -0.06771125522066224,
+        "trade_count": 28,
+        "win_rate": 0.42857142857142855
+      },
+      "protocol_hash": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e",
+      "protocol_id": "dsr_pbo_cpcv_v1",
+      "sequence": 894,
+      "source": {
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/CustomStoplossWithPSAR.py",
+        "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_class": "freqtrade_strategy_repository",
+        "source_id": "freqtrade_strategies",
+        "source_refs": [
+          "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/CustomStoplossWithPSAR.py"
+        ],
+        "source_snapshot": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60"
+      },
+      "status": "measured_research_trial",
+      "trial_id": "freqtrade-001-0e9fabb81bdf9d15"
+    },
+    {
+      "analysis_only": false,
+      "batch_id": "freqtrade-strategies-001-measured-v1",
+      "candidate_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Heracles.py",
+      "canonical_rule_hash": "538cdbd0af387920bdb3ec489fa7372fbf6925a3588680d4ccd2f40d5260ffbd",
+      "counted_at": "2026-08-27T05:20:09Z",
+      "data_manifest_hash": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f",
+      "data_manifest_id": "bybit_linear_ohlcv_drive_roundtrip_v1",
+      "execution_manifest_hash": "041cb089d7655adabf6b67d6e62b2c0cf9e9281690719e5b5f943eb5607c2b97",
+      "harness_code_hash": "df40dfc096b789e2a47098117e544ec64b0cf8deebade53a875441bd6b9ef81a",
+      "harness_profile_hash": "f9322715e58dd41d5b9177abd5676a868365ea7951d3a6fd8cfc48f374a535b7",
+      "measurement": {
+        "pair_universe": [
+          "BTC/USDT:USDT",
+          "ETH/USDT:USDT"
+        ],
+        "research_contract_status": "execution_contract_complete",
+        "return_series_observations": 2190,
+        "return_series_sha256": "4fd2349acb78e0a968cafb91c0b3d9bd6ca09c2f4b2112a922b5eb7226f247c9",
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/Heracles.py",
+        "source_rule_status": "source_rule_complete",
+        "source_snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+        "statistical_outputs": {
+          "cpcv_calculated": false,
+          "dsr_calculated": false,
+          "pbo_calculated": false,
+          "reason": "statistical_outputs_are_appended_in_a_separate_versioned_artifact"
+        },
+        "timeframe": "4h",
+        "trade_count_by_pair": {
+          "BTC/USDT:USDT": 13,
+          "ETH/USDT:USDT": 13
+        }
+      },
+      "metrics": {
+        "annualization_factor": 2190.0,
+        "annualized_sharpe": -0.5067573533764856,
+        "backtest_run": true,
+        "cpcv_calculated": false,
+        "dsr_calculated": false,
+        "max_drawdown": -0.1512541579092318,
+        "measured": true,
+        "normalized": false,
+        "observations": 2190,
+        "pbo_calculated": false,
+        "sample_pearson_kurtosis": 9.116120492045244,
+        "sample_skewness": 0.04324927971276916,
+        "selection_exposed": true,
+        "total_net_pnl_usdt": -53.120419496557524,
+        "total_return": -0.05312041949655821,
+        "trade_count": 26,
+        "win_rate": 0.5384615384615384
+      },
+      "protocol_hash": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e",
+      "protocol_id": "dsr_pbo_cpcv_v1",
+      "sequence": 895,
+      "source": {
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Heracles.py",
+        "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_class": "freqtrade_strategy_repository",
+        "source_id": "freqtrade_strategies",
+        "source_refs": [
+          "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Heracles.py"
+        ],
+        "source_snapshot": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7"
+      },
+      "status": "measured_research_trial",
+      "trial_id": "freqtrade-001-538cdbd0af387920"
+    },
+    {
+      "analysis_only": false,
+      "batch_id": "freqtrade-strategies-001-measured-v1",
+      "candidate_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/HourBasedStrategy.py",
+      "canonical_rule_hash": "6f12cce9e8efbb1c2f036442125ff185124440fbea0b20e54fdc58ecf889b19c",
+      "counted_at": "2026-08-27T05:20:09Z",
+      "data_manifest_hash": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f",
+      "data_manifest_id": "bybit_linear_ohlcv_drive_roundtrip_v1",
+      "execution_manifest_hash": "041cb089d7655adabf6b67d6e62b2c0cf9e9281690719e5b5f943eb5607c2b97",
+      "harness_code_hash": "df40dfc096b789e2a47098117e544ec64b0cf8deebade53a875441bd6b9ef81a",
+      "harness_profile_hash": "f9322715e58dd41d5b9177abd5676a868365ea7951d3a6fd8cfc48f374a535b7",
+      "measurement": {
+        "pair_universe": [
+          "BTC/USDT:USDT",
+          "ETH/USDT:USDT"
+        ],
+        "research_contract_status": "execution_contract_complete",
+        "return_series_observations": 8760,
+        "return_series_sha256": "906197bebea139be916318820879d4c737d68e6b204b4b03de340746c4afa146",
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/HourBasedStrategy.py",
+        "source_rule_status": "source_rule_complete",
+        "source_snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc",
+        "statistical_outputs": {
+          "cpcv_calculated": false,
+          "dsr_calculated": false,
+          "pbo_calculated": false,
+          "reason": "statistical_outputs_are_appended_in_a_separate_versioned_artifact"
+        },
+        "timeframe": "1h",
+        "trade_count_by_pair": {
+          "BTC/USDT:USDT": 20,
+          "ETH/USDT:USDT": 24
+        }
+      },
+      "metrics": {
+        "annualization_factor": 8760.0,
+        "annualized_sharpe": -0.9640952309343371,
+        "backtest_run": true,
+        "cpcv_calculated": false,
+        "dsr_calculated": false,
+        "max_drawdown": -0.2166772430278514,
+        "measured": true,
+        "normalized": false,
+        "observations": 8760,
+        "pbo_calculated": false,
+        "sample_pearson_kurtosis": 15.41772990449303,
+        "sample_skewness": -0.2105026072951715,
+        "selection_exposed": true,
+        "total_net_pnl_usdt": -114.18289922486711,
+        "total_return": -0.1141828992248679,
+        "trade_count": 44,
+        "win_rate": 0.4090909090909091
+      },
+      "protocol_hash": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e",
+      "protocol_id": "dsr_pbo_cpcv_v1",
+      "sequence": 896,
+      "source": {
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/HourBasedStrategy.py",
+        "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_class": "freqtrade_strategy_repository",
+        "source_id": "freqtrade_strategies",
+        "source_refs": [
+          "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/HourBasedStrategy.py"
+        ],
+        "source_snapshot": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc"
+      },
+      "status": "measured_research_trial",
+      "trial_id": "freqtrade-001-6f12cce9e8efbb1c"
+    },
+    {
+      "analysis_only": false,
+      "batch_id": "freqtrade-strategies-001-measured-v1",
+      "candidate_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/MultiMa.py",
+      "canonical_rule_hash": "049de14e89e70ff208db08cdf9ac3ac96a5b747aed457cd0565fd49af6676948",
+      "counted_at": "2026-08-27T05:20:09Z",
+      "data_manifest_hash": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f",
+      "data_manifest_id": "bybit_linear_ohlcv_drive_roundtrip_v1",
+      "execution_manifest_hash": "041cb089d7655adabf6b67d6e62b2c0cf9e9281690719e5b5f943eb5607c2b97",
+      "harness_code_hash": "df40dfc096b789e2a47098117e544ec64b0cf8deebade53a875441bd6b9ef81a",
+      "harness_profile_hash": "f9322715e58dd41d5b9177abd5676a868365ea7951d3a6fd8cfc48f374a535b7",
+      "measurement": {
+        "pair_universe": [
+          "BTC/USDT:USDT",
+          "ETH/USDT:USDT"
+        ],
+        "research_contract_status": "execution_contract_complete",
+        "return_series_observations": 2190,
+        "return_series_sha256": "23829cc64c1ddb74c21f061274b28ea37a38b9b5437c4c7ac4a12bd01a9e004a",
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/MultiMa.py",
+        "source_rule_status": "source_rule_complete",
+        "source_snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+        "statistical_outputs": {
+          "cpcv_calculated": false,
+          "dsr_calculated": false,
+          "pbo_calculated": false,
+          "reason": "statistical_outputs_are_appended_in_a_separate_versioned_artifact"
+        },
+        "timeframe": "4h",
+        "trade_count_by_pair": {
+          "BTC/USDT:USDT": 181,
+          "ETH/USDT:USDT": 182
+        }
+      },
+      "metrics": {
+        "annualization_factor": 2190.0,
+        "annualized_sharpe": -2.5186150805664056,
+        "backtest_run": true,
+        "cpcv_calculated": false,
+        "dsr_calculated": false,
+        "max_drawdown": -0.20204399644017734,
+        "measured": true,
+        "normalized": false,
+        "observations": 2190,
+        "pbo_calculated": false,
+        "sample_pearson_kurtosis": 21.93597933445352,
+        "sample_skewness": 0.27982133402769216,
+        "selection_exposed": true,
+        "total_net_pnl_usdt": -161.89637040402664,
+        "total_return": -0.16189637040402727,
+        "trade_count": 363,
+        "win_rate": 0.3856749311294766
+      },
+      "protocol_hash": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e",
+      "protocol_id": "dsr_pbo_cpcv_v1",
+      "sequence": 897,
+      "source": {
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/MultiMa.py",
+        "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_class": "freqtrade_strategy_repository",
+        "source_id": "freqtrade_strategies",
+        "source_refs": [
+          "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/MultiMa.py"
+        ],
+        "source_snapshot": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626"
+      },
+      "status": "measured_research_trial",
+      "trial_id": "freqtrade-001-049de14e89e70ff2"
+    },
+    {
+      "analysis_only": false,
+      "batch_id": "freqtrade-strategies-001-measured-v1",
+      "candidate_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/PatternRecognition.py",
+      "canonical_rule_hash": "f945d1eac652b4718af31709137dbc66812dd64768d3607f68462b71f23b04d2",
+      "counted_at": "2026-08-27T05:20:09Z",
+      "data_manifest_hash": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f",
+      "data_manifest_id": "bybit_linear_ohlcv_drive_roundtrip_v1",
+      "execution_manifest_hash": "041cb089d7655adabf6b67d6e62b2c0cf9e9281690719e5b5f943eb5607c2b97",
+      "harness_code_hash": "df40dfc096b789e2a47098117e544ec64b0cf8deebade53a875441bd6b9ef81a",
+      "harness_profile_hash": "f9322715e58dd41d5b9177abd5676a868365ea7951d3a6fd8cfc48f374a535b7",
+      "measurement": {
+        "pair_universe": [
+          "BTC/USDT:USDT",
+          "ETH/USDT:USDT"
+        ],
+        "research_contract_status": "execution_contract_complete",
+        "return_series_observations": 365,
+        "return_series_sha256": "1ef13b9f43199c795092d8d0ede4a88b0ba427f3851fc08977481b1ab880c34e",
+        "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_path": "user_data/strategies/PatternRecognition.py",
+        "source_rule_status": "source_rule_complete",
+        "source_snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d",
+        "statistical_outputs": {
+          "cpcv_calculated": false,
+          "dsr_calculated": false,
+          "pbo_calculated": false,
+          "reason": "statistical_outputs_are_appended_in_a_separate_versioned_artifact"
+        },
+        "timeframe": "1d",
+        "trade_count_by_pair": {
+          "BTC/USDT:USDT": 8,
+          "ETH/USDT:USDT": 13
+        }
+      },
+      "metrics": {
+        "annualization_factor": 365.0,
+        "annualized_sharpe": -0.9330853564540386,
+        "backtest_run": true,
+        "cpcv_calculated": false,
+        "dsr_calculated": false,
+        "max_drawdown": -0.11985024980161663,
+        "measured": true,
+        "normalized": false,
+        "observations": 365,
+        "pbo_calculated": false,
+        "sample_pearson_kurtosis": 8.655724939259075,
+        "sample_skewness": 0.4009375250717519,
+        "selection_exposed": true,
+        "total_net_pnl_usdt": -68.50757309236214,
+        "total_return": -0.06850757309236277,
+        "trade_count": 21,
+        "win_rate": 0.5238095238095238
+      },
+      "protocol_hash": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e",
+      "protocol_id": "dsr_pbo_cpcv_v1",
+      "sequence": 898,
+      "source": {
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/PatternRecognition.py",
+        "document_version": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+        "source_class": "freqtrade_strategy_repository",
+        "source_id": "freqtrade_strategies",
+        "source_refs": [
+          "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PatternRecognition.py"
+        ],
+        "source_snapshot": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d"
+      },
+      "status": "measured_research_trial",
+      "trial_id": "freqtrade-001-f945d1eac652b471"
     }
   ],
   "version": "1.0.1"
