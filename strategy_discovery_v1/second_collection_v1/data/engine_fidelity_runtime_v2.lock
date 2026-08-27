@@ -1,0 +1,25 @@
+# Freqtrade Batch 001 Engine-Fidelity Harness v2 runtime lock
+# Status: design_only / pre_measurement_freeze
+# Python interpreter: CPython 3.12.3 (exact minor/patch required)
+# This lock is a measurement input, not an authorization to measure.
+
+--index-url https://pypi.org/simple
+
+# Pinned source distributions / repositories
+freqtrade @ git+https://github.com/freqtrade/freqtrade.git@eb1a668ceb0f29b7d578156bfc24c45278c0c0f8
+technical @ git+https://github.com/freqtrade/technical.git@720ff67483e346271165d49cf37265f78739c74c
+
+# Direct runtime pins observed during design validation
+numpy==2.5.1
+pandas==3.0.5
+scipy==1.18.1
+TA-Lib==0.6.8
+ta==0.11.0
+jsonschema==4.25.1
+pytest==8.4.1
+
+# Installation rule
+# A later measurement must resolve and hash the complete transitive dependency
+# set in a clean environment and record the resulting lock hash/container digest.
+# If a transitive resolution differs, measurement must stop and receive a new
+# versioned runtime identity.
