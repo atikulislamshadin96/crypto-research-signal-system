@@ -1,0 +1,98 @@
+{
+  "audit_id": "freqtrade_batch_001_engine_fidelity_audit_v1",
+  "audit_status": "completed_no_measurement",
+  "starting_commit": "7ca70267de1686fc4bd69a49fee98936414fd389",
+  "ledger_n": 898,
+  "ledger_hash": "2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e",
+  "historical_measurements_immutable": true,
+  "new_backtest_run": false,
+  "new_data_acquired": false,
+  "new_trials_created": false,
+  "ledger_updated": false,
+  "historical_harness": {
+    "version": "freqtrade_batch_001_research_harness_v1",
+    "artifact": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_measured_backtest_v1.json",
+    "profile_hash": "f9322715e58dd41d5b9177abd5676a868365ea7951d3a6fd8cfc48f374a535b7",
+    "compatibility_claim": "not_full_freqtrade_engine"
+  },
+  "audited_engine": {
+    "repository": "https://github.com/freqtrade/freqtrade",
+    "commit": "eb1a668ceb0f29b7d578156bfc24c45278c0c0f8",
+    "interface_sha256": "e372b562aabf5e39e444a222f36c7c14801b254fa42141f1431a4ba95d313bb0",
+    "backtesting_sha256": "2420410f96451cb993a7b475e9f7a4232d89480185cc25c59da8883551be6384",
+    "documentation": [
+      "https://www.freqtrade.io/en/stable/backtesting/",
+      "https://www.freqtrade.io/en/stable/strategy-callbacks/",
+      "https://www.freqtrade.io/en/stable/strategy-customization/"
+    ]
+  },
+  "audited_technical_dependency": {
+    "repository": "https://github.com/freqtrade/technical",
+    "commit": "720ff67483e346271165d49cf37265f78739c74c",
+    "supertrend_path": "technical/indicators/supertrend.py",
+    "supertrend_sha256": "8c30b75b14f6004ebbe2e79fb0083cfb08963bcfa7dd7bdc96f4a8cc735eb838",
+    "resolution": "exact public implementation located; not added to historical harness and not measured"
+  },
+  "semantic_findings": [
+    {
+      "id": "engine-001",
+      "severity": "high",
+      "finding": "custom_stoploss current-rate and monotonic update mismatch",
+      "evidence": "Freqtrade passes candle high as current_rate for long backtests and only permits the stop price to move upward; harness uses candle close and does not maintain the engine's stop state.",
+      "historical_impact": "historical CustomStoplossWithPSAR result is compatibility-harness-only and cannot be called full-engine equivalent",
+      "remediation_version": "freqtrade_batch_001_engine_fidelity_harness_v2"
+    },
+    {
+      "id": "engine-002",
+      "severity": "high",
+      "finding": "same-candle exit ordering mismatch",
+      "evidence": "Official engine sequence is exit-signal, stoploss, ROI, trailing stoploss; harness checks stop/ROI before scheduling the exit signal.",
+      "historical_impact": "trade counts and exit reasons may differ",
+      "remediation_version": "freqtrade_batch_001_engine_fidelity_harness_v2"
+    },
+    {
+      "id": "engine-003",
+      "severity": "high",
+      "finding": "intrabar price and detail-timeframe mismatch",
+      "evidence": "Official engine can use a lower timeframe detail feed for active trades; harness uses only OHLCV on the source timeframe and chooses a candle-level path.",
+      "historical_impact": "higher-timeframe intrabar outcomes are not engine-equivalent",
+      "remediation_version": "freqtrade_batch_001_engine_fidelity_harness_v2"
+    },
+    {
+      "id": "engine-004",
+      "severity": "medium",
+      "finding": "ROI fill-price mismatch",
+      "evidence": "Official documentation allows ROI exits to use the ROI value while respecting candle bounds; harness always uses the target price.",
+      "historical_impact": "ROI exit prices can differ",
+      "remediation_version": "freqtrade_batch_001_engine_fidelity_harness_v2"
+    },
+    {
+      "id": "engine-005",
+      "severity": "medium",
+      "finding": "startup-candle trimming mismatch",
+      "evidence": "Strategies declare startup_candle_count and Freqtrade removes the unstable startup period before evaluating the requested range; harness does not explicitly trim per-strategy startup candles.",
+      "historical_impact": "early signals can differ",
+      "remediation_version": "freqtrade_batch_001_engine_fidelity_harness_v2"
+    },
+    {
+      "id": "engine-006",
+      "severity": "medium",
+      "finding": "full engine configuration and exchange-limit semantics not reproduced",
+      "evidence": "Official engine honors exchange trading limits, precision, protections, and configuration-driven behavior; compatibility harness uses fixed manifest rounding and no historical exchange-limit metadata.",
+      "historical_impact": "quantities and rejected orders can differ",
+      "remediation_version": "freqtrade_batch_001_engine_fidelity_harness_v2"
+    }
+  ],
+  "exclusion_resolution": [
+    {"source_path":"user_data/strategies/BreakEven.py","timeframe":"5m","decision":"remain_excluded","reason":"frozen archive has no exact 5m file; resampling is prohibited; no new data acquired"},
+    {"source_path":"user_data/strategies/Diamond.py","timeframe":"5m","decision":"remain_excluded","reason":"frozen archive has no exact 5m file; resampling is prohibited; no new data acquired"},
+    {"source_path":"user_data/strategies/GodStra.py","timeframe":"12h","decision":"remain_excluded","reason":"frozen archive has no exact 12h file; resampling is prohibited; no new data acquired"},
+    {"source_path":"user_data/strategies/PowerTower.py","timeframe":"5m","decision":"remain_excluded","reason":"frozen archive has no exact 5m file; resampling is prohibited; no new data acquired"},
+    {"source_path":"user_data/strategies/Strategy004.py","timeframe":"5m","decision":"remain_excluded","reason":"frozen archive has no exact 5m file; resampling is prohibited; no new data acquired"},
+    {"source_path":"user_data/strategies/Supertrend.py","timeframe":"1h","decision":"resolved_for_future_version_only","reason":"exact technical implementation located at technical commit 720ff67483e346271165d49cf37265f78739c74c; dependency must be pinned and validated in a new harness/trial identity before any measurement"}
+  ],
+  "final_decision": "PREPARE_ONLY",
+  "next_gate": "review and, if separately authorized, build a v2 full-engine-fidelity harness; do not rerun historical candidates automatically",
+  "promotion_allowed": false,
+  "paper_or_live_trading_allowed": false
+}
