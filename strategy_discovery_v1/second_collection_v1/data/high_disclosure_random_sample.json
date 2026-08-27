@@ -1,0 +1,1276 @@
+{
+  "analysis_only": true,
+  "backtest_run": false,
+  "criteria_sha256": "adfb736d1c16ef9e160ca29e301b5a4df76ca9a6897819b0972c625287f9e4e5",
+  "criteria_version": "high_disclosure_paper_selection_v1",
+  "market_data_downloaded": false,
+  "pass_count": 62,
+  "population_count": 893,
+  "sample_count": 30,
+  "sample_document_ids": [
+    "2605.06220v1",
+    "2607.03239v1",
+    "2601.07852v1",
+    "2605.25559v1",
+    "2606.00143v1",
+    "2601.22200v1",
+    "2603.15963v2",
+    "2511.07014v2",
+    "2605.02085v1",
+    "2606.08379v1",
+    "2603.15511v1",
+    "2511.13384v4",
+    "2603.15652v1",
+    "2608.22864v1",
+    "2606.06089v1",
+    "2602.07018v3",
+    "2601.08641v3",
+    "2608.03088v1",
+    "2606.23492v1",
+    "2607.04346v1",
+    "2601.17008v1",
+    "2511.16339v1",
+    "2608.10693v1",
+    "2607.08291v1",
+    "2604.02921v2",
+    "2601.11134v1",
+    "2603.17463v2",
+    "2605.15210v1",
+    "2607.20762v1",
+    "2606.00060v1"
+  ],
+  "sample_method": "Python random.Random with fixed seed over sorted passing document_id values",
+  "sample_records": [
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2605.06220v1",
+      "content_bytes": 579867,
+      "content_sha256": "e78f7704af0ddc640d9c9909d9b74869a09c9fa58e1d4c1a51988ec2a89e1abe",
+      "decision": "pass",
+      "document_id": "2605.06220v1",
+      "document_title": "Numerical methods for lambda quantiles: robust evaluation and portfolio optimisation",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1.",
+          "line_number": 482,
+          "lookahead_excerpt": [
+            "Note that the idea of combining a slow but globally convergent bisection",
+            "method with a faster converging algorithm goes back decades, with Brent\u2019s",
+            "method [8] being a famous example. Brent\u2019s method combines the bisection",
+            "method with inverse quadratic interpolation and does not require evaluations",
+            "of the derivatives. In contrast, the algorithm proposed here applies Newton"
+          ],
+          "lookahead_nonempty_line_count": 20,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 1: \u039b-Newton-Bis: globally convergent Newton method for \u039b-",
+          "line_number": 529,
+          "lookahead_excerpt": [
+            "quantiles",
+            "3.2   Convergence and rate of convergence",
+            "Here, we present the assumptions under which the proposed \u039b-Newton-Bis al-",
+            "gorithm converges. We demonstrate that convergence is ensured under weak",
+            "assumptions (Assumption 1), while slightly stronger regularity assumptions are"
+          ],
+          "lookahead_nonempty_line_count": 18,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 2: Empirical lambda quantiles",
+          "line_number": 1046,
+          "lookahead_excerpt": [
+            "Notice that, as also highlighted by [12], one must ensure n is large enough",
+            "such that min(\u039b) = \u03bbm > 1/n to avoid the quantile defaulting to the sample",
+            "minimum (the worst-case loss). To conclude, the primary computational cost of",
+            "this algorithm lies in sorting the samples, resulting in an asymptotic complexity",
+            "20"
+          ],
+          "lookahead_nonempty_line_count": 19,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:30Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.06220v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2607.03239v1",
+      "content_bytes": 23079808,
+      "content_sha256": "d1bdeb4cfe6c82e589853f71059344e924d529ee9fb6e3b3c8b7648687fe141d",
+      "decision": "pass",
+      "document_id": "2607.03239v1",
+      "document_title": "Exact conditional simulation of Point processes: Application to pathwise market impact estimation",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Conditional simulation of pL,    s C,",
+          "line_number": 792,
+          "lookahead_excerpt": [
+            "s N,s qsq given FT",
+            "Input: Observed trajectory pL, C, N, qq on r0, T s; jump times pT jx q j\u011b1 for x P tL, C, Nu; intensities",
+            "\u03bbL , \u03bbC , \u03bbN ; intervention path Lo (set Lo \u201d 0 if there is no passive intervention).",
+            "Output: One conditional draw of pL,      s C,",
+            "s N,s qsq on r0, T s."
+          ],
+          "lookahead_nonempty_line_count": 25,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 2: A posteriori conditional simulation of pL, C, N, qq given F      sT",
+          "line_number": 1366,
+          "lookahead_excerpt": [
+            "Input: Observed impacted trajectory pL, s C,  s qs, Lo , N o q on r0, T s; jump times pT sx q j\u011b1 of each",
+            "s N,",
+            "j",
+            "x P tL, C, Nu; intensities \u03bb , \u03bb , \u03bb .",
+            "s    s  s  s                L C N"
+          ],
+          "lookahead_nonempty_line_count": 24,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.03239v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2601.07852v1",
+      "content_bytes": 1261029,
+      "content_sha256": "aeeb30650cca13742d003dded4e4b9cb3cd8ed396086917c62427de52a286b97",
+      "decision": "pass",
+      "document_id": "2601.07852v1",
+      "document_title": "Utility-Weighted Forecasting and Calibration for Risk-Adjusted Decisions under Trading Frictions",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Utility-Weighted Calibration (UWC)",
+          "line_number": 3603,
+          "lookahead_excerpt": [
+            "bt }T , Realised outcomes {Yt+h }T , Diagnostic grid U,",
+            "1 Input: Training forecasts {F   t=1                          t=1",
+            "Spline knots K.",
+            "2 Output: Calibrated CDF map g b.",
+            "\u03b8"
+          ],
+          "lookahead_nonempty_line_count": 21,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:57Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2601.07852v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2605.25559v1",
+      "content_bytes": 632914,
+      "content_sha256": "baee76b792e0be937a9f97eff1f965025d978c680b116f23f8a5c81915600e15",
+      "decision": "pass",
+      "document_id": "2605.25559v1",
+      "document_title": "Modeling dependence in sparse time series of Insurance Claims",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1. Comb-Bernoulli Simulation",
+          "line_number": 405,
+          "lookahead_excerpt": [
+            "Require: N (number of simulations)",
+            "1: for t = 1, . . . , N",
+            "\u0002 (t)          (t) \u0003\u22a4",
+            "2:     Draw u(t) := u1 , . . . , ud      from C(u(t) ; \u03f1)                \u25b7 Step 1: simulate copula",
+            "3:     for i = 1, . . . , d                                              \u25b7 Step 2: compute claims"
+          ],
+          "lookahead_nonempty_line_count": 24,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:26Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.25559v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2606.00143v1",
+      "content_bytes": 4109349,
+      "content_sha256": "22ab0c37dbc012176c639969a8eddbeb81a1f793e4872c6dd9b37b74bbd07e4d",
+      "decision": "pass",
+      "document_id": "2606.00143v1",
+      "document_title": "Regime-Adaptive Continual Learning for Portfolio Management",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 2: Continual Trading with ReCAP                               respectively. The threshold for merging similar policy vectors \ud835\udeff s",
+          "line_number": 426,
+          "lookahead_excerpt": [
+            "Input: Daily market data X, base policy \ud835\udf03 0 , policy library D, RGM     is set to 0.5. Following recent work in continual RL, policy vector",
+            "parameters \ud835\udf19, data buffer B, ARD statistics \ud835\udc46              learning and reuse are applied only to the actor, while the critic is",
+            "Output: Portfolio weights w, updated D, \ud835\udf19, B and \ud835\udc46              reinitialized at each regime. 1",
+            "1: // Step 1: Portfolio weights computation",
+            "2: Obtain trading state s\ud835\udc61 and market-level features m\ud835\udc61 ;             5.2     Comparative Analysis"
+          ],
+          "lookahead_nonempty_line_count": 25,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:25Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2606.00143v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2601.22200v1",
+      "content_bytes": 685604,
+      "content_sha256": "92040b2567c57e76e904a90a72cd2f410cb6d6da09bd174c7695c28faaf2a4b9",
+      "decision": "pass",
+      "document_id": "2601.22200v1",
+      "document_title": "Adaptive Benign Overfitting (ABO): Overparameterized RLS for Online Learning in Non-stationary Time-series",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1. Adaptive Benign Overfitting (ABO) via QR-EWRLS",
+          "line_number": 954,
+          "lookahead_excerpt": [
+            "Require: Stream {(xt , yt )}, window size N , forgetting factor \u03bb, RFF dimension D",
+            "Ensure: Online predictions {y\u0302t }, coefficient vectors {\u03b2t }",
+            "1: Initialization:",
+            "2:   Compute initial Z0 \u2208 RN \u00d7D and Y0 \u2208 RN",
+            "3:   Perform QR factorization: Z0 = Q0 R0                                                            \u25b7 [(5)]"
+          ],
+          "lookahead_nonempty_line_count": 25,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:52Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2601.22200v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2603.15963v2",
+      "content_bytes": 1564392,
+      "content_sha256": "76a9381b58fcbe4be8fe0b85aa5584a344082bab4f1b901050b96f8c75252e80",
+      "decision": "pass",
+      "document_id": "2603.15963v2",
+      "document_title": "Risk-Based Auto-Deleveraging",
+      "document_version": "2",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Abstract two-block ADMM with Sample-Average Approximation",
+          "line_number": 4591,
+          "lookahead_excerpt": [
+            "Proposition C.1. Fix \u03c1 > 0 and suppose the feasible set is nonempty. Then the iterates generated",
+            "by (23)\u2013(25) satisfy",
+            "\u2225xk \u2212 z k \u2225 \u2192 0,    \u2225\u03c1(z k \u2212 z k\u22121 )\u2225 \u2192 0,",
+            "and                                       n",
+            "X"
+          ],
+          "lookahead_nonempty_line_count": 19,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:42Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.15963v2",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2511.07014v2",
+      "content_bytes": 1862904,
+      "content_sha256": "2813df142d717538e42cbb5d1c8cd86a474d5b887e0f14099c601c85983ed053",
+      "decision": "pass",
+      "document_id": "2511.07014v2",
+      "document_title": "Diffolio: A Diffusion Model for Multivariate Probabilistic Financial Time-Series Forecasting and Portfolio Construction",
+      "document_version": "2",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Diffolio Training Process",
+          "line_number": 544,
+          "lookahead_excerpt": [
+            "for step from 1 to TrainingSteps do",
+            "x0 \u2190 rt+1 ; c \u2190 {rt\u2212(M \u22121):t , {zi,t\u2212(M \u22121):t }i=1",
+            "N",
+            ", yt\u2212(M \u22121):t }",
+            "\u03c4 \u223c Uniform({1, 2, \u00b7 \u00b7 \u00b7 , T })"
+          ],
+          "lookahead_nonempty_line_count": 22,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:23:11Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.07014v2",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2605.02085v1",
+      "content_bytes": 501711,
+      "content_sha256": "e8703a0280d5db3320ddb0b5e52e0ce6eb6931963e7fc42a25a54958d4d84434",
+      "decision": "pass",
+      "document_id": "2605.02085v1",
+      "document_title": "Fast Monte-Carlo",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Fast Monte Carlo",
+          "line_number": 293,
+          "lookahead_excerpt": [
+            "FastMonteCarlo",
+            "output: Output of a Monte Carlo Simulation",
+            "initialize a Markov chain M(si , s j ) = 0;",
+            "initialize a Monte-Carlo process;",
+            "while i \u2265 N do"
+          ],
+          "lookahead_nonempty_line_count": 23,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:31Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.02085v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2606.08379v1",
+      "content_bytes": 369013,
+      "content_sha256": "699fc66380b278e3ed6e53bb6189f3422035d6e3cb4ae807533c2f357652a163",
+      "decision": "pass",
+      "document_id": "2606.08379v1",
+      "document_title": "TT-DAC-PS: Twin-Target Deterministic Actor-Critic with Policy Smoothing for Optimal Trade Execution",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Implementation",
+          "line_number": 203,
+          "lookahead_excerpt": [
+            "Shortfall",
+            "Cross-Impact",
+            "Models",
+            "Impact",
+            "LOB-based"
+          ],
+          "lookahead_nonempty_line_count": 18,
+          "pattern_family": "explicit_implementation_section"
+        },
+        {
+          "heading": "3.10    Implementation Details",
+          "line_number": 738,
+          "lookahead_excerpt": [
+            "The simulator is exposed through two interfaces. A native environment provides the full AC accounting (expected",
+            "shortfall and variance) and utility updates used by the custom PyTorch TT-DAC-PS agent. This agent implements",
+            "the twin actor\u2013critic architecture, replay buffer, and the hybrid exploration controller. It includes numerical guards to",
+            "sanitise actions (mapping tanh outputs to [0, 1] via (\u00b7 + 1)/2 followed by clipping). In parallel, a Gym-compatible",
+            "wrapper mirrors the same state and action semantics and is used to train and evaluate standard RL baselines with"
+          ],
+          "lookahead_nonempty_line_count": 20,
+          "pattern_family": "explicit_implementation_section"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section"
+      ],
+      "retrieved_at": "2026-08-27T02:22:22Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2606.08379v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2603.15511v1",
+      "content_bytes": 581708,
+      "content_sha256": "86e7f0a23f24d1bf5d5c53fe41816fcd5998d8d5c8db590975f3a76f42105363",
+      "decision": "pass",
+      "document_id": "2603.15511v1",
+      "document_title": "Some general results on risk budgeting portfolios",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1.       Define the risk contribution RC\u03c1 , the risk budget xb , a",
+          "line_number": 517,
+          "lookahead_excerpt": [
+            "positive parameter L \u2208 (0, 1), the tolerance tol, the initial point x1 \u2208 S,",
+            "the maximum number of iterations maxit",
+            "Initialize the step counter: n := 1",
+            "while \u2225\u2206(xn )\u22252 > tol & n < maxit do",
+            "Find kn : \u2225\u2206(xn + kn \u2206(xn ))\u22252 < L\u2225\u2206(xn )\u22252"
+          ],
+          "lookahead_nonempty_line_count": 21,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:43Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.15511v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2511.13384v4",
+      "content_bytes": 24681811,
+      "content_sha256": "784a164fbe98410d7b789d573401d49f2b9a1500f825f438260579eeb111d659",
+      "decision": "pass",
+      "document_id": "2511.13384v4",
+      "document_title": "CBDC Stress Test in a Dual-Currency Setting",
+      "document_version": "4",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Implementation",
+          "line_number": 19258,
+          "lookahead_excerpt": [
+            "Real bank-level data calibration                                                    \u2013",
+            "(medium-term)",
+            "Policy feedback module (monetary &                                           Implementation (long-",
+            "\u2013",
+            "macroprudential)                                                        term)"
+          ],
+          "lookahead_nonempty_line_count": 21,
+          "pattern_family": "explicit_implementation_section"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section"
+      ],
+      "retrieved_at": "2026-08-27T02:23:10Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.13384v4",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2603.15652v1",
+      "content_bytes": 1664830,
+      "content_sha256": "54661fee041036b249cdb1e2c62d841101fa591d095c2dc7a3404dccf68d432c",
+      "decision": "pass",
+      "document_id": "2603.15652v1",
+      "document_title": "P vs NP Problem in Portfolio Optimization: Integrating the Markowitz-CAPM Framework with Cardinality Constraints and Black-Scholes Derivative Pricing",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm                             0.000000",
+          "line_number": 716,
+          "lookahead_excerpt": [
+            "Genetic              P=50, G=40       0.088003          \u00b1 0.088003 \u00b1 0.000000        0.444 \u00b1 0.026",
+            "Algorithm                             0.000000",
+            "4.1.5 Small\u2011n benchmark",
+            "Because Markowitz mean\u2013variance selection with a hard cardinality constraint is naturally formulated as an",
+            "MIQP, a reduced-universe benchmark provides a transparent ground truth. Here we compute the exact"
+          ],
+          "lookahead_nonempty_line_count": 16,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm                             0.000000",
+          "line_number": 718,
+          "lookahead_excerpt": [
+            "4.1.5 Small\u2011n benchmark",
+            "Because Markowitz mean\u2013variance selection with a hard cardinality constraint is naturally formulated as an",
+            "MIQP, a reduced-universe benchmark provides a transparent ground truth. Here we compute the exact",
+            "optimum via full enumeration on a reduced instance (n=20, K=6), and compare heuristic solutions on the",
+            "same reduced universe."
+          ],
+          "lookahead_nonempty_line_count": 14,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:45Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.15652v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2608.22864v1",
+      "content_bytes": 917334,
+      "content_sha256": "903e1ef817c68365a7f4003f5c7559e70e017f3438b4c91369ec0285770e0aa7",
+      "decision": "pass",
+      "document_id": "2608.22864v1",
+      "document_title": "From Exponential to Polynomial: An Exact Filter for High-Dimensional MSM Models",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Exact Sector Filter",
+          "line_number": 715,
+          "lookahead_excerpt": [
+            "1. Initialize component marginals p\u2113j,0 .",
+            "2. For t = 1, . . . , T :",
+            "(a) Predict component marginals using Eq. (20).",
+            "(b) Construct predicted sector probabilities q\u0303t (n).",
+            "(c) Compute leave-one-out distributions Q(n, \u2113)."
+          ],
+          "lookahead_nonempty_line_count": 21,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:04Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2608.22864v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2606.06089v1",
+      "content_bytes": 960370,
+      "content_sha256": "f9a746c28c7c2020c32a4050ceedadbf8a1e35cfda1e793d167b25640c6c0a87",
+      "decision": "pass",
+      "document_id": "2606.06089v1",
+      "document_title": "Leveraging LLMs for Unstructured Claims Data Analysis",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "IMPLEMENTATION",
+          "line_number": 858,
+          "lookahead_excerpt": [
+            "This section describes the technical implementation of the LLM-based claims analysis",
+            "prototype. The implementation translates the conceptual architecture into a working system that",
+            "processes real-world claims documents and extracts actuarial variables.",
+            "The prototype consists of a four-script Python pipeline supported by modular infrastructure",
+            "components. Scripts 1 and 2 generate synthetic test data for validation purposes, while Scripts 3"
+          ],
+          "lookahead_nonempty_line_count": 19,
+          "pattern_family": "explicit_implementation_section"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section"
+      ],
+      "retrieved_at": "2026-08-27T02:22:23Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2606.06089v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2602.07018v3",
+      "content_bytes": 466876,
+      "content_sha256": "0f00044e184d5c23770725571ffb77d3bc0531a971e7b530e7ce300f03be742f",
+      "decision": "pass",
+      "document_id": "2602.07018v3",
+      "document_title": "The Extremity Premium: Sentiment Regimes and Adverse Selection in Cryptocurrency Markets",
+      "document_version": "3",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "4.5 Implementation",
+          "line_number": 602,
+          "lookahead_excerpt": [
+            "The framework is implemented in Python 3.11.4 using the following packages (version numbers for",
+            "reproducibility):",
+            "\u2022 Mesa 2.1.1: Agent-based modeling framework",
+            "\u2022 Transformers 4.35.0: HuggingFace library for CryptoBERT",
+            "\u2022 pandas 2.1.3 / numpy 1.26.2: Data manipulation"
+          ],
+          "lookahead_nonempty_line_count": 15,
+          "pattern_family": "explicit_implementation_section"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section"
+      ],
+      "retrieved_at": "2026-08-27T02:22:51Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2602.07018v3",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2601.08641v3",
+      "content_bytes": 1794439,
+      "content_sha256": "dad1938d68b562f7dbda1e6559678aee02247184d04264928e4aec058982e209",
+      "decision": "pass",
+      "document_id": "2601.08641v3",
+      "document_title": "Resisting Manipulative Bots in Meme Coin Copy Trading: A Multi-Agent Approach with Chain-of-Thought Reasoning",
+      "document_version": "3",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Bundle Bot Detection.",
+          "line_number": 294,
+          "lookahead_excerpt": [
+            "Input: Meme coin address \ud835\udc34, on-chain transactions T for \ud835\udc34",
+            "Position Manipulation",
+            "Output: 1Bundle Bot \u2208 {0, 1}",
+            "Ln(Dump Duration)",
+            "Ln(Dump Duration)"
+          ],
+          "lookahead_nonempty_line_count": 13,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 2: Sniper Bot Detection.",
+          "line_number": 323,
+          "lookahead_excerpt": [
+            "Input: Meme coin address \ud835\udc34, on-chain transactions T for \ud835\udc34, block window                                                    (a) Bundle Bot.                                                 (b) Sniper Bot.",
+            "\ud835\udc3e (default \ud835\udc3e=5)",
+            "Output: 1Sniper Bot \u2208 {0, 1}",
+            "Extract launch block \ud835\udc4f launch and creator wallet \ud835\udc64\ud835\udc50 for \ud835\udc34;",
+            "Attention Manipulation"
+          ],
+          "lookahead_nonempty_line_count": 14,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 3: Bump Bot Detection.                                                                                                 0      1      2                                        0      1      2",
+          "line_number": 347,
+          "lookahead_excerpt": [
+            "Ln(Max Return)                                         Ln(Max Return)",
+            "Input: Meme coin address \ud835\udc34, on-chain transactions T for \ud835\udc34, threshold \ud835\udf09                                                         Without bot        With bot                            Without bot        With bot",
+            "(default \ud835\udf09 = 50), small constant \ud835\udf16 (default \ud835\udf16 = 1)",
+            "Output: 1Bump Bot \u2208 {0, 1}                                                                                                 (c) Bump Bot.                                                  (d) Comment Bot.",
+            "Group T by trader wallet to obtain { T\ud835\udc64 } ;"
+          ],
+          "lookahead_nonempty_line_count": 24,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:56Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2601.08641v3",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2608.03088v1",
+      "content_bytes": 607876,
+      "content_sha256": "f7e133a33426c2f7c64659cb3557822ec9763519f3aa7c90d2c7da1882d5473c",
+      "decision": "pass",
+      "document_id": "2608.03088v1",
+      "document_title": "A New Approach to Goodness of Fit for Ergodic Markov Processes",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Approximates c\u039b\u03b1 corresponding to given size \u03b1 and kernel p",
+          "line_number": 631,
+          "lookahead_excerpt": [
+            "fix integers M , N ;",
+            "for m \u2208 {1, . . . , M } do",
+            "simulate a p-Markov time series X1\u2217 , . . . , X N",
+            "\u2217",
+            ";"
+          ],
+          "lookahead_nonempty_line_count": 17,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 2: Approximates c\u03a3\u03b1 (\u03b8 ) corresponding to given size \u03b1 and kernel p\u03b8",
+          "line_number": 849,
+          "lookahead_excerpt": [
+            "fix integers M , N ;",
+            "for m \u2208 {1, . . . , M } do",
+            "simulate a p\u03b8 -Markov time series X1\u2217 , . . . , X N\u2217",
+            ";",
+            "\u2217                                 \u2217           \u2217"
+          ],
+          "lookahead_nonempty_line_count": 18,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:09Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2608.03088v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2606.23492v1",
+      "content_bytes": 1703194,
+      "content_sha256": "ed3b71632b047eb9e680b019deaabcf88687d4cac7994dd67eeaefc34e4b0f8b",
+      "decision": "pass",
+      "document_id": "2606.23492v1",
+      "document_title": "Continuous Hidden Markov Models for Equity Returns: Heavy-Tail Emission Families and Regime-Conditional Value-at-Risk",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 3. Viterbi and SIM-resampling pseudocode are provided in the companion code repository;",
+          "line_number": 1299,
+          "lookahead_excerpt": [
+            "both are textbook constructions and we omit them from the appendix.",
+            "Algorithm 1 Unified EM algorithm for the CHMM family. Lines 3, 13, and 30 branch on the",
+            "emission family F \u2208 {N , t, L, GED}; every other line is identical across families. The CHMM-N and",
+            "CHMM-L variants instantiate classical EM; CHMM-t and CHMM-GED use ECM-style block",
+            "24"
+          ],
+          "lookahead_nonempty_line_count": 22,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 1: N (\u00b5k , \u03c3k2 ) for CHMM-N, t\u03bdk (\u00b5k , \u03c3k ) for CHMM-t, Laplace(\u00b5k , bk ) for CHMM-L,",
+          "line_number": 1394,
+          "lookahead_excerpt": [
+            "GED(\u00b5k , \u03b1k , pk ) for CHMM-GED; the latent chain and transition step are shared.",
+            "Require: Trained CHMM M = (T, {\u03b8 k }, \u03c0, F ) with \u03b8 k = (\u00b5k , \u03c3k ) for F = N ; (\u00b5k , \u03c3k , \u03bdk ) for F = t;",
+            "(\u00b5k , bk ) for F = L; (\u00b5k , \u03b1k , pk ) for F = GED. Number of steps M , Number of paths P",
+            "(p)",
+            "Ensure: Simulated growth-rate paths {G\u03021:M }P        p=1"
+          ],
+          "lookahead_nonempty_line_count": 21,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:19Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2606.23492v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2607.04346v1",
+      "content_bytes": 997138,
+      "content_sha256": "2125be8b7442af1a367071e18ad36dd834face80d057365471320239d6ccabce",
+      "decision": "pass",
+      "document_id": "2607.04346v1",
+      "document_title": "Preference-fitting Framework: Elicited Utility Function and PHARA Approximation",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "implementation.",
+          "line_number": 60,
+          "lookahead_excerpt": [
+            "In these studies, it is the various utility functions that lead to various optimal portfolios. While most",
+            "of the literature directly provides specific forms of investors\u2019 utility functions, this approach has several",
+            "drawbacks. First, it is widely recognized that investors struggle to precisely identify the form of their",
+            "utility functions, as the classic utility is a subjective description rather than an objective requirement.",
+            "Initially, Bernoulli [1954] suggest the utility function is logarithmic through empirical analysis. Tversky"
+          ],
+          "lookahead_nonempty_line_count": 25,
+          "pattern_family": "explicit_implementation_section"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section"
+      ],
+      "retrieved_at": "2026-08-27T02:22:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.04346v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2601.17008v1",
+      "content_bytes": 4955175,
+      "content_sha256": "d9e8e90399ac93bc93efc4331ac7576920b6b5120ee86c0e4263528f0bb33a82",
+      "decision": "pass",
+      "document_id": "2601.17008v1",
+      "document_title": "Bayesian Robust Financial Trading with Adversarial Synthetic Market Data",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: NFSP with Adversarial Observations and                B.2    Bayesian Neural Fictitious Self-Play",
+          "line_number": 695,
+          "lookahead_excerpt": [
+            "Quantile Belief                                                    Algorithm 2 presents the training procedure of our proposed Bayesian",
+            "Input: \ud835\udc61\ud835\udc5c\ud835\udc61\ud835\udc4e\ud835\udc59_\ud835\udc5b\ud835\udc62\ud835\udc5a_\ud835\udc60\ud835\udc61\ud835\udc52\ud835\udc5d, initial networks: network1,                Neural Fictitious Self-Play (BNFSP) framework. This method ex-",
+            "network2, network3                                        tends traditional NFSP by incorporating a belief modeling com-",
+            "Output: Trained NFSP agent, belief network, and                   ponent and adversarial market simulation. During training, the",
+            "adversarial agent.                                     agent interacts with a market simulator \ud835\udc3a perturbed by adversarial"
+          ],
+          "lookahead_nonempty_line_count": 25,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 3: Correlation-Weighted Imputation                               into a vector representation, aligned with its corresponding future",
+          "line_number": 762,
+          "lookahead_excerpt": [
+            "Input: Ticker set \ud835\udc47 = {\ud835\udc61 1, . . . , \ud835\udc61 \ud835\udc41 }, feature datasets {\ud835\udc37\ud835\udc61 }\ud835\udc61 \u2208\ud835\udc47 ,   return. We then apply t-SNE separately to the feature and target",
+            "correlation matrices {\ud835\udc36 ( \ud835\udc53 ) } \ud835\udc53 \u2208 F .                                  spaces to obtain low-dimensional embeddings that preserve local",
+            "Output: Imputed datasets {\ud835\udc37\ud835\udc61 }\ud835\udc61 \u2208\ud835\udc47 .                                      structure. By plotting these embeddings against each other and col-",
+            "For each feature \ud835\udc53 \u2208 F , process all tickers \ud835\udc61 \u2208 \ud835\udc47 . For a given          oring by temporal phase, we can effectively illustrate the dynamics",
+            "ticker \ud835\udc61, every time index \ud835\udc56 where \ud835\udc37\ud835\udc61 (\ud835\udc56, \ud835\udc53 ) is missing;                shift faced by the agent between training and testing periods."
+          ],
+          "lookahead_nonempty_line_count": 25,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 4: t-SNE Plot Generation",
+          "line_number": 793,
+          "lookahead_excerpt": [
+            "(5) Return Fselected",
+            "Input: Raw OHLCV time series data",
+            "Parameters: Window size \ud835\udc64 = 21, t-SNE output dimension",
+            "\ud835\udc51 = 1, perplexity = 50, iterations = 3000                                   To ensure that the input features are both informative and non-",
+            "Step 1 Compute derived features from raw OHLCV, such as:                   redundant, we employ a two-stage correlation-based feature selec-"
+          ],
+          "lookahead_nonempty_line_count": 23,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:55Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2601.17008v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2511.16339v1",
+      "content_bytes": 1897962,
+      "content_sha256": "19af3003b1a834a20c0e1bae5a560d5ece17372e7a755203bc6d6d839d2621e9",
+      "decision": "pass",
+      "document_id": "2511.16339v1",
+      "document_title": "Financial Information Theory",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "4.2     Implementation Details",
+          "line_number": 767,
+          "lookahead_excerpt": [
+            "All computations use a rolling window approach with window size w = 252 trading days",
+            "(approximately one year). For entropy and mutual information estimation, we employ",
+            "the k-NN method with k = 3 neighbors. Small Gaussian noise (\u03c3 = 10\u221210 ) is added to",
+            "ensure numerical stability when computing nearest neighbors.",
+            "The k-NN differential entropy estimator (Equation 19) is implemented using standard"
+          ],
+          "lookahead_nonempty_line_count": 22,
+          "pattern_family": "explicit_implementation_section"
+        },
+        {
+          "heading": "Algorithm 2.",
+          "line_number": 896,
+          "lookahead_excerpt": [
+            "Under the Efficient Market Hypothesis (EMH), past returns should contain no ex-",
+            "ploitable information about future returns, implying:",
+            "NMI(rt+h ; It ) \u2248 0                               (99)",
+            "where It is the information set at time t.",
+            "4.5.2   Economic Interpretation"
+          ],
+          "lookahead_nonempty_line_count": 18,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section",
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:23:09Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.16339v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2608.10693v1",
+      "content_bytes": 19191815,
+      "content_sha256": "2c13c2f7553d60232e3ab1dd9c4b9283f1530e6827e8eb01548a48e86a9f0142",
+      "decision": "pass",
+      "document_id": "2608.10693v1",
+      "document_title": "When the Fed Speaks: Dynamics and Forecasts of the Volatility Surface",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "implementation.",
+          "line_number": 573,
+          "lookahead_excerpt": [
+            "14",
+            "A big upside of convolutions is their ability to act locally across (K, T ) grid allowing",
+            "the hidden state to capture spatial dependencies. Since implied volatility does not change",
+            "uniformly, this type of architecure should learn the correlations between different parts of the",
+            "surface. Naturally LSTM architecture should handle temporal dependencies. As a result, IV"
+          ],
+          "lookahead_nonempty_line_count": 17,
+          "pattern_family": "explicit_implementation_section"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section"
+      ],
+      "retrieved_at": "2026-08-27T02:22:06Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2608.10693v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2607.08291v1",
+      "content_bytes": 31385838,
+      "content_sha256": "f7739aa0f53251430082f0ec00059e82754fe226d34bad1a4ddc66d4b2e341c6",
+      "decision": "pass",
+      "document_id": "2607.08291v1",
+      "document_title": "Robustness in Sequential Decision Making under Evolving Uncertainty: Evidence from High-Frequency Market Making",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 2. The log-sum-exp structure shows that the worst-case innovation distribution is tilted proportionally",
+          "line_number": 784,
+          "lookahead_excerpt": [
+            "to",
+            "Gx,a",
+            "\u0012          \u0013",
+            "v (z\u0303)",
+            "Qx\u0303,\u03b4 (dz\u0303) exp \u2212           ,"
+          ],
+          "lookahead_nonempty_line_count": 18,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 1: Fitted Actor\u2013Critic (Value Iteration)",
+          "line_number": 1022,
+          "lookahead_excerpt": [
+            "Input: Batch size B; number of outer iterations Niter ; number of critic steps IV ; number of actor steps IA ; discount factor \u03b1 \u2208 (0, 1);",
+            "empirical innovation model Pb and deterministic lift \u03a6\u03c0 ; reward function r(x, a, x\u2032 ); number of innovation samples N from Pb;",
+            "learning rates for value net and policy net.",
+            "Output: Critic network V ; actor network A.",
+            "Initialize critic network V 0 and actor network A0 ;"
+          ],
+          "lookahead_nonempty_line_count": 24,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 2: Sinkhorn-Robust Fitted Actor\u2013Critic (Value Iteration)",
+          "line_number": 1081,
+          "lookahead_excerpt": [
+            "Input: Batch size B; number of outer iterations Niter ; number of critic steps IV ; number of actor steps IA ; number of dual steps I\u03bb ;",
+            "discount factor \u03b1 \u2208 (0, 1); Sinkhorn parameters (\u03b5\u0304, \u03b4); innovation kernel Qx\u0303,\u03b4 ; empirical innovation model Pb and deterministic lift",
+            "\u03a6\u03c0 ; cost c(\u00b7, \u00b7) on \u2126rnd ; reward function r(x, a, x\u2032 ); number of samples N from Pb and M from Qx\u0303,\u03b4 ; learning rates for value net,",
+            "policy net, and lambda net.",
+            "Output: Critic network V ; actor network A; lambda network \u039b."
+          ],
+          "lookahead_nonempty_line_count": 23,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:14Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.08291v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2604.02921v2",
+      "content_bytes": 1144228,
+      "content_sha256": "a8c755b63525b350c98a34547571d143d22c1e09de317ccaf58f6a779d71171b",
+      "decision": "pass",
+      "document_id": "2604.02921v2",
+      "document_title": "Debiasing LLMs by Fine-tuning",
+      "document_version": "2",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "2.3   Implementation Details",
+          "line_number": 442,
+          "lookahead_excerpt": [
+            "Model choice.     We implement the debiasing framework on Qwen3-32B (Yang et al.,",
+            "2025), an open-weight LLM with 32B parameters, as it is the most popular dense model",
+            "with over 30B parameters and offers the best balance between capability and accessibility",
+            "among the open-source models. We choose an open-weight model deliberately: unlike",
+            "proprietary LLMs accessed through APIs, open-weight models allow researchers to inspect,"
+          ],
+          "lookahead_nonempty_line_count": 18,
+          "pattern_family": "explicit_implementation_section"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section"
+      ],
+      "retrieved_at": "2026-08-27T02:22:39Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2604.02921v2",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2601.11134v1",
+      "content_bytes": 2101406,
+      "content_sha256": "b7ad67aff3c7a370b4142666d94e887e0665a522172fbb1ec596bf97c40ad79c",
+      "decision": "pass",
+      "document_id": "2601.11134v1",
+      "document_title": "FSL-BDP: Federated Survival Learning with Bayesian Differential Privacy for Credit Risk Modeling",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "4.3    Implementation Details",
+          "line_number": 784,
+          "lookahead_excerpt": [
+            "We implemented FSL-BDP in PyTorch 2.0 to simulate a federated scenario with one central server and K",
+            "participating clients, executed on NVIDIA T4 GPUs. Unlike prior federated credit scoring studies that rely",
+            "on artificial client partitions through random sampling [29, 30, 31], we partition datasets according to natural",
+            "geographic boundaries: LendingClub and SBA by U.S. states (27 and 32 clients), Bondora by European countries",
+            "(3 clients). This yields organically heterogeneous distributions reflecting real cross-regional variation in default"
+          ],
+          "lookahead_nonempty_line_count": 20,
+          "pattern_family": "explicit_implementation_section"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section"
+      ],
+      "retrieved_at": "2026-08-27T02:22:55Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2601.11134v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2603.17463v2",
+      "content_bytes": 2642877,
+      "content_sha256": "d21778acc958181456736bc0ffb280d011a70ab4d1a172517b724547867bc20b",
+      "decision": "pass",
+      "document_id": "2603.17463v2",
+      "document_title": "Multivariate GARCH and portfolio variance prediction: A forecast reconciliation perspective",
+      "document_version": "2",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Forecast reconciliation of portfolio variance",
+          "line_number": 530,
+          "lookahead_excerpt": [
+            "Input: Portfolio weights \u03c9 \u2208 RN , univariate (base) forecast for the portfolio variance",
+            "bp2 , multivariate (base) forecast for the N assets covariance matrix \u03a3",
+            "\u03c3                                                                        b",
+            "Output: Reconciled portfolio variance \u03c3       2",
+            "ep , reconciled covariance matrix \u03a3"
+          ],
+          "lookahead_nonempty_line_count": 25,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:42Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.17463v2",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2605.15210v1",
+      "content_bytes": 1101096,
+      "content_sha256": "e10a456d389c99d53fa1fa3e5ed1a382b156343b4b9f79e3338d01d41e9edaf9",
+      "decision": "pass",
+      "document_id": "2605.15210v1",
+      "document_title": "TradeMech: A Method to Multilaterally Net Trades Without Altering Counterparty Exposure",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 1: Node Splitting Algorithm",
+          "line_number": 336,
+          "lookahead_excerpt": [
+            "Input : Directed trade-flow graph R = (A, E) with edge flows f : E \u2192 R\u22650 and",
+            "unit prices p : E \u2192 R\u22650 ; node i \u2208 A with net imbalance \u03b3i and magnitude",
+            "E \u2190 |\u03b3i | > 0",
+            "Output: Updated graph R\u2032 in which i is replaced by BTX and either N RX (outflow",
+            "case) or N SX (inflow case)"
+          ],
+          "lookahead_nonempty_line_count": 23,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 2: Chain and Cycle Construction Algorithm (Adaptation of Williamson,",
+          "line_number": 507,
+          "lookahead_excerpt": [
+            "2019, Algorithm 2.3)",
+            "Input : Directed trade-flow graph R = (A, E); edge-flow map f : E \u2192 R\u22650",
+            "Output: Set of chains C and set of cycles Z",
+            "1 C \u2190 \u2205;",
+            "2 Z \u2190 \u2205;"
+          ],
+          "lookahead_nonempty_line_count": 22,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        },
+        {
+          "heading": "Algorithm 3: Replacement Procedure for Multiparty Contractual Obliga-",
+          "line_number": 1054,
+          "lookahead_excerpt": [
+            "tions.",
+            "Input: initial family G0 of chains and cycles produced by Algorithm 2.",
+            "Output: executable netting groups X and recovered bilateral contracts B.",
+            "1. Initialize the working set of netting groups by setting",
+            "Q \u2190 G0 ,      X \u2190 \u2205,          B \u2190 \u2205."
+          ],
+          "lookahead_nonempty_line_count": 16,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:31Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.15210v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2607.20762v1",
+      "content_bytes": 551565,
+      "content_sha256": "88c19a9509b9f519987eda35ab6d31ad0ce22d09a6c177b79c68e00527b4bd8e",
+      "decision": "pass",
+      "document_id": "2607.20762v1",
+      "document_title": "Quantifying Sub-Optimality in Routing for Automated Market Makers",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "Algorithm 2. Correctness and complexity are established in Theorem 2 (Ap-",
+          "line_number": 367,
+          "lookahead_excerpt": [
+            "pendix A).",
+            "4    Suboptimality Benchmarks",
+            "In this section, we formalize the best\u2013in\u2013class benchmarks used to evaluate a",
+            "realized route observed in an on-chain transaction. All evaluations are taken at",
+            "8        Weiye Xi and Ciamac C. Moallemi"
+          ],
+          "lookahead_nonempty_line_count": 19,
+          "pattern_family": "numbered_algorithm_or_pseudocode_block"
+        }
+      ],
+      "matched_pattern_families": [
+        "numbered_algorithm_or_pseudocode_block"
+      ],
+      "retrieved_at": "2026-08-27T02:22:11Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.20762v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    },
+    {
+      "acquisition_status": "success",
+      "canonical_url": "https://arxiv.org/abs/2606.00060v1",
+      "content_bytes": 3697426,
+      "content_sha256": "8532906c970304f700848f594111b5779a7a08be42d14a2203f7f43b9b3dc43c",
+      "decision": "pass",
+      "document_id": "2606.00060v1",
+      "document_title": "Machine Learning-Based Bitcoin Trading Under Transaction Costs: Evidence From Walk-Forward Forecasting",
+      "document_version": "1",
+      "failure_reason": null,
+      "matched_headings": [
+        {
+          "heading": "implementation details.",
+          "line_number": 1743,
+          "lookahead_excerpt": [
+            "32",
+            "Appendix B.1. Hyperparameter search spaces",
+            "Table B.22 reports the hyperparameter search spaces used for XGBoost, LSTM, and iTransformer.",
+            "The two loss functions, MSE and MAE, are evaluated across all architectures.",
+            "Table B.22. Hyperparameter search space by architecture"
+          ],
+          "lookahead_nonempty_line_count": 18,
+          "pattern_family": "explicit_implementation_section"
+        }
+      ],
+      "matched_pattern_families": [
+        "explicit_implementation_section"
+      ],
+      "retrieved_at": "2026-08-27T02:22:27Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2606.00060v1",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "text_extraction_status": "success"
+    }
+  ],
+  "sample_seed": 20260827,
+  "trial_ledger_n": 0
+}
