@@ -65,7 +65,7 @@ Package-এর uniform `_ft_has_params` override হলো `mark_ohlcv_timeframe
 | Technical Supertrend parity fixtures | 13/13 pass |
 | Repository tests | 58 passed |
 | Python compilation and whitespace check | Pass |
-| Fresh-clone verification | Pending final post-commit run |
+| Fresh-clone verification | Pass |
 | New backtest/trials/ledger update | None |
 
 ## Integrity and protected-artifact state
