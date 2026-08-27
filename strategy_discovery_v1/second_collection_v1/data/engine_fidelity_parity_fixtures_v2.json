@@ -1,0 +1,21 @@
+{
+  "fixture_id": "freqtrade_batch_001_engine_fidelity_parity_fixtures_v2",
+  "purpose": "semantic_only_no_performance_measurement",
+  "performance_metrics_created": false,
+  "trial_ids_created": false,
+  "cases": [
+    {"id":"entry_next_main_open","signal_candle_index":10,"expected_entry_candle_index":11},
+    {"id":"same_candle_exit_signal_priority","exit_signal":true,"stoploss":true,"roi":true,"trailing_stop":true,"expected_first_exit":"exit_signal"},
+    {"id":"stoploss_before_roi_when_no_exit_signal","exit_signal":false,"stoploss":true,"roi":true,"trailing_stop":true,"expected_first_exit":"stoploss"},
+    {"id":"custom_stoploss_uses_long_high_bound","entry_price":100.0,"candle_high":110.0,"candle_low":90.0,"returned_distance":0.10,"expected_stop_price":99.0,"expected_stop_hit":true},
+    {"id":"custom_stoploss_monotonic","initial_stop":90.0,"updates":[95.0,92.0,97.0],"expected_stop_history":[90.0,95.0,95.0,97.0]},
+    {"id":"roi_respects_candle_bound","entry_price":100.0,"roi_ratio":0.02,"candle_high":105.0,"candle_low":102.5,"expected_exit_price":102.5},
+    {"id":"startup_trim","startup_candle_count":200,"first_requested_candle_index":0,"expected_first_evaluable_index":200},
+    {"id":"detail_timeframe_missing_fail_closed","main_timeframe":"1h","detail_timeframe":"5m","detail_data_available":false,"expected_status":"fail_closed"},
+    {"id":"static_pairlist_required","pairlist_mode":"StaticPairList","dynamic_pairlist":false,"expected_status":"accepted"},
+    {"id":"dynamic_pairlist_prohibited","pairlist_mode":"ShuffleFilter","dynamic_pairlist":true,"expected_status":"fail_closed"},
+    {"id":"quantity_floor_precision","raw_quantity":0.123456789,"decimal_places":6,"expected_quantity":0.123456},
+    {"id":"end_of_data_force_exit","position_open":true,"last_close":123.45,"expected_exit_reason":"force_exit_end_of_data","expected_exit_price":123.45},
+    {"id":"supertrend_output_contract","technical_commit":"720ff67483e346271165d49cf37265f78739c74c","source_sha256":"8c30b75b14f6004ebbe2e79fb0083cfb08963bcfa7dd7bdc96f4a8cc735eb838","input_rows":20,"expected_output_rows":20,"expected_direction_values":["up","down",null]}
+  ]
+}

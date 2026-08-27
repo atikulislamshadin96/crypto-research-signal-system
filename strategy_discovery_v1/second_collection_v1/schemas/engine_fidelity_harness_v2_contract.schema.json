@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://crypto-research-signal-system.local/strategy_discovery_v1/engine_fidelity_harness_v2_contract.schema.json",
+  "title": "Engine Fidelity Harness v2 Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id",
+    "version",
+    "status",
+    "engine",
+    "technical_dependency",
+    "runtime",
+    "semantics",
+    "trial_identity_fields",
+    "authorization"
+  ],
+  "properties": {
+    "contract_id": {"const": "freqtrade_batch_001_engine_fidelity_harness_v2"},
+    "version": {"const": "2.0.0"},
+    "status": {"enum": ["design_only", "validated_design", "frozen_for_measurement"]},
+    "engine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "file_hashes"],
+      "properties": {
+        "repository": {"const": "https://github.com/freqtrade/freqtrade"},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "file_hashes": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "minProperties": 1}
+      }
+    },
+    "technical_dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "file_hashes"],
+      "properties": {
+        "repository": {"const": "https://github.com/freqtrade/technical"},
+        "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "file_hashes": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "minProperties": 1}
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["python", "packages"],
+      "properties": {
+        "python": {"type": "string"},
+        "packages": {"type": "object", "additionalProperties": {"type": "string"}, "minProperties": 1}
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy_loading",
+        "parameter_precedence",
+        "startup_candles",
+        "entry",
+        "exit_order",
+        "custom_stoploss",
+        "roi",
+        "trailing_stop",
+        "detail_timeframe",
+        "exchange_limits",
+        "data_policy",
+        "pairlist_policy"
+      ],
+      "properties": {
+        "strategy_loading": {"enum": ["pinned_engine_loader_only", "compatibility_loader_not_allowed"]},
+        "parameter_precedence": {"enum": ["engine_strategy_config_hyperopt_precedence_pinned", "explicit_manifest_mapping_required"]},
+        "startup_candles": {"enum": ["calculate_with_startup_then_trim", "fail_closed_if_unavailable"]},
+        "entry": {"enum": ["signal_on_closed_main_candle_next_main_open", "engine_native_only"]},
+        "exit_order": {"const": ["exit_signal", "stoploss", "roi", "trailing_stop"]},
+        "custom_stoploss": {"enum": ["engine_native_bound_rate_and_monotonic_state", "not_supported_fail_closed"]},
+        "roi": {"enum": ["engine_native_candle_bound_rules", "not_supported_fail_closed"]},
+        "trailing_stop": {"enum": ["engine_native_update_order", "not_supported_fail_closed"]},
+        "detail_timeframe": {"enum": ["required_when_declared_and_available", "absent_fail_closed", "no_silent_resampling"]},
+        "exchange_limits": {"enum": ["pinned_current_limits_explicitly_external", "engine_native_limits", "fail_closed_if_unknown"]},
+        "data_policy": {"enum": ["exact_file_hash_and_range_required", "missing_invalid_fail_closed"]},
+        "pairlist_policy": {"enum": ["static_uniform_manifest_scope", "dynamic_pairlist_prohibited"]}
+      }
+    },
+    "trial_identity_fields": {
+      "type": "array",
+      "minItems": 12,
+      "uniqueItems": true,
+      "items": {"type": "string", "enum": [
+        "source_repo",
+        "source_commit",
+        "source_path",
+        "source_file_sha256",
+        "engine_repo",
+        "engine_commit",
+        "engine_file_hashes_sha256",
+        "technical_repo",
+        "technical_commit",
+        "technical_file_hashes_sha256",
+        "python_version",
+        "package_lock_sha256",
+        "execution_manifest_sha256",
+        "data_manifest_sha256",
+        "detail_data_manifest_sha256",
+        "harness_code_sha256",
+        "protocol_sha256",
+        "strategy_parameter_hash",
+        "timeframe",
+        "pairlist_hash"
+      ]}
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["design_measurement_boundary", "backtest_authorized", "trial_creation_authorized", "promotion_allowed", "paper_or_live_allowed"],
+      "properties": {
+        "design_measurement_boundary": {"const": "design_and_parity_validation_only"},
+        "backtest_authorized": {"const": false},
+        "trial_creation_authorized": {"const": false},
+        "promotion_allowed": {"const": false},
+        "paper_or_live_allowed": {"const": false}
+      }
+    }
+  }
+}

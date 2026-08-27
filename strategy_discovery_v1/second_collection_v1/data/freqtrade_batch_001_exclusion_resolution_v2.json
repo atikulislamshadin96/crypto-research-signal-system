@@ -1,0 +1,15 @@
+{
+  "artifact_id": "freqtrade_batch_001_exclusion_resolution_v2",
+  "status": "design_validation_only",
+  "measurement_authorized": false,
+  "historical_ledger_n": 898,
+  "historical_ledger_hash": "2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e",
+  "records": [
+    {"source_path":"user_data/strategies/BreakEven.py","timeframe":"5m","status":"remain_excluded","trial_created":false,"reason":"No exact 5m OHLCV in frozen data manifest; no new data authorized; no resampling."},
+    {"source_path":"user_data/strategies/Diamond.py","timeframe":"5m","status":"remain_excluded","trial_created":false,"reason":"No exact 5m OHLCV in frozen data manifest; no new data authorized; no resampling."},
+    {"source_path":"user_data/strategies/GodStra.py","timeframe":"12h","status":"remain_excluded","trial_created":false,"reason":"No exact 12h OHLCV in frozen data manifest; no new data authorized; no resampling."},
+    {"source_path":"user_data/strategies/PowerTower.py","timeframe":"5m","status":"remain_excluded","trial_created":false,"reason":"No exact 5m OHLCV in frozen data manifest; no new data authorized; no resampling."},
+    {"source_path":"user_data/strategies/Strategy004.py","timeframe":"5m","status":"remain_excluded","trial_created":false,"reason":"No exact 5m OHLCV in frozen data manifest; no new data authorized; no resampling."},
+    {"source_path":"user_data/strategies/Supertrend.py","timeframe":"1h","status":"dependency_resolved_pending_new_measurement","trial_created":false,"reason":"Exact Supertrend implementation pinned for future v2 validation; historical v1 harness is not rerun."}
+  ]
+}

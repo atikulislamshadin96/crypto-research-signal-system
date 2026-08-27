@@ -1,0 +1,74 @@
+{
+  "contract_id": "freqtrade_batch_001_engine_fidelity_harness_v2",
+  "version": "2.0.0",
+  "status": "validated_design",
+  "engine": {
+    "repository": "https://github.com/freqtrade/freqtrade",
+    "commit": "eb1a668ceb0f29b7d578156bfc24c45278c0c0f8",
+    "file_hashes": {
+      "freqtrade/strategy/interface.py": "e372b562aabf5e39e444a222f36c7c14801b254fa42141f1431a4ba95d313bb0",
+      "freqtrade/optimize/backtesting.py": "2420410f96451cb993a7b475e9f7a4232d89480185cc25c59da8883551be6384"
+    }
+  },
+  "technical_dependency": {
+    "repository": "https://github.com/freqtrade/technical",
+    "commit": "720ff67483e346271165d49cf37265f78739c74c",
+    "file_hashes": {
+      "technical/indicators/supertrend.py": "8c30b75b14f6004ebbe2e79fb0083cfb08963bcfa7dd7bdc96f4a8cc735eb838"
+    }
+  },
+  "runtime": {
+    "python": "3.12.3",
+    "packages": {
+      "pandas": "3.0.5",
+      "numpy": "2.5.1",
+      "scipy": "1.18.1",
+      "TA-Lib": "0.6.8",
+      "ta": "0.11.0",
+      "technical": "1.4.0"
+    }
+  },
+  "semantics": {
+    "strategy_loading": "pinned_engine_loader_only",
+    "parameter_precedence": "engine_strategy_config_hyperopt_precedence_pinned",
+    "startup_candles": "calculate_with_startup_then_trim",
+    "entry": "signal_on_closed_main_candle_next_main_open",
+    "exit_order": ["exit_signal", "stoploss", "roi", "trailing_stop"],
+    "custom_stoploss": "engine_native_bound_rate_and_monotonic_state",
+    "roi": "engine_native_candle_bound_rules",
+    "trailing_stop": "engine_native_update_order",
+    "detail_timeframe": "required_when_declared_and_available",
+    "exchange_limits": "fail_closed_if_unknown",
+    "data_policy": "exact_file_hash_and_range_required",
+    "pairlist_policy": "static_uniform_manifest_scope"
+  },
+  "trial_identity_fields": [
+    "source_repo",
+    "source_commit",
+    "source_path",
+    "source_file_sha256",
+    "engine_repo",
+    "engine_commit",
+    "engine_file_hashes_sha256",
+    "technical_repo",
+    "technical_commit",
+    "technical_file_hashes_sha256",
+    "python_version",
+    "package_lock_sha256",
+    "execution_manifest_sha256",
+    "data_manifest_sha256",
+    "detail_data_manifest_sha256",
+    "harness_code_sha256",
+    "protocol_sha256",
+    "strategy_parameter_hash",
+    "timeframe",
+    "pairlist_hash"
+  ],
+  "authorization": {
+    "design_measurement_boundary": "design_and_parity_validation_only",
+    "backtest_authorized": false,
+    "trial_creation_authorized": false,
+    "promotion_allowed": false,
+    "paper_or_live_allowed": false
+  }
+}

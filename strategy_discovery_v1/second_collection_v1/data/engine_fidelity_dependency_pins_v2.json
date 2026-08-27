@@ -1,0 +1,43 @@
+{
+  "pin_manifest_id": "freqtrade_batch_001_engine_fidelity_dependency_pins_v2",
+  "status": "design_only",
+  "measurement_authorized": false,
+  "engine": {
+    "repository": "https://github.com/freqtrade/freqtrade",
+    "commit": "eb1a668ceb0f29b7d578156bfc24c45278c0c0f8",
+    "file_hashes": {
+      "freqtrade/strategy/interface.py": "e372b562aabf5e39e444a222f36c7c14801b254fa42141f1431a4ba95d313bb0",
+      "freqtrade/optimize/backtesting.py": "2420410f96451cb993a7b475e9f7a4232d89480185cc25c59da8883551be6384"
+    }
+  },
+  "technical_dependency": {
+    "repository": "https://github.com/freqtrade/technical",
+    "commit": "720ff67483e346271165d49cf37265f78739c74c",
+    "file_hashes": {
+      "technical/indicators/supertrend.py": "8c30b75b14f6004ebbe2e79fb0083cfb08963bcfa7dd7bdc96f4a8cc735eb838"
+    }
+  },
+  "original_strategy_source": {
+    "repository": "https://github.com/freqtrade/freqtrade-strategies",
+    "commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+    "license": "GPL-3.0",
+    "source_retention": "short_evidence_only_no_full_source_vendoring"
+  },
+  "runtime_observed_for_design_validation": {
+    "python": "3.12.3",
+    "packages": {
+      "pandas": "3.0.5",
+      "numpy": "2.5.1",
+      "scipy": "1.18.1",
+      "TA-Lib": "0.6.8",
+      "ta": "0.11.0",
+      "technical": "1.4.0"
+    },
+    "note": "Observed environment only; a lockfile/container digest is required before future measurement."
+  },
+  "provenance_rules": [
+    "Third-party repositories are temporary audit inputs and are not vendored into strategy_discovery_v1.",
+    "Any engine, dependency, runtime, source, data, execution, or detail-timeframe change creates a new harness version and new trial identity.",
+    "This manifest does not authorize candidate measurement."
+  ]
+}
