@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/atikulislamshadin96/crypto-research-signal-system/blob/main/strategy_discovery_v1/second_collection_v1/schemas/engine_fidelity_recovery_package_v1.schema.json",
+  "title": "Finite recovery package v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["package_id", "version", "status", "purpose", "authorization_boundary", "parent_state", "candidate_budget", "rounds", "candidate_scope", "cpcv", "holdout", "execution_cost_gate", "survivor_gates", "trial_accounting", "integrity_references", "current_state", "package_canonical_sha256"],
+  "properties": {
+    "package_id": {"const": "strategy_discovery_v1_recovery_package_v1"},
+    "version": {"const": "1.0.0"},
+    "status": {"const": "frozen_pre_measurement"},
+    "purpose": {"type": "string", "minLength": 40},
+    "authorization_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["measurement_authorized", "backtest_authorized", "data_acquisition_authorized", "trial_creation_authorized", "ledger_append_authorized", "statistics_authorized", "promotion_authorized", "trading_authorized", "deployment_authorized"],
+      "properties": {
+        "measurement_authorized": {"const": false}, "backtest_authorized": {"const": false}, "data_acquisition_authorized": {"const": false}, "trial_creation_authorized": {"const": false}, "ledger_append_authorized": {"const": false}, "statistics_authorized": {"const": false}, "promotion_authorized": {"const": false}, "trading_authorized": {"const": false}, "deployment_authorized": {"const": false}
+      }
+    },
+    "parent_state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["starting_commit", "ledger_n", "last_sequence", "ledger_canonical_sha256", "ledger_file_sha256", "v2_4_package_canonical_sha256", "v2_4_package_file_sha256", "v2_4_statistics_manifest_file_sha256", "v2_4_statistics_artifact_file_sha256", "protocol_sha256"],
+      "properties": {
+        "starting_commit": {"const": "5225f00b01fc37228c4326bd36bf0ed1b5f3a15a"}, "ledger_n": {"const": 904}, "last_sequence": {"const": 904},
+        "ledger_canonical_sha256": {"const": "9e71eb377be3c15dd5d29bc09cac561ae1f837fc44fd136662db0d751062790e"}, "ledger_file_sha256": {"const": "1f51cb9b6c3e2d151d00054c9822cd0becf7b896bd406010f62ec585d388fae7"},
+        "v2_4_package_canonical_sha256": {"const": "ed2d4a8f4adfbd775e7b394649e57ed295dcceea05b6c5fc3624c02626bd5361"}, "v2_4_package_file_sha256": {"const": "b13d502783ed0c58e460c2bffb783faaf8da0763d39ad79ba8783c6c0cfbacaf"},
+        "v2_4_statistics_manifest_file_sha256": {"const": "35ec9677b586d8c29f5d160d8682d67b7407a9c26d59e4a83f16b96b86e69038"}, "v2_4_statistics_artifact_file_sha256": {"const": "d4299f96ba112a6e3a8c7be577a3e2278d38cb4d6fd44c9f0dfca7d9377fbfe6"}, "protocol_sha256": {"const": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e"}
+      }
+    },
+    "candidate_budget": {
+      "type": "object", "additionalProperties": false,
+      "required": ["existing_v2_4_failed_candidate_families", "additional_valid_candidate_families_max", "round_count", "candidates_per_round_max", "hard_cancel_if_additional_valid_failures", "attempted_leads_max", "cancel_if_valid_measurable_candidates_below", "total_measured_family_budget"],
+      "properties": {
+        "existing_v2_4_failed_candidate_families": {"const": 6}, "additional_valid_candidate_families_max": {"const": 18}, "round_count": {"const": 3}, "candidates_per_round_max": {"const": 6}, "hard_cancel_if_additional_valid_failures": {"const": 18}, "attempted_leads_max": {"const": 30}, "cancel_if_valid_measurable_candidates_below": {"const": 18}, "total_measured_family_budget": {"const": 24}
+      }
+    },
+    "rounds": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "object", "additionalProperties": false, "required": ["round_id", "max_new_candidate_families", "source_family_requirement", "continuation_rule"], "properties": {"round_id": {"type": "string", "pattern": "^recovery_[ABC]$"}, "max_new_candidate_families": {"const": 6}, "source_family_requirement": {"type": "string", "minLength": 10}, "continuation_rule": {"type": "string", "minLength": 20}}}},
+    "candidate_scope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pairs", "settlement", "venue", "main_timeframes", "detail_timeframe", "dynamic_pairlist", "resampling", "forward_fill", "source_family_count", "source_rule_requirement"],
+      "properties": {"pairs": {"const": ["BTC/USDT:USDT", "ETH/USDT:USDT"]}, "settlement": {"const": "USDT"}, "venue": {"const": "Bybit linear perpetuals"}, "main_timeframes": {"const": ["1h", "4h", "1d"]}, "detail_timeframe": {"const": "15m"}, "dynamic_pairlist": {"const": false}, "resampling": {"const": false}, "forward_fill": {"const": false}, "source_family_count": {"const": 3}, "source_rule_requirement": {"type": "string", "minLength": 40}}
+    },
+    "cpcv": {
+      "type": "object", "additionalProperties": false,
+      "required": ["protocol_id", "n_groups", "test_groups_per_split", "split_count", "path_count", "group_assignment", "purge_days", "embargo_days", "minimum_training_observations", "zero_training_split_policy", "fit_isolation", "path_pairings"],
+      "properties": {
+        "protocol_id": {"const": "dsr_pbo_cpcv_v2_12x2"}, "n_groups": {"const": 12}, "test_groups_per_split": {"const": 2}, "split_count": {"const": 66}, "path_count": {"const": 11}, "group_assignment": {"const": "12 contiguous chronological development-window groups; no random shuffling"}, "purge_days": {"const": 30}, "embargo_days": {"const": 30}, "minimum_training_observations": {"const": 60}, "zero_training_split_policy": {"const": "fail_closed; any split below minimum invalidates the package"}, "fit_isolation": {"const": "fit transforms and selection logic on training data only"},
+        "path_pairings": {"type": "array", "minItems": 11, "maxItems": 11, "items": {"type": "object", "additionalProperties": false, "required": ["path_id", "test_pairs"], "properties": {"path_id": {"type": "integer", "minimum": 0, "maximum": 10}, "test_pairs": {"type": "array", "minItems": 6, "maxItems": 6, "items": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 11}, "minItems": 2, "maxItems": 2}}}}}
+      }
+    },
+    "holdout": {
+      "type": "object", "additionalProperties": false,
+      "required": ["start_utc", "end_exclusive_utc", "development_end_utc", "minimum_observations", "selection_uses_holdout", "tuning_uses_holdout", "positive_after_cost_required", "holdout_failure_policy"],
+      "properties": {"start_utc": {"const": "2026-06-23T00:00:00Z"}, "end_exclusive_utc": {"const": "2026-08-22T00:00:00Z"}, "development_end_utc": {"const": "2026-06-23T00:00:00Z"}, "minimum_observations": {"const": 60}, "selection_uses_holdout": {"const": false}, "tuning_uses_holdout": {"const": false}, "positive_after_cost_required": {"const": true}, "holdout_failure_policy": {"const": "candidate fails; no post-hoc repair using holdout"}}
+    },
+    "execution_cost_gate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["engine", "native_fee_control", "base_fee_per_side", "fee_sensitivity_ladder_per_side", "slippage_value", "global_adverse_slippage_control_available", "price_modification_allowed", "return_postprocessing_allowed", "engine_patch_allowed", "survivor_rule", "limitation"],
+      "properties": {"engine": {"const": "Freqtrade pinned engine eb1a668ceb0f29b7d578156bfc24c45278c0c0f8"}, "native_fee_control": {"const": "--fee"}, "base_fee_per_side": {"const": 0.00055}, "fee_sensitivity_ladder_per_side": {"const": [0.00055, 0.00075, 0.001]}, "slippage_value": {"const": 0.0}, "global_adverse_slippage_control_available": {"const": false}, "price_modification_allowed": {"const": false}, "return_postprocessing_allowed": {"const": false}, "engine_patch_allowed": {"const": false}, "survivor_rule": {"type": "string", "minLength": 80}, "limitation": {"type": "string", "minLength": 80}}
+    },
+    "survivor_gates": {"type": "array", "minItems": 8, "items": {"type": "object", "additionalProperties": false, "required": ["gate_id", "requirement", "failure_action"], "properties": {"gate_id": {"type": "string", "pattern": "^[a-z0-9_]+$"}, "requirement": {"type": "string", "minLength": 20}, "failure_action": {"const": "candidate_family_fails; no post-result relaxation"}}}},
+    "trial_accounting": {
+      "type": "object", "additionalProperties": false,
+      "required": ["candidate_family_failure_rule", "cost_variant_counting", "ledger_n_inclusion", "new_candidate_budget_is_family_count"],
+      "properties": {"candidate_family_failure_rule": {"type": "string", "minLength": 40}, "cost_variant_counting": {"type": "string", "minLength": 60}, "ledger_n_inclusion": {"type": "string", "minLength": 40}, "new_candidate_budget_is_family_count": {"const": true}}
+    },
+    "integrity_references": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_path", "schema_sha256", "protected_files", "future_measurement_requires_new_authorization"],
+      "properties": {"schema_path": {"const": "strategy_discovery_v1/second_collection_v1/schemas/engine_fidelity_recovery_package_v1.schema.json"}, "schema_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "protected_files": {"type": "array", "minItems": 6, "items": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 5}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}}, "future_measurement_requires_new_authorization": {"const": true}}
+    },
+    "current_state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["measurement_ready", "measurement_authorized", "trial_ids_created", "ledger_changed", "statistics_run", "promotion_allowed", "trading_allowed", "deployment_allowed"],
+      "properties": {"measurement_ready": {"const": false}, "measurement_authorized": {"const": false}, "trial_ids_created": {"const": false}, "ledger_changed": {"const": false}, "statistics_run": {"const": false}, "promotion_allowed": {"const": false}, "trading_allowed": {"const": false}, "deployment_allowed": {"const": false}}
+    },
+    "package_canonical_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
