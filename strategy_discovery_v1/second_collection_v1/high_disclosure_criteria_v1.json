@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "criteria_version": "high_disclosure_paper_selection_v1",
+  "population": "immutable_original_893_filtered_candidates",
+  "selection_unit": "one_arxiv_pdf_source_record",
+  "content_requirement": "Successful acquisition of the cited PDF and successful text extraction are mandatory; metadata or abstract-only matches do not qualify.",
+  "pass_rule": "pass if at least one frozen pattern family matches the extracted PDF text and the matched heading/block contains at least 3 subsequent non-empty lines within the frozen lookahead window.",
+  "normalization": {
+    "line_text": "Unicode text from pdftotext -layout, trimmed for matching; matching is case-insensitive.",
+    "heading_line": "A match must occur on a complete line after trimming leading/trailing whitespace; no substring-only sentence match qualifies.",
+    "lookahead_nonempty_lines": 3,
+    "lookahead_max_lines": 25
+  },
+  "pattern_families": {
+    "numbered_algorithm_or_pseudocode_block": {
+      "regex": "^\\s*(?:Algorithm|Pseudocode)\\s+(?:No\\.?\\s*)?\\d+(?:\\s*[:.-].*)?$",
+      "flags": "IGNORECASE|MULTILINE",
+      "description": "A complete heading line beginning with Algorithm or Pseudocode followed by an explicit number."
+    },
+    "explicit_implementation_section": {
+      "regex": "^\\s*(?:\\d+(?:\\.\\d+)*\\s+)?Implementation(?:\\s+Details)?\\s*[:.]?\\s*$",
+      "flags": "IGNORECASE|MULTILINE",
+      "description": "A complete section-heading line named Implementation or Implementation Details, optionally numbered."
+    },
+    "appendix_trading_rules_section": {
+      "regex": "^\\s*Appendix(?:\\s+[A-Z])?\\s*[:.-]\\s*Trading\\s+Rules\\s*[:.]?\\s*$",
+      "flags": "IGNORECASE|MULTILINE",
+      "description": "A complete heading line explicitly named Appendix: Trading Rules, including a single appendix letter variant."
+    }
+  },
+  "exclusions": [
+    "Do not match title or abstract fields; only extracted PDF lines are eligible.",
+    "Do not match a sentence containing the words implementation, algorithm, pseudocode, or trading rules unless it satisfies a complete-line heading/block pattern.",
+    "Do not infer deterministic entry, exit, risk, sizing, costs, timing, or execution rules from a high-disclosure match.",
+    "Do not manually override a fail or add a paper because it looks promising.",
+    "Acquisition or text-extraction failure is a mechanical fail with a recorded failure reason."
+  ],
+  "sampling": {
+    "target_sample_size": 30,
+    "method": "Python random.Random with fixed seed over sorted passing document_id values",
+    "seed": 20260827,
+    "sample_without_replacement": true
+  },
+  "execution_boundary": {
+    "analysis_only": true,
+    "market_data_downloaded": false,
+    "backtest_run": false,
+    "trial_ledger_n": 0,
+    "candidate_promotion": false
+  },
+  "frozen_before_application": true
+}
