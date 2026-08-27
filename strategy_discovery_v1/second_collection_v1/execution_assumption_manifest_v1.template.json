@@ -1,0 +1,38 @@
+{
+  "manifest_version": "execution_assumption_manifest_v1",
+  "status": "template_not_frozen",
+  "scope": "freqtrade_strategy_v1_re_evaluation",
+  "required_fields": {
+    "instrument_universe": null,
+    "venue": null,
+    "quote_currency": null,
+    "applicable_asset_timeframe_constraints": null,
+    "position_sizing": null,
+    "risk_budget": null,
+    "notional_cap": null,
+    "leverage_cap": null,
+    "commission": null,
+    "slippage": null,
+    "spread": null,
+    "fill_rule": null,
+    "latency": null,
+    "funding_or_borrow": null,
+    "rounding_rule": null,
+    "insufficient_margin_behavior": null,
+    "external_config": null,
+    "missing_data_behavior": null,
+    "invalid_bar_behavior": null,
+    "ohlcv_manifest_refs": []
+  },
+  "field_label_requirement": "Every populated value must carry origin=external_assumption and a deterministic value or reference.",
+  "freezing_requirements": [
+    "Every value and referenced data manifest must be declared before the first measured trial in the batch.",
+    "The same values must apply to every candidate in the batch unless an explicitly declared non-tunable applicability rule excludes a candidate.",
+    "The canonical manifest hash must be included in every measured trial identity and result provenance.",
+    "Changing a value that can affect selection creates a new trial and increments the global ledger.",
+    "A missing or invalid required value keeps the manifest non-frozen and blocks all backtests."
+  ],
+  "analysis_only": true,
+  "backtest_authorized": false,
+  "live_execution_authorized": false
+}

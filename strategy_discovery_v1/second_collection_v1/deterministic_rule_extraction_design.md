@@ -1,18 +1,32 @@
 # Safe Deterministic Rule Extraction Design
 
-**Version:** `deterministic_rule_extraction_v1`  
-**Scope:** `strategy_discovery_v1/second_collection_v1/` only  
-**Purpose:** Convert source text or code into executable strategy candidates only when every required rule is explicitly evidenced.
+**Version:** `deterministic_rule_extraction_v2`
+**Scope:** `strategy_discovery_v1/second_collection_v1/` only
+**Purpose:** Separate explicit source-rule completeness from separately declared execution assumptions without weakening the final executable-contract gate.
 
 ## 1. Design decision
 
-The existing normalizer correctly fails closed, but the collection layer stops too early: it records a paper, page, notebook, or source-code locator without acquiring the cited content or mapping explicit evidence into the normalized rule vocabulary. The safe improvement is therefore **not** to weaken `normalized_strategy.schema.json` and not to infer missing rules. It is to add a provenance-preserving intermediate extraction layer.
+The existing normalizer correctly fails closed, but the collection layer stops too early: it records a paper, page, notebook, or source-code locator without acquiring the cited content or mapping explicit evidence into the normalized rule vocabulary. The safe improvement is therefore **not** to weaken `normalized_strategy.schema.json` and not to infer missing rules. It is to add a provenance-preserving intermediate extraction layer and distinguish source-rule completeness from execution-assumption completeness.
 
 The intermediate layer creates an **evidence bundle** for each source. Every proposed field is accompanied by an exact source locator, a content snapshot hash, a page/line/character span, the verbatim quote or code fragment, and an extraction method. A field can be `explicit` only when the source states it directly or code control flow deterministically expresses it. A value inferred from a title, abstract, common convention, indicator name, chart, or video narration without a complete execution specification is never promoted to `explicit`.
 
+The v2 contract has two independent completeness axes. `source_rule_complete` means the source explicitly determines the strategy logic: hypothesis, universe, clock/frequency, signal, entry, and exit/SL/TP behavior. `execution_assumption_required` means that source-rule completeness is achieved but one or more execution-environment fields—sizing, fees, slippage, spread, fill, latency, funding/borrow, or external configuration—must come from a separately frozen research manifest. These states are not equivalent to a production-ready or live-executable strategy. `execution_contract_complete` exists only when the source-rule evidence and the frozen manifest together satisfy the final normalized schema.
+
 > **Safety invariant:** If one required executable field is absent, ambiguous, contradictory, or only inferred, the record becomes `needs_review` or `rejected_incomplete`; it never becomes a normalized strategy and never creates a trial.
 
-## 2. Pipeline
+## 2. Two-level completeness contract
+
+| State | Source-rule logic | Execution environment | Permitted action |
+| --- | --- | --- | --- |
+| `source_rule_complete` | Explicit source evidence covers the strategy logic fields. | Not yet supplied or not needed for source classification. | Create a draft and proceed to the assumption gate; do not backtest yet. |
+| `execution_assumption_required` | Source-rule fields are complete and evidence-backed. | One or more execution fields are absent from the source. | Apply one batch-level frozen assumption manifest; never choose defaults per candidate. |
+| `execution_contract_complete` | Source-rule fields are complete. | All required execution fields are explicitly sourced or linked to a frozen manifest. | Eligible for the existing pre-backtest protocol if all other gates pass. |
+| `needs_review` | One or more source-rule fields are ambiguous or contradictory. | Not applicable. | Review-only; no trial. |
+| `rejected_incomplete` | Required source-rule fields are not established. | Not applicable. | No normalization or trial. |
+
+A `source_rule_complete` record is not yet a complete normalized strategy. An `execution_assumption_required` record is not allowed to borrow framework defaults silently. A single frozen manifest must declare, at minimum, position sizing, commission, slippage, spread, fill rule, latency, funding/borrow treatment, and missing-data behavior. The manifest hash becomes part of the candidate’s execution-contract identity. Changing it creates a new trial if the candidate is measured.
+
+## 3. Pipeline
 
 | Stage | Input | Output | Fail-closed rule |
 | --- | --- | --- | --- |
@@ -26,7 +40,7 @@ The intermediate layer creates an **evidence bundle** for each source. Every pro
 
 The extractor is source-aware. Academic PDFs use page/character spans and explicit mathematical or prose statements. HTML research pages use DOM-path plus character spans. Notebooks use notebook hash, cell index, and source code cell text. Code uses immutable repository revision, file path, line range, and explicit control-flow fragments. A social post or video is **lead-only** unless a stable transcript or cited primary source is acquired; it cannot directly enter the normalized candidate set.
 
-## 3. Evidence contract
+## 4. Evidence contract
 
 Each field claim has the following structure:
 
@@ -51,9 +65,9 @@ Allowed statuses are `explicit`, `explicit_but_ambiguous`, `not_found`, and `con
 
 The evidence bundle also records `source_class`, `document_id`, `document_version`, `retrieved_at`, `content_type`, `content_sha256`, `source_snapshot_hash`, `extraction_version`, `adapter_id`, and `analysis_only=true`. The bundle is append-only from the audit perspective and is never a substitute for the global trial ledger.
 
-## 4. Required completeness gate
+## 5. Required completeness gate
 
-A source can become `candidate_complete` only when explicit evidence exists for every required normalized field: `hypothesis`, `universe`, `clock`, `signal`, `entry`, `exit`, `risk`, `costs`, `constraints`, `provenance`, and `analysis_only`. The nested execution requirements are mandatory as well.
+The intermediate source-rule gate can emit `source_rule_complete` only when explicit evidence exists for the strategy hypothesis, instrument applicability, clock/frequency, signal, entry direction/condition, and exit/SL/TP or time-exit logic. It must not mark missing sizing or cost mechanics as source facts. The final gate can emit `candidate_complete` or `execution_contract_complete` only when every required normalized field is present and missing execution fields are supplied by one frozen, uniformly applied, hashed manifest.
 
 | Area | Required explicit facts |
 | --- | --- |
@@ -68,7 +82,7 @@ A source can become `candidate_complete` only when explicit evidence exists for 
 
 The gate also checks that no `lead` operation is used in a causal signal, no same-bar fill is asserted without an explicit source statement, no future information is referenced, and no source field conflicts with another source span. If a paper reports only a backtest result without executable mechanics, it remains a research lead.
 
-## 5. Source adapters
+## 6. Source adapters
 
 The first implementation should use narrow adapters rather than one general-purpose parser.
 
@@ -82,17 +96,21 @@ The first implementation should use narrow adapters rather than one general-purp
 
 For code and notebooks, the adapter must retain the original artifact and a normalized line/cell map. For PDFs and HTML, the adapter must retain the extracted text or a reproducible snapshot hash. The POC below implements the acquisition, span, and deterministic pattern layers and intentionally stops before candidate promotion.
 
-## 6. Optional comparison of social/video sources
+For `freqtrade_strategy_v1`, the adapter should classify fields in two passes. First, it parses explicit strategy logic from `populate_entry_trend`/`populate_buy_trend`, `populate_exit_trend`/`populate_sell_trend` or a declared custom-exit path, plus literal `timeframe`, `minimal_roi`, `stoploss`, and `trailing_stop` assignments. Second, it records absent execution fields such as sizing, commission, slippage, fill, latency, and external configuration as `execution_assumption_required` rather than rejecting the source-rule evidence. A hardcoded source value is explicit; a value found only in an unfetched config or framework default is not a source fact.
+
+The unchanged rejection taxonomy still applies at the primary-signal level. For code, an RSI/EMA/Bollinger import or auxiliary filter is not by itself proof that the lagging indicator is the primary entry signal. The adapter must bind any `lagging_indicator_primary` rejection to the exact primary condition span. This semantic clarification requires a separately versioned code-source filter run; it does not mutate historical filter outputs.
+
+## 7. Optional comparison of social/video sources
 
 Twitter/X posts, public handles, and YouTube videos may be useful for discovering terminology or locating a primary paper/code repository, but they are lower in the source hierarchy than academic papers, stable open code, exchange documentation, or institutional research. They should enter a separate `lead_only` queue with a lower prior trust score. A video can only become evidence after a stable transcript is captured and its claims are corroborated against a primary source; screenshots and verbal performance claims are never enough for a deterministic candidate.
 
-## 7. POC success criteria
+## 8. POC success criteria
 
 The proof of concept is considered successful if it can: acquire at least one real collected source from each tested adapter family; produce exact evidence spans and content hashes; extract explicit facts where present; label absent or ambiguous facts without filling them; produce a machine-readable review queue; reject incomplete drafts; preserve the existing normalized schema and global ledger; and leave `trial_ledger_n=0`, `backtest_run=false`, and `market_data_downloaded=false`.
 
 A positive POC result means **evidence extraction worked**, not that a strategy is valid or profitable. Only a later separately authorized stage may run the existing DSR/PBO/CPCV and out-of-sample protocol after a complete candidate passes normalization.
 
-## 8. References
+## 9. References
 
 [1]: ../schemas/normalized_strategy.schema.json "Existing deterministic normalized strategy schema"
 [2]: ../source_registry.json "Allowed source registry"
@@ -101,3 +119,5 @@ A positive POC result means **evidence extraction worked**, not that a strategy 
 [5]: https://github.com/QuantConnect/Lean "QuantConnect LEAN repository"
 [6]: https://www.aqr.com/Insights/Research "AQR Research index"
 [7]: https://www.man.com/insights "Man Insights hub"
+[8]: ./schemas/extraction_evidence_bundle_v2.schema.json "Versioned two-level evidence-bundle schema"
+[9]: ./master_prompt_v2_amendment.md "Additive master-prompt completeness amendment"
