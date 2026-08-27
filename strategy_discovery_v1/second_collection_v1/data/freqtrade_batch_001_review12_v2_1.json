@@ -1,0 +1,2091 @@
+{
+  "analysis_only": true,
+  "backtest_run": false,
+  "license": "GPL-3.0",
+  "market_data_downloaded": false,
+  "records": [
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/BreakEven.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=51-51",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "af632fe3b12361c9dc52e7d61ebbcb305a22e78adb580532010d88187a3e4efd",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/BreakEven.py",
+              "verbatim": "timeframe = '5m'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "5m"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=32-35",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "af632fe3b12361c9dc52e7d61ebbcb305a22e78adb580532010d88187a3e4efd",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/BreakEven.py",
+              "verbatim": "minimal_roi = {\n        \"0\": 0.01,      # at least 1% at first\n        \"10\": 0         # after 10min, everything goes\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.01,
+            "10": 0
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=48-48",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "af632fe3b12361c9dc52e7d61ebbcb305a22e78adb580532010d88187a3e4efd",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/BreakEven.py",
+              "verbatim": "stoploss = -0.05"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.05
+        },
+        {
+          "ambiguity_flags": [
+            "no_literal_class_assignment"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "source.trailing_stop",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=57-62",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "af632fe3b12361c9dc52e7d61ebbcb305a22e78adb580532010d88187a3e4efd",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/BreakEven.py",
+              "verbatim": "def populate_entry_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[\n            (\n            ),\n            'enter_long'] = 0\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=59-60"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=64-69",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "af632fe3b12361c9dc52e7d61ebbcb305a22e78adb580532010d88187a3e4efd",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/BreakEven.py",
+              "verbatim": "def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[\n            (\n            ),\n            'exit_long'] = 0\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=66-67"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/BreakEven.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "af632fe3b12361c9dc52e7d61ebbcb305a22e78adb580532010d88187a3e4efd",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/CustomStoplossWithPSAR.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=27-27",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/CustomStoplossWithPSAR.py",
+              "verbatim": "timeframe = '1h'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "1h"
+        },
+        {
+          "ambiguity_flags": [
+            "no_literal_class_assignment"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "source.minimal_roi",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=28-28",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/CustomStoplossWithPSAR.py",
+              "verbatim": "stoploss = -0.2"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.2
+        },
+        {
+          "ambiguity_flags": [
+            "no_literal_class_assignment"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "source.trailing_stop",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=75-82",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/CustomStoplossWithPSAR.py",
+              "verbatim": ":return: DataFrame with buy column\n        \"\"\"\n        dataframe.loc[\n            (\n                (dataframe['sar'] < dataframe['sar'].shift())\n            ),\n            'enter_long'] = 1"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=79-79"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=91-94",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/CustomStoplossWithPSAR.py",
+              "verbatim": "\"\"\"\n        # Deactivated sell signal to allow the strategy to work correctly\n        dataframe.loc[:, 'exit_long'] = 0\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=93-93"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/CustomStoplossWithPSAR.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Diamond.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=93-93",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Diamond.py",
+              "verbatim": "timeframe = '5m'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "5m"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=77-82",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Diamond.py",
+              "verbatim": "minimal_roi = {\n        \"0\": 0.242,\n        \"13\": 0.044,\n        \"51\": 0.02,\n        \"170\": 0\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.242,
+            "13": 0.044,
+            "170": 0,
+            "51": 0.02
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=85-85",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Diamond.py",
+              "verbatim": "stoploss = -0.271"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.271
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=88-88",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Diamond.py",
+              "verbatim": "trailing_stop = True"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.trailing_stop",
+          "status": "explicit",
+          "value": true
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=134-140",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Diamond.py",
+              "verbatim": "if conditions:\n            dataframe.loc[\n                reduce(lambda x, y: x & y, conditions),\n                'enter_long']=1\n\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=126-132",
+              "lines=137-137"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=150-155",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Diamond.py",
+              "verbatim": ")\n        if conditions:\n            dataframe.loc[\n                reduce(lambda x, y: x & y, conditions),\n                'exit_long']=1\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=143-149",
+              "lines=153-153"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/Diamond.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/FixedRiskRewardLoss.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [
+            "no_literal_class_assignment"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "source.timeframe",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_literal_class_assignment"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "source.minimal_roi",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=38-38",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "338fc39a8f236d0ddb79c0f7e6a1f593be721bdb2a598815347e0883cc7696fc",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/FixedRiskRewardLoss.py",
+              "verbatim": "stoploss = -0.9"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.9
+        },
+        {
+          "ambiguity_flags": [
+            "no_literal_class_assignment"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "source.trailing_stop",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=106-109",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "338fc39a8f236d0ddb79c0f7e6a1f593be721bdb2a598815347e0883cc7696fc",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/FixedRiskRewardLoss.py",
+              "verbatim": "\"\"\"\n        # Always buys\n        dataframe.loc[:, 'enter_long'] = 1\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=108-108"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=118-121",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "338fc39a8f236d0ddb79c0f7e6a1f593be721bdb2a598815347e0883cc7696fc",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/FixedRiskRewardLoss.py",
+              "verbatim": "# Never sells\n        dataframe.loc[:, 'exit_long'] = 0\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=120-120"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability",
+        "missing_explicit_source_rule_field:timeframe"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/FixedRiskRewardLoss.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": false
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "338fc39a8f236d0ddb79c0f7e6a1f593be721bdb2a598815347e0883cc7696fc",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/GodStra.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=77-77",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "54c9e147b5c2c08499c4f94441ea7837110bbf638f3c3c8848242c78d2c3720c",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/GodStra.py",
+              "verbatim": "timeframe = '12h'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "12h"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=61-66",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "54c9e147b5c2c08499c4f94441ea7837110bbf638f3c3c8848242c78d2c3720c",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/GodStra.py",
+              "verbatim": "minimal_roi = {\n        \"0\": 0.3556,\n        \"4818\": 0.21275,\n        \"6395\": 0.09024,\n        \"22372\": 0\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.3556,
+            "22372": 0,
+            "4818": 0.21275,
+            "6395": 0.09024
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=69-69",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "54c9e147b5c2c08499c4f94441ea7837110bbf638f3c3c8848242c78d2c3720c",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/GodStra.py",
+              "verbatim": "stoploss = -0.34549"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.34549
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=72-72",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "54c9e147b5c2c08499c4f94441ea7837110bbf638f3c3c8848242c78d2c3720c",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/GodStra.py",
+              "verbatim": "trailing_stop = True"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.trailing_stop",
+          "status": "explicit",
+          "value": true
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=132-138",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "54c9e147b5c2c08499c4f94441ea7837110bbf638f3c3c8848242c78d2c3720c",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/GodStra.py",
+              "verbatim": "print(conditions)\n        dataframe.loc[\n            reduce(lambda x, y: x & y, conditions),\n            'enter_long'] = 1\n\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=135-135"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=172-178",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "54c9e147b5c2c08499c4f94441ea7837110bbf638f3c3c8848242c78d2c3720c",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/GodStra.py",
+              "verbatim": "conditions.append(DFIND < REAL)\n\n        dataframe.loc[\n            reduce(lambda x, y: x & y, conditions),\n            'exit_long'] = 1\n\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=175-175"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/GodStra.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "54c9e147b5c2c08499c4f94441ea7837110bbf638f3c3c8848242c78d2c3720c",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Heracles.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=57-57",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Heracles.py",
+              "verbatim": "timeframe = '4h'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "4h"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=46-51",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Heracles.py",
+              "verbatim": "minimal_roi = {\n        \"0\": 0.598,\n        \"644\": 0.166,\n        \"3269\": 0.115,\n        \"7289\": 0\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.598,
+            "3269": 0.115,
+            "644": 0.166,
+            "7289": 0
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=54-54",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Heracles.py",
+              "verbatim": "stoploss = -0.256"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.256
+        },
+        {
+          "ambiguity_flags": [
+            "no_literal_class_assignment"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "source.trailing_stop",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=108-114",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Heracles.py",
+              "verbatim": "if conditions:\n            dataframe.loc[\n                reduce(lambda x, y: x & y, conditions),\n                'enter_long']=1\n\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=95-107",
+              "lines=111-111"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=118-121",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Heracles.py",
+              "verbatim": "Sell strategy Hyperopt will build and use.\n        \"\"\"\n        dataframe.loc[:, 'exit_long'] = 0\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=120-120"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/Heracles.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/HourBasedStrategy.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=77-77",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/HourBasedStrategy.py",
+              "verbatim": "timeframe = '1h'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "1h"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=66-71",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/HourBasedStrategy.py",
+              "verbatim": "minimal_roi = {\n        \"0\": 0.528,\n        \"169\": 0.113,\n        \"528\": 0.089,\n        \"1837\": 0\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.528,
+            "169": 0.113,
+            "1837": 0,
+            "528": 0.089
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=74-74",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/HourBasedStrategy.py",
+              "verbatim": "stoploss = -0.10"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.1
+        },
+        {
+          "ambiguity_flags": [
+            "no_literal_class_assignment"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "source.trailing_stop",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=89-96",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/HourBasedStrategy.py",
+              "verbatim": "def populate_entry_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[\n            (\n                (dataframe['hour'].between(self.buy_hour_min.value, self.buy_hour_max.value))\n            ),\n            'enter_long'] = 1\n\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=92-92"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=98-104",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/HourBasedStrategy.py",
+              "verbatim": "def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[\n            (\n                (dataframe['hour'].between(self.sell_hour_min.value, self.sell_hour_max.value))\n            ),\n            'exit_long'] = 1\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=101-101"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/HourBasedStrategy.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/MultiMa.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=51-51",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/MultiMa.py",
+              "verbatim": "timeframe = \"4h\""
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "4h"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=34-39",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/MultiMa.py",
+              "verbatim": "minimal_roi = {\n        \"0\": 0.523,\n        \"1553\": 0.123,\n        \"2332\": 0.076,\n        \"3169\": 0\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.523,
+            "1553": 0.123,
+            "2332": 0.076,
+            "3169": 0
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=42-42",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/MultiMa.py",
+              "verbatim": "stoploss = -0.345"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.345
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=45-45",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/MultiMa.py",
+              "verbatim": "trailing_stop = False  # value loaded from strategy"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.trailing_stop",
+          "status": "explicit",
+          "value": false
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=83-86",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/MultiMa.py",
+              "verbatim": "if conditions:\n            dataframe.loc[reduce(lambda x, y: x & y, conditions), \"enter_long\"] = 1\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=74-82",
+              "lines=85-85"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=96-99",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/MultiMa.py",
+              "verbatim": "if conditions:\n            dataframe.loc[reduce(lambda x, y: x | y, conditions), \"exit_long\"] = 1\n        return dataframe"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=89-95",
+              "lines=98-98"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/MultiMa.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/PatternRecognition.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=55-55",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PatternRecognition.py",
+              "verbatim": "timeframe = '1d'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "1d"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=38-43",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PatternRecognition.py",
+              "verbatim": "minimal_roi = {\n        \"0\": 0.936,\n        \"5271\": 0.332,\n        \"18147\": 0.086,\n        \"48152\": 0\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.936,
+            "18147": 0.086,
+            "48152": 0,
+            "5271": 0.332
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=46-46",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PatternRecognition.py",
+              "verbatim": "stoploss = -0.288"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.288
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=49-49",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PatternRecognition.py",
+              "verbatim": "trailing_stop = True"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.trailing_stop",
+          "status": "explicit",
+          "value": true
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=70-77",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PatternRecognition.py",
+              "verbatim": "def populate_entry_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[\n            (\n                (dataframe[self.buy_pr1.value]==self.buy_vol1.value)\n                # |(dataframe[self.buy_pr2.value]==self.buy_vol2.value)\n            ),\n            'enter_long'] = 1"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=73-73"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=80-87",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PatternRecognition.py",
+              "verbatim": "def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[\n            (\n            #     (dataframe[self.sell_pr1.value]==self.sell_vol1.value)|\n            #     (dataframe[self.sell_pr2.value]==self.sell_vol2.value)\n            ),\n            'exit_long'] = 1"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=82-85"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/PatternRecognition.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/PowerTower.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=31-31",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PowerTower.py",
+              "verbatim": "timeframe = '5m'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "5m"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=58-63",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PowerTower.py",
+              "verbatim": "minimal_roi = {\n        \"0\": 0.213,\n        \"39\": 0.048,\n        \"56\": 0.029,\n        \"159\": 0\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.213,
+            "159": 0,
+            "39": 0.048,
+            "56": 0.029
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=66-66",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PowerTower.py",
+              "verbatim": "stoploss = -0.288"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.288
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=69-69",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PowerTower.py",
+              "verbatim": "trailing_stop = False  # value loaded from strategy"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.trailing_stop",
+          "status": "explicit",
+          "value": false
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=84-91",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PowerTower.py",
+              "verbatim": "def populate_entry_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[\n            (\n                    (dataframe['close'].shift(0) > dataframe['close'].shift(2) ** self.buy_pow.value) &\n                    (dataframe['close'].shift(1) > dataframe['close'].shift(3) ** self.buy_pow.value) &\n                    (dataframe['close'].shift(2) > dataframe['close'].shift(4) ** self.buy_pow.value)\n\n            ),"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=87-89"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=96-103",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/PowerTower.py",
+              "verbatim": "def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[(\n                (dataframe['close'].shift(0) < dataframe['close'].shift(2) ** self.sell_pow.value) |\n                (dataframe['close'].shift(1) < dataframe['close'].shift(3) ** self.sell_pow.value) |\n                (dataframe['close'].shift(2) < dataframe['close'].shift(4) ** self.sell_pow.value)\n        ),\n        'exit_long'] = 1"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=98-100"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/PowerTower.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Strategy004.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=38-38",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy004.py",
+              "verbatim": "timeframe = '5m'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "5m"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=26-31",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy004.py",
+              "verbatim": "minimal_roi = {\n        \"60\":  0.01,\n        \"30\":  0.03,\n        \"20\":  0.04,\n        \"0\":  0.05\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.05,
+            "20": 0.04,
+            "30": 0.03,
+            "60": 0.01
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=35-35",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy004.py",
+              "verbatim": "stoploss = -0.10"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.1
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=41-41",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy004.py",
+              "verbatim": "trailing_stop = False"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.trailing_stop",
+          "status": "explicit",
+          "value": false
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=118-125",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy004.py",
+              "verbatim": ":return: DataFrame with buy column\n        \"\"\"\n        dataframe.loc[\n            (\n                (\n                    (dataframe['adx'] > 50) |\n                    (dataframe['slowadx'] > 26)\n                ) &"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=122-138"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=148-155",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Strategy004.py",
+              "verbatim": ":return: DataFrame with buy column\n        \"\"\"\n        dataframe.loc[\n            (\n                (dataframe['slowadx'] < 25) &\n                ((dataframe['fastk'] > 70) | (dataframe['fastd'] > 70)) &\n                (dataframe['fastk-previous'] < dataframe['fastd-previous']) &\n                (dataframe['close'] > dataframe['ema5'])"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=152-155"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/Strategy004.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a",
+      "trial_created": false
+    },
+    {
+      "analysis_only": true,
+      "backtest_run": false,
+      "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Supertrend.py",
+      "execution_assumption_status": "not_evaluated",
+      "field_claims": [
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=66-66",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Supertrend.py",
+              "verbatim": "timeframe = '1h'"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.timeframe",
+          "status": "explicit",
+          "value": "1h"
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=50-55",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Supertrend.py",
+              "verbatim": "minimal_roi = {\n        \"0\": 0.087,\n        \"372\": 0.058,\n        \"861\": 0.029,\n        \"2221\": 0\n    }"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.minimal_roi",
+          "status": "explicit",
+          "value": {
+            "0": 0.087,
+            "2221": 0,
+            "372": 0.058,
+            "861": 0.029
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=58-58",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Supertrend.py",
+              "verbatim": "stoploss = -0.265"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.stoploss",
+          "status": "explicit",
+          "value": -0.265
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=61-61",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Supertrend.py",
+              "verbatim": "trailing_stop = True"
+            }
+          ],
+          "extraction_method": "deterministic_pattern",
+          "field_path": "source.trailing_stop",
+          "status": "explicit",
+          "value": true
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=122-129",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Supertrend.py",
+              "verbatim": "def populate_entry_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[\n            (\n               (dataframe[f'supertrend_1_buy_{self.buy_m1.value}_{self.buy_p1.value}'] == 'up') &\n               (dataframe[f'supertrend_2_buy_{self.buy_m2.value}_{self.buy_p2.value}'] == 'up') &\n               (dataframe[f'supertrend_3_buy_{self.buy_m3.value}_{self.buy_p3.value}'] == 'up') & # The three indicators are 'up' for the current candle\n               (dataframe['volume'] > 0) # There is at least some trading volume\n        ),"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "entry.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=125-128"
+            ],
+            "direction_fields": [
+              "enter_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [],
+          "claim_origin": "source",
+          "evidence": [
+            {
+              "locator": "lines=134-141",
+              "locator_type": "code_lines",
+              "snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f",
+              "source_url": "https://github.com/freqtrade/freqtrade-strategies/blob/eff78d3ce3456b52c68a4e9a33cc055a56b801ff/user_data/strategies/Supertrend.py",
+              "verbatim": "def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:\n        dataframe.loc[\n            (\n               (dataframe[f'supertrend_1_sell_{self.sell_m1.value}_{self.sell_p1.value}'] == 'down') &\n               (dataframe[f'supertrend_2_sell_{self.sell_m2.value}_{self.sell_p2.value}'] == 'down') &\n               (dataframe[f'supertrend_3_sell_{self.sell_m3.value}_{self.sell_p3.value}'] == 'down') & # The three indicators are 'down' for the current candle\n               (dataframe['volume'] > 0) # There is at least some trading volume\n            ),"
+            }
+          ],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.trigger",
+          "status": "explicit",
+          "value": {
+            "assignment_count": 1,
+            "condition_spans": [
+              "lines=137-140"
+            ],
+            "direction_fields": [
+              "exit_long"
+            ]
+          }
+        },
+        {
+          "ambiguity_flags": [
+            "custom_exit_method_absent"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "exit.custom_exit",
+          "status": "not_found"
+        },
+        {
+          "ambiguity_flags": [
+            "no_source_pair_or_universe_rule"
+          ],
+          "claim_origin": "source",
+          "evidence": [],
+          "extraction_method": "ast_control_flow",
+          "field_path": "universe.instrument_applicability",
+          "status": "not_found"
+        }
+      ],
+      "license": "GPL-3.0",
+      "market_data_downloaded": false,
+      "primary_signal_filter": {
+        "category": null,
+        "decision": "pass",
+        "evidence": {
+          "entry_indicator_tokens": [],
+          "entry_method": "populate_entry_trend"
+        }
+      },
+      "promotion_decision": "needs_review",
+      "review_reasons": [
+        "missing_explicit_source_rule_field:instrument_applicability"
+      ],
+      "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+      "source_path": "user_data/strategies/Supertrend.py",
+      "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+      "source_rule_fields": {
+        "entry_logic": true,
+        "exit_logic": true,
+        "instrument_applicability": false,
+        "stop_or_target_or_time_exit": true,
+        "timeframe": true
+      },
+      "source_rule_status": "needs_review",
+      "source_snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f",
+      "trial_created": false
+    }
+  ],
+  "review_count": 12,
+  "review_queue_version": "freqtrade_batch_001_review12_v2_1",
+  "review_scope": "instrument_applicability_timeframe_exit_semantics_and_unresolved_control_flow",
+  "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+  "source_evidence_artifact": "/home/ubuntu/crypto-research-signal-system/strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_pinned_source_evidence_v2_1.json",
+  "source_evidence_artifact_sha256": "f8067fffd4a4ed445d433dc14650d7927f30e8e608f5b0a96f0480f74859cacd",
+  "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+  "trial_created": false,
+  "trial_ledger_n": 893
+}
