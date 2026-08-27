@@ -1,0 +1,1036 @@
+{
+  "analysis_only": true,
+  "backtest_run": false,
+  "candidates": [
+    {
+      "abstract": "We consider an investor who wants to hedge a path-dependent option with maturity $T$ using a static hedging portfolio using cash, the underlying, and vanilla put/call options on the same underlying with maturity $ t_1$, where $0 < t_1 < T$. We propose a model-free approach to construct such a portfolio. The framework is inspired by the \\textit{primal-dual} Martingale Optimal Transport (MOT) problem, which was pioneered by \\cite{beiglbock2013model}. The optimization problem is to determine the portfolio composition that minimizes the expected worst-case hedging error at $t_1$ (that coincides with the maturity of the options that are used in the hedging portfolio). The worst-case scenario corresponds to the distribution that yields the worst possible hedging performance. This formulation leads to a \\textit{min-max} problem. We provide a numerical scheme for solving this problem when a finite number of vanilla option prices are available. Numerical results on the hedging performance of this model-free approach when the option prices are generated using a \\textit{Black-Scholes} and a \\textit{Merton Jump diffusion} model are presented. We also provide theoretical bounds on the hedging error at $T$, the maturity of the target option.",
+      "authors": [
+        "Purba Banerjee",
+        "Srikanth Iyer",
+        "Shashi Jain"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2511.00781v1",
+      "categories": [
+        "q-fin.MF",
+        "math.OC",
+        "math.PR",
+        "q-fin.RM"
+      ],
+      "document_id": "2511.00781v1",
+      "document_title": "Robust Hedging of path-dependent options using a min-max algorithm",
+      "document_version": "1",
+      "metadata_snapshot_hash": "eba40a242a57cf80f902f5135872bc5072d0ccc23ca268f71b8dcd175cbe48d1",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-11-02T03:26:27Z",
+      "retrieved_at": "2026-08-26T03:43:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.00781v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2025-11-02T03:26:27Z"
+    },
+    {
+      "abstract": "This paper investigates estimation and inference of a Spatial Arbitrage Pricing Theory (SAPT) model that integrates spatial interactions with multi-factor analysis, accommodating both observable and latent factors. Building on the classical mean-variance analysis, we introduce a class of Spatial Capital Asset Pricing Models (SCAPM) that account for spatial effects in high-dimensional assets, where we define {\\it spatial rho} as a counterpart to market beta in CAPM. We then extend SCAPM to a general SAPT framework under a {\\it complete} market setting by incorporating multiple factors. For SAPT with observable factors, we propose a generalized shrinkage Yule-Walker (SYW) estimation method that integrates ridge regression to estimate spatial and factor coefficients. When factors are latent, we first apply an autocovariance-based eigenanalysis to extract factors, then employ the SYW method using the estimated factors. We establish asymptotic properties for these estimators under high-dimensional settings where both the dimension and sample size diverge. Finally, we use simulated and real data examples to demonstrate the efficacy and usefulness of the proposed model and method.",
+      "authors": [
+        "Zhaoxing Gao",
+        "Sihan Tu",
+        "Ruey S. Tsay"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2511.01271v1",
+      "categories": [
+        "econ.EM",
+        "q-fin.PR",
+        "q-fin.ST"
+      ],
+      "document_id": "2511.01271v1",
+      "document_title": "High-Dimensional Spatial Arbitrage Pricing Theory with Heterogeneous Interactions",
+      "document_version": "1",
+      "metadata_snapshot_hash": "d31a28e91b301eff2e1337c0bb05b6f5de3691d65544990e268bf16575a558b6",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-11-03T06:45:42Z",
+      "retrieved_at": "2026-08-26T03:43:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.01271v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2025-11-03T06:45:42Z"
+    },
+    {
+      "abstract": "In this work, we demonstrate experimentally that the execution flow, $I = dV/dt$, is the fundamental driving force of market dynamics. We develop a numerical framework to calculate execution flow from the data using the Radon-Nikodym derivative. A notable feature of this approach is its ability to automatically determine thresholds that can serve as actionable triggers. The technique also determines the characteristic time scale directly from the corresponding eigenproblem. The methodology has been validated on actual market data to support these findings. Additionally, we introduce a framework based on the Christoffel function spectrum, which is invariant under arbitrary non-degenerate linear transformations of input attributes and offers an alternative to traditional principal component analysis (PCA), which is limited to unitary invariance.",
+      "authors": [
+        "Mikhail Gennadievich Belov",
+        "Victor Victorovich Dubov",
+        "Vadim Konstantinovich Ivanov",
+        "Alexander Yurievich Maslov",
+        "Olga Vladimirovna Proshina",
+        "Vladislav Gennadievich Malyshkin"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2511.01471v2",
+      "categories": [
+        "q-fin.CP",
+        "math.NA",
+        "q-fin.TR"
+      ],
+      "document_id": "2511.01471v2",
+      "document_title": "Trade Execution Flow as the Underlying Source of Market Dynamics",
+      "document_version": "2",
+      "metadata_snapshot_hash": "74dc537f80660c05c640e2b0c23dfff5f7dfcd6daa66f15b93829068c480cc8d",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-11-03T11:30:59Z",
+      "retrieved_at": "2026-08-26T03:43:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.01471v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-05-05T17:04:34Z"
+    },
+    {
+      "abstract": "Agent-based modelling (ABM) approaches for high-frequency financial markets are difficult to calibrate and validate, partly due to the large parameter space created by defining fixed agent policies. Multi-agent reinforcement learning (MARL) enables more realistic agent behaviour and reduces the number of free parameters, but the heavy computational cost has so far limited research efforts. To address this, we introduce JaxMARL-HFT (JAX-based Multi-Agent Reinforcement Learning for High-Frequency Trading), the first GPU-accelerated open-source multi-agent reinforcement learning environment for high-frequency trading (HFT) on market-by-order (MBO) data. Extending the JaxMARL framework and building on the JAX-LOB implementation, JaxMARL-HFT is designed to handle a heterogeneous set of agents, enabling diverse observation/action spaces and reward functions. It is designed flexibly, so it can also be used for single-agent RL, or extended to act as an ABM with fixed-policy agents. Leveraging JAX enables up to a 240x reduction in end-to-end training time, compared with state-of-the-art reference implementations on the same hardware. This significant speed-up makes it feasible to exploit the large, granular datasets available in high-frequency trading, and to perform the extensive hyperparameter sweeps required for robust and efficient MARL research in trading. We demonstrate the use of JaxMARL-HFT with independent Proximal Policy Optimization (IPPO) for a two-player environment, with an order execution and a market making agent, using one year of LOB data (400 million orders), and show that these agents learn to outperform standard benchmarks. The code for the JaxMARL-HFT framework is available on GitHub.",
+      "authors": [
+        "Valentin Mohl",
+        "Sascha Frey",
+        "Reuben Leyland",
+        "Kang Li",
+        "George Nigmatulin",
+        "Mihai Cucuringu",
+        "Stefan Zohren",
+        "Jakob Foerster",
+        "Anisoara Calinescu"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2511.02136v1",
+      "categories": [
+        "q-fin.TR",
+        "cs.MA"
+      ],
+      "document_id": "2511.02136v1",
+      "document_title": "JaxMARL-HFT: GPU-Accelerated Large-Scale Multi-Agent Reinforcement Learning for High-Frequency Trading",
+      "document_version": "1",
+      "metadata_snapshot_hash": "a786a28b0ff2e4fbe5c49c12dacc14591a1e4d2be950a0b9e615fded159440ed",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-11-03T23:56:15Z",
+      "retrieved_at": "2026-08-26T03:43:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.02136v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2025-11-03T23:56:15Z"
+    },
+    {
+      "abstract": "The finite sample effect on the Hurst exponent (HE) of realized volatility time series is examined using Bitcoin data. This study finds that the HE decreases as the sampling period $\u0394$ increases and a simple finite sample ansatz closely fits the HE data. We obtain values of the HE as $\u0394\\rightarrow 0$, which are smaller than 1/2, indicating rough volatility. The relative error is found to be $1\\%$ for the widely used five-minute realized volatility. Performing a multifractal analysis, we find the multifractality in the realized volatility time series, smaller than that of the price-return time series.",
+      "authors": [
+        "Tetsuya Takaishi"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2511.03314v1",
+      "categories": [
+        "q-fin.ST"
+      ],
+      "document_id": "2511.03314v1",
+      "document_title": "Multifractality and sample size influence on Bitcoin volatility patterns",
+      "document_version": "1",
+      "metadata_snapshot_hash": "0bd44607d2b633f383f4889cc8baa8cd445f76bdf54f26f9e1e81cb4939ef330",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-11-05T09:27:44Z",
+      "retrieved_at": "2026-08-26T03:43:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.03314v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2025-11-05T09:27:44Z"
+    },
+    {
+      "abstract": "The calculation of the insurance liabilities of a cohort of dependent individuals in general requires the solution of a high-dimensional system of coupled linear forward integro-differential equations, which is infeasible for a larger cohort. However, by using a mean-field model, the high dimensional system of linear forward equations can be replaced by a low-dimensional system of non-linear forward integro-differential equations. We show that, subject to certain regularity conditions, the insurance liability viewed as a (conditional) expectation of a functional of an underlying jump process converges to its mean-field counterpart, as the number of individuals in the cohort goes to infinity. Examples from both life- and non-life insurance illuminate the practical importance of mean-field approximations.",
+      "authors": [
+        "Philipp C. Hornung"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2511.04198v2",
+      "categories": [
+        "q-fin.RM",
+        "math.PR"
+      ],
+      "document_id": "2511.04198v2",
+      "document_title": "Mean-field approximations in insurance",
+      "document_version": "2",
+      "metadata_snapshot_hash": "415f9f1cbbc28c0eb4127f30a35b1296c4272f2cf5253156eea96b2bc7b2fe95",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-11-06T08:59:21Z",
+      "retrieved_at": "2026-08-26T03:43:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.04198v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-04-13T08:24:13Z"
+    },
+    {
+      "abstract": "Probabilistic forecasting is crucial in multivariate financial time-series for constructing efficient portfolios that account for complex cross-sectional dependencies. In this paper, we propose Diffolio, a diffusion model designed for multivariate financial time-series forecasting and portfolio construction. Diffolio employs a denoising network with a hierarchical attention architecture, comprising both asset-level and market-level layers. Furthermore, to better reflect cross-sectional correlations, we introduce a correlation-guided regularizer informed by a stable estimate of the target correlation matrix. This structure effectively extracts salient features not only from historical returns but also from asset-specific and systematic covariates, significantly enhancing the performance of forecasts and portfolios. Experimental results on the daily excess returns of 12 industry portfolios show that Diffolio outperforms various probabilistic forecasting baselines in multivariate forecasting accuracy and portfolio performance. Moreover, in portfolio experiments, portfolios constructed from Diffolio's forecasts show consistently robust performance, thereby outperforming those from benchmarks by achieving higher Sharpe ratios for the mean-variance tangency portfolio and higher certainty equivalents for the growth-optimal portfolio. These results demonstrate the superiority of our proposed Diffolio in terms of not only statistical accuracy but also economic significance.",
+      "authors": [
+        "So-Yoon Cho",
+        "Jin-Young Kim",
+        "Kayoung Ban",
+        "Hyeng Keun Koo",
+        "Hyun-Gyoon Kim"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2511.07014v2",
+      "categories": [
+        "cs.CE",
+        "cs.AI",
+        "econ.EM",
+        "q-fin.PM"
+      ],
+      "document_id": "2511.07014v2",
+      "document_title": "Diffolio: A Diffusion Model for Multivariate Probabilistic Financial Time-Series Forecasting and Portfolio Construction",
+      "document_version": "2",
+      "metadata_snapshot_hash": "3263955c2d72a749dcc3b61eaec8e8c85d20bf448b93bbb3040e433af6954fe4",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-11-10T12:05:32Z",
+      "retrieved_at": "2026-08-26T03:43:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.07014v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-03-29T05:49:35Z"
+    },
+    {
+      "abstract": "Europe's largest bank by assets as of 2025 started out in the 1860s in one of Europe's colonies: The Hongkong and Shanghai Banking Co (HSBC). Multiple wars forced Qing China and later the young Republic of China into a series of unequal treaties, one of which was the forced legalisation of the opium trade from parts of the British Empire into China, another was opening several cities, including Shanghai, for trade and granting extensive civil, property and business rights to non-residents and yet another was the annexation of Hong Kong by the United Kingdom. These are the conditions that created HSBC and in which it thrived, including from opium-related profits. During periods of relative calm, the bank grew geographically and made profits -- whether in moral or unethical, whether in legal or unlawful ways -- which helped HSBC weather the storms of civil and world wars. Other aspects contributed to HSBC's survival and success, such as its global nature, which allowed it to diversify and shift away from regions when danger emerges there and find shelter in safer havens. Yet the resilient survival abilities and the financial success of HSBC until 1950 should not distract from the fact that in addition to its tainted cradle and early profits from facilitating the poisoning of a whole society, its human resource system was also discrimination based, attempting to divide the one human race into different groups -- in spite of such practises being opposed to medical and biological facts. What is particularly interesting to see is that not only has HSBC yet to apologise for the early drug-related blood money it made: it even fails to mention its colonial, drug profits tainted past on any of its many history-themed pages sighted. Later sections contain possible reasons for HSBC's resilience and success, particularly interesting for entrepreneurs.",
+      "authors": [
+        "Christopher Mantzaris",
+        "Ajda Fo\u0161ner"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2511.10715v1",
+      "categories": [
+        "econ.GN",
+        "q-fin.GN",
+        "q-fin.RM"
+      ],
+      "document_id": "2511.10715v1",
+      "document_title": "HSBC until 1950: From its colonial cradle past the World Wars",
+      "document_version": "1",
+      "metadata_snapshot_hash": "33bcf57edd7ec651ef82a173c7b4bca4c411213ee7b5165327fbc2883e21034d",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-11-13T14:16:40Z",
+      "retrieved_at": "2026-08-26T03:43:15Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2511.10715v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2025-11-13T14:16:40Z"
+    },
+    {
+      "abstract": "This paper measures price differences between Hegic option quotes on Arbitrum and a model-based benchmark built on Black--Scholes model with regime-sensitive volatility estimated via a two-regime MS-AR-(GJR)-GARCH model. Using option-level feasible GLS, we find benchmark prices exceed Hegic quotes on average, especially for call options. The price spread rises with order size, strike, maturity, and estimated volatility, and falls with trading volume. By underlying, wrapped Bitcoin options show larger and more persistent spreads, while Ethereum options are closer to the benchmark. The framework offers a data-driven analysis for monitoring and calibrating on-chain option pricing logic.",
+      "authors": [
+        "Anastasiia Zbandut"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2512.20190v1",
+      "categories": [
+        "q-fin.PR",
+        "q-fin.RM"
+      ],
+      "document_id": "2512.20190v1",
+      "document_title": "Pricing of wrapped Bitcoin and Ethereum on-chain options",
+      "document_version": "1",
+      "metadata_snapshot_hash": "d22e18663ded85f16887744fddb0db1d6252db8bbab4aeb84685d7c50edc240b",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-12-23T09:29:57Z",
+      "retrieved_at": "2026-08-26T03:42:55Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2512.20190v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2025-12-23T09:29:57Z"
+    },
+    {
+      "abstract": "Sparse index tracking is often evaluated through rolling reconstruction: a sparse portfolio is fitted on an in-sample window, held over the next period, and rebuilt when the window rolls forward. This can achieve low realised tracking error, but it treats rebalancing primarily as repeated construction and can generate large turnover and frequent substitutions in the selected constituents. We propose a new workflow that separates sparse-tracker construction from sparse-tracker maintenance. A hybrid optimisation-plus-sampling framework provides the metrics operating at the decision level for both layers. The initial tracker is built from a calibrated shrinkage model and uncertainty-aware posterior support screening. Subsequent rebalance dates are handled in the self-financing change variable $\u0394w$. The default action is to preserve the existing tracker; local repairs are implemented only when realised tracking deterioration and posterior directional evidence jointly suggest intervention. In a 2020-2025 S&P 500-style case study, we show that the proposed tracker occupies a distinct low-turnover operating region. Moreover, we demonstrate that the proposed $\u0394w$ maintenance layer can be attached to externally constructed trackers, where it gives consistent improvements over simply holding the initial tracker. Additional diagnostics, sensitivity experiments, and computational details are reported in the companion Supplementary Material. Replication code and logs of several experiments are available at \\href{https://github.com/droxanas/Low-Turnover-Rebalancing-for-Sparse-Index-Tracking/}{https://github.com/droxanas/Low-Turnover-Rebalancing-for-Sparse-Index-Tracking/}.",
+      "authors": [
+        "Dimitrios Roxanas"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2512.22109v2",
+      "categories": [
+        "q-fin.CP",
+        "math.OC",
+        "q-fin.PM",
+        "stat.AP",
+        "stat.CO"
+      ],
+      "document_id": "2512.22109v2",
+      "document_title": "Low-Turnover Rebalancing for Sparse Index Tracking",
+      "document_version": "2",
+      "metadata_snapshot_hash": "e615e77162c86568e65b4a58ca28c7f63094b145814c4e2fa80bc25c1c5d6d16",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-12-26T18:46:06Z",
+      "retrieved_at": "2026-08-26T03:42:55Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2512.22109v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-07-08T16:33:21Z"
+    },
+    {
+      "abstract": "Islamic equity screening relies on multiple binary rulebooks that often classify the same firm differently. This paper develops a Continuous Shariah Compliance Index (CSCI) on $[0,1]$ that embeds the published business-activity and financial-ratio thresholds of six leading standards in a single transparent measure. Using CRSP/Compustat U.S. equities from 1999-2024 with lagged accounting inputs and monthly portfolio formation, we document four results. First, existing binary standards map to distinct regions of a common compliance scale, so firms that receive the same pass/fail label can still differ materially in compliance strength. Second, CSCI-threshold portfolios provide a transparent way to vary compliance intensity while retaining economically meaningful diversification, although baseline risk-adjusted performance declines modestly as thresholds tighten. Third, the September 2023 DJIM/S&P methodology change admits firms with materially lower CSCI scores than firms that remained compliant under both the old and new rules. Fourth, in cross-sectional return tests, CSCI is not reliably associated with higher expected returns once standard characteristics are controlled for. The main contribution of CSCI is therefore measurement and portfolio design rather than the discovery of a new priced factor.",
+      "authors": [
+        "Abdulrahman Qadi",
+        "Akash Sharma",
+        "Francesca Medda"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2512.22858v2",
+      "categories": [
+        "q-fin.PM",
+        "q-fin.GN"
+      ],
+      "document_id": "2512.22858v2",
+      "document_title": "From Binary Screens to Continuous Compliance: A Shariah Screening Measure for Portfolio Design",
+      "document_version": "2",
+      "metadata_snapshot_hash": "f856184a1cebaf70dae400f0d3c32969be25160778cbb6415ab12742c97d6edc",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-12-28T10:04:53Z",
+      "retrieved_at": "2026-08-26T03:42:55Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2512.22858v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-03-11T01:53:24Z"
+    },
+    {
+      "abstract": "The use of neural networks trained on individual claims data has become increasingly popular in the actuarial reserving literature. We consider how to best input historical payment data in neural network models. Additionally, case estimates are also available in the format of a time series, and we extend our analysis to assessing their predictive power. In this paper, we compare a feed-forward neural network trained on summarised transactions to a recurrent neural network equipped to analyse a claim's entire payment history and/or case estimate development history. We draw conclusions from training and comparing the performance of the models on multiple, comparable highly complex datasets simulated from SPLICE (Avanzi, Taylor and Wang, 2023). We find evidence that case estimates will improve predictions significantly, but that equipping the neural network with memory only leads to meagre improvements. Although the case estimation process and quality will vary significantly between insurers, we provide a standardised methodology for assessing their value.",
+      "authors": [
+        "Benjamin Avanzi",
+        "Matthew Lambrianidis",
+        "Greg Taylor",
+        "Bernard Wong"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2601.05274v1",
+      "categories": [
+        "q-fin.ST",
+        "cs.LG",
+        "stat.ML"
+      ],
+      "document_id": "2601.05274v1",
+      "document_title": "On the use of case estimate and transactional payment data in neural networks for individual loss reserving",
+      "document_version": "1",
+      "metadata_snapshot_hash": "0c3c19df0c7f0e0a580d503e0e6b4a4f61cf6206b3afcd953d7b4ce85532d0fd",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2025-12-28T05:51:05Z",
+      "retrieved_at": "2026-08-26T03:42:55Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2601.05274v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2025-12-28T05:51:05Z"
+    },
+    {
+      "abstract": "This paper explores option portfolio optimization when the underlying returns are skew-elliptical t-distributed. We use the variance and value at risk (VaR) to measure portfolio risk. The novelty of our work is the departure from the traditional normal returns setting, allowing investors to capture both heavy-tailed and skewed market dynamics. We provide explicit portfolio weights for the variance and VaR approximation. Our second contribution is the numerical representation of portfolio weights, obtained from numerical optimization for better VaR approximations. The effect of skewness on the portfolio weights is quantified by comparing our optimal skew t weights with those generated in the Student t setting. We also find that, as expected, a better VaR approximation risk measure yields optimal portfolio weights which are more different than the variance optimal weights.",
+      "authors": [
+        "Kyle Sung",
+        "Traian A. Pirvu"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2601.07991v2",
+      "categories": [
+        "q-fin.PM"
+      ],
+      "document_id": "2601.07991v2",
+      "document_title": "Optimal Option Portfolios for Skew-Elliptical t Returns",
+      "document_version": "2",
+      "metadata_snapshot_hash": "49a9b56b78d8bed324793b4f26e314a58f95d4162c85e8b8eb7be9db48bc34e3",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-01-12T20:43:18Z",
+      "retrieved_at": "2026-08-26T03:42:55Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2601.07991v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-04-29T21:46:26Z"
+    },
+    {
+      "abstract": "Systemic risk refers to the overall vulnerability arising from the high degree of interconnectedness and interdependence within the financial system. In the rapidly developing decentralized finance (DeFi) ecosystem, numerous studies have analyzed systemic risk through specific channels such as liquidity pressures, leverage mechanisms, smart contract risks, and historical risk events. However, these studies are mostly event-driven or focused on isolated risk channels, paying limited attention to the structural dimension of systemic risk. Overall, this study provides a unified quantitative framework for ecosystem-level analysis and continuous monitoring of systemic risk in DeFi. From a network-based perspective, this paper proposes the DeFi Correlation Fragility Indicator (CFI), constructed from time-varying correlation networks at the protocol category level. The CFI captures ecosystem-wide structural fragility associated with correlation concentration and increasing synchronicity. Furthermore, we define a Risk Contribution Score (RCS) to quantify the marginal contribution of different protocol types to overall systemic risk. By combining the CFI and RCS, the framework enables both the tracking of time-varying systemic risk and identification of structurally important functional modules in risk accumulation and amplification.",
+      "authors": [
+        "Shiyu Zhang",
+        "Zining Wang",
+        "Jin Zheng",
+        "John Cartlidge"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2601.08540v1",
+      "categories": [
+        "q-fin.RM"
+      ],
+      "document_id": "2601.08540v1",
+      "document_title": "Systemic Risk in DeFi: A Network-Based Fragility Analysis of TVL Dynamics",
+      "document_version": "1",
+      "metadata_snapshot_hash": "41392395c1d8b85047837429678ee878c535d4c2418bee0d2a032e85efc9deb6",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-01-13T13:27:33Z",
+      "retrieved_at": "2026-08-26T03:42:55Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2601.08540v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-01-13T13:27:33Z"
+    },
+    {
+      "abstract": "We propose a structural framework for the geometry of financial order books in which liquidity, supply, and demand are treated as emergent observables rather than primitive economic variables. The market is modeled as an inflationary relational system without assumed metric, temporal, or price coordinates. Observable quantities arise only through projection, implemented here via spectral embeddings of the graph Laplacian. A one-dimensional projection induces a price-like coordinate, while the projected density defines liquidity profiles around the mid price. Under a minimal single-scale hypothesis -- excluding intrinsic length scales beyond distance to the mid and finite visibility -- we show that projected supply and demand are constrained to gamma-like functional forms. In discrete data, this prediction translates into integrated-gamma cumulative profiles. We test these results using high-frequency Level~II data for several U.S. equities and find robust agreement across assets and intraday windows. Explicit comparison with alternative cumulative models using information criteria demonstrates a systematic preference for the integrated-gamma geometry. A minimal simulation of inflationary relational dynamics reproduces the same structure without invoking agent behavior or price formation mechanisms. These results indicate that key regularities of order-book liquidity reflect geometric constraints induced by observation rather than detailed microstructural dynamics. Supplementary Material is available at the arXiv submission.",
+      "authors": [
+        "Jo\u00e3o P. da Cruz"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2601.17245v1",
+      "categories": [
+        "q-fin.TR",
+        "physics.soc-ph"
+      ],
+      "document_id": "2601.17245v1",
+      "document_title": "Pregeometric Origins of Liquidity Geometry in Financial Order Books",
+      "document_version": "1",
+      "metadata_snapshot_hash": "d713552eb6a520a2988a7e1eee7f9b34cc05bf37c1f8821a80b47cd3c5cac7c8",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-01-24T00:42:11Z",
+      "retrieved_at": "2026-08-26T03:42:55Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2601.17245v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-01-24T00:42:11Z"
+    },
+    {
+      "abstract": "Quasi Monte Carlo (QMC) and Global Sensitivity Analysis (GSA) techniques are applied for pricing and hedging representative financial instruments of increasing complexity. We compare standard Monte Carlo (MC) vs QMC results using Sobol' low discrepancy sequences, different sampling strategies, and various analyses of performance. We find that QMC outperforms MC in most cases, including the highest-dimensional simulations, showing faster and more stable convergence. Regarding greeks computation, we compare standard approaches, based on finite differences (FD) approximations, with adjoint methods (AAD) providing evidences that, when the number of greeks is small, the FD approach combined with QMC can lead to the same accuracy as AAD, thanks to increased convergence rate and stability, thus saving a lot of implementation effort while keeping low computational cost. Using GSA, we are able to fully explain our findings in terms of reduced effective dimension of QMC simulation, allowed in most cases, but not always, by Brownian Bridge discretization or PCA construction. We conclude that, beyond pricing, QMC is a very effcient technique also for computing risk measures, greeks in particular, as it allows to reduce the computational effort of high dimensional Monte Carlo simulations typical of modern risk management.",
+      "authors": [
+        "Stefano Scoleri",
+        "Marco Bianchetti",
+        "Sergei Kucherenko"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2602.14354v1",
+      "categories": [
+        "q-fin.CP",
+        "q-fin.PR",
+        "q-fin.RM"
+      ],
+      "document_id": "2602.14354v1",
+      "document_title": "Application of Quasi Monte Carlo and Global Sensitivity Analysis to Option Pricing and Greeks",
+      "document_version": "1",
+      "metadata_snapshot_hash": "059e401fd919dda11c8342b027db96bbd6e786fbb5af367f0c3144cc712ed2d8",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-02-16T00:11:40Z",
+      "retrieved_at": "2026-08-26T03:42:40Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2602.14354v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-02-16T00:11:40Z"
+    },
+    {
+      "abstract": "Tourism demand forecasting is methodologically mature, but it typically treats accommodation supply as fixed or exogenous. In platform-mediated short-term rentals, supply is elastic, decision-driven, and co-evolves with demand through pricing, information design, and interventions. I reframe the core issue as endogenous stock-out censoring: realized booked nights satisfy B_{k,t} <= min(D_{k,t}, S_{k,t}), so booking models that ignore supply learn a regime-specific ceiling and become fragile under policy changes and supply shocks. This narrated review synthesizes work from tourism forecasting, revenue management, two-sided market economics, and Bayesian time-series methods; develops a three-part coupling framework (behavioral, informational, intervention); and illustrates the identification failure with a toy simulation. I conclude with a focused research agenda for jointly forecasting supply, demand, and their compositions.",
+      "authors": [
+        "Harrison Katz"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2603.00422v3",
+      "categories": [
+        "stat.AP",
+        "q-fin.ST"
+      ],
+      "document_id": "2603.00422v3",
+      "document_title": "Coupled Supply and Demand Forecasting in Platform Accommodation Markets",
+      "document_version": "3",
+      "metadata_snapshot_hash": "4722d9343467daa423c576eec4ae8e5a7780a31999e7c4faae252711ebfd82ac",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-02-28T02:44:21Z",
+      "retrieved_at": "2026-08-26T03:42:40Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.00422v3",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-04-27T19:53:07Z"
+    },
+    {
+      "abstract": "We propose an explainable regime-aware portfolio construction framework based on a strictly causal Wasserstein Hidden Markov Model. The model combines rolling Gaussian HMM inference with predictive model-order selection and template-based identity tracking using the 2-Wasserstein distance between Gaussian components. This allows regime complexity to adapt dynamically while preserving stable economic interpretation. Regime probabilities are embedded into a transaction-cost-aware mean-variance optimization framework and evaluated on a diversified daily cross-asset universe. Relative to equal-weight and SPX buy-and-hold benchmarks, the Wasserstein HMM achieves materially higher risk-adjusted performance with Sharpe ratios of 2.18 versus 1.59 and 1.18 and substantially lower maximum drawdown of negative 5.43 percent versus negative 14.62 percent for SPX. During the early 2025 equity selloff labeled Liberation Day, the strategy dynamically reduced equity exposure and shifted toward defensive assets, mitigating peak-to-trough losses. Compared to a nonparametric KNN conditional-moment estimator using the same features and optimization layer, the parametric regime model produces materially lower turnover and smoother weight evolution. The results demonstrate that regime inference stability, particularly identity preservation and adaptive complexity control, is a first-order determinant of portfolio drawdown and implementation robustness in daily asset allocation.",
+      "authors": [
+        "Amine Boukardagha"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2603.04441v1",
+      "categories": [
+        "q-fin.PM",
+        "cs.LG",
+        "q-fin.MF"
+      ],
+      "document_id": "2603.04441v1",
+      "document_title": "Explainable Regime Aware Investing",
+      "document_version": "1",
+      "metadata_snapshot_hash": "5bdc8fc7f5968870064f420b3732359ed82107620aaf7e2ff0de56822224a4e0",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-02-21T00:33:16Z",
+      "retrieved_at": "2026-08-26T03:42:40Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.04441v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-02-21T00:33:16Z"
+    },
+    {
+      "abstract": "In life insurance, life tables are used to estimate the survival distribution of individuals from a given population. However, these tables only provide survival probabilities at integer ages but no information about the distribution of deaths between two consecutive integer values. This incompleteness is particularly relevant for modern insurance products such as variable annuities, whose payoffs depend jointly on lifetime uncertainty and financial market performance. The valuation of such contracts must therefore be carried out in a joint actuarial-financial framework, as their values depend not only on the full information about mortality rates but also on the interaction between mortality risk, asset dynamics, and embedded guarantees. One frequent solution to this incompleteness is to postulate fractional age assumptions or mortality rate models, but it turns out that the results of the computations strongly depend on these restrictive assumptions. We hence derive upper and lower bounds of hybrid functionals of the lifetime with respect to mortality rates, which are compatible with the observed life table at integer ages and the given financial market. We derive two sets of results under distinct assumptions. In the first, we assume that each mortality trajectory is almost surely consistent with all the given one-year survival probabilities from the table. In the second, we consider a relaxed formulation that allows for deviations of the mortality rates while still being consistent in expectation with the given one-year reference survival probabilities. These distinct yet complementary approaches provide a new robust joint actuarial-financial framework for managing mortality risk in life insurance. They characterize the worst- and best-case contract values over all mortality processes that remain compatible with the observed life-table information and the financial market.",
+      "authors": [
+        "Jean-Loup Dupret",
+        "Edouard Motte"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2603.06238v2",
+      "categories": [
+        "q-fin.RM",
+        "math.OC",
+        "q-fin.PR"
+      ],
+      "document_id": "2603.06238v2",
+      "document_title": "General bounds on functionals of the lifetime under life table constraints in a joint actuarial-financial framework",
+      "document_version": "2",
+      "metadata_snapshot_hash": "1583516f68aa9fb22c17956a581ae15c3a321e106f7b08be522a8c8c2c6e85c1",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-03-06T13:00:20Z",
+      "retrieved_at": "2026-08-26T03:42:40Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.06238v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-03-18T12:05:46Z"
+    },
+    {
+      "abstract": "The estimation of marginal loan write-off probabilities is a non-trivial task when modelling the loss given default (LGD) risk parameter in credit risk. We explore two types of survival models in estimating the overall write-off probability over default spell time, where these probabilities form the term-structure of write-off risk in aggregate. These survival models include a discrete-time hazard (DtH) model and a conditional inference survival tree. Both models are compared to a cross-sectional logistic regression model for write-off risk. All of these (first-stage) models are then ensconced in a broader two-stage LGD-modelling approach, wherein a loss severity model is estimated in the second stage. In expanding the model suite, a novel dichotomisation step is introduced for collapsing the write-off probability into a 0/1-value, prior to LGD-calculation. A benchmark study is subsequently conducted amongst the resulting LGD-models. We find that the DtH-model outperforms other two-stage LGD-models admirably across most diagnostics. However, a single-stage LGD-model still had the best results, likely due to the peculiar `L-shaped' LGD-distribution in our data. Ultimately, we believe that our tutorial-style work can enhance LGD-modelling practices when estimating the expected credit loss under IFRS 9.",
+      "authors": [
+        "Arno Botha",
+        "Mohammed Gabru",
+        "Marcel Muller",
+        "Janette Larney"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2603.11897v1",
+      "categories": [
+        "q-fin.RM",
+        "stat.AP"
+      ],
+      "document_id": "2603.11897v1",
+      "document_title": "Deriving the term-structure of loan write-off risk under IFRS 9 by using survival analysis: A benchmark study",
+      "document_version": "1",
+      "metadata_snapshot_hash": "2a5aaca634b2e0b2b0d039b28a8ca476d29389c8db3cd380c5fe1f0711d76ecf",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-03-12T13:14:12Z",
+      "retrieved_at": "2026-08-26T03:42:40Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.11897v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-03-12T13:14:12Z"
+    },
+    {
+      "abstract": "We extend the Fokker-Planck framework of Froseth (2026, arXiv:2603.05283) to populations of investors with heterogeneous, persistent return-generating ability. When the drift coefficient in the Langevin equation for log-wealth varies across investors, the proportional wealth tax remains a uniform drift shift but ceases to be neutral in the economic sense: its real incidence differs across ability types, and the stationary wealth distribution changes shape. We derive the extended Fokker-Planck equation on the joint space of log-wealth and ability, characterise the conditions under which the drift-shift symmetry breaks, and identify the consequences for asset prices and portfolio allocations. The analysis connects the neutrality results of Froseth (2026, arXiv:2603.05264) and the Fokker-Planck dynamics of Froseth (2026, arXiv:2603.05283) to the heterogeneous-returns literature, notably the \"use-it-or-lose-it\" mechanism of Guvenen, Kambourov, Kuruscu, Ocampo-Diaz and Chen (2023).",
+      "authors": [
+        "Anders G Fr\u00f8seth"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2603.16006v3",
+      "categories": [
+        "physics.soc-ph",
+        "econ.GN",
+        "q-fin.PM"
+      ],
+      "document_id": "2603.16006v3",
+      "document_title": "Heterogeneous Returns and Wealth Tax Neutrality: A Fokker-Planck Framework",
+      "document_version": "3",
+      "metadata_snapshot_hash": "ce9449c57110d8e95ea01dc2f3a8ff345ca0718ec446b7bcee79cb5c083a126c",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-03-16T23:30:15Z",
+      "retrieved_at": "2026-08-26T03:42:40Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.16006v3",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-07-10T13:57:06Z"
+    },
+    {
+      "abstract": "We propose the Identifiable Variational Dynamic Factor Model (iVDFM), which learns latent factors from multivariate time series with identifiability guarantees. By applying iVAE-style conditioning to the innovation process driving the dynamics rather than to the latent states, we show that factors are identifiable up to permutation and component-wise affine (or monotone invertible) transformations. Linear diagonal dynamics preserve this identifiability and admit scalable computation via companion-matrix and Krylov methods. We demonstrate improved factor recovery on synthetic data, stable intervention accuracy on synthetic SCMs, and competitive probabilistic forecasting on real-world benchmarks.",
+      "authors": [
+        "Minkey Chang",
+        "Jae-Young Kim"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2603.22886v1",
+      "categories": [
+        "cs.LG",
+        "q-fin.GN",
+        "q-fin.ST"
+      ],
+      "document_id": "2603.22886v1",
+      "document_title": "Conditionally Identifiable Latent Representation for Multivariate Time Series with Structural Dynamics",
+      "document_version": "1",
+      "metadata_snapshot_hash": "6f26c0a8925e0331a56391c3ca851c0f5b5a4da1cb89fca8b0b6ac917f4274a7",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-03-24T07:35:27Z",
+      "retrieved_at": "2026-08-26T03:42:20Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2603.22886v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-03-24T07:35:27Z"
+    },
+    {
+      "abstract": "Battery energy storage systems (BESS) participating in multi-market electricity trading require price forecasts to optimize dispatch decisions. A widely held assumption is that forecast accuracy, measured by standard metrics such as mean absolute error (MAE), drives trading performance. We challenge this assumption using a hierarchical three-layer optimization system trading simultaneously on frequency containment reserve (FCR), automatic frequency restoration reserve (aFRR), day-ahead, and continuous intraday (XBID) markets in Germany and Switzerland over 2020-2025, with real market data from Regelleistung.net and Swissgrid. We find that rank correlation (Kendall tau), rather than MAE, is the primary predictor of intraday dispatch value: forecasts above an empirical threshold of tau approximately 0.85-0.95 capture up to 97-100% of perfect-foresight revenue, while persistence forecasts with near-zero tau capture only 33%. This threshold is stable across market regimes and volatility levels, and reflects the ordinal structure of the dispatch problem. Furthermore, under reserve market constraints, FCR capacity revenue exceeds XBID by 6.5x per MW, making capacity allocation -- not forecast accuracy -- the primary driver of total revenue. In the Swiss market, hydrological surplus anomalies are significantly associated with balancing market revenue (p = 0.0005), a mechanism absent from existing German-focused literature. These findings reframe forecast evaluation for BESS operators: the relevant question is not what the MAE is, but whether the forecast achieves tau-sufficiency.",
+      "authors": [
+        "Alessandro Falezza"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2604.12082v2",
+      "categories": [
+        "q-fin.TR",
+        "cs.CE",
+        "econ.GN"
+      ],
+      "document_id": "2604.12082v2",
+      "document_title": "When Forecast Accuracy Fails: Rank Correlation and Decision Quality in Multi-Market Battery Storage Optimization",
+      "document_version": "2",
+      "metadata_snapshot_hash": "1940099d0d6db5ab56fe95fd7887491f6158e8212ea1d1c874561014d3a6c465",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-04-13T21:42:59Z",
+      "retrieved_at": "2026-08-26T03:42:20Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2604.12082v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-04-26T17:23:21Z"
+    },
+    {
+      "abstract": "This paper proposes an Extended State-Dependent Hawkes Process (ExsdHawkes) to model the intricate dynamics of Limit Order Books (LOBs). Our theoretical contribution lies in relaxing traditional constraints by allowing for state disappearances -- a phenomenon frequently observed in high-frequency trading. We mathematically prove, using Karush--Kuhn--Tucker (KKT) conditions, that the maximum likelihood estimation remains separable, justifying an efficient two-step procedure. In the empirical section, we apply our model to three months of high-frequency tick data of Mitsubishi UFJ Financial Group (8306). We demonstrate that ExsdHawkes uniquely reproduces the volatility signature plot's characteristic upward slope by capturing the \"local super-criticality\" triggered during disequilibrium states. Crucially, we identify Marketable Limit Orders (MLO) as the primary catalyst that forces the LOB into these unstable states. Comparative analysis reveals that models lacking physical constraints (e.g., standard SD-Hawkes) suffer from explosive branching ratios and fail to maintain simulation stability. Our findings suggest that physical consistency is not merely a mathematical nicety, but a prerequisite for accurately modeling macro-level volatility. By enforcing the physical geometry to `pause' the residual accumulation during inadmissible periods, ExsdHawkes uniquely maintains statistical integrity where unconstrained models succumb to structural bias.",
+      "authors": [
+        "Akitoshi Kimura"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2604.23961v2",
+      "categories": [
+        "stat.AP",
+        "q-fin.MF",
+        "q-fin.TR"
+      ],
+      "document_id": "2604.23961v2",
+      "document_title": "Extended State-dependent Hawkes Process for Limit Order Books: Mathematical Foundation and the Reproduction of Volatility Signature Plots",
+      "document_version": "2",
+      "metadata_snapshot_hash": "4ff2c9e227f624b5744b383d22a55ed73450699a042f22c7390b955f033a584a",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-04-27T02:08:33Z",
+      "retrieved_at": "2026-08-26T03:42:20Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2604.23961v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-08-10T17:20:41Z"
+    },
+    {
+      "abstract": "LLM agents are promising tools for empirical discovery, but their flexibility can also turn discovery into uncontrolled search. We study how to use agents under a reproducible protocol through cryptocurrency factor discovery. Our framework casts the task as sequential hypothesis search: an agent reads an append-only experiment trace, proposes falsifiable factor hypotheses, and maps them to executable recipes, while a deterministic engine enforces fixed data splits, selection gates, transaction costs, and portfolio tests. Candidate actions are restricted to a point-in-time factor DSL, making both successful and failed hypotheses auditable. A ridge-combined portfolio trained only on 2020--2022 data achieves a 44.55% annualized return and Sharpe ratio of 1.55 in the 2024--2026 pure out-of-sample period after a 5 basis point one-way trading cost.",
+      "authors": [
+        "Yikuan Huang",
+        "Zheqi Fan",
+        "Kaiqi Hu",
+        "Yifan Ye"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2604.26747v1",
+      "categories": [
+        "q-fin.PM",
+        "q-fin.GN",
+        "q-fin.TR"
+      ],
+      "document_id": "2604.26747v1",
+      "document_title": "From Hypotheses to Factors: Constrained LLM Agents in Cryptocurrency Markets",
+      "document_version": "1",
+      "metadata_snapshot_hash": "6efee0d8df5462ba5173029e9b6afe3cc3f22182b804ac965e6b84a7edcf2912",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-04-29T14:46:10Z",
+      "retrieved_at": "2026-08-26T03:42:20Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2604.26747v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-04-29T14:46:10Z"
+    },
+    {
+      "abstract": "Large language models (LLMs) are increasingly deployed in quantitative finance for stock price forecasting. This review synthesizes recent applications of LLMs in this domain, including extracting sentiment from financial news and social media, analyzing financial reports and earnings-call transcripts, tokenizing or symbolizing stock price series, and constructing multi-agent trading systems. Particular attention is paid to practical pitfalls that are often understated in the literature, such as fragility in sentiment analysis, dataset and horizon design, performance evaluation metrics, data leakage, illiquidity premia, and limits of stock price predictability. Organized from a hedge-fund perspective, the review is intended to guide both academic researchers and hedge fund managers in integrating LLMs into real-world trading pipelines and in stress-testing their robustness under realistic market frictions.",
+      "authors": [
+        "Olivia Zhang",
+        "Zhilin Zhang"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2605.05211v1",
+      "categories": [
+        "q-fin.PR",
+        "cs.AI",
+        "cs.LG",
+        "q-fin.ST"
+      ],
+      "document_id": "2605.05211v1",
+      "document_title": "A Review of Large Language Models for Stock Price Forecasting from a Hedge-Fund Perspective",
+      "document_version": "1",
+      "metadata_snapshot_hash": "05326a3c672d166c932e4de7802666718a68dbbf28443a1fa5f5bcb0c1919a40",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-04-10T17:36:04Z",
+      "retrieved_at": "2026-08-26T03:42:20Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.05211v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-04-10T17:36:04Z"
+    },
+    {
+      "abstract": "Historical Simulation (HS) and its extensions form a popular class of methods for estimating Value-at-Risk for portfolios of financial assets based on historical data. In this note, we seek to unify several ideas and models from throughout the literature into a single modeling framework. By explicitly defining a parametric model form for the asset returns and extracting the realized increments of the driving innovation process from historical data, we are able to reproduce the Historical Simulation, filtered Historical Simulation, and displaced Historical Simulation methods. This shows beyond a doubt that these methods need more underlying assumptions than what is often alluded to.",
+      "authors": [
+        "Bj\u00f6rn L\u00f6fdahl Grelsson"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2605.10066v1",
+      "categories": [
+        "q-fin.RM"
+      ],
+      "document_id": "2605.10066v1",
+      "document_title": "On the modeling assumptions of Historical Simulation for Value-at-Risk",
+      "document_version": "1",
+      "metadata_snapshot_hash": "371e32624c47531aa32eeea806e359a359c9388008511bab3ea28f195970c3c7",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-05-11T06:44:43Z",
+      "retrieved_at": "2026-08-26T03:42:05Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.10066v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-05-11T06:44:43Z"
+    },
+    {
+      "abstract": "RED-2400 is a public benchmark of 6,660 algorithmically-rejected trading events from a live Solana decentralised-exchange filter stack, observed continuously over 22 calendar days (2026-04-10T21:10Z through 2026-05-02T21:48Z, UTC). Each rejection event is linked to its post-rejection price-and-liquidity trajectory. The deposit contains 169,123 forward-outcome observations and 1,837 graveyard-tracker lifecycle snapshots, covering 1,076 distinct mints in the rejection registry and 1,075 in the forward-observation file. Outcome labels follow the five-tier classification rule introduced by a related methodology paper [Kamat 2026c]. The deposit includes a lifecycle-tracker file that permits external validation of any subset of those labels against observed token-lifecycle ground truth. Filter labels are anonymised to filter_1 through filter_8; source-collector identifiers to source_a and source_b. Liquidity and 24-hour volume are quantised to the nearest power of two, preserving heavy-tailed shape while preventing operational-threshold inference. This is the first window of a planned series; subsequent windows will extend the time horizon and enable regime-stratified analysis. \"RED-2400\" is a brand name, not a count; current cohort sizes are listed below and do not equal 2,400.",
+      "authors": [
+        "Arati U. Kamat"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2605.12151v2",
+      "categories": [
+        "q-fin.TR",
+        "q-fin.CP",
+        "q-fin.ST"
+      ],
+      "document_id": "2605.12151v2",
+      "document_title": "RED-2400: A Public Benchmark of Algorithmically-Rejected Trading Events with Outcome Labels",
+      "document_version": "2",
+      "metadata_snapshot_hash": "b708967fe7b2bb189b9bc34e9918c3f9d1030e6a6efe6005dae03dfd1c19ce36",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-05-12T14:06:51Z",
+      "retrieved_at": "2026-08-26T03:42:05Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.12151v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-06-01T23:41:55Z"
+    },
+    {
+      "abstract": "Let $L$ be a c\u00e0dl\u00e0g net-loss process and $M_t=\\sup_{0\\le s\\le t}L_s$. We study the distorted expected maximum deficit $$ D_g^{(t)}(u)=\\int_u^\\infty g\\!\\left(P(M_t>v)\\right) d v, $$ which combines the probability and severity of liquidity shortfalls over a fixed horizon. For concave distortions, the distorted expectation of the running maximum defines a coherent process risk measure. We then introduce two implicit capital requirements: a fixed-tolerance convex measure and a proportional-tolerance coherent measure. Their ordering properties and closed-form expressions are derived for the compound-Poisson model with exponential claims. We also study reserve allocation across multiple business lines. Minimizing the sum of line-specific deficits equalizes marginal distorted ruin probabilities and, under a common increasing distortion, yields an allocation invariant to the distortion. A worst-line deficit criterion produces a dependence-sensitive convex allocation problem, with explicit results for two independent exponential lines. Finally, we examine conditional updating: the distorted running-maximum evaluation satisfies a supermartingale inequality, while the implicit capital requirements retain an expected frozen-capital adequacy property. We also indicate how the static allocation criteria can be reapplied at discrete review dates using conditional future-increment laws and an externally given capital budget.",
+      "authors": [
+        "Claude Lefevre",
+        "Pierre Zuyderhoff"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2605.16448v2",
+      "categories": [
+        "q-fin.RM",
+        "math.PR",
+        "q-fin.PM"
+      ],
+      "document_id": "2605.16448v2",
+      "document_title": "On the Expected Maximum Deficit and the Optimal Allocation of Reserves",
+      "document_version": "2",
+      "metadata_snapshot_hash": "0225f3262b39eab243a226a0b2c39fb7a745978c3705a714fd32f0fce3b85303",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-05-15T03:04:50Z",
+      "retrieved_at": "2026-08-26T03:42:05Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.16448v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-08-13T02:22:33Z"
+    },
+    {
+      "abstract": "We extract four geometric observables -- Berry Phase Rate, Spectral Entropy, Reduced State Purity, and Hamiltonian Sensitivity -- from a learned spectral embedding of equity-index returns and evaluate them as regime-shift detectors against 46 classical and machine-learning baselines on 17 historical crises spanning 2000-2024. Under walk-forward nested hyperparameter selection on nine labelled windows, the Berry Phase Rate achieves an unbiased out-of-sample median Cohen's $d = 0.72$ (95% percentile-bootstrap CI $[0.34, 1.18]$, 10,000 resamples) and produces approximately 67% fewer false alarms per year than a label-supervised Random Forest (1.2 vs. 3.6 per year). Reduced State Purity attains the highest in-sample separability of any method ($d = 0.83$), tied closely by the Absorption Ratio ($d = 0.80$); geometric and classical channels are largely uncorrelated (mean $|\u03c1| \\approx 0.22$), suggesting they capture distinct risk signals. Score construction is unsupervised; hyperparameter selection is the only supervised step.",
+      "authors": [
+        "Will Hammond"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2605.17117v2",
+      "categories": [
+        "q-fin.ST"
+      ],
+      "document_id": "2605.17117v2",
+      "document_title": "Geometric Observables for Financial Regime Detection",
+      "document_version": "2",
+      "metadata_snapshot_hash": "87d17c8907f14fecb092e2d00bd3ee01069803dd2dcebb11d460eb1edcbc5646",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-05-16T18:49:00Z",
+      "retrieved_at": "2026-08-26T03:42:05Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.17117v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-05-27T00:25:04Z"
+    },
+    {
+      "abstract": "Ethereum block builders run sealed auctions among searchers, but nothing in the protocol forces a builder to honor the auction outcome after observing submitted bundles. This paper studies the commitment problem. We model a builder who defects with probability $\\varepsilon$ and, upon defection, replicates a type-specific fraction $\u03b3(\u03c4)$ of the winning MEV opportunity. Searchers anticipate this behavior and choose between a risky first-price bid and a safe deterrence bid that makes frontrunning unprofitable. The resulting equilibrium is piecewise, with the cost of imperfect commitment depending jointly on replicability and competition. Using the libMEV dataset, we estimate $\u03b3(\u03c4)$ from right-tail bribe plateaus and decompose observed auction revenue against the surplus a defecting builder could capture. The results show sharp heterogeneity across MEV types: sandwich opportunities are already highly competitive, while naked arbitrage and liquidations leave substantially more surplus exposed to builder defection. Credible MEV auctions, therefore, require not only an auction format, but also constraints on the builder's ability to use observed bid and payload information ex post.",
+      "authors": [
+        "Aleksei Adadurov",
+        "Sergey Barseghyan",
+        "Anton Chtepine",
+        "Antero Eloranta",
+        "Andrei Sebyakin",
+        "Arsenii Valitov"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2605.22667v2",
+      "categories": [
+        "cs.GT",
+        "q-fin.TR"
+      ],
+      "document_id": "2605.22667v2",
+      "document_title": "Imperfect Commitment in Maximal Extractable Value Auctions",
+      "document_version": "2",
+      "metadata_snapshot_hash": "fe5f9cf311bd5fa6ece8c4564afe8bdbd333b40bb64ad7513cd1be7748f393fb",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-05-21T16:08:56Z",
+      "retrieved_at": "2026-08-26T03:42:05Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2605.22667v2",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-05-22T20:05:31Z"
+    },
+    {
+      "abstract": "We consider the role of a continuum operational time $u$, its mapping to calendar time $t$, and their relation to event time in option-pricing problems. We derive option-pricing equations from an operational-time Markov lattice rather than from a calendar-time diffusion. The primitive model is a homogeneous nearest-neighbour log-price lattice; state-dependent local variance is represented through its general local-kernel extension. Its Chapman--Kolmogorov decomposition yields discrete forward and backward equations. In price variables, the backward equation gives a generalized European pricing PDE and reduces to Black--Scholes--Merton under the risk-neutral drift restriction and constant volatility. Interpreted as a reaction boundary, the lattice gives a structural route from boundary variance to projected local volatility. The key point is the separation of the operational kernel, the calendar-time clock projection, and the pricing-measure choice. Within the deterministic one-factor local-volatility class, an option surface identifies the projected clock--variance combination rather than its operational variance and clock components separately. The resulting hierarchy also distinguishes full calendar-generator equivalence from weaker terminal or continuum matching, and clarifies why incompleteness concerns unspanned clock, jump, or renewal risks rather than random time alone.",
+      "authors": [
+        "Chris Angstmann",
+        "Tim Gebbie"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2606.09564v4",
+      "categories": [
+        "q-fin.PR",
+        "q-fin.MF",
+        "q-fin.TR"
+      ],
+      "document_id": "2606.09564v4",
+      "document_title": "Option prices from operational-time reaction-boundary lattices",
+      "document_version": "4",
+      "metadata_snapshot_hash": "3e207bbffe71bf9d0a58a948aca4c6cd519a413d5aa68f8f8cbc7fcc89d438bf",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-06-08T14:38:58Z",
+      "retrieved_at": "2026-08-26T03:42:05Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2606.09564v4",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-07-16T09:46:30Z"
+    },
+    {
+      "abstract": "We investigate the evolving structure of interactions in cryptocurrency markets using a network-based framework constructed from high-frequency price data spanning 2020-2025. Directed and weighted networks are constructed from statistically significant Granger causal relationships between cryptocurrency log-returns, enabling us to quantify the flow of influence across assets. We find that normalized returns exhibit heavy-tailed distributions, consistent with the presence of large intermittent fluctuations and in line with stylized facts of financial markets. The resulting networks display pronounced heterogeneity in link weights and nodal strengths, indicating that a small subset of cryptocurrencies contributes disproportionately to market dynamics. By ranking cryptocurrencies based on their nodal out-strength, we uncover a dynamically evolving hierarchy of influence. Ethereum consistently emerges as the most influential asset, while Bitcoin shows a gradual decline in its relative importance. The ranking structure exhibits substantial temporal variability, with multiple cryptocurrencies entering and exiting the top positions over time. Our findings reveal a highly competitive and non-stable organization of the cryptocurrency ecosystem.",
+      "authors": [
+        "Shubhangam Shukla",
+        "Mahesh Peyyala",
+        "Abhijit Chakraborty"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2606.25466v3",
+      "categories": [
+        "q-fin.TR",
+        "q-fin.GN"
+      ],
+      "document_id": "2606.25466v3",
+      "document_title": "Time-dependent weighted directed networks of cryptocurrency interaction from high-frequency returns",
+      "document_version": "3",
+      "metadata_snapshot_hash": "8c9989aa38f96ee980a8ff5708c8fd145ae158d6e88b2b5c07f0113ba3e472d9",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-06-24T06:48:28Z",
+      "retrieved_at": "2026-08-26T03:41:32Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2606.25466v3",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-08-25T06:37:58Z"
+    },
+    {
+      "abstract": "We study endogenous reinsurance pricing in a competitive insurance market with one strategic reinsurer and many heterogeneous insurers. The reinsurer acts as a Stackelberg leader by choosing a common premium rate and an investment strategy, while insurers decide how much risk to retain and how to invest, taking into account their own performance, their performance relative to the insurer population, and common insurance-claim and financial-market noise. This creates a feedback loop absent from standard reinsurance models with exogenous premiums: a premium change affects insurers directly through the cost of reinsurance, and indirectly through the population's aggregate exposure to common insurance-claim risk. For a fixed premium, we characterize the insurers' equilibrium retention through a scalar fixed point and establish its monotone premium response. This characterization reveals a spillover mechanism generated by relative performance concerns and leads to a threshold structure in which insurers move from full cession to partial retention and then to full retention as the premium increases. Using this structure, we reduce the reinsurer's premium problem to a one-dimensional optimization over a compact premium interval and characterize Stackelberg equilibria in both finite-player and mean field models. In the finite-player case, we develop an efficient threshold continuation procedure that determines equilibrium premiums without enumerating all retention configurations. We also prove convergence from finite-player equilibria to mean field equilibria without requiring the mean field equilibrium premium to be unique. Numerical illustrations show how relative performance concerns amplify spillover effects and can induce retention even when reinsurance remains actuarially favorable. They also demonstrate that Stackelberg equilibria need not be unique in either setting.",
+      "authors": [
+        "Ruimeng Hu",
+        "Byungdoo Kong"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2606.27150v1",
+      "categories": [
+        "q-fin.RM",
+        "math.OC"
+      ],
+      "document_id": "2606.27150v1",
+      "document_title": "Endogenous Reinsurance Pricing in Large Competitive Insurance Markets: Finite-Player and Mean Field Analysis",
+      "document_version": "1",
+      "metadata_snapshot_hash": "997fbb5b3f74ee2590e1e7ca6520a091a894e38b04dff7069b65d270d82c42b9",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-06-25T15:19:09Z",
+      "retrieved_at": "2026-08-26T03:41:32Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2606.27150v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-06-25T15:19:09Z"
+    },
+    {
+      "abstract": "We estimate Kyle's (1985) price-impact coefficient $\u03bb$ directly from daily equity order flow and test its ability to forecast the cross-section of subsequent stock returns. Using CRSP data from 2020 to 2025, we construct firm-month measures of signed order flow and two estimators of $\\hat\u03bb_{it}$: a within-month price-impact regression and an Amihud-style ratio. Signed order flow strongly predicts contemporaneous and one-month-ahead returns, while volume volatility predicts lower subsequent returns, consistent with widening price impact degrading price discovery. Fama-MacBeth regressions confirm that our order-flow signal carries significant cross-sectional return information after Newey--West adjustment. Theoretically, we resolve the liquidity premium puzzle of Constantinides (1986) through an adverse-selection mechanism: low order flow widens $\u03bb$ and depresses prices today; subsequent normalization restores prices, generating the illiquidity premium without risk-based compensation.",
+      "authors": [
+        "Irene Aldridge"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2607.01377v1",
+      "categories": [
+        "econ.EM",
+        "q-fin.PR",
+        "q-fin.ST",
+        "q-fin.TR"
+      ],
+      "document_id": "2607.01377v1",
+      "document_title": "Liquidity Premium and Investment Horizons",
+      "document_version": "1",
+      "metadata_snapshot_hash": "2bacd288444ade3b6a92e2a7bd05089d0bca52b86710d619818574cd0f463bd6",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-07-01T18:41:20Z",
+      "retrieved_at": "2026-08-26T03:41:32Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.01377v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-07-01T18:41:20Z"
+    },
+    {
+      "abstract": "Motivated by Kyle (1985) informed order flow and the Meiklejohn et al. (2013) wallet-clustering tradition, we ask whether persistent coordinated wallets causally raise first-hour buyer flow on the Solana pump.fun bonding-curve marketplace. Using 1,578,333 buyer observations from 166,098 launches over 13.4 days (2026-06-11 to 2026-06-25), a two-stage detection pipeline (intra-launch first-buyer-window extraction plus cross-launch persistent-cohort surfacing via union-find on co-occurrence graphs) identifies 1,012 persistent wallet cohorts (2 to 12 wallets, 2,965 addresses) that systematically co-fire as early buyers. Under a contamination-adjusted estimator excluding cohort wallets' own buyer events from the outcome, 1:1 nearest-neighbour propensity-score matching with a 0.2-SD caliper on ten launch-quality covariates (Rosenbaum-Rubin, 1983) yields a first-30-minute buyer-count lift of +16.1% (95% CI [+13.0%, +19.4%]) on 5,419 matched pairs; the corresponding SOL-inflow lift is +6.3% ([-0.5%, +15.1%]), not distinguishable from zero. The naive contaminated same-universe pooled contrast is +130.9%; approximately half is arithmetic contamination from cohort wallets' own buys in the outcome (dropping to +63.9% after cohort exclusion), and most of the remainder is absorbed by PSM on launch-quality covariates. A parallel activity-matched placebo across 100 seeds produces lifts with median +189.6%, above zero and above the real lift in 100/100 seeds, indicating the placebo estimator is biased; we retain it as a bias diagnostic. Of 5,419 treated launches, 382 (7.0%) had zero non-cohort buyers in the first 30 minutes. We release the full cohort catalogue, detection code, PSM script, and robustness artefacts as RED-COHORT-2026-v1 under CC-BY-4.0.",
+      "authors": [
+        "Arati Uday Kamat"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2607.02795v3",
+      "categories": [
+        "q-fin.TR",
+        "q-fin.CP",
+        "q-fin.ST"
+      ],
+      "document_id": "2607.02795v3",
+      "document_title": "Coordinated Sniper Cohorts on Pump.fun: Detection of 1,012 Persistent Wallet Rings and a Contamination-Adjusted Estimate of Coordination-Specific First-Hour Buyer-Flow Lift",
+      "document_version": "3",
+      "metadata_snapshot_hash": "a09d8aa2e5b7f06f75df30dfd54e22b28055a47062d2fb10cfd336448bdc79c1",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-07-02T22:13:51Z",
+      "retrieved_at": "2026-08-26T03:41:32Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.02795v3",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-08-03T20:34:46Z"
+    },
+    {
+      "abstract": "This paper examines portfolio optimization and tail-risk analytics for a heterogeneous universe of actively managed investment funds. Using daily Bloomberg data for 30 funds from 4 December 2020 to 24 December 2025, the study evaluates buy-and-hold, mean--variance, CVaR-based, and tangency-type strategies under long-only and long--short constraints. The sample consists predominantly of actively managed ETFs, with PTTRX retained as an actively managed fixed-income mutual-fund comparator. The results show substantial heterogeneity across thematic equity, fixed-income, income-oriented, multi-asset, and alternative strategies, creating both diversification opportunities and meaningful differences in volatility, drawdown behavior, downside exposure, and tail risk. Historical results indicate that tangency-type portfolios are generally the strongest competitors to the buy-and-hold benchmark in cumulative and risk-adjusted terms, while minimum-variance and CVaR-minimizing portfolios sacrifice upside participation for stronger downside control. Dynamic allocation does not improve all strategies uniformly: the long-only dynamic CVaR-95 portfolio is consistently attractive across several risk-adjusted criteria, whereas long--short dynamic tangency-CVaR portfolios perform strongly but are more sensitive to turnover and implementation costs. Tail-risk diagnostics based on empirical VaR, Expected Shortfall, maximum drawdown, left-tail Hill estimators, and POT--GPD methods show that downside tail exposure remains meaningful after portfolio aggregation. Overall, actively managed ETFs are best evaluated as components of a joint investment opportunity set in which dependence structure, portfolio design, dynamic allocation, implementation frictions, and tail-risk exposure jointly shape performance.",
+      "authors": [
+        "William W. Lamptey",
+        "Nicholas Appiah",
+        "Abootaleb Shirvani",
+        "Priscilla Ati-Tay",
+        "Svetlozar T. Rachev",
+        "Frank J. Fabozzi"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2607.03082v1",
+      "categories": [
+        "q-fin.PM",
+        "q-fin.RM",
+        "q-fin.ST"
+      ],
+      "document_id": "2607.03082v1",
+      "document_title": "Portfolio Optimization and Tail-Risk Analytics of Actively Managed ETFs",
+      "document_version": "1",
+      "metadata_snapshot_hash": "6a1d26ed2c71131e77789870fa7e130349c704a07e261183bbdd77c91887e51e",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-07-03T08:14:43Z",
+      "retrieved_at": "2026-08-26T03:41:32Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.03082v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-07-03T08:14:43Z"
+    },
+    {
+      "abstract": "Detecting the number of global factors in high-dimensional correlation matrices is a central problem in multivariate statistics and random matrix theory, with important implications for asset pricing and econophysics. When the number of variables $p$ is comparable to the number of observations $n$, signal-to-noise separation becomes difficult, especially near the Baik--Ben Arous--P\u00e9ch\u00e9 (BBP) transition, where weak factors may be confused with fluctuations at the Mar\u010denko--Pastur spectral edge. In this work, we characterize the participation-ratio (PR) structure of the Brown--Harding (BH) factor model. Under strong common loadings, the leading coherent eigenvector $u_1$ satisfies $\\mathrm{PR}(u_1)/p\\to 1$, whereas weak-factor directions and typical idiosyncratic sample eigenvectors $u$ satisfy the delocalized benchmark $\\mathrm{PR}(u)/p\\to 1/3$. These limits motivate an eigenvector-level criterion for retaining extensive directions. We propose an iterative global factor (IGF) algorithm that combines adaptive Mar\u010denko--Pastur edge recalibration with a PR delocalization filter. The method iteratively reestimates the effective noise level, tests eigenvalue separation from the residual bulk, and retains only spectrally separated components with sufficiently extended eigenvectors. Monte Carlo simulations of the BH factor model show that IGF recovers the true number of factors near the BBP transition, where eigenvalue-only criteria can fail or remain ambiguous. A synthetic moving-window calibration matched to the empirical dimensions, which is then applied to S\\&P 500 returns. IGF detects a richer and more dynamic set of global factors than the Onatski test, with a median count of 7 factors. The results indicate that combining spectral separation with eigenvector delocalization improves the detectability of global-factor estimation in high-dimensional financial correlation matrices.",
+      "authors": [
+        "Andr\u00e9s Garc\u00eda-Medina"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2607.06908v1",
+      "categories": [
+        "q-fin.ST"
+      ],
+      "document_id": "2607.06908v1",
+      "document_title": "Iterative detection of global factors near the BBP phase transition",
+      "document_version": "1",
+      "metadata_snapshot_hash": "2878bd34093ad74f1b0b24ea8d2828d906e0de353f5f3511dc9675e7a382407f",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-07-08T02:01:34Z",
+      "retrieved_at": "2026-08-26T03:41:32Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.06908v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-07-08T02:01:34Z"
+    },
+    {
+      "abstract": "Building event-conditioned market models requires separating macro-event labels from persistent microstructure state. We study this distinction in Binance BTCUSDT and ETHUSDT futures from 2023-2026, combining top-20 L2 order book data, trade-flow records, and macro-event windows. We define a supervised discrete L2 liquidity-state transition task, distinct from latent-regime detection and price-direction prediction, and evaluate models in rolling monthly out-of-sample folds with event-clustered validation and blocked permutation tests, admitting each feature layer only if it improves on the layer below it on the same panel. Within these event windows, the first-order predictive signal is the pre-event L2 liquidity state: a coarse pre-event state baseline strongly predicts post-event liquidity regimes, interpretable logit models over continuous L2 features fail to improve on it, and a shallow nonlinear L2 model adds a robust further gain of comparable size to the state baseline's own. The macro-event calendar enters only by locating the windows and supplying matched non-event controls; we use event timing but not the event's label content, so pre-event state competes against an uninformed within-window baseline, not against the event type. Order flow adds further value only when layered on top of the L2 state model, not as a replacement. This value is not robustly cross-symbol: for ETH it is present across calm, mixed, and stressed regimes and largest under stressed pre-event liquidity, whereas BTC shows only isolated five-minute passes and no regime that clears at both horizons. These findings motivate a state-first design principle for market microstructure models. We provide a liquidity-state transition baseline and evaluation protocol that reinforcement-learning, execution-policy, or LLM-based context layers should exceed before their added value is credited.",
+      "authors": [
+        "Joohyoung Jeon"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2607.09230v1",
+      "categories": [
+        "q-fin.TR",
+        "cs.LG"
+      ],
+      "document_id": "2607.09230v1",
+      "document_title": "When Does Order Flow Matter? State-Dependent L2 Liquidity-State Transitions in Crypto Futures",
+      "document_version": "1",
+      "metadata_snapshot_hash": "2e78c17df5d05ebf66b8be518ae01b13728f76abcecf234626e423f87ce9876b",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-07-10T09:21:00Z",
+      "retrieved_at": "2026-08-26T03:41:32Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.09230v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-07-10T09:21:00Z"
+    },
+    {
+      "abstract": "The distribution of a normal mean-variance mixture depends on the law of its positive mixing variable. We compare six parametric mixing laws with a grid nonparametric maximum likelihood estimator under the same determinant identification constraint. The mixing mean $m=\\E(Z)$ is estimated and is not fixed at one. A paired block bootstrap is used to compare multivariate holdout log scores. The models that cannot be distinguished from the model with the largest score define a finite ambiguity set. We then consider a cumulative prospect problem on a common portfolio direction. For each model in the set, the NMVM representation gives a scalar projected return and a corresponding prospect-value function of the exposure. The distributionally robust decision maximizes the lower envelope of these functions. We prove existence of a solution, give the candidate points for the piecewise smooth problem, derive a reference-gap scaling result, and construct an interval branch-and-bound certificate for the finite-scenario optimum. In an application to 30 stock returns, the mixture models give higher holdout density scores than the multivariate Gaussian model. Several parametric and semi-parametric models, however, remain in the ambiguity set. The worst-case model is therefore determined at the portfolio optimization stage rather than selected in advance from a point estimate of the holdout score.",
+      "authors": [
+        "Nuerxiati Abudurexiti"
+      ],
+      "canonical_url": "https://arxiv.org/abs/2607.18813v1",
+      "categories": [
+        "q-fin.MF",
+        "q-fin.PM",
+        "q-fin.ST"
+      ],
+      "document_id": "2607.18813v1",
+      "document_title": "Mixing-Law Uncertainty in Multivariate Normal Mean-Variance Mixtures: Semi-parametric Estimation and Robust Cumulative-Prospect Decisions",
+      "document_version": "1",
+      "metadata_snapshot_hash": "f2a7c052920f2ffbd1b4378ec00739b467b1b637de5d7631b89d62bb2c14f980",
+      "primary_source_policy": "allowed_academic_preprint_pending_deterministic_rule_review",
+      "published_at": "2026-07-21T07:49:31Z",
+      "retrieved_at": "2026-08-26T03:41:00Z",
+      "rule_disclosure_locator": "https://arxiv.org/pdf/2607.18813v1",
+      "rule_disclosure_status": "pending_full_text_review",
+      "source_class": "academic_preprint",
+      "source_id": "arxiv_qfin",
+      "updated_at": "2026-07-21T07:49:31Z"
+    }
+  ],
+  "category_allocation": {
+    "q-fin.CP": 5,
+    "q-fin.GN": 5,
+    "q-fin.MF": 5,
+    "q-fin.PM": 5,
+    "q-fin.PR": 5,
+    "q-fin.RM": 5,
+    "q-fin.ST": 5,
+    "q-fin.TR": 5
+  },
+  "market_data_downloaded": false,
+  "population_count": 893,
+  "sample_count": 40,
+  "sample_version": "original_893_stratified_sample_v1",
+  "selected_category_counts": {
+    "q-fin.CP": 5,
+    "q-fin.GN": 5,
+    "q-fin.MF": 5,
+    "q-fin.PM": 5,
+    "q-fin.PR": 5,
+    "q-fin.RM": 5,
+    "q-fin.ST": 5,
+    "q-fin.TR": 5
+  },
+  "source_class_counts": {
+    "academic_preprint": 893
+  },
+  "source_dataset": "immutable_original_893_filtered_candidates",
+  "stratification_dimension": "q_fin_arxiv_category_because_source_class_is_homogeneous",
+  "trial_ledger_n": 0
+}

@@ -90,6 +90,8 @@ def source_url(record: dict) -> str:
 
 
 def choose_sample(records: list[dict], limit: int) -> list[dict]:
+    if limit >= len(records):
+        return list(records)
     grouped: dict[str, list[dict]] = {}
     for record in records:
         grouped.setdefault(str(record.get("source_id")), []).append(record)
