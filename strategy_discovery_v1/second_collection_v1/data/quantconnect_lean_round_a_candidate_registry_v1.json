@@ -1,0 +1,126 @@
+{
+  "registry_id": "quantconnect_lean_round_a_candidate_registry_v1",
+  "version": "1.0.0",
+  "status": "frozen_pre_measurement",
+  "source_family": {
+    "repository": "QuantConnect/Lean",
+    "repository_url": "https://github.com/QuantConnect/Lean",
+    "commit": "07fb0182bfe229edd9445cf675ac6509d0069539",
+    "license": "Apache-2.0",
+    "source_directory": "Algorithm.Framework/Alphas",
+    "ordering_rule": "Enumerate Python files in the source directory, normalize repository paths, sort bytewise lexically, apply the exact-scope eligibility rule, and take the first six eligible paths.",
+    "retention_rule": "Retain metadata, hashes and short illustrative evidence only; do not vendor full third-party source."
+  },
+  "eligibility_rule": {
+    "required_file": "*.py",
+    "required_executable_shape": "Python class implementing a deterministic AlphaModel update or equivalent insight-emission contract",
+    "resolution_policy": "Resolution.DAILY maps exactly to Freqtrade 1d; models without a declared resolution require the fixed 1d adapter binding below; Resolution.MINUTE is ineligible because current scope has no exact 1m main data and resampling is prohibited.",
+    "target_scope": {
+      "venue": "Bybit linear perpetuals",
+      "pairs": ["BTC/USDT:USDT", "ETH/USDT:USDT"],
+      "main_timeframe": "1d",
+      "detail_timeframe": "15m",
+      "resampling": false,
+      "forward_fill": false,
+      "dynamic_pairlist": false
+    }
+  },
+  "eligible_candidates": [
+    {
+      "rank": 1,
+      "candidate_id": "quantconnect-lean-round-a-001-basepairs-1d",
+      "repository_path": "Algorithm.Framework/Alphas/BasePairsTradingAlphaModel.py",
+      "file_sha256": "4946e12eb3ef36dbb7695bf754bd58408915c397a8a50c5f233a6e5fa076f166",
+      "class_name": "BasePairsTradingAlphaModel",
+      "source_default_resolution": "Resolution.DAILY",
+      "adapter_main_timeframe": "1d",
+      "adapter_detail_timeframe": "15m",
+      "adapter_parameters": {"lookback": 1, "threshold": 1},
+      "parameter_policy": "Source defaults where declared; adapter parameters are frozen before measurement and cannot be tuned from results.",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters",
+      "measurement_status": "not_authorized"
+    },
+    {
+      "rank": 2,
+      "candidate_id": "quantconnect-lean-round-a-002-constant-1d",
+      "repository_path": "Algorithm.Framework/Alphas/ConstantAlphaModel.py",
+      "file_sha256": "4630051dbf3655a9476c41b3358f71570013aa8bb4abcd22cacee50b2e80ea65",
+      "class_name": "ConstantAlphaModel",
+      "source_default_resolution": "not_declared",
+      "adapter_main_timeframe": "1d",
+      "adapter_detail_timeframe": "15m",
+      "adapter_parameters": {"type": "PRICE", "direction": "UP", "period_days": 1, "magnitude": null, "confidence": null, "weight": null},
+      "parameter_policy": "Because the source constructor has no defaults, these explicit adapter parameters are frozen pre-measurement and are not selected from results.",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters_required",
+      "measurement_status": "not_authorized"
+    },
+    {
+      "rank": 3,
+      "candidate_id": "quantconnect-lean-round-a-003-emacross-1d",
+      "repository_path": "Algorithm.Framework/Alphas/EmaCrossAlphaModel.py",
+      "file_sha256": "9779224202a749e0371049239a9a975390af36a536f3674775f07a630b4f9d08",
+      "class_name": "EmaCrossAlphaModel",
+      "source_default_resolution": "Resolution.DAILY",
+      "adapter_main_timeframe": "1d",
+      "adapter_detail_timeframe": "15m",
+      "adapter_parameters": {"fast_period": 12, "slow_period": 26},
+      "parameter_policy": "Fixed source-compatible parameters frozen before measurement; no post-result tuning.",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters",
+      "measurement_status": "not_authorized"
+    },
+    {
+      "rank": 4,
+      "candidate_id": "quantconnect-lean-round-a-004-historicalreturns-1d",
+      "repository_path": "Algorithm.Framework/Alphas/HistoricalReturnsAlphaModel.py",
+      "file_sha256": "43004946edfd02dbcb0010a6bde405ac9f65b3fbcfaed82c2065911300bee5d9",
+      "class_name": "HistoricalReturnsAlphaModel",
+      "source_default_resolution": "Resolution.DAILY",
+      "adapter_main_timeframe": "1d",
+      "adapter_detail_timeframe": "15m",
+      "adapter_parameters": {"lookback": 1},
+      "parameter_policy": "Source defaults where declared; no post-result tuning.",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters",
+      "measurement_status": "not_authorized"
+    },
+    {
+      "rank": 5,
+      "candidate_id": "quantconnect-lean-round-a-005-macd-1d",
+      "repository_path": "Algorithm.Framework/Alphas/MacdAlphaModel.py",
+      "file_sha256": "978fa9eb1f5cf9d0051f27e1e765c897ee580a06d2a71f7ade14a3318e954a13",
+      "class_name": "MacdAlphaModel",
+      "source_default_resolution": "Resolution.Daily",
+      "adapter_main_timeframe": "1d",
+      "adapter_detail_timeframe": "15m",
+      "adapter_parameters": {"fast_period": 12, "slow_period": 26, "signal_period": 9, "moving_average_type": "Exponential"},
+      "parameter_policy": "Source defaults frozen before measurement; no post-result tuning.",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters",
+      "measurement_status": "not_authorized"
+    },
+    {
+      "rank": 6,
+      "candidate_id": "quantconnect-lean-round-a-006-rsi-1d",
+      "repository_path": "Algorithm.Framework/Alphas/RsiAlphaModel.py",
+      "file_sha256": "5cba110dc89dffe8ef6f4c386a25ce25c896e04d4616a4809041604652294c15",
+      "class_name": "RsiAlphaModel",
+      "source_default_resolution": "Resolution.DAILY",
+      "adapter_main_timeframe": "1d",
+      "adapter_detail_timeframe": "15m",
+      "adapter_parameters": {"period": 14},
+      "parameter_policy": "Source defaults frozen before measurement; no post-result tuning.",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters",
+      "measurement_status": "not_authorized"
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "repository_path": "Algorithm.Framework/Alphas/PearsonCorrelationPairsTradingAlphaModel.py",
+      "file_sha256": "9cb269d82d8cbd7bd44ccc98c7168a17b9bc2603f2fffa1a8814a2916b2b890e",
+      "class_name": "PearsonCorrelationPairsTradingAlphaModel",
+      "source_default_resolution": "Resolution.MINUTE",
+      "reason": "Excluded before measurement because current exact main-timeframe scope is 1h/4h/1d, no exact 1m data is frozen, and resampling is prohibited. It is not counted as a strategy-family failure."
+    }
+  ],
+  "measurement_authorized": false,
+  "trial_ids_created": false,
+  "ledger_append_authorized": false
+}

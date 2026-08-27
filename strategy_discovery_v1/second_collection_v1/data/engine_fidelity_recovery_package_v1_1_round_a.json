@@ -1,0 +1,263 @@
+{
+  "amendment_scope": "Add exact Round A candidate identities and source snapshot hashes only; all parent finite-budget, CPCV, holdout, cost and survivor rules remain unchanged.",
+  "authorization_boundary": {
+    "backtest_authorized": false,
+    "candidate_registry_creation_authorized": true,
+    "data_acquisition_authorized": false,
+    "deployment_authorized": false,
+    "ledger_append_authorized": false,
+    "measurement_authorized": false,
+    "promotion_authorized": false,
+    "statistics_authorized": false,
+    "trading_authorized": false,
+    "trial_creation_authorized": false
+  },
+  "candidate_registry": {
+    "eligible_count": 6,
+    "excluded_count": 1,
+    "file_sha256": "ad1326f94606a4f84a2bf6efb42b383c5af7a0388e80c923f4b86e8134e778d0",
+    "license": "Apache-2.0",
+    "ordering_rule": "Enumerate Python files in the source directory, normalize repository paths, sort bytewise lexically, apply the exact-scope eligibility rule, and take the first six eligible paths.",
+    "path": "strategy_discovery_v1/second_collection_v1/data/quantconnect_lean_round_a_candidate_registry_v1.json",
+    "source_commit": "07fb0182bfe229edd9445cf675ac6509d0069539",
+    "source_repository": "QuantConnect/Lean"
+  },
+  "current_state": {
+    "deployment_allowed": false,
+    "ledger_changed": false,
+    "measurement_authorized": false,
+    "measurement_ready": false,
+    "promotion_allowed": false,
+    "statistics_run": false,
+    "trading_allowed": false,
+    "trial_ids_created": false
+  },
+  "excluded_candidates": [
+    {
+      "class_name": "PearsonCorrelationPairsTradingAlphaModel",
+      "file_sha256": "9cb269d82d8cbd7bd44ccc98c7168a17b9bc2603f2fffa1a8814a2916b2b890e",
+      "reason": "Excluded before measurement because current exact main-timeframe scope is 1h/4h/1d, no exact 1m data is frozen, and resampling is prohibited. It is not counted as a strategy-family failure.",
+      "repository_path": "Algorithm.Framework/Alphas/PearsonCorrelationPairsTradingAlphaModel.py",
+      "source_default_resolution": "Resolution.MINUTE"
+    }
+  ],
+  "inherited_policy": {
+    "candidate_budget": {
+      "additional_valid_candidate_families_max": 18,
+      "attempted_leads_max": 30,
+      "cancel_if_valid_measurable_candidates_below": 18,
+      "candidates_per_round_max": 6,
+      "existing_v2_4_failed_candidate_families": 6,
+      "hard_cancel_if_additional_valid_failures": 18,
+      "round_count": 3,
+      "total_measured_family_budget": 24
+    },
+    "cpcv": {
+      "embargo_days": 30,
+      "fit_isolation": "fit transforms and selection logic on training data only",
+      "group_assignment": "12 contiguous chronological development-window groups; no random shuffling",
+      "minimum_training_observations": 60,
+      "n_groups": 12,
+      "path_count": 11,
+      "protocol_id": "dsr_pbo_cpcv_v2_12x2",
+      "purge_days": 30,
+      "split_count": 66,
+      "test_groups_per_split": 2,
+      "zero_training_split_policy": "fail_closed; any split below minimum invalidates the package"
+    },
+    "execution_cost_gate": {
+      "base_fee_per_side": 0.00055,
+      "engine": "Freqtrade pinned engine eb1a668ceb0f29b7d578156bfc24c45278c0c0f8",
+      "engine_patch_allowed": false,
+      "fee_sensitivity_ladder_per_side": [
+        0.00055,
+        0.00075,
+        0.001
+      ],
+      "global_adverse_slippage_control_available": false,
+      "limitation": "Pinned Freqtrade has no global fixed adverse-slippage control; slippage=0.0 is a measurement limitation and is not a claim of frictionless real execution.",
+      "native_fee_control": "--fee",
+      "price_modification_allowed": false,
+      "return_postprocessing_allowed": false,
+      "slippage_value": 0.0,
+      "survivor_rule": "A survivor must pass the base native fee and every pre-declared fee sensitivity variant; no fee variant may be chosen after seeing results."
+    },
+    "holdout": {
+      "development_end_utc": "2026-06-23T00:00:00Z",
+      "end_exclusive_utc": "2026-08-22T00:00:00Z",
+      "holdout_failure_policy": "candidate fails; no post-hoc repair using holdout",
+      "minimum_observations": 60,
+      "positive_after_cost_required": true,
+      "selection_uses_holdout": false,
+      "start_utc": "2026-06-23T00:00:00Z",
+      "tuning_uses_holdout": false
+    },
+    "policy_unchanged": true,
+    "survivor_gates": [
+      {
+        "failure_action": "candidate_family_fails; no post-result relaxation",
+        "gate_id": "executability",
+        "requirement": "Deterministic source rules, exact data, native engine run and complete immutable artifact are required."
+      },
+      {
+        "failure_action": "candidate_family_fails; no post-result relaxation",
+        "gate_id": "after_cost_economics",
+        "requirement": "Positive total net return after the base native fee policy is required."
+      },
+      {
+        "failure_action": "candidate_family_fails; no post-result relaxation",
+        "gate_id": "both_pair_result",
+        "requirement": "Positive after-cost result is required separately on BTC/USDT:USDT and ETH/USDT:USDT."
+      },
+      {
+        "failure_action": "candidate_family_fails; no post-result relaxation",
+        "gate_id": "activity_floor",
+        "requirement": "At least 30 trades for 1h/4h or 12 trades for 1d across the two static pairs are required."
+      },
+      {
+        "failure_action": "candidate_family_fails; no post-result relaxation",
+        "gate_id": "dsr",
+        "requirement": "DSR must be at least 0.95 using the full immutable ledger count at the decision point."
+      },
+      {
+        "failure_action": "candidate_family_fails; no post-result relaxation",
+        "gate_id": "cpcv_pbo",
+        "requirement": "PBO must be at most 0.10 under the repaired 12-group/11-path CPCV with no invalid split."
+      },
+      {
+        "failure_action": "candidate_family_fails; no post-result relaxation",
+        "gate_id": "untouched_holdout",
+        "requirement": "Positive after-cost result is required on the untouched 60-observation temporal holdout; no tuning may use it."
+      },
+      {
+        "failure_action": "candidate_family_fails; no post-result relaxation",
+        "gate_id": "concentration",
+        "requirement": "The positive conclusion may not depend solely on one pair or one isolated trade; the exact concentration check must pass."
+      }
+    ],
+    "trial_accounting": {
+      "candidate_family_failure_rule": "A candidate family counts as a failure only after valid native measurement and failure of any survivor gate; invalid or incomplete leads consume the source-quality attempt budget but are not relabeled as strategy failures.",
+      "cost_variant_counting": "Each candidate family is one budget unit; pre-declared fee sensitivity runs are robustness checks for that same family, not extra candidates or a license to select a favorable variant.",
+      "ledger_n_inclusion": "Future statistical work, if separately authorized, must use the full immutable ledger count including all valid appended trials at that time.",
+      "new_candidate_budget_is_family_count": true
+    }
+  },
+  "package_canonical_sha256": "c44dcd528f581c97d34dd8315a925f0b69b300519b38526269227ccb4b1ae27d",
+  "package_id": "strategy_discovery_v1_recovery_package_v1_1_round_a",
+  "parent_package": {
+    "canonical_sha256": "fcf677c23199e3e9d4b024bc9ff4a09f0603ede6bc3326ca0815f9bd58119adc",
+    "file_sha256": "57a7269117bbeb41e89986e2ac90725a5ed56e710912e88d0443717bb8f9e16c",
+    "path": "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_recovery_package_v1.json",
+    "starting_commit": "5225f00b01fc37228c4326bd36bf0ed1b5f3a15a"
+  },
+  "round_a_candidates": [
+    {
+      "adapter_detail_timeframe": "15m",
+      "adapter_main_timeframe": "1d",
+      "adapter_parameters": {
+        "lookback": 1,
+        "threshold": 1
+      },
+      "candidate_id": "quantconnect-lean-round-a-001-basepairs-1d",
+      "class_name": "BasePairsTradingAlphaModel",
+      "file_sha256": "4946e12eb3ef36dbb7695bf754bd58408915c397a8a50c5f233a6e5fa076f166",
+      "measurement_status": "not_authorized",
+      "parameter_policy": "Source defaults where declared; adapter parameters are frozen before measurement and cannot be tuned from results.",
+      "rank": 1,
+      "repository_path": "Algorithm.Framework/Alphas/BasePairsTradingAlphaModel.py",
+      "source_default_resolution": "Resolution.DAILY",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters"
+    },
+    {
+      "adapter_detail_timeframe": "15m",
+      "adapter_main_timeframe": "1d",
+      "adapter_parameters": {
+        "confidence": null,
+        "direction": "UP",
+        "magnitude": null,
+        "period_days": 1,
+        "type": "PRICE",
+        "weight": null
+      },
+      "candidate_id": "quantconnect-lean-round-a-002-constant-1d",
+      "class_name": "ConstantAlphaModel",
+      "file_sha256": "4630051dbf3655a9476c41b3358f71570013aa8bb4abcd22cacee50b2e80ea65",
+      "measurement_status": "not_authorized",
+      "parameter_policy": "Because the source constructor has no defaults, these explicit adapter parameters are frozen pre-measurement and are not selected from results.",
+      "rank": 2,
+      "repository_path": "Algorithm.Framework/Alphas/ConstantAlphaModel.py",
+      "source_default_resolution": "not_declared",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters_required"
+    },
+    {
+      "adapter_detail_timeframe": "15m",
+      "adapter_main_timeframe": "1d",
+      "adapter_parameters": {
+        "fast_period": 12,
+        "slow_period": 26
+      },
+      "candidate_id": "quantconnect-lean-round-a-003-emacross-1d",
+      "class_name": "EmaCrossAlphaModel",
+      "file_sha256": "9779224202a749e0371049239a9a975390af36a536f3674775f07a630b4f9d08",
+      "measurement_status": "not_authorized",
+      "parameter_policy": "Fixed source-compatible parameters frozen before measurement; no post-result tuning.",
+      "rank": 3,
+      "repository_path": "Algorithm.Framework/Alphas/EmaCrossAlphaModel.py",
+      "source_default_resolution": "Resolution.DAILY",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters"
+    },
+    {
+      "adapter_detail_timeframe": "15m",
+      "adapter_main_timeframe": "1d",
+      "adapter_parameters": {
+        "lookback": 1
+      },
+      "candidate_id": "quantconnect-lean-round-a-004-historicalreturns-1d",
+      "class_name": "HistoricalReturnsAlphaModel",
+      "file_sha256": "43004946edfd02dbcb0010a6bde405ac9f65b3fbcfaed82c2065911300bee5d9",
+      "measurement_status": "not_authorized",
+      "parameter_policy": "Source defaults where declared; no post-result tuning.",
+      "rank": 4,
+      "repository_path": "Algorithm.Framework/Alphas/HistoricalReturnsAlphaModel.py",
+      "source_default_resolution": "Resolution.DAILY",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters"
+    },
+    {
+      "adapter_detail_timeframe": "15m",
+      "adapter_main_timeframe": "1d",
+      "adapter_parameters": {
+        "fast_period": 12,
+        "moving_average_type": "Exponential",
+        "signal_period": 9,
+        "slow_period": 26
+      },
+      "candidate_id": "quantconnect-lean-round-a-005-macd-1d",
+      "class_name": "MacdAlphaModel",
+      "file_sha256": "978fa9eb1f5cf9d0051f27e1e765c897ee580a06d2a71f7ade14a3318e954a13",
+      "measurement_status": "not_authorized",
+      "parameter_policy": "Source defaults frozen before measurement; no post-result tuning.",
+      "rank": 5,
+      "repository_path": "Algorithm.Framework/Alphas/MacdAlphaModel.py",
+      "source_default_resolution": "Resolution.Daily",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters"
+    },
+    {
+      "adapter_detail_timeframe": "15m",
+      "adapter_main_timeframe": "1d",
+      "adapter_parameters": {
+        "period": 14
+      },
+      "candidate_id": "quantconnect-lean-round-a-006-rsi-1d",
+      "class_name": "RsiAlphaModel",
+      "file_sha256": "5cba110dc89dffe8ef6f4c386a25ce25c896e04d4616a4809041604652294c15",
+      "measurement_status": "not_authorized",
+      "parameter_policy": "Source defaults frozen before measurement; no post-result tuning.",
+      "rank": 6,
+      "repository_path": "Algorithm.Framework/Alphas/RsiAlphaModel.py",
+      "source_default_resolution": "Resolution.DAILY",
+      "source_rule_status": "source_rule_complete_with_explicit_adapter_parameters"
+    }
+  ],
+  "status": "frozen_pre_measurement",
+  "version": "1.1.0"
+}
