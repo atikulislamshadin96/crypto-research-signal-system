@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/atikulislamshadin96/crypto-research-signal-system/blob/main/strategy_discovery_v1/second_collection_v1/schemas/extraction_evidence_bundle_v2_1.schema.json",
+  "title": "Deterministic rule extraction evidence bundle v2.1",
+  "description": "Evidence contract separating explicit source-rule completeness from separately frozen execution assumptions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "extraction_version",
+    "analysis_only",
+    "source_identity",
+    "snapshot",
+    "field_claims",
+    "source_rule_status",
+    "execution_assumption_status",
+    "execution_assumption_fields",
+    "promotion_decision",
+    "reconstruction_performed"
+  ],
+  "properties": {
+    "extraction_version": {"const": "deterministic_rule_extraction_v2_1"},
+    "analysis_only": {"const": true},
+    "source_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["document_id", "source_id", "source_class", "canonical_url"],
+      "properties": {
+        "document_id": {"type": "string", "minLength": 1},
+        "source_id": {"type": "string", "minLength": 1},
+        "source_class": {"type": "string", "minLength": 1},
+        "canonical_url": {"type": "string", "format": "uri"},
+        "document_version": {"type": "string"},
+        "license": {"type": "string", "minLength": 1}
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content_type", "content_sha256", "byte_size", "retrieved_at", "adapter_id"],
+      "properties": {
+        "content_type": {"enum": ["application/pdf", "text/plain", "text/html", "application/json", "text/x-python", "unknown"]},
+        "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "byte_size": {"type": "integer", "minimum": 1},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "adapter_id": {"enum": ["arxiv_pdf_v1", "quantconnect_code_v1", "freqtrade_strategy_v1", "backtrader_strategy_v1", "vectorbt_example_v1", "published_html_v1", "notebook_v1", "social_video_lead_v1"]},
+        "source_snapshot_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "field_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field_path", "status", "evidence", "extraction_method", "ambiguity_flags", "claim_origin"],
+        "properties": {
+          "field_path": {"type": "string", "minLength": 1},
+          "status": {"enum": ["explicit", "explicit_but_ambiguous", "not_found", "contradictory"]},
+          "claim_origin": {"enum": ["source", "external_assumption", "derived"]},
+          "value": {},
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["source_url", "snapshot_sha256", "locator_type", "locator", "verbatim"],
+              "properties": {
+                "source_url": {"type": "string", "format": "uri"},
+                "snapshot_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+                "locator_type": {"enum": ["pdf_page_chars", "html_dom_chars", "code_lines", "notebook_cell"]},
+                "locator": {"type": "string", "minLength": 1},
+                "verbatim": {"type": "string", "minLength": 1, "maxLength": 2000}
+              }
+            }
+          },
+          "extraction_method": {"enum": ["deterministic_pattern", "ast_control_flow", "structured_table", "manual_review_required"]},
+          "ambiguity_flags": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "source_rule_status": {"enum": ["source_rule_complete", "needs_review", "rejected_incomplete", "rejected_contradictory"]},
+    "execution_assumption_status": {"enum": ["not_evaluated", "not_required", "execution_assumption_required", "execution_contract_complete"]},
+    "execution_assumption_fields": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["instrument_universe", "venue", "quote_currency", "applicable_asset_timeframe_constraints", "position_sizing", "risk_budget", "notional_cap", "leverage_cap", "commission", "slippage", "spread", "fill_rule", "latency", "funding_or_borrow", "rounding_rule", "insufficient_margin_behavior", "external_config", "missing_data_behavior", "invalid_bar_behavior", "ohlcv_manifest_refs"]}
+    },
+    "execution_assumption_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["manifest_id", "status"],
+      "properties": {
+        "manifest_id": {"type": "string", "minLength": 1},
+        "manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "status": {"enum": ["not_present", "frozen", "invalidated"]},
+        "field_values": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/external_assumption_value"}
+        }
+      }
+    },
+    "promotion_decision": {"enum": ["source_rule_complete", "execution_assumption_required", "execution_contract_complete", "needs_review", "rejected_incomplete", "rejected_contradictory"]},
+    "reconstruction_performed": {"const": false},
+    "normalized_candidate": {"type": "object"},
+    "review_reasons": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "external_assumption_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "value"],
+      "properties": {
+        "origin": {"const": "external_assumption"},
+        "value": {},
+        "unit": {"type": "string", "minLength": 1},
+        "model": {"type": "string", "minLength": 1},
+        "reference": {"type": "string", "minLength": 1},
+        "source_manifest_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"execution_assumption_status": {"const": "execution_contract_complete"}}},
+      "then": {"required": ["execution_assumption_manifest"], "properties": {"execution_assumption_manifest": {"required": ["manifest_sha256"], "properties": {"status": {"const": "frozen"}}}}}
+    },
+    {
+      "if": {"properties": {"execution_assumption_manifest": {"properties": {"status": {"enum": ["frozen", "invalidated"]}}}}},
+      "then": {"properties": {"execution_assumption_manifest": {"required": ["manifest_sha256"]}}}
+    },
+    {
+      "if": {"properties": {"promotion_decision": {"const": "execution_contract_complete"}}},
+      "then": {"properties": {"source_rule_status": {"const": "source_rule_complete"}, "execution_assumption_status": {"const": "execution_contract_complete"}}}
+    }
+  ]
+}
