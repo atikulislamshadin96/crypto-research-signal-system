@@ -1,0 +1,755 @@
+{
+  "all_candidates_dsr_gate": false,
+  "batch_manifest_sha256": "6712c97072c8c3c34cd0e09faee439ce5d9f8f09617d1ef4b8c88ddc299d76e1",
+  "candidate_count_measured": 6,
+  "candidate_daily_metrics": {
+    "freqtrade-001-v24-899-9c180b6c6702a252": {
+      "annualized_sharpe": -2.4007879928098665,
+      "available_days_before_common_intersection": 357,
+      "candidate": "CustomStoplossWithPSAR",
+      "dsr": 6.292019588646017e-28,
+      "observations": 357,
+      "return_series_sha256": "7549e9b01f75acbd5c362840158ba38036952c9e05b1b01039a710ce66d7a0bd",
+      "sample_pearson_kurtosis": 80.47021874153344,
+      "sample_skewness": -8.536714021748073,
+      "timeframe": "1h",
+      "total_return": -0.13054791306000002
+    },
+    "freqtrade-001-v24-900-481bd2f8302fcbdf": {
+      "annualized_sharpe": -1.179332549766405,
+      "available_days_before_common_intersection": 365,
+      "candidate": "Heracles",
+      "dsr": 4.3676061486628207e-190,
+      "observations": 357,
+      "return_series_sha256": "0c9613f316a604477f45e78ee3bd7b5ca29383133306313acceb4b1d85b5fcfd",
+      "sample_pearson_kurtosis": 37.45585481721764,
+      "sample_skewness": -4.810491891460858,
+      "timeframe": "4h",
+      "total_return": -0.08785021267999937
+    },
+    "freqtrade-001-v24-901-79dbe95506510499": {
+      "annualized_sharpe": -1.8949158521926723,
+      "available_days_before_common_intersection": 365,
+      "candidate": "HourBasedStrategy",
+      "dsr": 1.1634732914536285e-206,
+      "observations": 357,
+      "return_series_sha256": "c45aeda42b01e246de64c32b2cceb1363aabf15965d5d14fd744876b33891b14",
+      "sample_pearson_kurtosis": 16.065322010458345,
+      "sample_skewness": -2.421009456334879,
+      "timeframe": "1h",
+      "total_return": -0.15449286660412198
+    },
+    "freqtrade-001-v24-902-667b59b1e89696b2": {
+      "annualized_sharpe": -1.073956859890018,
+      "available_days_before_common_intersection": 365,
+      "candidate": "MultiMa",
+      "dsr": 1.341249511544071e-85,
+      "observations": 357,
+      "return_series_sha256": "aea46505110f7e34667bd12471e7d976c6a9d2d08b1c1e9ebcf3e72f85bc8205",
+      "sample_pearson_kurtosis": 84.60609327132877,
+      "sample_skewness": -7.376040884020371,
+      "timeframe": "4h",
+      "total_return": -0.03612143991999972
+    },
+    "freqtrade-001-v24-903-60fda5b6fcc38651": {
+      "annualized_sharpe": -0.8821356379563715,
+      "available_days_before_common_intersection": 364,
+      "candidate": "PatternRecognition",
+      "dsr": 3.833246660738784e-162,
+      "observations": 357,
+      "return_series_sha256": "f8c8889b172b9b74aa18384b819d3f61e531e8678b7e2fe6649bec9eaf645a95",
+      "sample_pearson_kurtosis": 71.38712922943952,
+      "sample_skewness": -7.387304120240906,
+      "timeframe": "1d",
+      "total_return": -0.04826532004000017
+    },
+    "freqtrade-001-v24-904-de8a94af1f04e750": {
+      "annualized_sharpe": -0.6467288258582654,
+      "available_days_before_common_intersection": 357,
+      "candidate": "Supertrend",
+      "dsr": 0.0,
+      "observations": 357,
+      "return_series_sha256": "06e92a71b15376fc11f4007645300cc0aa2d1571350d4ef4929213380789d77f",
+      "sample_pearson_kurtosis": 10.938342227973445,
+      "sample_skewness": -0.20659029249617955,
+      "timeframe": "1h",
+      "total_return": -0.032237735749999885
+    }
+  },
+  "common_daily_end": "2026-08-21T00:00:00+00:00",
+  "common_daily_observations": 357,
+  "common_daily_start": "2025-08-30T00:00:00+00:00",
+  "cost_stress_run": false,
+  "cpcv": {
+    "embargo_days": 30,
+    "n_groups": 6,
+    "path_count": 5,
+    "path_results": [
+      {
+        "methodological_path_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "path_below_median": false,
+        "path_id": 0,
+        "pooled_lambda": 2.3978952727983702,
+        "pooled_omega_midrank": 0.9166666666666666,
+        "pooled_test_observations": 357,
+        "pooled_test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.4007879928098665,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.179332549766405,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.8949158521926723,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.073956859890018,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.8821356379563715,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -0.6467288258582654
+        },
+        "selection_frequency": 2,
+        "split_count": 3,
+        "split_lambdas": [
+          -0.33647223662121273,
+          1.0986122886681098,
+          2.3978952727983702
+        ],
+        "split_omegas": [
+          0.4166666666666667,
+          0.75,
+          0.9166666666666666
+        ]
+      },
+      {
+        "methodological_path_winner": "freqtrade-001-v24-903-60fda5b6fcc38651",
+        "path_below_median": false,
+        "path_id": 1,
+        "pooled_lambda": 1.0986122886681098,
+        "pooled_omega_midrank": 0.75,
+        "pooled_test_observations": 357,
+        "pooled_test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.4007879928098665,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.179332549766405,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.8949158521926723,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.073956859890018,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.8821356379563715,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -0.6467288258582654
+        },
+        "selection_frequency": 2,
+        "split_count": 3,
+        "split_lambdas": [
+          0.336472236621213,
+          -1.0986122886681098,
+          2.3978952727983702
+        ],
+        "split_omegas": [
+          0.5833333333333334,
+          0.25,
+          0.9166666666666666
+        ]
+      },
+      {
+        "methodological_path_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "path_below_median": false,
+        "path_id": 2,
+        "pooled_lambda": 2.3978952727983702,
+        "pooled_omega_midrank": 0.9166666666666666,
+        "pooled_test_observations": 357,
+        "pooled_test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.4007879928098665,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.179332549766405,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.8949158521926723,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.073956859890018,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.8821356379563715,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -0.6467288258582654
+        },
+        "selection_frequency": 2,
+        "split_count": 3,
+        "split_lambdas": [
+          -0.33647223662121273,
+          -0.33647223662121273,
+          1.0986122886681098
+        ],
+        "split_omegas": [
+          0.4166666666666667,
+          0.4166666666666667,
+          0.75
+        ]
+      },
+      {
+        "methodological_path_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "path_below_median": false,
+        "path_id": 3,
+        "pooled_lambda": 2.3978952727983702,
+        "pooled_omega_midrank": 0.9166666666666666,
+        "pooled_test_observations": 357,
+        "pooled_test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.4007879928098665,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.179332549766405,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.8949158521926723,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.073956859890018,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.8821356379563715,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -0.6467288258582654
+        },
+        "selection_frequency": 2,
+        "split_count": 3,
+        "split_lambdas": [
+          -2.3978952727983707,
+          -0.33647223662121273,
+          2.3978952727983702
+        ],
+        "split_omegas": [
+          0.08333333333333333,
+          0.4166666666666667,
+          0.9166666666666666
+        ]
+      },
+      {
+        "methodological_path_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "path_below_median": false,
+        "path_id": 4,
+        "pooled_lambda": 2.3978952727983702,
+        "pooled_omega_midrank": 0.9166666666666666,
+        "pooled_test_observations": 357,
+        "pooled_test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.4007879928098665,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.179332549766405,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.8949158521926723,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.073956859890018,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.8821356379563715,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -0.6467288258582654
+        },
+        "selection_frequency": 3,
+        "split_count": 3,
+        "split_lambdas": [
+          0.336472236621213,
+          2.3978952727983702,
+          -2.3978952727983707
+        ],
+        "split_omegas": [
+          0.5833333333333334,
+          0.9166666666666666,
+          0.08333333333333333
+        ]
+      }
+    ],
+    "purge_days": 30,
+    "split_results": [
+      {
+        "lambda": -0.33647223662121273,
+        "methodological_training_winner": "freqtrade-001-v24-902-667b59b1e89696b2",
+        "omega_midrank": 0.4166666666666667,
+        "path_id": 0,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          0,
+          1
+        ],
+        "test_observations": 120,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -3.0001698790528275,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.815324155484235,
+          "freqtrade-001-v24-901-79dbe95506510499": -2.6825250361588773,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -2.2216931268799933,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -1.0510818095284578,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -1.685943269294124
+        },
+        "train_observations": 207,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.2398822938670824,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.1161199456596786,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.3706344525931125,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.04809476276345211,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.868974634082335,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -0.23390776431075527
+        }
+      },
+      {
+        "lambda": 0.336472236621213,
+        "methodological_training_winner": "freqtrade-001-v24-903-60fda5b6fcc38651",
+        "omega_midrank": 0.5833333333333334,
+        "path_id": 1,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          0,
+          2
+        ],
+        "test_observations": 120,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.905002858461465,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -2.114037747438572,
+          "freqtrade-001-v24-901-79dbe95506510499": -3.4399191226354793,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 2.0406011810146523,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -1.9092411534788243,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 0.3378512360011722
+        },
+        "train_observations": 147,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -1.5757516293118323,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -0.678845247689879,
+          "freqtrade-001-v24-901-79dbe95506510499": 0.2992141541861088,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -0.2934265704811666,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 0.4299660134167566,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 0.38533197889516735
+        }
+      },
+      {
+        "lambda": -0.33647223662121273,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.4166666666666667,
+        "path_id": 2,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          0,
+          3
+        ],
+        "test_observations": 119,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -1.7513500194867684,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": 1.9122334803254213,
+          "freqtrade-001-v24-901-79dbe95506510499": -0.17070555988958766,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 1.6027864713225572,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 3.9837927533227178,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -0.05850749867605171
+        },
+        "train_observations": 88,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.036596983383621,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.2151570388499462,
+          "freqtrade-001-v24-901-79dbe95506510499": 0.04170697898863168,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.0,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.5936182031499017,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 1.4741175414800394
+        }
+      },
+      {
+        "lambda": -2.3978952727983707,
+        "methodological_training_winner": "freqtrade-001-v24-901-79dbe95506510499",
+        "omega_midrank": 0.08333333333333333,
+        "path_id": 3,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          0,
+          4
+        ],
+        "test_observations": 119,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.4724741209709777,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.9101838807974112,
+          "freqtrade-001-v24-901-79dbe95506510499": -2.6570088891160393,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 2.8509795533734343,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.6866773950089335,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -1.392479376484108
+        },
+        "train_observations": 29,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": 0.0,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": 3.731088833629701,
+          "freqtrade-001-v24-901-79dbe95506510499": 5.452578801633246,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.0,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 3.547704454510229,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 4.8593953069811295
+        }
+      },
+      {
+        "lambda": 0.336472236621213,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.5833333333333334,
+        "path_id": 4,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          0,
+          5
+        ],
+        "test_observations": 119,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -1.7513500194867684,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": 1.1997282569181338,
+          "freqtrade-001-v24-901-79dbe95506510499": 0.9068458440304434,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 2.8509795533734343,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 2.8792902589477687,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 2.0979115011358784
+        },
+        "train_observations": 0,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": 0.0,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": 0.0,
+          "freqtrade-001-v24-901-79dbe95506510499": 0.0,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.0,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 0.0,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 0.0
+        }
+      },
+      {
+        "lambda": 2.3978952727983702,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.9166666666666666,
+        "path_id": 4,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          1,
+          2
+        ],
+        "test_observations": 120,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -3.3760375627665504,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -3.2163829950841554,
+          "freqtrade-001-v24-901-79dbe95506510499": -4.557115352943473,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -2.647559499265121,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -3.0254002997833216,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -2.2986945640146614
+        },
+        "train_observations": 177,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -1.4360177201745694,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -0.5144949040715711,
+          "freqtrade-001-v24-901-79dbe95506510499": 0.22031516671868076,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -0.2675788580441525,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 0.3920480827765168,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 0.5505352331059693
+        }
+      },
+      {
+        "lambda": -0.33647223662121273,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.4166666666666667,
+        "path_id": 3,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          1,
+          3
+        ],
+        "test_observations": 119,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.438422174919936,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -0.39111784450846315,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.76280646324071,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -2.7647485620479375,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 0.027986721909258785,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -2.1541163108892016
+        },
+        "train_observations": 118,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -1.758755338011239,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -0.9209788762241711,
+          "freqtrade-001-v24-901-79dbe95506510499": -0.023682274866138237,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.7587553380112473,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.513318923665496,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 1.5295644310535474
+        }
+      },
+      {
+        "lambda": -1.0986122886681098,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.25,
+        "path_id": 1,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          1,
+          4
+        ],
+        "test_observations": 119,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -3.016722906531697,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -3.087308036979477,
+          "freqtrade-001-v24-901-79dbe95506510499": -3.9097982947016874,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -2.9573727709732243,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -2.2111647771321894,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -3.7100967520895844
+        },
+        "train_observations": 59,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": 0.0,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": 2.984586726356399,
+          "freqtrade-001-v24-901-79dbe95506510499": 3.310642525996599,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -2.487255651911577,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 2.487255651911581,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 3.7840447345343478
+        }
+      },
+      {
+        "lambda": -0.33647223662121273,
+        "methodological_training_winner": "freqtrade-001-v24-900-481bd2f8302fcbdf",
+        "omega_midrank": 0.4166666666666667,
+        "path_id": 2,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          1,
+          5
+        ],
+        "test_observations": 119,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.438422174919936,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -0.9332549979223352,
+          "freqtrade-001-v24-901-79dbe95506510499": -0.4952007354463758,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -2.9573727709732243,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.8814712601181265,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -0.20833472936820674
+        },
+        "train_observations": 30,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": 0.0,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": 3.4879673419351565,
+          "freqtrade-001-v24-901-79dbe95506510499": -0.5296351527051221,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -3.4880749227427255,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 0.0,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 2.524086117333794
+        }
+      },
+      {
+        "lambda": 1.0986122886681098,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.75,
+        "path_id": 0,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          2,
+          3
+        ],
+        "test_observations": 119,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.4057379722770698,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -0.6876192893458529,
+          "freqtrade-001-v24-901-79dbe95506510499": -2.68241338730722,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.3755163545135695,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -1.0446783019750743,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -0.5468583687107542
+        },
+        "train_observations": 178,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.8513207165721655,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.750199887718081,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.6655112792869355,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.5749579082574394,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.9085476762610556,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 1.0494779110822832
+        }
+      },
+      {
+        "lambda": 1.0986122886681098,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.75,
+        "path_id": 2,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          2,
+          4
+        ],
+        "test_observations": 119,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.964048622316241,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -3.3777098884997856,
+          "freqtrade-001-v24-901-79dbe95506510499": -4.6764313889032145,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.48730976797647446,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -2.8020545246361537,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -2.138508661914514
+        },
+        "train_observations": 119,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -3.0129577130391025,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.1505886852494878,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.3716476608562618,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.9267856253420534,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.49512219779882033,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 2.017770629040141
+        }
+      },
+      {
+        "lambda": 2.3978952727983702,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.9166666666666666,
+        "path_id": 3,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          2,
+          5
+        ],
+        "test_observations": 119,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.4057379722770698,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.2443137417971313,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.3216096306351346,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.48730976797647446,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -1.7827496316341462,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 1.718314815109114
+        },
+        "train_observations": 90,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -3.4738701522177604,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -2.1919976381773094,
+          "freqtrade-001-v24-901-79dbe95506510499": -3.241698272538915,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -2.2162091695736406,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -1.2126007097996256,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 0.4838420480198524
+        }
+      },
+      {
+        "lambda": -2.3978952727983707,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.08333333333333333,
+        "path_id": 4,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          3,
+          4
+        ],
+        "test_observations": 118,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -1.7587553380112442,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -0.3411781161455367,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.664106218552522,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.06358380135587965,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 0.387365193580818,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -1.932258862105886
+        },
+        "train_observations": 179,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.4498414280415415,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -0.5768627619463764,
+          "freqtrade-001-v24-901-79dbe95506510499": -1.3228580097362268,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.6135305577912702,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.40422570107079103,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 0.09331763702363713
+        }
+      },
+      {
+        "lambda": 2.3978952727983702,
+        "methodological_training_winner": "freqtrade-001-v24-903-60fda5b6fcc38651",
+        "omega_midrank": 0.9166666666666666,
+        "path_id": 1,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          3,
+          5
+        ],
+        "test_observations": 118,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": 0.0,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": 4.248453044222998,
+          "freqtrade-001-v24-901-79dbe95506510499": 2.935239092759188,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.06358380135587965,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": 4.341504845094876,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 1.1483595834211644
+        },
+        "train_observations": 150,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.679033717657289,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.264597541372355,
+          "freqtrade-001-v24-901-79dbe95506510499": -2.6017386260989057,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.7628827970252876,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.940616531945296,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -1.2826373668184239
+        }
+      },
+      {
+        "lambda": 2.3978952727983702,
+        "methodological_training_winner": "freqtrade-001-v24-904-de8a94af1f04e750",
+        "omega_midrank": 0.9166666666666666,
+        "path_id": 0,
+        "purge_embargo_days": 30,
+        "test_groups": [
+          4,
+          5
+        ],
+        "test_observations": 118,
+        "test_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -1.758755338011239,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -0.9492256282917348,
+          "freqtrade-001-v24-901-79dbe95506510499": -0.2437884682761285,
+          "freqtrade-001-v24-902-667b59b1e89696b2": 0.0,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -0.513318923665496,
+          "freqtrade-001-v24-904-de8a94af1f04e750": 0.26394504388774603
+        },
+        "train_observations": 209,
+        "training_scores": {
+          "freqtrade-001-v24-899-9c180b6c6702a252": -2.851079921692799,
+          "freqtrade-001-v24-900-481bd2f8302fcbdf": -1.4569635426950729,
+          "freqtrade-001-v24-901-79dbe95506510499": -3.0427350242000473,
+          "freqtrade-001-v24-902-667b59b1e89696b2": -1.3898124300065589,
+          "freqtrade-001-v24-903-60fda5b6fcc38651": -1.6001516759065517,
+          "freqtrade-001-v24-904-de8a94af1f04e750": -1.341132361800157
+        }
+      }
+    ],
+    "test_groups_per_split": 2
+  },
+  "dsr": {
+    "gate": false,
+    "methodological_reference_trial_id": "freqtrade-001-v24-904-de8a94af1f04e750",
+    "minimum": 0.95,
+    "value": 0.0
+  },
+  "live_or_paper_trading_allowed": false,
+  "methodological_full_sample_argmax_trial_id": "freqtrade-001-v24-904-de8a94af1f04e750",
+  "package_canonical_sha256": "ed2d4a8f4adfbd775e7b394649e57ed295dcceea05b6c5fc3624c02626bd5361",
+  "pbo": {
+    "below_median_path_count": 0,
+    "gate": true,
+    "maximum": 0.1,
+    "value": 0.0
+  },
+  "promotion_allowed": false,
+  "research_only": true,
+  "return_series_source": {
+    "freqtrade-001-v24-899-9c180b6c6702a252": {
+      "available_days": 357,
+      "candidate": "CustomStoplossWithPSAR",
+      "export_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_engine_native_v2_4/exports/899_CustomStoplossWithPSAR_1h.zip",
+      "export_sha256": "149fd485fd8b4976e52ffb658550056e8f414d8e388a0a9fb4a2418b947fba38",
+      "return_series_sha256": "7549e9b01f75acbd5c362840158ba38036952c9e05b1b01039a710ce66d7a0bd",
+      "source_path": "user_data/strategies/CustomStoplossWithPSAR.py",
+      "source_snapshot_sha256": "9d20f081adf0c95886afc4b5135ecac00e37c2c6fec7e9ddc64671076d71cd60",
+      "timeframe": "1h"
+    },
+    "freqtrade-001-v24-900-481bd2f8302fcbdf": {
+      "available_days": 365,
+      "candidate": "Heracles",
+      "export_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_engine_native_v2_4/exports/900_Heracles_4h.zip",
+      "export_sha256": "5b023b6e74e7a8663364920b5a65474f2e71f3089c7ee6d7f4bfc969dd57b574",
+      "return_series_sha256": "0c9613f316a604477f45e78ee3bd7b5ca29383133306313acceb4b1d85b5fcfd",
+      "source_path": "user_data/strategies/Heracles.py",
+      "source_snapshot_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+      "timeframe": "4h"
+    },
+    "freqtrade-001-v24-901-79dbe95506510499": {
+      "available_days": 365,
+      "candidate": "HourBasedStrategy",
+      "export_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_engine_native_v2_4/exports/901_HourBasedStrategy_1h.zip",
+      "export_sha256": "d48c88ea997b276627c3402619dae426c083766258dbdece7f160299e7f6371b",
+      "return_series_sha256": "c45aeda42b01e246de64c32b2cceb1363aabf15965d5d14fd744876b33891b14",
+      "source_path": "user_data/strategies/HourBasedStrategy.py",
+      "source_snapshot_sha256": "61755d49c46b3037c102f60de30841910472b6da06e9b578882b3dfc125b9ccc",
+      "timeframe": "1h"
+    },
+    "freqtrade-001-v24-902-667b59b1e89696b2": {
+      "available_days": 365,
+      "candidate": "MultiMa",
+      "export_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_engine_native_v2_4/exports/902_MultiMa_4h.zip",
+      "export_sha256": "483881cce1eedd7bdf3e3f331cbeceb7b21f3a50d6b08f0bc98ce1adcd259cd2",
+      "return_series_sha256": "aea46505110f7e34667bd12471e7d976c6a9d2d08b1c1e9ebcf3e72f85bc8205",
+      "source_path": "user_data/strategies/MultiMa.py",
+      "source_snapshot_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+      "timeframe": "4h"
+    },
+    "freqtrade-001-v24-903-60fda5b6fcc38651": {
+      "available_days": 364,
+      "candidate": "PatternRecognition",
+      "export_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_engine_native_v2_4/exports/903_PatternRecognition_1d.zip",
+      "export_sha256": "be2573c701a6c3f7146b11c3e870bcadac01da1c58d39c2476c270cd3d6bb63d",
+      "return_series_sha256": "f8c8889b172b9b74aa18384b819d3f61e531e8678b7e2fe6649bec9eaf645a95",
+      "source_path": "user_data/strategies/PatternRecognition.py",
+      "source_snapshot_sha256": "cce61e4af8ed3cb8e78a5d9713aba7891ec08d1bdb1da9911c3f550424db795d",
+      "timeframe": "1d"
+    },
+    "freqtrade-001-v24-904-de8a94af1f04e750": {
+      "available_days": 357,
+      "candidate": "Supertrend",
+      "export_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_engine_native_v2_4/exports/904_Supertrend_1h.zip",
+      "export_sha256": "c32d425e06e413679a57514135db6a7f28d65e5edab9bf01de057de74e21c26c",
+      "return_series_sha256": "06e92a71b15376fc11f4007645300cc0aa2d1571350d4ef4929213380789d77f",
+      "source_path": "user_data/strategies/Supertrend.py",
+      "source_snapshot_sha256": "4e8b10f9035709d555c846c719df9e617ec3e1a9fe2ff0a6273c0dd792c03e1f",
+      "timeframe": "1h"
+    }
+  },
+  "selection_decision_made": false,
+  "statistical_manifest_sha256": "196472cd7c7f2186c2f8db58123c6bdf78d2136a14ce981cb6b48e7cd88d5c09",
+  "statistics_version": "freqtrade_batch_001_statistics_v2_4",
+  "status": "computed_research_only",
+  "trial_ledger_hash_at_selection": "9e71eb377be3c15dd5d29bc09cac561ae1f837fc44fd136662db0d751062790e",
+  "trial_ledger_n_at_selection": 904,
+  "wfo_run": false
+}

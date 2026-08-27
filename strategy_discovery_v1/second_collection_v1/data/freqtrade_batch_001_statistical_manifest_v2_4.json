@@ -1,0 +1,152 @@
+{
+  "authorization": {
+    "backtest_run_authorized": false,
+    "live_or_paper_trading_authorized": false,
+    "promotion_authorized": false,
+    "statistics_run_authorized": true
+  },
+  "batch_id": "freqtrade-strategies-001-measured-v2_4-native-fee-only",
+  "statistical_manifest_version": "freqtrade_batch_001_statistical_manifest_v2_4",
+  "status": "frozen_pre_statistics",
+  "parent_protocol_id": "dsr_pbo_cpcv_v1",
+  "parent_protocol_hash": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e",
+  "parent_statistical_manifest_sha256": "a3f41f1d855b57a31f31efb3d47ed488b6d162f344db8e1e81fae95d605c177a",
+  "package_canonical_sha256": "ed2d4a8f4adfbd775e7b394649e57ed295dcceea05b6c5fc3624c02626bd5361",
+  "package_actual_file_sha256": "b13d502783ed0c58e460c2bffb783faaf8da0763d39ad79ba8783c6c0cfbacaf",
+  "execution_manifest_canonical_sha256": "1972e26f85feefe152abdef4b8b2812db9b12c4732d4f7366855b700f8a81d42",
+  "batch_manifest_sha256": "6712c97072c8c3c34cd0e09faee439ce5d9f8f09617d1ef4b8c88ddc299d76e1",
+  "trial_ledger_n_at_selection": 904,
+  "trial_ledger_hash_at_selection": "9e71eb377be3c15dd5d29bc09cac561ae1f837fc44fd136662db0d751062790e",
+  "dsr": {
+    "annualization": "daily_returns_sqrt_365",
+    "minimum_observations": 3,
+    "selection_scope": "all six v2.4 measured trials with immutable ledger N=904",
+    "sr_benchmark": 0.0,
+    "sr_std_null": 1.0
+  },
+  "return_series": {
+    "source": "Freqtrade native wallet feather total_quote from each immutable export archive",
+    "equity_field": "total_quote",
+    "initial_balance": 1000.0,
+    "aggregation": "last native wallet equity observation per UTC day; first available day uses initial balance",
+    "comparison_frequency": "daily_utc_end_of_day",
+    "input_frequency": "native engine wallet observation",
+    "missing_data": "fail closed; no forward fill; common-date intersection only",
+    "cost_basis": "native engine output after frozen fee/funding policy"
+  },
+  "cpcv": {
+    "n_groups": 6,
+    "test_groups_per_split": 2,
+    "split_count": 15,
+    "path_count": 5,
+    "group_assignment": "six contiguous chronological daily blocks with no shuffling",
+    "purge_days": 30,
+    "embargo_days": 30,
+    "selection_objective": "maximum annualized Sharpe on training daily returns",
+    "tie_break": "lexicographically smallest trial_id after equal metric",
+    "fit_isolation": "no fitted transform or parameter selection outside source-declared fixed parameters"
+  },
+  "pbo": {
+    "gate_maximum": 0.1,
+    "lambda": "log(omega/(1-omega))",
+    "omega_ties": "midrank",
+    "test_metric": "annualized Sharpe on pooled daily test returns",
+    "path_selected_candidate": "most_frequent_per_split_training_winner; ties resolved by highest mean training Sharpe then lexicographically smallest trial_id"
+  },
+  "paths": [
+    {
+      "path_id": 0,
+      "test_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "path_id": 1,
+      "test_pairs": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ]
+    },
+    {
+      "path_id": 2,
+      "test_pairs": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "path_id": 3,
+      "test_pairs": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          5
+        ]
+      ]
+    },
+    {
+      "path_id": 4,
+      "test_pairs": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    }
+  ],
+  "trial_ids": [
+    "freqtrade-001-v24-899-9c180b6c6702a252",
+    "freqtrade-001-v24-900-481bd2f8302fcbdf",
+    "freqtrade-001-v24-901-79dbe95506510499",
+    "freqtrade-001-v24-902-667b59b1e89696b2",
+    "freqtrade-001-v24-903-60fda5b6fcc38651",
+    "freqtrade-001-v24-904-de8a94af1f04e750"
+  ],
+  "statistical_manifest_sha256": "196472cd7c7f2186c2f8db58123c6bdf78d2136a14ce981cb6b48e7cd88d5c09"
+}
