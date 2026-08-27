@@ -2,7 +2,7 @@
 
 **Final decision state:** `V2_4_VALIDATED_REQUEST_MEASUREMENT_APPROVAL`
 
-**Core implementation commit:** `171e7f25d403fb454c3edf1ccdcd0bc5430eb778`
+**Core implementation commit:** `c6ab0beac3a797fa597dee90141e5dd1fe6bfc30`
 **Starting commit:** `afa73f470b3945d018d7fa147fef610636c6827d`
 **Remote status at core commit:** `main` synchronized with `origin/main`.
 
@@ -56,10 +56,10 @@ A scoped source search across the pinned engine’s CLI, configuration, generic 
 
 | Artifact | Hash / value |
 |---|---|
-| v2.4 package canonical SHA-256 | `647e3616e7792daffc38155f8946706e7b5afbc2affede03c520c44ab5844f0d` |
-| v2.4 package internal `package_filesystem_sha256` | `ca45fdc9938b9287cc3cc4221d47bd24299f3e4ae53025030edde9520f0afb6c` |
-| v2.4 package actual file SHA-256 | `7f8d2ada661b9c14556ccea993b95fa9c1bd9441add4fd78f582cd0ef2b74e8e` |
-| v2.4 schema actual SHA-256 | `59bce36fad027c781304152c89b3a1d2fb608f19d304329be6acd8a8e0cfeea5` |
+| v2.4 package canonical SHA-256 | `ed2d4a8f4adfbd775e7b394649e57ed295dcceea05b6c5fc3624c02626bd5361` |
+| v2.4 package internal `package_filesystem_sha256` | `d49236e5ad9234e20f0abb9026b86e33f23d5c6124f4f79eb635a45bffef9fb8` |
+| v2.4 package actual file SHA-256 | `b13d502783ed0c58e460c2bffb783faaf8da0763d39ad79ba8783c6c0cfbacaf` |
+| v2.4 schema actual SHA-256 | `241ea3c8189c01052058faa68049cecf73538155ed57ad9de6a2761bd9d08898` |
 | v2.4 validator actual SHA-256 | `9759843658d0de6af837b74c4541fb0dcd1ec9162f12a4723e8d3261c6163671` |
 | Locked runtime file SHA-256 | `7d3e20fadf1dcffd00dc5396a1b1dca8ea426abe28f1e5c1649dbaa80b46b15d` |
 | Freqtrade engine commit | `eb1a668ceb0f29b7d578156bfc24c45278c0c0f8` |
@@ -124,7 +124,7 @@ This task stops here. No new trial ID, backtest, ledger append, DSR, PBO, CPCV, 
 
 > I separately authorize **one new engine-native measured Freqtrade batch** under the exact validated `engine_fidelity_harness_v2.4` package from the clean remote-synchronized commit identified in the decision report.
 >
-> Use package canonical SHA-256 `647e3616e7792daffc38155f8946706e7b5afbc2affede03c520c44ab5844f0d`, package internal filesystem SHA-256 `ca45fdc9938b9287cc3cc4221d47bd24299f3e4ae53025030edde9520f0afb6c`, actual package file SHA-256 `7f8d2ada661b9c14556ccea993b95fa9c1bd9441add4fd78f582cd0ef2b74e8e`, and v1.4 execution manifest canonical SHA-256 `1972e26f85feefe152abdef4b8b2812db9b12c4732d4f7366855b700f8a81d42`.
+> Use package canonical SHA-256 `ed2d4a8f4adfbd775e7b394649e57ed295dcceea05b6c5fc3624c02626bd5361`, package internal filesystem SHA-256 `d49236e5ad9234e20f0abb9026b86e33f23d5c6124f4f79eb635a45bffef9fb8`, actual package file SHA-256 `b13d502783ed0c58e460c2bffb783faaf8da0763d39ad79ba8783c6c0cfbacaf`, and v1.4 execution manifest canonical SHA-256 `1972e26f85feefe152abdef4b8b2812db9b12c4732d4f7366855b700f8a81d42`.
 >
 > Preserve immutable ledger N=898, `last_sequence=898`, canonical hash `2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e`, and actual ledger file hash `9642d0daa824d2ab49d7f4018d72f9b5e2e29cdea13bdcb73cd8af69653722eb`. Re-run every v2.4 preflight gate before any trial ID. Measure exactly the six eligible candidates and the two static Bybit pairs, with exact main timeframes and exact 15m detail data, actual native 8h funding, native Freqtrade `--fee 0.00055`, and `slippage=0.0`.
 >
