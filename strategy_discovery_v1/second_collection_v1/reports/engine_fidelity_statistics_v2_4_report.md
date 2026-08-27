@@ -2,7 +2,7 @@
 
 **Decision state:** `STATISTICS_COMPLETE_REQUEST_SEPARATE_SELECTION_AUTHORIZATION`
 **Analysis scope:** Immutable v2.4 trials `899–904` only
-**Analysis commit:** pending final additive commit
+**Analysis commit:** `02503037cd77043dbd0abf40d39751d50a561355`
 
 > **Finance/trading disclaimer:** I am an AI, not a licensed financial advisor — this is analysis, not guaranteed advice; investing carries risk you bear.
 
