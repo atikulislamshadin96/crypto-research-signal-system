@@ -1,0 +1,251 @@
+{
+  "package_id": "freqtrade_batch_001_engine_fidelity_measurement_freeze_v2_3",
+  "version": "2.3.0",
+  "status": "validated_request_measurement_approval",
+  "authorization": {
+    "measurement_authorized": false,
+    "trial_creation_authorized": false,
+    "backtest_authorized": false,
+    "ledger_update_authorized": false,
+    "new_market_data_authorized": false,
+    "promotion_allowed": false,
+    "trading_allowed": false
+  },
+  "immutable_starting_state": {
+    "ledger_n": 898,
+    "last_sequence": 898,
+    "ledger_canonical_sha256": "2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e",
+    "v2_package_sha256": "2206c0ff15dda0483496305eba0814df7975aeabd23dedcb4ac8a58af81a5757",
+    "v2_1_package_sha256": "d2b8d10439c17ddd98c5c6b877ae5b6a85be0b4a1de24f6840803e86d8255216",
+    "v2_2_package_sha256": "93939f072200a20bc26a3f431a4f388e221c83d54f2356ce67f80a7b11d60b7b",
+    "acquisition_manifest_canonical_sha256": "81893e47e4426cb1be27685dd4bdd8d5f4825eaaa490e5c69fc4e1ffffbe695f",
+    "starting_commit": "ed2caaab1bdd6a20b1185c79a5f257c8d68927bf"
+  },
+  "pinned_inputs": {
+    "engine_commit": "eb1a668ceb0f29b7d578156bfc24c45278c0c0f8",
+    "technical_commit": "720ff67483e346271165d49cf37265f78739c74c",
+    "strategy_source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+    "runtime_python": "3.12.3",
+    "runtime_lock_sha256": "7d3e20fadf1dcffd00dc5396a1b1dca8ea426abe28f1e5c1649dbaa80b46b15d",
+    "supertrend_source_sha256": "8c30b75b14f6004ebbe2e79fb0083cfb08963bcfa7dd7bdc96f4a8cc735eb838"
+  },
+  "authorized_strategy_paths": [
+    "user_data/strategies/CustomStoplossWithPSAR.py",
+    "user_data/strategies/Heracles.py",
+    "user_data/strategies/HourBasedStrategy.py",
+    "user_data/strategies/MultiMa.py",
+    "user_data/strategies/PatternRecognition.py",
+    "user_data/strategies/Supertrend.py"
+  ],
+  "funding_policy": {
+    "id": "actual_historical_bybit_funding_rate_v1",
+    "model": "actual_historical_bybit_funding_rate",
+    "zero_funding_proxy_allowed": false,
+    "source_manifest_path": "strategy_discovery_v1/second_collection_v1/data/execution_assumption_manifest_v1_3_actual_funding_frozen.json",
+    "source_manifest_canonical_sha256": "cd4679e1e8278e224add40836f0a25e4d9f6599c6a6360580b3306b23aba6898",
+    "source_manifest_filesystem_sha256": "993d2ba9d3aa52710d9751342db3a637e8e245f9655c726181f9b49d38668266",
+    "native_timeframe": "8h",
+    "actual_rate_used": true
+  },
+  "candidate_eligibility": {
+    "status": "future_measurement_eligible_only",
+    "detail_timeframe": "15m",
+    "candidates": [
+      {
+        "path": "user_data/strategies/CustomStoplossWithPSAR.py",
+        "main_timeframe": "1h",
+        "status": "eligible_after_v2_3_validation"
+      },
+      {
+        "path": "user_data/strategies/Heracles.py",
+        "main_timeframe": "4h",
+        "status": "eligible_after_v2_3_validation"
+      },
+      {
+        "path": "user_data/strategies/HourBasedStrategy.py",
+        "main_timeframe": "1h",
+        "status": "eligible_after_v2_3_validation"
+      },
+      {
+        "path": "user_data/strategies/MultiMa.py",
+        "main_timeframe": "4h",
+        "status": "eligible_after_v2_3_validation"
+      },
+      {
+        "path": "user_data/strategies/PatternRecognition.py",
+        "main_timeframe": "1d",
+        "status": "eligible_after_v2_3_validation"
+      },
+      {
+        "path": "user_data/strategies/Supertrend.py",
+        "main_timeframe": "1h",
+        "status": "eligible_after_v2_3_validation"
+      }
+    ],
+    "excluded": [
+      {
+        "path": "user_data/strategies/BreakEven.py",
+        "reason": "exact_5m_data_not_in_frozen_scope"
+      },
+      {
+        "path": "user_data/strategies/Diamond.py",
+        "reason": "exact_5m_data_not_in_frozen_scope"
+      },
+      {
+        "path": "user_data/strategies/PowerTower.py",
+        "reason": "exact_5m_data_not_in_frozen_scope"
+      },
+      {
+        "path": "user_data/strategies/Strategy004.py",
+        "reason": "exact_5m_data_not_in_frozen_scope"
+      },
+      {
+        "path": "user_data/strategies/GodStra.py",
+        "reason": "exact_12h_data_not_in_frozen_scope"
+      }
+    ]
+  },
+  "placeholder_policy": {
+    "id": "mark_price_volume_structural_placeholder_v1",
+    "mark_price_volume_value": 0,
+    "observed_market_volume": false,
+    "allowed_only_for": [
+      "mark_price"
+    ],
+    "forbidden_uses": [
+      "signals",
+      "indicators",
+      "entry_exit_conditions",
+      "position_sizing",
+      "fees",
+      "slippage",
+      "fills",
+      "latency",
+      "funding",
+      "liquidation",
+      "liquidity_filters",
+      "volume_filters",
+      "performance_metrics"
+    ],
+    "statement": "The mark-price volume field is a loader-required structural placeholder set deterministically to numeric zero. It is not observed exchange-traded volume and cannot be used for any strategy, execution, risk, or performance calculation."
+  },
+  "native_layout": {
+    "manifest_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/native_layout_manifest_v2_2.json",
+    "manifest_sha256": "717b7cd401dc73e117a65dd2178f1a25089356aeb883083461f332c8dae1f465",
+    "dataformat_ohlcv": "json",
+    "trading_mode": "futures",
+    "exchange_options": {
+      "mark_ohlcv_price": "mark",
+      "mark_ohlcv_timeframe": "15m",
+      "funding_fee_timeframe": "8h"
+    },
+    "ft_has_params_override": {
+      "mark_ohlcv_timeframe": "15m",
+      "funding_fee_timeframe": "8h"
+    },
+    "pairlist": [
+      "BTC/USDT:USDT",
+      "ETH/USDT:USDT"
+    ],
+    "native_columns": {
+      "mark_price": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "funding_rate": [
+        "date",
+        "funding_rate"
+      ]
+    },
+    "source_policy": {
+      "no_resampling": true,
+      "no_forward_fill": true,
+      "mark_ohlc_exact_source_copy": true,
+      "funding_native_timestamps": true
+    },
+    "datadir": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data"
+  },
+  "data_scope": {
+    "acquisition_manifest_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/acquisition_manifest.json",
+    "acquisition_manifest_canonical_sha256": "81893e47e4426cb1be27685dd4bdd8d5f4825eaaa490e5c69fc4e1ffffbe695f",
+    "category": "linear",
+    "symbols": [
+      "BTCUSDT",
+      "ETHUSDT"
+    ],
+    "pairs": [
+      "BTC/USDT:USDT",
+      "ETH/USDT:USDT"
+    ],
+    "utc_start": "2025-08-22T00:00:00Z",
+    "utc_end_exclusive": "2026-08-22T00:00:00Z",
+    "mark_timeframe": "15m",
+    "funding_timeframe": "8h",
+    "no_resampling": true,
+    "no_forward_fill": true
+  },
+  "integrity_references": {
+    "schema_path": "strategy_discovery_v1/second_collection_v1/schemas/engine_fidelity_measurement_freeze_package_v2_3.schema.json",
+    "schema_sha256": "aa5b05ba34b6fa4a71c6d5d700c89d97b1d25057d12221fb539d6e87b57bc0ea",
+    "acquisition_manifest_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/acquisition_manifest.json",
+    "acquisition_manifest_canonical_sha256": "81893e47e4426cb1be27685dd4bdd8d5f4825eaaa490e5c69fc4e1ffffbe695f",
+    "acquisition_manifest_filesystem_sha256": "0d156005a9fb57d8c4bb8429d79b20b31eeb6b261ae1f51a742767dcc9b93ed1",
+    "funding_execution_manifest_path": "strategy_discovery_v1/second_collection_v1/data/execution_assumption_manifest_v1_3_actual_funding_frozen.json",
+    "funding_execution_manifest_canonical_sha256": "cd4679e1e8278e224add40836f0a25e4d9f6599c6a6360580b3306b23aba6898",
+    "funding_execution_manifest_filesystem_sha256": "993d2ba9d3aa52710d9751342db3a637e8e245f9655c726181f9b49d38668266",
+    "runtime_lock_path": "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_runtime_v2.hashlocked.lock",
+    "ledger_canonical_sha256": "2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e",
+    "ledger_filesystem_sha256": "9642d0daa824d2ab49d7f4018d72f9b5e2e29cdea13bdcb73cd8af69653722eb",
+    "repository_files": {
+      "strategy_discovery_v1/second_collection_v1/schemas/engine_fidelity_measurement_freeze_package_v2_3.schema.json": "aa5b05ba34b6fa4a71c6d5d700c89d97b1d25057d12221fb539d6e87b57bc0ea",
+      "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/native_layout_manifest_v2_2.json": "717b7cd401dc73e117a65dd2178f1a25089356aeb883083461f332c8dae1f465",
+      "strategy_discovery_v1/second_collection_v1/scripts/validate_engine_fidelity_native_data_v2_3.py": "c96ce20c2b9b4850577839cd6347dfde5318663cb12f1a9a0372548b12e77049",
+      "strategy_discovery_v1/second_collection_v1/data/execution_assumption_manifest_v1_3_actual_funding_frozen.json": "993d2ba9d3aa52710d9751342db3a637e8e245f9655c726181f9b49d38668266",
+      "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_harness_v2_contract.json": "0b4562c7bd20f8faceae1543f25a3d788315f4cb7f2be145caf10123dede04be",
+      "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_dependency_pins_v2.json": "5195b11e564ac322c7c5f65b16ad868607570e4ae4b0c30ecbce7fcfc4df5bc4",
+      "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_parity_fixtures_v2.json": "68db6d0e2e021be9d136142d6d1833a36e773b9797338fc62d9bfee7006ceef2",
+      "strategy_discovery_v1/second_collection_v1/scripts/run_engine_fidelity_parity_v2.py": "bf56d82b68cb6f12192dae64d9dc01e5e2679fbe4f97dc80f2d363aca9d64077",
+      "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_pinned_source_evidence_v2_1.json": "f8067fffd4a4ed445d433dc14650d7927f30e8e608f5b0a96f0480f74859cacd",
+      "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_exclusion_resolution_v2.json": "3fd770d95ab61d3641875bd37099f9b33babb90852e6214a3015d5a33e593707"
+    },
+    "native_files": {
+      "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/futures/BTC_USDT_USDT-15m-mark.json": "97eed80e8f42bbce5135ee72e90d13533a11c0a12654234d0b3085e16ae896c2",
+      "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/futures/BTC_USDT_USDT-8h-funding_rate.json": "0f97db5a1880a2ddb8bf4136a8a22a711a8a3fb9921083feab8993445642f3e8",
+      "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/futures/ETH_USDT_USDT-15m-mark.json": "00ace905f92b2d8385bb3f8a4f1978f1e37a80691ea2852c26004c45ce49b7d2",
+      "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/futures/ETH_USDT_USDT-8h-funding_rate.json": "a1e43fe7051c989f090260c706de33ff3ac213a807a4c2db641d321d220422c2"
+    },
+    "native_layout_manifest_sha256": "717b7cd401dc73e117a65dd2178f1a25089356aeb883083461f332c8dae1f465",
+    "acquisition_raw_and_normalized_hashes_declared": true
+  },
+  "protected_artifacts": {
+    "ledger_path": "strategy_discovery_v1/data/global_trial_ledger.json",
+    "ledger_sha256": "9642d0daa824d2ab49d7f4018d72f9b5e2e29cdea13bdcb73cd8af69653722eb",
+    "v2_package_path": "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_measurement_freeze_package_v2.json",
+    "v2_package_sha256": "2206c0ff15dda0483496305eba0814df7975aeabd23dedcb4ac8a58af81a5757",
+    "v2_1_package_path": "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_measurement_freeze_package_v2_1.json",
+    "v2_1_package_sha256": "d2b8d10439c17ddd98c5c6b877ae5b6a85be0b4a1de24f6840803e86d8255216",
+    "v2_2_package_path": "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_measurement_freeze_package_v2_2.json",
+    "v2_2_package_sha256": "93939f072200a20bc26a3f431a4f388e221c83d54f2356ce67f80a7b11d60b7b",
+    "execution_manifest_path": "strategy_discovery_v1/second_collection_v1/data/execution_assumption_manifest_v1_2_frozen.json",
+    "execution_manifest_sha256": "7820c7c832c1a0a4eabf0fc02a4d38b48699f851feadfbfd57a477ac7691f51e",
+    "protocol_path": "strategy_discovery_v1/protocols/dsr_pbo_cpcv_v1.json",
+    "protocol_sha256": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e",
+    "historical_measurement_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_measured_backtest_v1.json",
+    "historical_measurement_sha256": "c21b1dc348c85e581db53891bc70cdcc759ae243ca53c34add7f62f011fd9f00",
+    "historical_statistics_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_statistics_v1.json",
+    "historical_statistics_sha256": "d2929f55d1bfce4458eba7d9480225a0ececc45244ffe2719fee2a9cbbe97dd6"
+  },
+  "measurement_boundary": {
+    "strategy_execution_performed": false,
+    "trial_ids_created": false,
+    "ledger_updated": false,
+    "measurement_requires_separate_authorization": true,
+    "next_status_if_validated": "V2_3_VALIDATED_REQUEST_MEASUREMENT_APPROVAL"
+  },
+  "package_canonical_sha256": "fb6f352d3710be7e836d3873bcb09be6d4c36885c902235a00189a89399bf60d",
+  "package_filesystem_sha256": "cd9672c989cd520100cf7f0ee55d307b6f1c1b03949741cecb4cc4f7c11e688f"
+}
