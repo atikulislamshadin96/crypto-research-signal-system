@@ -1,0 +1,336 @@
+{
+  "authorization": {
+    "backtest_authorized": false,
+    "dsr_pbo_cpcv_authorized": false,
+    "ledger_update_authorized": false,
+    "market_data_acquisition_authorized": false,
+    "paper_or_live_allowed": false,
+    "promotion_allowed": false,
+    "trial_creation_authorized": false
+  },
+  "candidate_eligibility": {
+    "blocking_conditions": [],
+    "conditional_count": 0,
+    "eligible": [
+      {
+        "detail_timeframe": "15m",
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/CustomStoplossWithPSAR.py",
+        "main_data_timeframes": [
+          "1h"
+        ],
+        "source_path": "user_data/strategies/CustomStoplossWithPSAR.py",
+        "status": "measurement_ready",
+        "timeframe": "1h"
+      },
+      {
+        "detail_timeframe": "15m",
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Heracles.py",
+        "main_data_timeframes": [
+          "4h"
+        ],
+        "source_path": "user_data/strategies/Heracles.py",
+        "status": "measurement_ready",
+        "timeframe": "4h"
+      },
+      {
+        "detail_timeframe": "15m",
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/HourBasedStrategy.py",
+        "main_data_timeframes": [
+          "1h"
+        ],
+        "source_path": "user_data/strategies/HourBasedStrategy.py",
+        "status": "measurement_ready",
+        "timeframe": "1h"
+      },
+      {
+        "detail_timeframe": "15m",
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/MultiMa.py",
+        "main_data_timeframes": [
+          "4h"
+        ],
+        "source_path": "user_data/strategies/MultiMa.py",
+        "status": "measurement_ready",
+        "timeframe": "4h"
+      },
+      {
+        "detail_timeframe": "15m",
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/PatternRecognition.py",
+        "main_data_timeframes": [
+          "1d"
+        ],
+        "source_path": "user_data/strategies/PatternRecognition.py",
+        "status": "measurement_ready",
+        "timeframe": "1d"
+      },
+      {
+        "detail_timeframe": "15m",
+        "document_id": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff:user_data/strategies/Supertrend.py",
+        "main_data_timeframes": [
+          "1h"
+        ],
+        "source_path": "user_data/strategies/Supertrend.py",
+        "status": "measurement_ready",
+        "timeframe": "1h"
+      }
+    ],
+    "eligible_count": 6,
+    "final_status": "measurement_ready",
+    "measurement_eligible_count": 6,
+    "remain_excluded": [
+      {
+        "reason": "No exact 5m OHLCV in frozen data manifest; no new data authorized; no resampling.",
+        "source_path": "user_data/strategies/BreakEven.py",
+        "status": "remain_excluded",
+        "timeframe": "5m",
+        "trial_created": false
+      },
+      {
+        "reason": "No exact 5m OHLCV in frozen data manifest; no new data authorized; no resampling.",
+        "source_path": "user_data/strategies/Diamond.py",
+        "status": "remain_excluded",
+        "timeframe": "5m",
+        "trial_created": false
+      },
+      {
+        "reason": "No exact 12h OHLCV in frozen data manifest; no new data authorized; no resampling.",
+        "source_path": "user_data/strategies/GodStra.py",
+        "status": "remain_excluded",
+        "timeframe": "12h",
+        "trial_created": false
+      },
+      {
+        "reason": "No exact 5m OHLCV in frozen data manifest; no new data authorized; no resampling.",
+        "source_path": "user_data/strategies/PowerTower.py",
+        "status": "remain_excluded",
+        "timeframe": "5m",
+        "trial_created": false
+      },
+      {
+        "reason": "No exact 5m OHLCV in frozen data manifest; no new data authorized; no resampling.",
+        "source_path": "user_data/strategies/Strategy004.py",
+        "status": "remain_excluded",
+        "timeframe": "5m",
+        "trial_created": false
+      }
+    ]
+  },
+  "data": {
+    "detail_manifest_path": "strategy_discovery_v1/data/bybit_ohlcv_drive_roundtrip_manifest.json",
+    "detail_manifest_sha256": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f",
+    "detail_scope": {
+      "exact_files_required": true,
+      "no_resampling": true,
+      "source_main_timeframes": [
+        "1h",
+        "4h",
+        "1d"
+      ],
+      "timeframe": "15m"
+    },
+    "exact_csv_files": [
+      {
+        "byte_size": 2361431,
+        "file_name": "BTCUSDT_15m_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_15m_2025-08-22_2026-08-21.csv",
+        "sha256": "b8bf0de78368bc56f4d57061d23722e461a7d2657515f2111bcd09f4c18fbab9"
+      },
+      {
+        "byte_size": 26040,
+        "file_name": "BTCUSDT_1d_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_1d_2025-08-22_2026-08-21.csv",
+        "sha256": "bf3c05fea4ca2e89c89ce1d3c97767b559ac4906860b241257cbf6c13cd6f0f1"
+      },
+      {
+        "byte_size": 601662,
+        "file_name": "BTCUSDT_1h_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_1h_2025-08-22_2026-08-21.csv",
+        "sha256": "759c11ecdd7d4bb14437f03d9bb633fd48cab3931c277cc10cbee6a55c1b6960"
+      },
+      {
+        "byte_size": 1190895,
+        "file_name": "BTCUSDT_30m_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_30m_2025-08-22_2026-08-21.csv",
+        "sha256": "f4a1a0898de4ee839204106afd0925c600ad50d8f5af71166d4a095b3ad1b574"
+      },
+      {
+        "byte_size": 152770,
+        "file_name": "BTCUSDT_4h_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_4h_2025-08-22_2026-08-21.csv",
+        "sha256": "59a4cec4e6d876e940b834b692df8ba5c019939f8db12ebf1f487c1ed22621d9"
+      },
+      {
+        "byte_size": 2348015,
+        "file_name": "ETHUSDT_15m_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_15m_2025-08-22_2026-08-21.csv",
+        "sha256": "9d63c1110ed543d9b74431cf42e1590e17989c6bddcd76105df645635019e051"
+      },
+      {
+        "byte_size": 25977,
+        "file_name": "ETHUSDT_1d_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_1d_2025-08-22_2026-08-21.csv",
+        "sha256": "29e2f69e258b48a1280301cfa0cdf8d7bee9f33ca3e6dc93142e41e6c02dcd43"
+      },
+      {
+        "byte_size": 597907,
+        "file_name": "ETHUSDT_1h_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_1h_2025-08-22_2026-08-21.csv",
+        "sha256": "b9da720c84ad4ce444c7046833a618fc81f0b4ccce9fddd21a883fffc5052b78"
+      },
+      {
+        "byte_size": 1185372,
+        "file_name": "ETHUSDT_30m_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_30m_2025-08-22_2026-08-21.csv",
+        "sha256": "1bad26f1f70bf3754bd2fa6d6f79bb33dfdda52899283440cc2116181eb49702"
+      },
+      {
+        "byte_size": 152227,
+        "file_name": "ETHUSDT_4h_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_4h_2025-08-22_2026-08-21.csv",
+        "sha256": "88a9f58a82327d44749ecd0bb0f1a63400b6b78d54d5999b5f475018745e90d4"
+      }
+    ],
+    "main_manifest_path": "strategy_discovery_v1/data/bybit_ohlcv_drive_roundtrip_manifest.json",
+    "main_manifest_sha256": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f",
+    "main_scope": {
+      "date_window_utc": [
+        "2025-08-22",
+        "2026-08-21"
+      ],
+      "market_type": "linear_perpetual",
+      "symbols": [
+        "BTCUSDT",
+        "ETHUSDT"
+      ],
+      "timeframes": [
+        "1h",
+        "4h",
+        "1d"
+      ],
+      "venue": "bybit"
+    }
+  },
+  "engine": {
+    "commit": "eb1a668ceb0f29b7d578156bfc24c45278c0c0f8",
+    "file_hashes": {
+      "freqtrade/optimize/backtesting.py": "2420410f96451cb993a7b475e9f7a4232d89480185cc25c59da8883551be6384",
+      "freqtrade/strategy/interface.py": "e372b562aabf5e39e444a222f36c7c14801b254fa42141f1431a4ba95d313bb0"
+    },
+    "repository": "https://github.com/freqtrade/freqtrade"
+  },
+  "execution_manifest": {
+    "canonical_sha256": "041cb089d7655adabf6b67d6e62b2c0cf9e9281690719e5b5f943eb5607c2b97",
+    "file_sha256": "7820c7c832c1a0a4eabf0fc02a4d38b48699f851feadfbfd57a477ac7691f51e",
+    "path": "strategy_discovery_v1/second_collection_v1/data/execution_assumption_manifest_v1_2_frozen.json",
+    "status": "frozen_pre_backtest"
+  },
+  "execution_policy": {
+    "configuration_override_behavior": "fail_closed_reject_any_candidate_specific_or_runtime_override",
+    "funding_policy": "zero_funding_proxy_is a material limitation and must remain unchanged unless a new versioned manifest is authorized",
+    "invalid_bar_behavior": "fail_closed_exclude_invalid_bar_and_abort_candidate_if_required_series_is_invalid",
+    "missing_data_behavior": "fail_closed_skip_signal_and_do_not_carry_forward_missing_bars",
+    "precision_limits_policy": {
+      "metadata_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_instrument_metadata_v2.json",
+      "metadata_sha256": "fa151da10522dbef66d5b2a0b28d93d303cbb2a695c14a03f748da7febc8996f",
+      "minimum_notional": {
+        "BTCUSDT": "5",
+        "ETHUSDT": "5"
+      },
+      "minimum_order_qty": {
+        "BTCUSDT": "0.001",
+        "ETHUSDT": "0.01"
+      },
+      "missing_metadata_action": "fail_closed",
+      "price_tick_size": {
+        "BTCUSDT": "0.10",
+        "ETHUSDT": "0.01"
+      },
+      "quantity_rounding": {
+        "base_asset_decimal_places": 6,
+        "mode": "floor",
+        "zero_quantity_action": "skip_order"
+      },
+      "quantity_step": {
+        "BTCUSDT": "0.001",
+        "ETHUSDT": "0.01"
+      },
+      "required_before_measurement": true,
+      "status": "frozen_external_metadata"
+    },
+    "startup_candle_policy": "use_pinned_Freqtrade_native_startup_candle_trim; fail closed if required history is unavailable",
+    "unsupported_strategy_feature_behavior": "fail_closed_reject_candidate_if_pinned_engine_cannot_execute_declared_feature"
+  },
+  "freeze_rules": [
+    "Any dependency, source, data, execution, detail-timeframe, runtime, or harness-code hash change creates a new package version and new trial identity.",
+    "The package cannot authorize measurement by itself; separate user authorization is mandatory.",
+    "No candidate-specific tuning, silent resampling, dynamic pairlist, or framework-default substitution is permitted."
+  ],
+  "harness": {
+    "contract_path": "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_harness_v2_contract.json",
+    "contract_sha256": "0b4562c7bd20f8faceae1543f25a3d788315f4cb7f2be145caf10123dede04be",
+    "engine_native_smoke_path": "strategy_discovery_v1/second_collection_v1/scripts/validate_engine_fidelity_engine_native_v2.py",
+    "engine_native_smoke_sha256": "7e4350420561a6d19b10ec24bd6089244e8cea5e5b5440dd13ca2296dd6663ce",
+    "engine_native_smoke_status": "pass",
+    "parity_cases_expected": 13,
+    "parity_cases_passed": 13,
+    "parity_runner_path": "strategy_discovery_v1/second_collection_v1/scripts/run_engine_fidelity_parity_v2.py",
+    "parity_runner_sha256": "bf56d82b68cb6f12192dae64d9dc01e5e2679fbe4f97dc80f2d363aca9d64077"
+  },
+  "integrity_references": {
+    "dependency_pin_manifest_path": "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_dependency_pins_v2.json",
+    "dependency_pin_manifest_sha256": "5195b11e564ac322c7c5f65b16ad868607570e4ae4b0c30ecbce7fcfc4df5bc4",
+    "engine_native_smoke_path": "strategy_discovery_v1/second_collection_v1/scripts/validate_engine_fidelity_engine_native_v2.py",
+    "engine_native_smoke_sha256": "7e4350420561a6d19b10ec24bd6089244e8cea5e5b5440dd13ca2296dd6663ce",
+    "exclusion_resolution_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_exclusion_resolution_v2.json",
+    "exclusion_resolution_sha256": "3fd770d95ab61d3641875bd37099f9b33babb90852e6214a3015d5a33e593707",
+    "freeze_validator_path": "strategy_discovery_v1/second_collection_v1/scripts/validate_engine_fidelity_measurement_freeze_v2_1.py",
+    "freeze_validator_sha256": "27bc2488aadc56e346c5e6cc596bebafcf9482b230b218ea7b7dad75306815b5",
+    "instrument_metadata_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_instrument_metadata_v2.json",
+    "instrument_metadata_sha256": "fa151da10522dbef66d5b2a0b28d93d303cbb2a695c14a03f748da7febc8996f",
+    "protocol_path": "strategy_discovery_v1/protocols/dsr_pbo_cpcv_v1.json",
+    "protocol_sha256": "c45a37fe99a2d5a8407e8c889ead173b8626ef53748930d2f5970a272782070e",
+    "reassessment_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_reassessment_v2_2.json",
+    "reassessment_sha256": "ce30afe0d99ac1ca982579dc23bed1abad357b28e6a6861f36d79743667fdc57",
+    "source_evidence_path": "strategy_discovery_v1/second_collection_v1/data/freqtrade_batch_001_pinned_source_evidence_v2_1.json",
+    "source_evidence_sha256": "f8067fffd4a4ed445d433dc14650d7927f30e8e608f5b0a96f0480f74859cacd"
+  },
+  "ledger": {
+    "global_ledger_hash": "2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e",
+    "last_sequence": 898,
+    "n_trials": 898
+  },
+  "measurement_authorized": false,
+  "new_trial_ids_authorized": false,
+  "package_id": "freqtrade_batch_001_engine_fidelity_measurement_freeze_v2_1",
+  "pairlist_venue": {
+    "dynamic_pairlist_allowed": false,
+    "market_type": "linear_perpetual",
+    "mode": "static_uniform",
+    "pairs": [
+      "BTC/USDT:USDT",
+      "ETH/USDT:USDT"
+    ],
+    "quote_currency": "USDT",
+    "venue": "bybit"
+  },
+  "runtime": {
+    "direct_lock_path": "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_runtime_v2.lock",
+    "direct_lock_sha256": "d3dc12e18a9f26d66bd61972051ffe53528ea4c9e2a3be3358f5ac357bf33355",
+    "lock_path": "strategy_discovery_v1/second_collection_v1/data/engine_fidelity_runtime_v2.hashlocked.lock",
+    "lock_sha256": "7d3e20fadf1dcffd00dc5396a1b1dca8ea426abe28f1e5c1649dbaa80b46b15d",
+    "python": "3.12.3"
+  },
+  "status": "measurement_ready",
+  "strategy_source": {
+    "commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+    "license": "GPL-3.0",
+    "repository": "https://github.com/freqtrade/freqtrade-strategies"
+  },
+  "technical_dependency": {
+    "commit": "720ff67483e346271165d49cf37265f78739c74c",
+    "file_hashes": {
+      "technical/indicators/supertrend.py": "8c30b75b14f6004ebbe2e79fb0083cfb08963bcfa7dd7bdc96f4a8cc735eb838"
+    },
+    "repository": "https://github.com/freqtrade/technical"
+  },
+  "version": "2.1.0"
+}
