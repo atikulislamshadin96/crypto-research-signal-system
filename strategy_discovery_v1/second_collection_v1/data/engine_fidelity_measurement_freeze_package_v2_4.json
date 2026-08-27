@@ -217,7 +217,7 @@
   },
   "integrity_references": {
     "schema_path": "strategy_discovery_v1/second_collection_v1/schemas/engine_fidelity_measurement_freeze_package_v2_4.schema.json",
-    "schema_sha256": "59bce36fad027c781304152c89b3a1d2fb608f19d304329be6acd8a8e0cfeea5",
+    "schema_sha256": "241ea3c8189c01052058faa68049cecf73538155ed57ad9de6a2761bd9d08898",
     "acquisition_manifest_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/acquisition_manifest.json",
     "acquisition_manifest_canonical_sha256": "81893e47e4426cb1be27685dd4bdd8d5f4825eaaa490e5c69fc4e1ffffbe695f",
     "acquisition_manifest_filesystem_sha256": "0d156005a9fb57d8c4bb8429d79b20b31eeb6b261ae1f51a742767dcc9b93ed1",
@@ -232,7 +232,7 @@
     "ledger_canonical_sha256": "2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e",
     "ledger_filesystem_sha256": "9642d0daa824d2ab49d7f4018d72f9b5e2e29cdea13bdcb73cd8af69653722eb",
     "repository_files": {
-      "strategy_discovery_v1/second_collection_v1/schemas/engine_fidelity_measurement_freeze_package_v2_4.schema.json": "59bce36fad027c781304152c89b3a1d2fb608f19d304329be6acd8a8e0cfeea5",
+      "strategy_discovery_v1/second_collection_v1/schemas/engine_fidelity_measurement_freeze_package_v2_4.schema.json": "241ea3c8189c01052058faa68049cecf73538155ed57ad9de6a2761bd9d08898",
       "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/native_layout_manifest_v2_2.json": "717b7cd401dc73e117a65dd2178f1a25089356aeb883083461f332c8dae1f465",
       "strategy_discovery_v1/second_collection_v1/scripts/validate_engine_fidelity_native_data_v2_4.py": "9759843658d0de6af837b74c4541fb0dcd1ec9162f12a4723e8d3261c6163671",
       "strategy_discovery_v1/second_collection_v1/data/execution_assumption_manifest_v1_3_actual_funding_frozen.json": "993d2ba9d3aa52710d9751342db3a637e8e245f9655c726181f9b49d38668266",
@@ -280,6 +280,6 @@
     "measurement_requires_separate_authorization": true,
     "next_status_if_validated": "V2_4_VALIDATED_REQUEST_MEASUREMENT_APPROVAL"
   },
-  "package_canonical_sha256": "647e3616e7792daffc38155f8946706e7b5afbc2affede03c520c44ab5844f0d",
-  "package_filesystem_sha256": "ca45fdc9938b9287cc3cc4221d47bd24299f3e4ae53025030edde9520f0afb6c"
+  "package_canonical_sha256": "ed2d4a8f4adfbd775e7b394649e57ed295dcceea05b6c5fc3624c02626bd5361",
+  "package_filesystem_sha256": "d49236e5ad9234e20f0abb9026b86e33f23d5c6124f4f79eb635a45bffef9fb8"
 }

@@ -15,6 +15,7 @@
     "funding_policy",
     "pinned_inputs",
     "authorized_strategy_paths",
+    "source_evidence",
     "candidate_eligibility",
     "placeholder_policy",
     "native_layout",
@@ -45,7 +46,7 @@
     "immutable_starting_state": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ledger_n", "last_sequence", "ledger_canonical_sha256", "v2_package_sha256", "v2_1_package_sha256", "acquisition_manifest_canonical_sha256", "starting_commit"],
+      "required": ["ledger_n", "last_sequence", "ledger_canonical_sha256", "v2_package_sha256", "v2_1_package_sha256", "v2_2_package_sha256", "v2_3_package_sha256", "acquisition_manifest_canonical_sha256", "starting_commit"],
       "properties": {
         "ledger_n": {"const": 898},
         "last_sequence": {"const": 898},
@@ -72,6 +73,18 @@
       }
     },
     "authorized_strategy_paths": {"type": "array", "minItems": 6, "maxItems": 6, "uniqueItems": true, "items": {"type": "string"}},
+    "source_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "filesystem_sha256", "source_commit", "license", "snapshot_sha256"],
+      "properties": {
+        "path": {"type": "string"},
+        "filesystem_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_commit": {"const": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff"},
+        "license": {"const": "GPL-3.0"},
+        "snapshot_sha256": {"type": "object", "minProperties": 6, "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+      }
+    },
     "execution_policy": {
       "type": "object",
       "additionalProperties": false,
@@ -132,7 +145,7 @@
     "native_layout": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["manifest_path", "manifest_sha256", "dataformat_ohlcv", "trading_mode", "exchange_options", "pairlist", "native_columns", "source_policy"],
+      "required": ["manifest_path", "manifest_sha256", "dataformat_ohlcv", "trading_mode", "exchange_options", "ft_has_params_override", "pairlist", "native_columns", "source_policy"],
       "properties": {
         "manifest_path": {"type": "string"},
         "manifest_sha256": {"pattern": "^[0-9a-f]{64}$"},
@@ -149,7 +162,7 @@
     "integrity_references": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schema_path", "schema_sha256", "acquisition_manifest_path", "acquisition_manifest_canonical_sha256", "acquisition_manifest_filesystem_sha256", "funding_execution_manifest_path", "funding_execution_manifest_canonical_sha256", "funding_execution_manifest_filesystem_sha256", "native_execution_manifest_path", "native_execution_manifest_canonical_sha256", "native_execution_manifest_filesystem_sha256", "runtime_lock_path", "ledger_canonical_sha256", "ledger_filesystem_sha256", "repository_files", "native_files"],
+      "required": ["schema_path", "schema_sha256", "acquisition_manifest_path", "acquisition_manifest_canonical_sha256", "acquisition_manifest_filesystem_sha256", "funding_execution_manifest_path", "funding_execution_manifest_canonical_sha256", "funding_execution_manifest_filesystem_sha256", "native_execution_manifest_path", "native_execution_manifest_canonical_sha256", "native_execution_manifest_filesystem_sha256", "runtime_lock_path", "runtime_lock_sha256", "ledger_canonical_sha256", "ledger_filesystem_sha256", "repository_files", "native_files"],
       "properties": {
         "schema_path": {"type": "string"},
         "schema_sha256": {"pattern": "^[0-9a-f]{64}$"},
@@ -163,6 +176,7 @@
         "native_execution_manifest_canonical_sha256": {"pattern": "^[0-9a-f]{64}$"},
         "native_execution_manifest_filesystem_sha256": {"pattern": "^[0-9a-f]{64}$"},
         "runtime_lock_path": {"type": "string"},
+        "runtime_lock_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "ledger_canonical_sha256": {"pattern": "^[0-9a-f]{64}$"},
         "ledger_filesystem_sha256": {"pattern": "^[0-9a-f]{64}$"},
         "repository_files": {"type": "object", "additionalProperties": {"pattern": "^[0-9a-f]{64}$"}},
