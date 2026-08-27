@@ -1,0 +1,51 @@
+{
+  "manifest_version": "execution_assumption_manifest_v1_2",
+  "status": "template_not_frozen",
+  "scope": "freqtrade_strategy_v1_re_evaluation",
+  "applicability_policy": "uniform_external_research_scope_permitted_v2_2",
+  "applicability_rule": "Configured pairlist, venue, quote currency, and research timeframe scope are external assumptions, never source facts; they must be fixed uniformly before measurement.",
+  "required_fields": [
+    "instrument_universe",
+    "venue",
+    "quote_currency",
+    "applicable_asset_timeframe_constraints",
+    "position_sizing",
+    "risk_budget",
+    "notional_cap",
+    "leverage_cap",
+    "commission",
+    "slippage",
+    "spread",
+    "fill_rule",
+    "latency",
+    "funding_or_borrow",
+    "rounding_rule",
+    "insufficient_margin_behavior",
+    "external_config",
+    "missing_data_behavior",
+    "invalid_bar_behavior",
+    "ohlcv_manifest_refs"
+  ],
+  "field_value_contract": {
+    "required": ["origin", "value"],
+    "origin": "external_assumption",
+    "optional_metadata": ["unit", "model", "reference", "source_manifest_hash"]
+  },
+  "field_label_requirement": "Every populated value must carry origin=external_assumption and a deterministic value or reference.",
+  "applicability_field_contract": {
+    "fields": ["instrument_universe", "venue", "quote_currency", "applicable_asset_timeframe_constraints"],
+    "origin": "external_assumption",
+    "uniformity": "same_for_every_candidate_or_excluded_by_predeclared_non_tunable_rule",
+    "candidate_specific_pairlist_or_venue_selection": false
+  },
+  "freezing_requirements": [
+    "Every value and referenced data manifest must be declared before the first measured trial in the batch.",
+    "The same values must apply to every candidate in the batch unless an explicitly declared non-tunable applicability rule excludes a candidate.",
+    "The canonical manifest hash must be included in every measured trial identity and result provenance.",
+    "Changing a value that can affect selection creates a new trial and increments the global ledger.",
+    "A missing or invalid required value keeps the manifest non-frozen and blocks all backtests."
+  ],
+  "analysis_only": true,
+  "backtest_authorized": false,
+  "live_execution_authorized": false
+}
