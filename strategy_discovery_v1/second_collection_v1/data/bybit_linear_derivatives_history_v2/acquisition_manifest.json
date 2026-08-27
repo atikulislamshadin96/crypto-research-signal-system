@@ -1,0 +1,1481 @@
+{
+  "manifest_id": "bybit_linear_derivatives_history_acquisition_v2",
+  "source": "https://api.bybit.com",
+  "acquired_at_utc": "2026-08-27T09:10:48.477260+00:00",
+  "scope": {
+    "category": "linear",
+    "symbols": [
+      "BTCUSDT",
+      "ETHUSDT"
+    ],
+    "start_time_ms": 1755820800000,
+    "end_exclusive_ms": 1787356800000,
+    "mark_interval": "15m",
+    "funding_native_timestamps": true
+  },
+  "endpoints": {
+    "funding_history": "/v5/market/funding/history",
+    "mark_price_kline": "/v5/market/mark-price-kline"
+  },
+  "no_ohlcv_requested": true,
+  "no_synthesis_or_resampling": true,
+  "records": [
+    {
+      "kind": "funding_history",
+      "symbol": "BTCUSDT",
+      "row_count": 1095,
+      "normalized_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/normalized/BTCUSDT_funding_rate_native_1755820800000_1787356800000.json",
+      "normalized_sha256": "7c94306a615e6cfe1140b394b23289be0f4af600a1d080b78174f5c28fbb44a5",
+      "pages": [
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/BTCUSDT/page_0000.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BTCUSDT&startTime=1755820800000&endTime=1787356799999&limit=200",
+          "response_sha256": "9e5426d2777fea1c6bad08a7eb0a1dd70c4e5fe00ad86a3155733d5685ec1464",
+          "retrieved_at_utc": "2026-08-27T09:09:36.868259+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821776440,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1787356799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/BTCUSDT/page_0001.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BTCUSDT&startTime=1755820800000&endTime=1781596799999&limit=200",
+          "response_sha256": "94cdcbe1dfb04f7104ae3b29c4c9765392f27ff535a10f9ce13944d9b8b40e5c",
+          "retrieved_at_utc": "2026-08-27T09:09:37.674526+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821777262,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1781596799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/BTCUSDT/page_0002.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BTCUSDT&startTime=1755820800000&endTime=1775836799999&limit=200",
+          "response_sha256": "a45a0a8178c174ec94c33c55dc9f96143c36c61d4e7269a5799f527582ddf6ca",
+          "retrieved_at_utc": "2026-08-27T09:09:38.462662+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821778041,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1775836799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/BTCUSDT/page_0003.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BTCUSDT&startTime=1755820800000&endTime=1770076799999&limit=200",
+          "response_sha256": "550286c65c4473dae50e0adde3548f711c2b91af5960d546d47ebe460ef95784",
+          "retrieved_at_utc": "2026-08-27T09:09:39.285408+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821778850,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1770076799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/BTCUSDT/page_0004.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BTCUSDT&startTime=1755820800000&endTime=1764316799999&limit=200",
+          "response_sha256": "26b9d4bc16f0ae79d1c2a7b3295b92b079cb5cf95666bc76e6e5e51365589ea3",
+          "retrieved_at_utc": "2026-08-27T09:09:40.111766+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821779674,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1764316799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/BTCUSDT/page_0005.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BTCUSDT&startTime=1755820800000&endTime=1758556799999&limit=200",
+          "response_sha256": "0ad7875c90cf80aacb6e27810eedc6052d6c3f21864881927e0d007177bf939e",
+          "retrieved_at_utc": "2026-08-27T09:09:40.891540+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821780484,
+          "record_count": 95,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1758556799999,
+            "limit": 200
+          }
+        }
+      ]
+    },
+    {
+      "kind": "mark_price_kline",
+      "symbol": "BTCUSDT",
+      "interval": "15",
+      "row_count": 35040,
+      "normalized_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/normalized/BTCUSDT_mark_price_15m_1755820800000_1787356800000.json",
+      "normalized_sha256": "8e3576e2a82e5dd5749f4bcff051d4e24aff48911077fc2bf1935be21db2ed12",
+      "pages": [
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0000.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1755820800000&end=1756720799999&limit=1000",
+          "response_sha256": "dd614a0a5fe341c83b7c7886f7e8ba3b68b0c40dc2a7e98050f7ad1eac39a7cd",
+          "retrieved_at_utc": "2026-08-27T09:09:41.781818+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821781311,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1755820800000,
+            "end": 1756720799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0001.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1756720800000&end=1757620799999&limit=1000",
+          "response_sha256": "1057ff70152f8c26ef02fefbf5cfdb47470c79e3aa7a44a4768b8faaf609f945",
+          "retrieved_at_utc": "2026-08-27T09:09:42.551191+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821782130,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1756720800000,
+            "end": 1757620799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0002.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1757620800000&end=1758520799999&limit=1000",
+          "response_sha256": "5c5b8fdeeca14bf10c7f1e27c609990210eee614f33429188767a8a9635d66b3",
+          "retrieved_at_utc": "2026-08-27T09:09:43.365394+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821782923,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1757620800000,
+            "end": 1758520799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0003.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1758520800000&end=1759420799999&limit=1000",
+          "response_sha256": "300b872c08f8a03c6a4011cd9d7300d6da0a69279550dd3e04a2cf509abe72b7",
+          "retrieved_at_utc": "2026-08-27T09:09:44.355697+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821783728,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1758520800000,
+            "end": 1759420799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0004.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1759420800000&end=1760320799999&limit=1000",
+          "response_sha256": "e082710ebacacde1c413cb93e24458360e73534b5973084ecbfea87e3fb0aa2e",
+          "retrieved_at_utc": "2026-08-27T09:09:45.223503+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821784731,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1759420800000,
+            "end": 1760320799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0005.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1760320800000&end=1761220799999&limit=1000",
+          "response_sha256": "a956a5e34840c6affb5c8496991b9661d558ae331cb0a93efd70b696798fcda6",
+          "retrieved_at_utc": "2026-08-27T09:09:46.031685+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821785575,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1760320800000,
+            "end": 1761220799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0006.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1761220800000&end=1762120799999&limit=1000",
+          "response_sha256": "77ba58fb5fcc7094881f3970a65c951bb22bcf73a518ea03c280069a617c061a",
+          "retrieved_at_utc": "2026-08-27T09:09:46.990349+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821786398,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1761220800000,
+            "end": 1762120799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0007.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1762120800000&end=1763020799999&limit=1000",
+          "response_sha256": "2fa6797f2ab2674caa99c0ed770c7b9229246b652bc60c6bd5e49d288167727c",
+          "retrieved_at_utc": "2026-08-27T09:09:47.828071+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821787365,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1762120800000,
+            "end": 1763020799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0008.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1763020800000&end=1763920799999&limit=1000",
+          "response_sha256": "90e4544a4dbbd9cf2becaa7358c5919188c5960e9c2f3bf6a66c769abfd43ce9",
+          "retrieved_at_utc": "2026-08-27T09:09:48.678682+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821788191,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1763020800000,
+            "end": 1763920799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0009.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1763920800000&end=1764820799999&limit=1000",
+          "response_sha256": "4d19ad39f7445af403937ebb6355ce7ba8a813af0c8cc5ef0205401cbab9192f",
+          "retrieved_at_utc": "2026-08-27T09:09:49.516110+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821789034,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1763920800000,
+            "end": 1764820799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0010.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1764820800000&end=1765720799999&limit=1000",
+          "response_sha256": "f4015366bbf4e833d9ea29156db6fdec2b45c20143c72c3dbbe6410d51afa48a",
+          "retrieved_at_utc": "2026-08-27T09:09:50.326014+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821789870,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1764820800000,
+            "end": 1765720799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0011.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1765720800000&end=1766620799999&limit=1000",
+          "response_sha256": "48c5d21a231a36af36836ec4f98feb5291cff39171649d3136adbb178d660ef0",
+          "retrieved_at_utc": "2026-08-27T09:09:51.284675+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821790680,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1765720800000,
+            "end": 1766620799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0012.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1766620800000&end=1767520799999&limit=1000",
+          "response_sha256": "f797d8dcc41b50eba82d0c38c4d1b098d930b9ebfba09f14cb183853bb3d8351",
+          "retrieved_at_utc": "2026-08-27T09:09:52.084678+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821791626,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1766620800000,
+            "end": 1767520799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0013.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1767520800000&end=1768420799999&limit=1000",
+          "response_sha256": "f2e4090e5b3de66ca39b0dc7584838ab132630fff68cc835c3d6ad39ce6db2bf",
+          "retrieved_at_utc": "2026-08-27T09:09:52.863238+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821792429,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1767520800000,
+            "end": 1768420799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0014.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1768420800000&end=1769320799999&limit=1000",
+          "response_sha256": "3cb259a5efc35222bf15ecdec3b173fb4608f1618023480952aace6f98a0aa62",
+          "retrieved_at_utc": "2026-08-27T09:09:53.705783+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821793236,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1768420800000,
+            "end": 1769320799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0015.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1769320800000&end=1770220799999&limit=1000",
+          "response_sha256": "85e2e585a1ea0ae258317886272d7c4768ad038442f7ff518d4e3a8e10e31275",
+          "retrieved_at_utc": "2026-08-27T09:09:54.555561+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821794063,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1769320800000,
+            "end": 1770220799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0016.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1770220800000&end=1771120799999&limit=1000",
+          "response_sha256": "b0c08bed9a0d121ad4946f251f0f8367ea7a97191dc3083bcd5b1cfb48a4761f",
+          "retrieved_at_utc": "2026-08-27T09:09:55.550760+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821794925,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1770220800000,
+            "end": 1771120799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0017.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1771120800000&end=1772020799999&limit=1000",
+          "response_sha256": "c0e7be02f40aba7bd65681b01e3ec4d5ee3fd59c3ce860de52ea613c5a16f1e5",
+          "retrieved_at_utc": "2026-08-27T09:09:56.368419+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821795907,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1771120800000,
+            "end": 1772020799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0018.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1772020800000&end=1772920799999&limit=1000",
+          "response_sha256": "e7f2027e35c6be45c20d76f61bc240b5381ad4b71c582e5fb6daa978a2c2f7df",
+          "retrieved_at_utc": "2026-08-27T09:09:57.174686+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821796713,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1772020800000,
+            "end": 1772920799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0019.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1772920800000&end=1773820799999&limit=1000",
+          "response_sha256": "86f4bce805fda0dff147b24c7a04ffc5d987bf173783f8ed5128abc08a48bfe8",
+          "retrieved_at_utc": "2026-08-27T09:09:58.034859+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821797539,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1772920800000,
+            "end": 1773820799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0020.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1773820800000&end=1774720799999&limit=1000",
+          "response_sha256": "751094f90cc2005b9a30b1dfa6cce289cdff169af09acc5253cb6143e92765b6",
+          "retrieved_at_utc": "2026-08-27T09:09:59.025934+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821798408,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1773820800000,
+            "end": 1774720799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0021.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1774720800000&end=1775620799999&limit=1000",
+          "response_sha256": "8b15fd8c57dbdea4465c2970787f7bcf0e5874acf31014b707df25e80f470856",
+          "retrieved_at_utc": "2026-08-27T09:09:59.851028+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821799399,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1774720800000,
+            "end": 1775620799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0022.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1775620800000&end=1776520799999&limit=1000",
+          "response_sha256": "2b8c60ba6bf11e46f221f029816b72663a52c78bbb7b83dd167b980475e91c21",
+          "retrieved_at_utc": "2026-08-27T09:10:00.812193+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821800207,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1775620800000,
+            "end": 1776520799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0023.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1776520800000&end=1777420799999&limit=1000",
+          "response_sha256": "76486a4a43dc0fdf4a7b636938c543c77e3f1443925a8d0ca0ca998b62bb6a40",
+          "retrieved_at_utc": "2026-08-27T09:10:01.710271+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821801199,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1776520800000,
+            "end": 1777420799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0024.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1777420800000&end=1778320799999&limit=1000",
+          "response_sha256": "8e3563f23851c41cdc997b46fd3988e09667ac7f4b1f7df073ffc97062c10c0a",
+          "retrieved_at_utc": "2026-08-27T09:10:02.488527+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821802057,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1777420800000,
+            "end": 1778320799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0025.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1778320800000&end=1779220799999&limit=1000",
+          "response_sha256": "f85e8d53c4b97526fb9d2cb30b0a98e32a82aed57ce92e09d70f622bd9d0edd2",
+          "retrieved_at_utc": "2026-08-27T09:10:03.355597+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821802868,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1778320800000,
+            "end": 1779220799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0026.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1779220800000&end=1780120799999&limit=1000",
+          "response_sha256": "024c504119b1ed16c1a752b515411620e9642a89406657092f9df7b27a65fa7e",
+          "retrieved_at_utc": "2026-08-27T09:10:04.323486+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821803805,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1779220800000,
+            "end": 1780120799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0027.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1780120800000&end=1781020799999&limit=1000",
+          "response_sha256": "c3ebd7d82841000037199ba37861ece947299e3d64ea84fed1a2ee7d8b385472",
+          "retrieved_at_utc": "2026-08-27T09:10:05.330512+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821804765,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1780120800000,
+            "end": 1781020799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0028.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1781020800000&end=1781920799999&limit=1000",
+          "response_sha256": "fe4651273f276cf48aeb90ae6f081564f9ff06b3c0bbd5f953c5100a5b79f23f",
+          "retrieved_at_utc": "2026-08-27T09:10:06.292895+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821805730,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1781020800000,
+            "end": 1781920799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0029.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1781920800000&end=1782820799999&limit=1000",
+          "response_sha256": "80a74294114e67c2defbf6bfa1a3d20854db52d2133f8cd14ed67513cdbbbc67",
+          "retrieved_at_utc": "2026-08-27T09:10:07.142513+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821806689,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1781920800000,
+            "end": 1782820799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0030.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1782820800000&end=1783720799999&limit=1000",
+          "response_sha256": "801ad460fa7b77f43470333d83b444ae10e36593f7bef4fed1e5241aa898d382",
+          "retrieved_at_utc": "2026-08-27T09:10:07.973518+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821807508,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1782820800000,
+            "end": 1783720799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0031.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1783720800000&end=1784620799999&limit=1000",
+          "response_sha256": "87d51e36fa4a95f4cb41d26036d506fff88ca69f2cff39860a6f3a6e72153afe",
+          "retrieved_at_utc": "2026-08-27T09:10:08.792759+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821808327,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1783720800000,
+            "end": 1784620799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0032.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1784620800000&end=1785520799999&limit=1000",
+          "response_sha256": "b91f8342b16413a2da2e87d44668be48b662f5f565837d2615cca35d1ba9a558",
+          "retrieved_at_utc": "2026-08-27T09:10:09.587399+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821809136,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1784620800000,
+            "end": 1785520799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0033.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1785520800000&end=1786420799999&limit=1000",
+          "response_sha256": "880ded96505332e1d473823444ce25c0286b86180033ae4477c99a3840845efc",
+          "retrieved_at_utc": "2026-08-27T09:10:10.411316+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821809972,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1785520800000,
+            "end": 1786420799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0034.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1786420800000&end=1787320799999&limit=1000",
+          "response_sha256": "8883d5f9e10d98733928d1fdb31c3bfbcf6e1fe7e78a037e785419a7249930b8",
+          "retrieved_at_utc": "2026-08-27T09:10:11.225041+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821810759,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1786420800000,
+            "end": 1787320799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/BTCUSDT/page_0035.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=BTCUSDT&interval=15&start=1787320800000&end=1787356799999&limit=1000",
+          "response_sha256": "6543f86d57fb30d4e4d57799ae27a108f1a883dfdeebdfc0cf4f48304e2f05b2",
+          "retrieved_at_utc": "2026-08-27T09:10:12.013356+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821811578,
+          "record_count": 40,
+          "request_params": {
+            "category": "linear",
+            "symbol": "BTCUSDT",
+            "interval": "15",
+            "start": 1787320800000,
+            "end": 1787356799999,
+            "limit": 1000
+          }
+        }
+      ]
+    },
+    {
+      "kind": "funding_history",
+      "symbol": "ETHUSDT",
+      "row_count": 1095,
+      "normalized_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/normalized/ETHUSDT_funding_rate_native_1755820800000_1787356800000.json",
+      "normalized_sha256": "0f6b4e01968236990bb27c34c072fdb60c63a23f4e6286e014b0a0e7d3deb37f",
+      "pages": [
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/ETHUSDT/page_0000.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=ETHUSDT&startTime=1755820800000&endTime=1787356799999&limit=200",
+          "response_sha256": "6a55130c2ad85a8af88ea77a494764aa5f9c76e33698da1ae1c1e1712275a043",
+          "retrieved_at_utc": "2026-08-27T09:10:12.878720+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821812455,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1787356799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/ETHUSDT/page_0001.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=ETHUSDT&startTime=1755820800000&endTime=1781596799999&limit=200",
+          "response_sha256": "10b2329284f3cb8d0a80a002d9f2b413d3fff3d4219fa4bf6cf400c23d45ee37",
+          "retrieved_at_utc": "2026-08-27T09:10:13.666886+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821813254,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1781596799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/ETHUSDT/page_0002.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=ETHUSDT&startTime=1755820800000&endTime=1775836799999&limit=200",
+          "response_sha256": "af770780e289db2556f6187d3af8b37b9c8d5f4b6a78333dcfeb3308699a95c3",
+          "retrieved_at_utc": "2026-08-27T09:10:14.453399+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821814036,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1775836799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/ETHUSDT/page_0003.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=ETHUSDT&startTime=1755820800000&endTime=1770076799999&limit=200",
+          "response_sha256": "d10c30b649cd4c4cb77bedfa8939dbdeee9cfb667017177a974f7d01d799d260",
+          "retrieved_at_utc": "2026-08-27T09:10:15.229311+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821814820,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1770076799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/ETHUSDT/page_0004.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=ETHUSDT&startTime=1755820800000&endTime=1764316799999&limit=200",
+          "response_sha256": "1fd51bf51ac40e4f56478537a1937774216fb1af533b3439c27333214ab5fc72",
+          "retrieved_at_utc": "2026-08-27T09:10:16.055633+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821815613,
+          "record_count": 200,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1764316799999,
+            "limit": 200
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/funding_history/ETHUSDT/page_0005.json",
+          "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=ETHUSDT&startTime=1755820800000&endTime=1758556799999&limit=200",
+          "response_sha256": "2eea5051e03ef3e9152e0d58120efd807b59a68ca7e045a87dbb8ef18a819c75",
+          "retrieved_at_utc": "2026-08-27T09:10:16.835244+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821816430,
+          "record_count": 95,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "startTime": 1755820800000,
+            "endTime": 1758556799999,
+            "limit": 200
+          }
+        }
+      ]
+    },
+    {
+      "kind": "mark_price_kline",
+      "symbol": "ETHUSDT",
+      "interval": "15",
+      "row_count": 35040,
+      "normalized_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/normalized/ETHUSDT_mark_price_15m_1755820800000_1787356800000.json",
+      "normalized_sha256": "f29acfe48ae62bcef65ec03f9ea27c0fff96406e84ff3ef0ede4c266867c1bc0",
+      "pages": [
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0000.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1755820800000&end=1756720799999&limit=1000",
+          "response_sha256": "a6e9e69c8782eb77730a967caf11220fa3b644e5008cad0c4067441da2915878",
+          "retrieved_at_utc": "2026-08-27T09:10:17.669941+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821817223,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1755820800000,
+            "end": 1756720799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0001.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1756720800000&end=1757620799999&limit=1000",
+          "response_sha256": "30c86110edb23607409e3742cef8dee4e7ead7a94793a5c5b42e47fd539ffb6b",
+          "retrieved_at_utc": "2026-08-27T09:10:18.492283+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821818041,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1756720800000,
+            "end": 1757620799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0002.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1757620800000&end=1758520799999&limit=1000",
+          "response_sha256": "0e12b78592560ec34ac2335d6a45709366e4b77d9b8c9ede236a5928315289a3",
+          "retrieved_at_utc": "2026-08-27T09:10:19.279513+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821818854,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1757620800000,
+            "end": 1758520799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0003.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1758520800000&end=1759420799999&limit=1000",
+          "response_sha256": "25c018bf9f6f66f10c918b07d1b53167e54b1e7c9012124b8c708e0f4a8c60e7",
+          "retrieved_at_utc": "2026-08-27T09:10:20.099569+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821819626,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1758520800000,
+            "end": 1759420799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0004.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1759420800000&end=1760320799999&limit=1000",
+          "response_sha256": "94742716ac0081f406607e2176db54eab22fbac79fceca48e7d325b1693807c5",
+          "retrieved_at_utc": "2026-08-27T09:10:20.917075+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821820447,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1759420800000,
+            "end": 1760320799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0005.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1760320800000&end=1761220799999&limit=1000",
+          "response_sha256": "d4a4454a2c53f56a14661c879d96546b99ba78b30b304ca7270b0529d018295f",
+          "retrieved_at_utc": "2026-08-27T09:10:21.724726+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821821266,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1760320800000,
+            "end": 1761220799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0006.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1761220800000&end=1762120799999&limit=1000",
+          "response_sha256": "c6cb33bce23dec644c21c991be885770743defcf848dd49aac450bd06c1d0280",
+          "retrieved_at_utc": "2026-08-27T09:10:22.653164+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821822074,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1761220800000,
+            "end": 1762120799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0007.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1762120800000&end=1763020799999&limit=1000",
+          "response_sha256": "ed758f2008861b98d9512817b4539b4e1c918fceb5fe908ff14f23553ca47c23",
+          "retrieved_at_utc": "2026-08-27T09:10:23.499738+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821823011,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1762120800000,
+            "end": 1763020799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0008.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1763020800000&end=1763920799999&limit=1000",
+          "response_sha256": "a0e396077c1baad9b4cf0a9b67644c6cef575b7001473ba7aa75ccae2bf5b27f",
+          "retrieved_at_utc": "2026-08-27T09:10:24.302665+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821823844,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1763020800000,
+            "end": 1763920799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0009.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1763920800000&end=1764820799999&limit=1000",
+          "response_sha256": "0f41ebf7fd396bc1734bb870686758c74b410cfe8fea5ed1c6d70cf44fee94f3",
+          "retrieved_at_utc": "2026-08-27T09:10:25.160985+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821824666,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1763920800000,
+            "end": 1764820799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0010.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1764820800000&end=1765720799999&limit=1000",
+          "response_sha256": "d4c270d73c8ea0c6ba4df185a1407052d7cbbfa52e8bbe344fbf1e8c32cc09f8",
+          "retrieved_at_utc": "2026-08-27T09:10:26.058702+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821825515,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1764820800000,
+            "end": 1765720799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0011.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1765720800000&end=1766620799999&limit=1000",
+          "response_sha256": "42a8212f5abc14d408fa818be44c1d7e99b3740d65905c47897844441be8643c",
+          "retrieved_at_utc": "2026-08-27T09:10:26.844424+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821826410,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1765720800000,
+            "end": 1766620799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0012.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1766620800000&end=1767520799999&limit=1000",
+          "response_sha256": "ead0d4237f483a91e7aa01986d736a69149097f482832dc0b09a1c422bde169b",
+          "retrieved_at_utc": "2026-08-27T09:10:28.022660+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821827512,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1766620800000,
+            "end": 1767520799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0013.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1767520800000&end=1768420799999&limit=1000",
+          "response_sha256": "6d827367c59ce8607c41f796d20fcf64ec32ba3ffe0f8d778a06aeaebe4765e6",
+          "retrieved_at_utc": "2026-08-27T09:10:29.278766+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821828808,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1767520800000,
+            "end": 1768420799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0014.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1768420800000&end=1769320799999&limit=1000",
+          "response_sha256": "855b2546b252ba667925f8eafc8cbb299d2f5ff5193eb8697fc053b3c4f02bc7",
+          "retrieved_at_utc": "2026-08-27T09:10:30.586738+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821829959,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1768420800000,
+            "end": 1769320799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0015.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1769320800000&end=1770220799999&limit=1000",
+          "response_sha256": "b9d0288055155e408770a70a2a4c024995e729afd0058b24efcca567f3bee549",
+          "retrieved_at_utc": "2026-08-27T09:10:31.406792+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821830975,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1769320800000,
+            "end": 1770220799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0016.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1770220800000&end=1771120799999&limit=1000",
+          "response_sha256": "c09781786cadbde92a9eb5d91fb66c7a2518dec81406450d85c8706dc996c05c",
+          "retrieved_at_utc": "2026-08-27T09:10:32.219055+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821831771,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1770220800000,
+            "end": 1771120799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0017.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1771120800000&end=1772020799999&limit=1000",
+          "response_sha256": "a0e0f0c0c92f81bc9553e9144b21ada7130b1366eacc8198d788f599602fde75",
+          "retrieved_at_utc": "2026-08-27T09:10:33.062746+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821832594,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1771120800000,
+            "end": 1772020799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0018.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1772020800000&end=1772920799999&limit=1000",
+          "response_sha256": "e4ded840bdd0faf0c55ff327d0f18ff0c9c2b64672aca635db14aba53a610118",
+          "retrieved_at_utc": "2026-08-27T09:10:33.860081+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821833420,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1772020800000,
+            "end": 1772920799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0019.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1772920800000&end=1773820799999&limit=1000",
+          "response_sha256": "e2793bae42079da99af524b628b47a4723d2d37bbab9e28c480c410079f72aaf",
+          "retrieved_at_utc": "2026-08-27T09:10:34.664496+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821834215,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1772920800000,
+            "end": 1773820799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0020.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1773820800000&end=1774720799999&limit=1000",
+          "response_sha256": "40297fa62d656c152a7466ce0ca2fea2b13f6304dc9f023169b3726173dfafc8",
+          "retrieved_at_utc": "2026-08-27T09:10:35.546048+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821835008,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1773820800000,
+            "end": 1774720799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0021.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1774720800000&end=1775620799999&limit=1000",
+          "response_sha256": "9aee797d30b779ccae2f828cd7b1c5984423107062795cd35e7826cec3ebcfec",
+          "retrieved_at_utc": "2026-08-27T09:10:36.448836+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821835967,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1774720800000,
+            "end": 1775620799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0022.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1775620800000&end=1776520799999&limit=1000",
+          "response_sha256": "6fde2112b9f073313b31353c252813f100a96f138f849481d97821d98101864d",
+          "retrieved_at_utc": "2026-08-27T09:10:37.246655+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821836801,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1775620800000,
+            "end": 1776520799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0023.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1776520800000&end=1777420799999&limit=1000",
+          "response_sha256": "2f6071fece291e55fe3932798ecc1ac06a9d75232edc58eeb5e368b1f4f4badd",
+          "retrieved_at_utc": "2026-08-27T09:10:38.034162+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821837595,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1776520800000,
+            "end": 1777420799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0024.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1777420800000&end=1778320799999&limit=1000",
+          "response_sha256": "57cfbc0691d42235bef86fedbcae8f01e767e2c154d214ab60a402276e5dd8e7",
+          "retrieved_at_utc": "2026-08-27T09:10:39.356558+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821838710,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1777420800000,
+            "end": 1778320799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0025.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1778320800000&end=1779220799999&limit=1000",
+          "response_sha256": "589f30855543d73a2ed8f11903cb4857e7a9cd155ef826b218dd445d3b2be3ab",
+          "retrieved_at_utc": "2026-08-27T09:10:40.170282+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821839728,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1778320800000,
+            "end": 1779220799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0026.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1779220800000&end=1780120799999&limit=1000",
+          "response_sha256": "a1cf06ab0cc2371dbdd6df4760183a8b30a867ce13d65f834701b4e91d0fdf52",
+          "retrieved_at_utc": "2026-08-27T09:10:40.975116+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821840523,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1779220800000,
+            "end": 1780120799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0027.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1780120800000&end=1781020799999&limit=1000",
+          "response_sha256": "0a999829bc9907e65e99c91474c1cc9e87535c3aab5c8e18c423a7685f7b8c18",
+          "retrieved_at_utc": "2026-08-27T09:10:41.773304+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821841337,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1780120800000,
+            "end": 1781020799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0028.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1781020800000&end=1781920799999&limit=1000",
+          "response_sha256": "fd26a23d2be11d656f10861da78222b7db7c514f883d0c3a82cc41d13b92513d",
+          "retrieved_at_utc": "2026-08-27T09:10:42.580922+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821842131,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1781020800000,
+            "end": 1781920799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0029.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1781920800000&end=1782820799999&limit=1000",
+          "response_sha256": "a52ac227524058f201afcfb14f5271258bfe37fe5e0fb4129729ac4bd05765a1",
+          "retrieved_at_utc": "2026-08-27T09:10:43.458065+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821842944,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1781920800000,
+            "end": 1782820799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0030.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1782820800000&end=1783720799999&limit=1000",
+          "response_sha256": "1f653b8f66deb5f1ee4e30ca3143beebf7ea00bc98bdd5f2e8b9efc745bd75eb",
+          "retrieved_at_utc": "2026-08-27T09:10:44.249581+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821843805,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1782820800000,
+            "end": 1783720799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0031.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1783720800000&end=1784620799999&limit=1000",
+          "response_sha256": "b1fc1dc02197a826d0313c2b62224b3e002ca4c2424f4ebf72f3250f6d2a7215",
+          "retrieved_at_utc": "2026-08-27T09:10:45.107434+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821844644,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1783720800000,
+            "end": 1784620799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0032.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1784620800000&end=1785520799999&limit=1000",
+          "response_sha256": "c1854fe5ae134cccfc6317e00020ad025846ce25bb3552eed9a03905375ca4bd",
+          "retrieved_at_utc": "2026-08-27T09:10:45.957533+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821845463,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1784620800000,
+            "end": 1785520799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0033.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1785520800000&end=1786420799999&limit=1000",
+          "response_sha256": "196d774237d9377299a5974ff74d6f6ba213e5fd340ee01929209aa8252cc761",
+          "retrieved_at_utc": "2026-08-27T09:10:46.737905+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821846290,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1785520800000,
+            "end": 1786420799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0034.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1786420800000&end=1787320799999&limit=1000",
+          "response_sha256": "144ef7a86d6a999a623da64876d0aa99c4c3477785d223cf20a91d3d653ecd36",
+          "retrieved_at_utc": "2026-08-27T09:10:47.539475+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821847071,
+          "record_count": 1000,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1786420800000,
+            "end": 1787320799999,
+            "limit": 1000
+          }
+        },
+        {
+          "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/raw/mark_price_kline/ETHUSDT/page_0035.json",
+          "url": "https://api.bybit.com/v5/market/mark-price-kline?category=linear&symbol=ETHUSDT&interval=15&start=1787320800000&end=1787356799999&limit=1000",
+          "response_sha256": "d5d465c9ce49cd6b848c787726708c38825b28d2650dc844f7b67f6f65913630",
+          "retrieved_at_utc": "2026-08-27T09:10:48.294409+00:00",
+          "ret_code": 0,
+          "server_time_ms": 1787821847885,
+          "record_count": 40,
+          "request_params": {
+            "category": "linear",
+            "symbol": "ETHUSDT",
+            "interval": "15",
+            "start": 1787320800000,
+            "end": 1787356799999,
+            "limit": 1000
+          }
+        }
+      ]
+    }
+  ],
+  "repository_artifact": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2",
+  "manifest_sha256": "f43a8a3c5d73f14ae2fb9d4d890e473076680ce1a0f420a3631a11cb3ead806e",
+  "canonical_sha256": "81893e47e4426cb1be27685dd4bdd8d5f4825eaaa490e5c69fc4e1ffffbe695f"
+}
