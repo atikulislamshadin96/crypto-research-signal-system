@@ -1,0 +1,401 @@
+{
+  "applicability": {
+    "eligible_source_timeframes": [
+      "1h",
+      "4h",
+      "1d"
+    ],
+    "instrument_universe": [
+      {
+        "bybit_symbol": "BTCUSDT",
+        "freqtrade_pair": "BTC/USDT:USDT"
+      },
+      {
+        "bybit_symbol": "ETHUSDT",
+        "freqtrade_pair": "ETH/USDT:USDT"
+      }
+    ],
+    "market_type": "linear_perpetual",
+    "origin": "external_assumption",
+    "predeclared_non_tunable_exclusions": [
+      {
+        "action": "exclude_before_measurement",
+        "condition": "source_timeframe not in eligible_source_timeframes",
+        "reason": "no_exact_ohlcv_file_in_verified_manifest"
+      },
+      {
+        "action": "exclude_before_measurement",
+        "condition": "pair not in instrument_universe",
+        "reason": "outside_uniform_research_scope"
+      }
+    ],
+    "settlement_asset": "USDT",
+    "source_timeframe_policy": "exact_match_only_no_resampling",
+    "supported_ohlcv_timeframes": [
+      "15m",
+      "30m",
+      "1h",
+      "4h",
+      "1d"
+    ],
+    "venue": "bybit"
+  },
+  "authorization": {
+    "backtest_authorized": false,
+    "live_trading_authorized": false,
+    "paper_trading_authorized": false,
+    "status": "frozen_pre_backtest",
+    "trial_creation_authorized": false
+  },
+  "data_manifest": {
+    "file_count": 10,
+    "files": [
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 2361431,
+        "drive_file_id": "1zEx5wdTuXZYUbmrbl5x1ZLXAgtKbUdOB",
+        "end_time_ms": 1787355900000,
+        "file_name": "BTCUSDT_15m_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_15m_2025-08-22_2026-08-21.csv",
+        "row_count": 35040,
+        "sha256": "b8bf0de78368bc56f4d57061d23722e461a7d2657515f2111bcd09f4c18fbab9",
+        "start_time_ms": 1755820800000
+      },
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 26040,
+        "drive_file_id": "1hDmYZEYgWSPpFhvF313P4h4NsR2EAWnG",
+        "end_time_ms": 1787270400000,
+        "file_name": "BTCUSDT_1d_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_1d_2025-08-22_2026-08-21.csv",
+        "row_count": 365,
+        "sha256": "bf3c05fea4ca2e89c89ce1d3c97767b559ac4906860b241257cbf6c13cd6f0f1",
+        "start_time_ms": 1755820800000
+      },
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 601662,
+        "drive_file_id": "1mGGq7mF2P9qEkfRcst8Zcy2YdR1Jtsi6",
+        "end_time_ms": 1787353200000,
+        "file_name": "BTCUSDT_1h_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_1h_2025-08-22_2026-08-21.csv",
+        "row_count": 8760,
+        "sha256": "759c11ecdd7d4bb14437f03d9bb633fd48cab3931c277cc10cbee6a55c1b6960",
+        "start_time_ms": 1755820800000
+      },
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 1190895,
+        "drive_file_id": "1GBxyxuATeiMq7QuFJoznvplL25Rr3tJV",
+        "end_time_ms": 1787355000000,
+        "file_name": "BTCUSDT_30m_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_30m_2025-08-22_2026-08-21.csv",
+        "row_count": 17520,
+        "sha256": "f4a1a0898de4ee839204106afd0925c600ad50d8f5af71166d4a095b3ad1b574",
+        "start_time_ms": 1755820800000
+      },
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 152770,
+        "drive_file_id": "1W7lL-lUxcEfIJ6FIzsgkdtbZbWvhYo46",
+        "end_time_ms": 1787342400000,
+        "file_name": "BTCUSDT_4h_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_4h_2025-08-22_2026-08-21.csv",
+        "row_count": 2190,
+        "sha256": "59a4cec4e6d876e940b834b692df8ba5c019939f8db12ebf1f487c1ed22621d9",
+        "start_time_ms": 1755820800000
+      },
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 2348015,
+        "drive_file_id": "17colVwvLAKI-iWo-2G8bqUuI_MFJA7o2",
+        "end_time_ms": 1787355900000,
+        "file_name": "ETHUSDT_15m_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_15m_2025-08-22_2026-08-21.csv",
+        "row_count": 35040,
+        "sha256": "9d63c1110ed543d9b74431cf42e1590e17989c6bddcd76105df645635019e051",
+        "start_time_ms": 1755820800000
+      },
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 25977,
+        "drive_file_id": "1IqDxGk2JaEYsRi6LFB5ZRABmlBo__HEi",
+        "end_time_ms": 1787270400000,
+        "file_name": "ETHUSDT_1d_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_1d_2025-08-22_2026-08-21.csv",
+        "row_count": 365,
+        "sha256": "29e2f69e258b48a1280301cfa0cdf8d7bee9f33ca3e6dc93142e41e6c02dcd43",
+        "start_time_ms": 1755820800000
+      },
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 597907,
+        "drive_file_id": "1cWjzIdZCxmZI8Pj66Pe2SDniZ4YPL0Fs",
+        "end_time_ms": 1787353200000,
+        "file_name": "ETHUSDT_1h_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_1h_2025-08-22_2026-08-21.csv",
+        "row_count": 8760,
+        "sha256": "b9da720c84ad4ce444c7046833a618fc81f0b4ccce9fddd21a883fffc5052b78",
+        "start_time_ms": 1755820800000
+      },
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 1185372,
+        "drive_file_id": "1CE118tE9z8h8E70nDP2jvt83C1FAug86",
+        "end_time_ms": 1787355000000,
+        "file_name": "ETHUSDT_30m_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_30m_2025-08-22_2026-08-21.csv",
+        "row_count": 17520,
+        "sha256": "1bad26f1f70bf3754bd2fa6d6f79bb33dfdda52899283440cc2116181eb49702",
+        "start_time_ms": 1755820800000
+      },
+      {
+        "byte_for_byte_equal_to_drive": true,
+        "byte_size": 152227,
+        "drive_file_id": "1MDIpa5zY1DNzv7VHb8MSlpdvdreg9EzB",
+        "end_time_ms": 1787342400000,
+        "file_name": "ETHUSDT_4h_2025-08-22_2026-08-21.csv",
+        "local_path": "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_4h_2025-08-22_2026-08-21.csv",
+        "row_count": 2190,
+        "sha256": "88a9f58a82327d44749ecd0bb0f1a63400b6b78d54d5999b5f475018745e90d4",
+        "start_time_ms": 1755820800000
+      }
+    ],
+    "roundtrip_manifest_path": "strategy_discovery_v1/data/bybit_ohlcv_drive_roundtrip_manifest.json",
+    "roundtrip_manifest_sha256": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f"
+  },
+  "data_window": {
+    "end_date": "2026-08-21",
+    "end_date_inclusive": true,
+    "source": "verified_local_files_and_drive_roundtrip_manifest",
+    "start_date": "2025-08-22",
+    "timezone": "UTC"
+  },
+  "field_values": {
+    "applicable_asset_timeframe_constraints": {
+      "origin": "external_assumption",
+      "value": {
+        "eligible_source_timeframes": [
+          "1h",
+          "4h",
+          "1d"
+        ],
+        "policy": "exact_match_only_no_resampling",
+        "supported_ohlcv_timeframes": [
+          "15m",
+          "30m",
+          "1h",
+          "4h",
+          "1d"
+        ]
+      }
+    },
+    "commission": {
+      "model": "VIP0_taker_base_rate_proxy",
+      "origin": "external_assumption",
+      "reference": "https://www.bybit.com/en/help-center/article/Trading-Fee-Structure",
+      "unit": "fraction_of_notional_per_side",
+      "value": 0.00055
+    },
+    "external_config": {
+      "origin": "external_assumption",
+      "value": {
+        "candidate_specific_overrides": false,
+        "dry_run_wallet_usdt": 1000.0,
+        "margin_mode": "isolated",
+        "max_open_trades": 2,
+        "stake_currency": "USDT",
+        "trading_mode": "futures"
+      }
+    },
+    "fill_rule": {
+      "model": "signal_on_closed_bar_then_fill_at_next_bar_open",
+      "origin": "external_assumption",
+      "same_bar_fill": false,
+      "value": "next_bar_open_market_equivalent"
+    },
+    "funding_or_borrow": {
+      "model": "actual_historical_bybit_funding_rate",
+      "origin": "verified_market_data",
+      "reference_manifest": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/acquisition_manifest.json",
+      "reference_manifest_canonical_sha256": "81893e47e4426cb1be27685dd4bdd8d5f4825eaaa490e5c69fc4e1ffffbe695f",
+      "reference_manifest_filesystem_sha256": "0d156005a9fb57d8c4bb8429d79b20b31eeb6b261ae1f51a742767dcc9b93ed1",
+      "unit": "fraction_of_position_value_per_funding_event",
+      "value": "per_event_rate_from_native_8h_records",
+      "zero_funding_proxy_allowed": false
+    },
+    "instrument_universe": {
+      "origin": "external_assumption",
+      "reference": "applicability.instrument_universe",
+      "value": [
+        "BTC/USDT:USDT",
+        "ETH/USDT:USDT"
+      ]
+    },
+    "insufficient_margin_behavior": {
+      "margin_mode": "isolated",
+      "origin": "external_assumption",
+      "value": "reject_new_order_no_forced_liquidation_model"
+    },
+    "invalid_bar_behavior": {
+      "origin": "external_assumption",
+      "value": "fail_closed_exclude_invalid_bar_and_abort_candidate_if_required_series_is_invalid"
+    },
+    "latency": {
+      "model": "one_full_bar_between_signal_and_fill",
+      "origin": "external_assumption",
+      "unit": "source_timeframe_bars",
+      "value": 1
+    },
+    "leverage_cap": {
+      "model": "isolated_margin_no_leverage_above_one",
+      "origin": "external_assumption",
+      "unit": "x",
+      "value": 1.0
+    },
+    "missing_data_behavior": {
+      "origin": "external_assumption",
+      "value": "fail_closed_skip_signal_and_do_not_carry_forward_missing_bars"
+    },
+    "notional_cap": {
+      "origin": "external_assumption",
+      "value": {
+        "per_position_usdt": 100.0,
+        "portfolio_usdt": 200.0
+      }
+    },
+    "ohlcv_manifest_refs": {
+      "origin": "external_assumption",
+      "reference_manifest": "strategy_discovery_v1/data/bybit_ohlcv_drive_roundtrip_manifest.json",
+      "reference_manifest_sha256": "d4ec91de7ec0193e8459b4dea6db5f44a6f3aac471ec62ae465c9ff59fbd7c9f",
+      "value": [
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_15m_2025-08-22_2026-08-21.csv",
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_1d_2025-08-22_2026-08-21.csv",
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_1h_2025-08-22_2026-08-21.csv",
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_30m_2025-08-22_2026-08-21.csv",
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/BTCUSDT_4h_2025-08-22_2026-08-21.csv",
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_15m_2025-08-22_2026-08-21.csv",
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_1d_2025-08-22_2026-08-21.csv",
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_1h_2025-08-22_2026-08-21.csv",
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_30m_2025-08-22_2026-08-21.csv",
+        "strategy_discovery_v1/data/bybit_ohlcv_2025-08-22_2026-08-21/ETHUSDT_4h_2025-08-22_2026-08-21.csv"
+      ]
+    },
+    "position_sizing": {
+      "model": "fixed_notional_per_position",
+      "origin": "external_assumption",
+      "value": {
+        "compounding": false,
+        "max_open_positions": 2,
+        "max_positions_per_pair": 1,
+        "notional_usdt": 100.0
+      }
+    },
+    "quote_currency": {
+      "origin": "external_assumption",
+      "value": "USDT"
+    },
+    "risk_budget": {
+      "model": "fixed_notional_cap",
+      "origin": "external_assumption",
+      "value": {
+        "max_total_open_notional_usdt": 200.0,
+        "pyramiding": false
+      }
+    },
+    "rounding_rule": {
+      "origin": "external_assumption",
+      "value": {
+        "base_asset_decimal_places": 6,
+        "mode": "floor",
+        "zero_quantity_action": "skip_order"
+      }
+    },
+    "slippage": {
+      "model": "native_engine_no_global_adverse_slippage",
+      "origin": "external_assumption",
+      "unit": "fraction_of_notional_per_side",
+      "value": 0.0,
+      "global_adverse_slippage_control_available_in_pinned_engine": false,
+      "price_postprocessing_allowed": false,
+      "return_postprocessing_allowed": false,
+      "engine_patch_allowed": false
+    },
+    "spread": {
+      "model": "not_observable_in_OHLCV;not_double_counted",
+      "origin": "external_assumption",
+      "unit": "fraction_of_notional_per_side",
+      "value": 0.0
+    },
+    "venue": {
+      "model": "USDT_linear_perpetual",
+      "origin": "external_assumption",
+      "value": "bybit"
+    },
+    "native_fee_policy": {
+      "model": "freqtrade_cli_fee_override_only",
+      "origin": "external_assumption",
+      "commission_rate_per_side": 0.00055,
+      "commission_control": "pinned_freqtrade_native_fee_override",
+      "adverse_slippage_control": "none",
+      "price_postprocessing_allowed": false,
+      "return_postprocessing_allowed": false,
+      "engine_patch_allowed": false
+    }
+  },
+  "frozen_at": "2026-08-27T00:00:00Z",
+  "limitations": [
+    "This is a research harness, not production or live-trading configuration.",
+    "Actual historical Bybit funding-rate records are used; zero-funding proxy substitution is prohibited.",
+    "Only exact source timeframes with verified OHLCV files are eligible; 5m and 12h source strategies are predeclared exclusions for this batch.",
+    "Pinned engine has no global adverse-slippage control; the v1.4 policy uses native commission fee only and applies no slippage adjustment."
+  ],
+  "manifest_id": "freqtrade_batch_001_execution_assumptions_v1_4_native_fee_only",
+  "manifest_version": "execution_assumption_manifest_v1_4_native_fee_only",
+  "scope": {
+    "batch_id": "freqtrade-strategies-001",
+    "candidate_specific_tuning": false,
+    "source_commit": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff",
+    "source_license": "GPL-3.0",
+    "source_repo": "https://github.com/freqtrade/freqtrade-strategies",
+    "uniformity": "one_manifest_for_the_batch",
+    "execution_policy_version": "native_fee_only_v1"
+  },
+  "status": "frozen_pre_backtest",
+  "trial_identity_requirements": [
+    "manifest_id",
+    "manifest_sha256",
+    "source_commit",
+    "source_snapshot_sha256",
+    "ohlcv_manifest_refs",
+    "strategy_code_version",
+    "protocol_version",
+    "funding_data_manifest_path",
+    "funding_data_manifest_canonical_sha256",
+    "funding_data_manifest_filesystem_sha256",
+    "funding_policy_version",
+    "execution_policy_version",
+    "native_fee_policy_version"
+  ],
+  "funding_data_manifest": {
+    "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/acquisition_manifest.json",
+    "canonical_sha256": "81893e47e4426cb1be27685dd4bdd8d5f4825eaaa490e5c69fc4e1ffffbe695f",
+    "filesystem_sha256": "0d156005a9fb57d8c4bb8429d79b20b31eeb6b261ae1f51a742767dcc9b93ed1",
+    "symbols": [
+      "BTCUSDT",
+      "ETHUSDT"
+    ],
+    "category": "linear",
+    "timeframe": "8h",
+    "utc_start": "2025-08-22T00:00:00Z",
+    "utc_end_exclusive": "2026-08-22T00:00:00Z",
+    "native_timestamps": true,
+    "no_resampling": true,
+    "no_forward_fill": true,
+    "record_counts": {
+      "BTCUSDT": 1095,
+      "ETHUSDT": 1095
+    }
+  },
+  "manifest_sha256": "1972e26f85feefe152abdef4b8b2812db9b12c4732d4f7366855b700f8a81d42"
+}

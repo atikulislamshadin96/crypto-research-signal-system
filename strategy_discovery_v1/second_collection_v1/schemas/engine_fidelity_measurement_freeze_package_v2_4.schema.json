@@ -1,0 +1,203 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Engine Fidelity Measurement Freeze Package v2.4",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "package_id",
+    "version",
+    "status",
+    "package_canonical_sha256",
+    "package_filesystem_sha256",
+    "authorization",
+    "immutable_starting_state",
+    "execution_policy",
+    "funding_policy",
+    "pinned_inputs",
+    "authorized_strategy_paths",
+    "candidate_eligibility",
+    "placeholder_policy",
+    "native_layout",
+    "integrity_references",
+    "protected_artifacts",
+    "measurement_boundary"
+  ],
+  "properties": {
+    "package_id": {"type": "string", "const": "freqtrade_batch_001_engine_fidelity_measurement_freeze_v2_4"},
+    "version": {"type": "string", "const": "2.4.0"},
+    "status": {"type": "string", "const": "validated_request_measurement_approval"},
+    "package_canonical_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "package_filesystem_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["measurement_authorized", "trial_creation_authorized", "backtest_authorized", "ledger_update_authorized", "new_market_data_authorized", "promotion_allowed", "trading_allowed"],
+      "properties": {
+        "measurement_authorized": {"const": false},
+        "trial_creation_authorized": {"const": false},
+        "backtest_authorized": {"const": false},
+        "ledger_update_authorized": {"const": false},
+        "new_market_data_authorized": {"const": false},
+        "promotion_allowed": {"const": false},
+        "trading_allowed": {"const": false}
+      }
+    },
+    "immutable_starting_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ledger_n", "last_sequence", "ledger_canonical_sha256", "v2_package_sha256", "v2_1_package_sha256", "acquisition_manifest_canonical_sha256", "starting_commit"],
+      "properties": {
+        "ledger_n": {"const": 898},
+        "last_sequence": {"const": 898},
+        "ledger_canonical_sha256": {"const": "2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e"},
+        "v2_package_sha256": {"const": "2206c0ff15dda0483496305eba0814df7975aeabd23dedcb4ac8a58af81a5757"},
+        "v2_1_package_sha256": {"const": "d2b8d10439c17ddd98c5c6b877ae5b6a85be0b4a1de24f6840803e86d8255216"},
+        "v2_2_package_sha256": {"const": "93939f072200a20bc26a3f431a4f388e221c83d54f2356ce67f80a7b11d60b7b"},
+        "v2_3_package_sha256": {"const": "5983aef407027a4cfe61de38a1dc3c890c94bd05e63a2f407d8d5b93c275a9f0"},
+        "acquisition_manifest_canonical_sha256": {"const": "81893e47e4426cb1be27685dd4bdd8d5f4825eaaa490e5c69fc4e1ffffbe695f"},
+        "starting_commit": {"type": "string", "const": "afa73f470b3945d018d7fa147fef610636c6827d"}
+      }
+    },
+    "pinned_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engine_commit", "technical_commit", "strategy_source_commit", "runtime_python", "runtime_lock_sha256"],
+      "properties": {
+        "engine_commit": {"const": "eb1a668ceb0f29b7d578156bfc24c45278c0c0f8"},
+        "technical_commit": {"const": "720ff67483e346271165d49cf37265f78739c74c"},
+        "strategy_source_commit": {"const": "eff78d3ce3456b52c68a4e9a33cc055a56b801ff"},
+        "runtime_python": {"const": "3.12.3"},
+        "runtime_lock_sha256": {"const": "7d3e20fadf1dcffd00dc5396a1b1dca8ea426abe28f1e5c1649dbaa80b46b15d"},
+        "supertrend_source_sha256": {"const": "8c30b75b14f6004ebbe2e79fb0083cfb08963bcfa7dd7bdc96f4a8cc735eb838"}
+      }
+    },
+    "authorized_strategy_paths": {"type": "array", "minItems": 6, "maxItems": 6, "uniqueItems": true, "items": {"type": "string"}},
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "commission_model", "commission_rate_per_side", "slippage_model", "slippage_value", "native_fee_control", "global_adverse_slippage_control_available", "price_postprocessing_allowed", "return_postprocessing_allowed", "engine_patch_allowed"],
+      "properties": {
+        "id": {"const": "native_fee_only_v1"},
+        "commission_model": {"const": "VIP0_taker_base_rate_proxy"},
+        "commission_rate_per_side": {"const": 0.00055},
+        "slippage_model": {"const": "native_engine_no_global_adverse_slippage"},
+        "slippage_value": {"const": 0.0},
+        "native_fee_control": {"const": "freqtrade_cli_fee_override_only"},
+        "global_adverse_slippage_control_available": {"const": false},
+        "price_postprocessing_allowed": {"const": false},
+        "return_postprocessing_allowed": {"const": false},
+        "engine_patch_allowed": {"const": false}
+      }
+    },
+    "funding_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "model", "zero_funding_proxy_allowed", "source_manifest_path", "source_manifest_canonical_sha256", "source_manifest_filesystem_sha256", "native_timeframe", "actual_rate_used"],
+      "properties": {
+        "id": {"const": "actual_historical_bybit_funding_rate_v1"},
+        "model": {"const": "actual_historical_bybit_funding_rate"},
+        "zero_funding_proxy_allowed": {"const": false},
+        "source_manifest_path": {"type": "string"},
+        "source_manifest_canonical_sha256": {"const": "cd4679e1e8278e224add40836f0a25e4d9f6599c6a6360580b3306b23aba6898"},
+        "source_manifest_filesystem_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "native_timeframe": {"const": "8h"},
+        "actual_rate_used": {"const": true}
+      }
+    },
+    "candidate_eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "detail_timeframe", "candidates", "excluded"],
+      "properties": {
+        "status": {"const": "future_measurement_eligible_only"},
+        "detail_timeframe": {"const": "15m"},
+        "candidates": {"type": "array", "minItems": 6, "maxItems": 6, "items": {"type": "object", "additionalProperties": false, "required": ["path", "main_timeframe", "status"], "properties": {"path": {"type": "string"}, "main_timeframe": {"enum": ["1h", "4h", "1d"]}, "status": {"const": "eligible_after_v2_4_validation"}}}},
+        "excluded": {"type": "array", "minItems": 5, "items": {"type": "object", "additionalProperties": false, "required": ["path", "reason"], "properties": {"path": {"type": "string"}, "reason": {"enum": ["exact_5m_data_not_in_frozen_scope", "exact_12h_data_not_in_frozen_scope"]}}}}
+      }
+    },
+    "data_scope": {"type": "object", "additionalProperties": true},
+    "placeholder_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "mark_price_volume_value", "observed_market_volume", "allowed_only_for", "forbidden_uses", "statement"],
+      "properties": {
+        "id": {"const": "mark_price_volume_structural_placeholder_v1"},
+        "mark_price_volume_value": {"const": 0},
+        "observed_market_volume": {"const": false},
+        "allowed_only_for": {"type": "array", "const": ["mark_price"]},
+        "forbidden_uses": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "statement": {"type": "string", "minLength": 40}
+      }
+    },
+    "native_layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["manifest_path", "manifest_sha256", "dataformat_ohlcv", "trading_mode", "exchange_options", "pairlist", "native_columns", "source_policy"],
+      "properties": {
+        "manifest_path": {"type": "string"},
+        "manifest_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "dataformat_ohlcv": {"const": "json"},
+        "trading_mode": {"const": "futures"},
+        "exchange_options": {"type": "object", "required": ["mark_ohlcv_price", "mark_ohlcv_timeframe", "funding_fee_timeframe"], "properties": {"mark_ohlcv_price": {"const": "mark"}, "mark_ohlcv_timeframe": {"const": "15m"}, "funding_fee_timeframe": {"const": "8h"}}},
+        "ft_has_params_override": {"type": "object", "additionalProperties": false, "required": ["mark_ohlcv_timeframe", "funding_fee_timeframe"], "properties": {"mark_ohlcv_timeframe": {"const": "15m"}, "funding_fee_timeframe": {"const": "8h"}}},
+        "pairlist": {"type": "array", "const": ["BTC/USDT:USDT", "ETH/USDT:USDT"]},
+        "datadir": {"type": "string"},
+        "native_columns": {"type": "object", "required": ["mark_price", "funding_rate"], "properties": {"mark_price": {"const": ["date", "open", "high", "low", "close", "volume"]}, "funding_rate": {"const": ["date", "funding_rate"]}}},
+        "source_policy": {"type": "object", "required": ["no_resampling", "no_forward_fill", "mark_ohlc_exact_source_copy", "funding_native_timestamps"], "properties": {"no_resampling": {"const": true}, "no_forward_fill": {"const": true}, "mark_ohlc_exact_source_copy": {"const": true}, "funding_native_timestamps": {"const": true}}}
+      }
+    },
+    "integrity_references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_path", "schema_sha256", "acquisition_manifest_path", "acquisition_manifest_canonical_sha256", "acquisition_manifest_filesystem_sha256", "funding_execution_manifest_path", "funding_execution_manifest_canonical_sha256", "funding_execution_manifest_filesystem_sha256", "native_execution_manifest_path", "native_execution_manifest_canonical_sha256", "native_execution_manifest_filesystem_sha256", "runtime_lock_path", "ledger_canonical_sha256", "ledger_filesystem_sha256", "repository_files", "native_files"],
+      "properties": {
+        "schema_path": {"type": "string"},
+        "schema_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "acquisition_manifest_path": {"type": "string"},
+        "acquisition_manifest_canonical_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "acquisition_manifest_filesystem_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "funding_execution_manifest_path": {"type": "string"},
+        "funding_execution_manifest_canonical_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "funding_execution_manifest_filesystem_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "native_execution_manifest_path": {"type": "string"},
+        "native_execution_manifest_canonical_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "native_execution_manifest_filesystem_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "runtime_lock_path": {"type": "string"},
+        "ledger_canonical_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "ledger_filesystem_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "repository_files": {"type": "object", "additionalProperties": {"pattern": "^[0-9a-f]{64}$"}},
+        "native_files": {"type": "object", "additionalProperties": {"pattern": "^[0-9a-f]{64}$"}},
+        "native_layout_manifest_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "acquisition_raw_and_normalized_hashes_declared": {"const": true}
+      }
+    },
+    "protected_artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ledger_path", "ledger_sha256", "v2_package_path", "v2_package_sha256", "v2_1_package_path", "v2_1_package_sha256", "v2_2_package_path", "v2_2_package_sha256", "v2_3_package_path", "v2_3_package_sha256", "execution_manifest_path", "execution_manifest_sha256", "protocol_path", "protocol_sha256", "historical_measurement_path", "historical_measurement_sha256", "historical_statistics_path", "historical_statistics_sha256"],
+      "properties": {
+        "ledger_path": {"type": "string"}, "ledger_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "v2_package_path": {"type": "string"}, "v2_package_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "v2_1_package_path": {"type": "string"}, "v2_1_package_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "v2_2_package_path": {"type": "string"}, "v2_2_package_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "v2_3_package_path": {"type": "string"}, "v2_3_package_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "execution_manifest_path": {"type": "string"}, "execution_manifest_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "protocol_path": {"type": "string"}, "protocol_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "historical_measurement_path": {"type": "string"}, "historical_measurement_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "historical_statistics_path": {"type": "string"}, "historical_statistics_sha256": {"pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "measurement_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy_execution_performed", "trial_ids_created", "ledger_updated", "measurement_requires_separate_authorization", "next_status_if_validated"],
+      "properties": {
+        "strategy_execution_performed": {"const": false},
+        "trial_ids_created": {"const": false},
+        "ledger_updated": {"const": false},
+        "measurement_requires_separate_authorization": {"const": true},
+        "next_status_if_validated": {"const": "V2_4_VALIDATED_REQUEST_MEASUREMENT_APPROVAL"}
+      }
+    }
+  }
+}
