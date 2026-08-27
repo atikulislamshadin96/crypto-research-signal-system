@@ -92,11 +92,11 @@ The six candidates remain future-measurement eligible only. Each candidate uses 
 | `git diff --check` | Pass |
 | v1.2/v2/v2.1/v2.2/ledger protected hash checks | Pass |
 | New backtest, trial IDs, or ledger append | None |
-| Fresh-clone verification | Pending final commit |
+| Fresh-clone verification | Pass at commit `42d6e93f95cc8e4ad2558f0dfdc832aa7b741a02` |
 
 ## Immutable state
 
-Starting commit was `ed2caaab1bdd6a20b1185c79a5f257c8d68927bf` and the repository was clean and remote-synchronized before v2.3 creation. Historical ledger remains `N=898`, `last_sequence=898`, with canonical hash `2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e` and filesystem hash `9642d0daa824d2ab49d7f4018d72f9b5e2e29cdea13bdcb73cd8af69653722eb`.
+Starting commit was `ed2caaab1bdd6a20b1185c79a5f257c8d68927bf` and the repository was clean and remote-synchronized before v2.3 creation. The final additive v2.3 commit is `42d6e93f95cc8e4ad2558f0dfdc832aa7b741a02`, and its independent sparse fresh-clone verification passed. Historical ledger remains `N=898`, `last_sequence=898`, with canonical hash `2cd58e1a9716d30a1abd0f4722aaaba0cb892d49654704b1cd06f2f7d9b96d8e` and filesystem hash `9642d0daa824d2ab49d7f4018d72f9b5e2e29cdea13bdcb73cd8af69653722eb`.
 
 The v1.2 execution manifest remains byte-for-byte protected with filesystem hash `7820c7c832c1a0a4eabf0fc02a4d38b48699f851feadfbfd57a477ac7691f51e`. Existing v2, v2.1 and v2.2 packages remain protected with filesystem hashes `2206c0ff15dda0483496305eba0814df7975aeabd23dedcb4ac8a58af81a5757`, `d2b8d10439c17ddd98c5c6b877ae5b6a85be0b4a1de24f6840803e86d8255216` এবং `93939f072200a20bc26a3f431a4f388e221c83d54f2356ce67f80a7b11d60b7b` respectively.
 
