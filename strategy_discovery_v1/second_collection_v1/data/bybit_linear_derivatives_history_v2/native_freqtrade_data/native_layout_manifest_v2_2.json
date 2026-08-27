@@ -1,0 +1,130 @@
+{
+  "layout_id": "freqtrade_engine_fidelity_v2_2_native_derivatives_layout",
+  "engine_commit": "eb1a668ceb0f29b7d578156bfc24c45278c0c0f8",
+  "dataformat_ohlcv": "json",
+  "datadir": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data",
+  "trading_mode": "futures",
+  "candle_type_def": "futures",
+  "exchange_options": {
+    "mark_ohlcv_price": "mark",
+    "mark_ohlcv_timeframe": "15m",
+    "funding_fee_timeframe": "8h"
+  },
+  "ft_has_params_override": {
+    "mark_ohlcv_timeframe": "15m",
+    "funding_fee_timeframe": "8h"
+  },
+  "pairlist": [
+    "BTC/USDT:USDT",
+    "ETH/USDT:USDT"
+  ],
+  "scope": {
+    "category": "linear",
+    "symbols": [
+      "BTCUSDT",
+      "ETHUSDT"
+    ],
+    "start_time_ms": 1755820800000,
+    "end_exclusive_ms": 1787356800000,
+    "mark_timeframe": "15m",
+    "funding_timeframe": "8h"
+  },
+  "placeholder_policy": {
+    "id": "mark_price_volume_structural_placeholder_v1",
+    "mark_price_volume_value": 0,
+    "observed_market_volume": false,
+    "meaning": "loader-required structural placeholder only; not exchange-traded volume",
+    "allowed_only_for": [
+      "mark_price"
+    ],
+    "forbidden_uses": [
+      "signals",
+      "indicators",
+      "entry_exit_conditions",
+      "position_sizing",
+      "fees",
+      "slippage",
+      "fills",
+      "latency",
+      "funding",
+      "liquidation",
+      "liquidity_filters",
+      "volume_filters",
+      "performance_metrics"
+    ]
+  },
+  "native_columns": {
+    "mark_price": [
+      "date",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume"
+    ],
+    "funding_rate": [
+      "date",
+      "funding_rate"
+    ]
+  },
+  "source_policy": {
+    "no_resampling": true,
+    "no_forward_fill": true,
+    "mark_ohlc_exact_source_copy": true,
+    "funding_native_timestamps": true
+  },
+  "files": [
+    {
+      "kind": "mark_price",
+      "symbol": "BTCUSDT",
+      "pair": "BTC/USDT:USDT",
+      "timeframe": "15m",
+      "candle_type": "mark",
+      "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/futures/BTC_USDT_USDT-15m-mark.json",
+      "source_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/normalized/BTCUSDT_mark_price_15m_1755820800000_1787356800000.json",
+      "source_sha256": "8e3576e2a82e5dd5749f4bcff051d4e24aff48911077fc2bf1935be21db2ed12",
+      "row_count": 35040,
+      "sha256": "97eed80e8f42bbce5135ee72e90d13533a11c0a12654234d0b3085e16ae896c2",
+      "placeholder_volume_value": 0
+    },
+    {
+      "kind": "funding_rate",
+      "symbol": "BTCUSDT",
+      "pair": "BTC/USDT:USDT",
+      "timeframe": "8h",
+      "candle_type": "funding_rate",
+      "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/futures/BTC_USDT_USDT-8h-funding_rate.json",
+      "source_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/normalized/BTCUSDT_funding_rate_native_1755820800000_1787356800000.json",
+      "source_sha256": "7c94306a615e6cfe1140b394b23289be0f4af600a1d080b78174f5c28fbb44a5",
+      "row_count": 1095,
+      "sha256": "0f97db5a1880a2ddb8bf4136a8a22a711a8a3fb9921083feab8993445642f3e8",
+      "placeholder_volume_value": null
+    },
+    {
+      "kind": "mark_price",
+      "symbol": "ETHUSDT",
+      "pair": "ETH/USDT:USDT",
+      "timeframe": "15m",
+      "candle_type": "mark",
+      "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/futures/ETH_USDT_USDT-15m-mark.json",
+      "source_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/normalized/ETHUSDT_mark_price_15m_1755820800000_1787356800000.json",
+      "source_sha256": "f29acfe48ae62bcef65ec03f9ea27c0fff96406e84ff3ef0ede4c266867c1bc0",
+      "row_count": 35040,
+      "sha256": "00ace905f92b2d8385bb3f8a4f1978f1e37a80691ea2852c26004c45ce49b7d2",
+      "placeholder_volume_value": 0
+    },
+    {
+      "kind": "funding_rate",
+      "symbol": "ETHUSDT",
+      "pair": "ETH/USDT:USDT",
+      "timeframe": "8h",
+      "candle_type": "funding_rate",
+      "path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/native_freqtrade_data/futures/ETH_USDT_USDT-8h-funding_rate.json",
+      "source_path": "strategy_discovery_v1/second_collection_v1/data/bybit_linear_derivatives_history_v2/normalized/ETHUSDT_funding_rate_native_1755820800000_1787356800000.json",
+      "source_sha256": "0f6b4e01968236990bb27c34c072fdb60c63a23f4e6286e014b0a0e7d3deb37f",
+      "row_count": 1095,
+      "sha256": "a1e43fe7051c989f090260c706de33ff3ac213a807a4c2db641d321d220422c2",
+      "placeholder_volume_value": null
+    }
+  ]
+}
